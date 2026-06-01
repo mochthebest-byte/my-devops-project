@@ -13,7 +13,7 @@ service:
   name: http
 
 postgresql:
-  host: postgresql-postgresql
+  host: postgresql
   port: 5432
   database: db
   user: vote_user
@@ -21,5 +21,5 @@ postgresql:
   secretPasswordKey: password
 
 redis:
-  host: redis-redis
+  host: redis-master
   port: 6379
