@@ -48,7 +48,12 @@
       "Bash(docker cp *)",
       "Bash(echo \"EXIT: $?\")",
       "Bash(echo \"CP EXIT: $?\")",
-      "Bash(echo \"IMPORT EXIT: $?\")"
+      "Bash(echo \"IMPORT EXIT: $?\")",
+      "Bash(kill %1)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5000)",
+      "Bash(wait)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -X POST -d \"vote=a\" http://localhost:5001/)",
+      "Bash(curl -s -X POST -d \"vote=a\" -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5002/)"
     ]
   }
 }
