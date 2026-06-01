@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: result
+  tag: v1
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 81
+  targetPort: 80
+  protocol: TCP
+  name: http
+
+postgresql:
+  host: postgresql-postgresql
+  port: 5432
+  database: db
+  user: postgres
+  existingSecret: postgresql-postgresql
+  secretPasswordKey: password
