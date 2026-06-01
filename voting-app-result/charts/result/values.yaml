@@ -16,6 +16,6 @@ postgresql:
   host: postgresql
   port: 5432
   database: db
-  user: postgres
+  user: vote_user
   existingSecret: postgresql
   secretPasswordKey: password
