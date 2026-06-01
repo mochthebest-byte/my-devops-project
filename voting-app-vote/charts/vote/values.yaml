@@ -19,3 +19,7 @@ postgresql:
   user: vote_user
   existingSecret: postgresql-postgresql
   secretPasswordKey: password
+
+redis:
+  host: redis-redis
+  port: 6379
