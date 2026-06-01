@@ -13,7 +13,7 @@ service:
   name: http
 
 postgresql:
-  host: postgresql-postgresql
+  host: postgresql
   port: 5432
   database: db
   user: postgres
