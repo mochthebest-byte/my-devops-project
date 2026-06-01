@@ -1,0 +1,13 @@
+replicaCount: 2
+
+image:
+  repository: vote
+  tag: local
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 5000
+  targetPort: 80
+  protocol: TCP
+  name: http
