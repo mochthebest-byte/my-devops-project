@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: vote
-  tag: v2
+  tag: latest
   pullPolicy: IfNotPresent
 
 service:
