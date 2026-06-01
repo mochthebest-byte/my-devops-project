@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: worker
-  tag: v1
+  tag: latest
   pullPolicy: IfNotPresent
 
 postgresql:
@@ -10,7 +10,7 @@ postgresql:
   port: 5432
   database: db
   user: postgres
-  existingSecret: postgresql-postgresql
+  existingSecret: postgresql
   secretPasswordKey: password
 
 redis:

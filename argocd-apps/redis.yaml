@@ -14,6 +14,8 @@ spec:
         architecture: standalone
         auth:
           enabled: false
+        image:
+          tag: latest
   destination:
     server: https://kubernetes.default.svc
     namespace: voting-app

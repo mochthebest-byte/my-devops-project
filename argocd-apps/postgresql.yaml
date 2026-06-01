@@ -18,6 +18,8 @@ spec:
         primary:
           service:
             type: ClusterIP
+        image:
+          tag: latest
   destination:
     server: https://kubernetes.default.svc
     namespace: voting-app
