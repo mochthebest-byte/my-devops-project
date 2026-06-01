@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(helm show *)",
+      "Bash(helm upgrade *)",
+      "Bash(kubectl *)",
+      "Bash(helm repo *)",
+      "WebSearch",
+      "Bash(curl -s https://api.github.com/repos/envoyproxy/gateway/releases?per_page=5)",
+      "Bash(curl -s \"https://api.github.com/repos/envoyproxy/gateway/releases?per_page=5\")",
+      "Bash(helm install *)",
+      "Bash(helm status *)",
+      "Bash(helm list *)",
+      "Bash(helm uninstall *)",
+      "Bash(curl -s http://localhost:32595)",
+      "Bash(curl -sv http://localhost:32595)",
+      "Bash(curl -s http://172.25.0.4:32595)",
+      "Bash(argocd version *)"
+    ]
+  }
+}
