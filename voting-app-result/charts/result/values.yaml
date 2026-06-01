@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: result
+  repository: kind-result
   tag: latest
   pullPolicy: IfNotPresent
 
