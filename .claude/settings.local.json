@@ -24,7 +24,31 @@
       "Bash(echo \"global excludes: $\\(git config --global core.excludesfile\\)\")",
       "Bash(argocd app *)",
       "Bash(docker build *)",
-      "Bash(kind load *)"
+      "Bash(kind load *)",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=5&page=1\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/redis/tags?page_size=10&ordering=last_updated\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=30&page=1&name=16.4\")",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/redis/tags?page_size=30&page=1&name=7.4\")",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page=1&page_size=50\")",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/redis/tags?page=1&page_size=50\")",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page=1&page_size=100\")",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/redis/tags?page=1&page_size=100\")",
+      "WebFetch(domain:hub.docker.com)",
+      "WebFetch(domain:artifacthub.io)",
+      "Bash(docker pull *)",
+      "Bash(awk '{print $1 \":\" $2}')",
+      "Bash(docker exec *)",
+      "Bash(python3 *)",
+      "Bash(yamllint --version)",
+      "Bash(pip install *)",
+      "Bash(kind get *)",
+      "Bash(docker save *)",
+      "Bash(docker cp *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(echo \"CP EXIT: $?\")",
+      "Bash(echo \"IMPORT EXIT: $?\")"
     ]
   }
 }

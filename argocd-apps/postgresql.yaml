@@ -19,6 +19,7 @@ spec:
           service:
             type: ClusterIP
         image:
+          repository: kind-postgresql
           tag: latest
   destination:
     server: https://kubernetes.default.svc
