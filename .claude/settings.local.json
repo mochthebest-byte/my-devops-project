@@ -15,7 +15,9 @@
       "Bash(curl -s http://localhost:32595)",
       "Bash(curl -sv http://localhost:32595)",
       "Bash(curl -s http://172.25.0.4:32595)",
-      "Bash(argocd version *)"
+      "Bash(argocd version *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ]
   }
 }

@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git
+    repoURL: https://github.com/mochthebest-byte/my-devops-project.git
     targetRevision: HEAD
     path: argocd-apps
   destination:
