@@ -53,7 +53,15 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5000)",
       "Bash(wait)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" -X POST -d \"vote=a\" http://localhost:5001/)",
-      "Bash(curl -s -X POST -d \"vote=a\" -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5002/)"
+      "Bash(curl -s -X POST -d \"vote=a\" -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5002/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5000/)",
+      "Bash(terraform fmt *)",
+      "Bash(chmod +x *)",
+      "Bash(terraform init *)",
+      "Bash(terraform plan *)",
+      "Bash(aws eks *)",
+      "Bash(terraform apply *)",
+      "Bash(./scripts/setup-eks-post.sh *)"
     ]
   }
 }
