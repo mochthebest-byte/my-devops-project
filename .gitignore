@@ -1,1 +1,3 @@
 .venv/
+*.tfstate
+*.tfstate.backup
