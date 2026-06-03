@@ -61,7 +61,20 @@
       "Bash(terraform plan *)",
       "Bash(aws eks *)",
       "Bash(terraform apply *)",
-      "Bash(./scripts/setup-eks-post.sh *)"
+      "Bash(./scripts/setup-eks-post.sh *)",
+      "Bash(curl -sSL -o /tmp/argocd \"https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64\")",
+      "Bash(sudo mv /tmp/argocd /usr/local/bin/argocd)",
+      "Bash(curl -sk https://127.0.0.1:8080)",
+      "Bash(argocd login *)",
+      "Bash(argocd repo *)",
+      "Bash(aws ecr *)",
+      "Bash(docker login *)",
+      "Bash(docker push *)",
+      "Bash(pkill -f \"kubectl port-forward.*argocd-server\")",
+      "Bash(disown)",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=5&ordering=last_updated\")",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=25&page=1\")",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=25\")"
     ]
   }
 }
