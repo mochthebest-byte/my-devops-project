@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: kind-worker
+  repository: 428156589409.dkr.ecr.us-east-1.amazonaws.com/my-app/worker
   tag: latest
   pullPolicy: IfNotPresent
 

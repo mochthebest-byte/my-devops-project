@@ -1,12 +1,12 @@
 replicaCount: 1
 
 image:
-  repository: kind-result
+  repository: 428156589409.dkr.ecr.us-east-1.amazonaws.com/my-app/result
   tag: latest
   pullPolicy: IfNotPresent
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 81
   targetPort: 80
   protocol: TCP

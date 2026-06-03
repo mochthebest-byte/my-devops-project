@@ -18,9 +18,9 @@ spec:
         primary:
           service:
             type: ClusterIP
-        image:
-          repository: kind-postgresql
-          tag: latest
+          persistence:
+            storageClass: gp3
+            size: 8Gi
   destination:
     server: https://kubernetes.default.svc
     namespace: voting-app
