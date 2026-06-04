@@ -1,18 +1,28 @@
 ---
+# ────────────────────────────────────────────────
+# GatewayClass — AWS Load Balancer Controller
+# ────────────────────────────────────────────────
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
-  name: envoy-gateway-class
+  name: aws-lb-gateway-class
 spec:
-  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+  controllerName: ingress.k8s.aws/gateway-api
+  description: "AWS Load Balancer Controller — provisions ALB/NLB for Gateways"
 ---
+# ────────────────────────────────────────────────
+# Gateway — Internet-facing ALB for voting-app
+# ────────────────────────────────────────────────
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: voting-app-gateway
   namespace: voting-app
+  annotations:
+    # Creates an internet-facing ALB (default is internal)
+    alb.ingress.k8s.aws/scheme: internet-facing
 spec:
-  gatewayClassName: envoy-gateway-class
+  gatewayClassName: aws-lb-gateway-class
   listeners:
     - name: http
       protocol: HTTP
@@ -21,6 +31,9 @@ spec:
         namespaces:
           from: Same
 ---
+# ────────────────────────────────────────────────
+# HTTPRoute — Route / → voting-app-vote:5000
+# ────────────────────────────────────────────────
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -35,5 +48,5 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: vote-release
+        - name: voting-app-vote
           port: 5000

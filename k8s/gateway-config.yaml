@@ -8,7 +8,23 @@ metadata:
   name: aws-lb-gateway-class
 spec:
   controllerName: ingress.k8s.aws/gateway-api
+  parametersRef:
+    name: voting-app-alb-config
+    group: gateway.k8s.aws
+    kind: LoadBalancerConfiguration
   description: "AWS Load Balancer Controller — provisions ALB for Gateways"
+---
+# ─────────────────────────────────────────────────────
+# LoadBalancerConfiguration — ALB settings
+# ─────────────────────────────────────────────────────
+apiVersion: gateway.k8s.aws/v1beta1
+kind: LoadBalancerConfiguration
+metadata:
+  name: voting-app-alb-config
+  namespace: voting-app
+spec:
+  scheme: internet-facing
+  ipAddressType: ipv4
 ---
 # ─────────────────────────────────────────────────────
 # Gateway — Internet-facing ALB for voting-app

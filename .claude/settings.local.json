@@ -74,7 +74,17 @@
       "Bash(disown)",
       "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=5&ordering=last_updated\")",
       "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=25&page=1\")",
-      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=25\")"
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/bitnami/postgresql/tags?page_size=25\")",
+      "Bash(aws route53 list-hosted-zones *)",
+      "Bash(terraform state *)",
+      "Bash(helm get *)",
+      "Bash(helm search *)",
+      "Bash(helm template *)",
+      "Bash(helm pull *)",
+      "Read(//tmp/lbc-chart/aws-load-balancer-controller/**)",
+      "Bash(aws ec2 describe-subnets *)",
+      "Bash(terraform output *)",
+      "Bash(aws configure *)"
     ]
   }
 }
