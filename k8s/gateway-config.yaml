@@ -10,7 +10,7 @@ spec:
   controllerName: ingress.k8s.aws/gateway-api
   parametersRef:
     name: voting-app-alb-config
-    namespace: voting-app
+    namespace: kube-system
     group: gateway.k8s.aws
     kind: LoadBalancerConfiguration
   description: "AWS Load Balancer Controller — provisions ALB for Gateways"
@@ -22,7 +22,7 @@ apiVersion: gateway.k8s.aws/v1beta1
 kind: LoadBalancerConfiguration
 metadata:
   name: voting-app-alb-config
-  namespace: voting-app
+  namespace: kube-system
 spec:
   scheme: internet-facing
   ipAddressType: ipv4
