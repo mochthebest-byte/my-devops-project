@@ -116,6 +116,14 @@ module "vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
+  # Tags for AWS Load Balancer Controller subnet discovery
+  public_subnet_tags = merge(var.tags, {
+    "kubernetes.io/role/elb" = "1"
+  })
+  private_subnet_tags = merge(var.tags, {
+    "kubernetes.io/role/internal-elb" = "1"
+  })
+
   tags = var.tags
 }
 
