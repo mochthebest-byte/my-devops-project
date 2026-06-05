@@ -20,6 +20,7 @@ data "aws_iam_policy_document" "lb_controller" {
       "ec2:DescribeAccountAttributes",
       "ec2:DescribeAddresses",
       "ec2:DescribeAvailabilityZones",
+      "ec2:DescribeInstances",
       "ec2:DescribeInternetGateways",
       "ec2:DescribeManagedPrefixLists",
       "ec2:DescribeNetworkInterfaces",
