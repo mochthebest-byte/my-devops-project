@@ -347,6 +347,18 @@ resource "helm_release" "external_dns" {
     value = "public"
   }
   set {
+    name  = "sources[0]"
+    value = "service"
+  }
+  set {
+    name  = "sources[1]"
+    value = "ingress"
+  }
+  set {
+    name  = "sources[2]"
+    value = "gateway-httproute"
+  }
+  set {
     name  = "serviceAccount.create"
     value = "true"
   }

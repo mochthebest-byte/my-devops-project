@@ -21,6 +21,8 @@ metadata:
   annotations:
     # Creates an internet-facing ALB (default is internal)
     alb.ingress.k8s.aws/scheme: internet-facing
+    # ExternalDNS: auto-create Route53 records pointing to the ALB
+    external-dns.alpha.kubernetes.io/hostname: vote.example.com, result.example.com
 spec:
   gatewayClassName: aws-lb-gateway-class
   listeners:
