@@ -2,9 +2,33 @@ prometheus:
   prometheusSpec:
     storageSpec:
       disableMountSubPath: true
+      volumeClaimTemplate:
+        spec:
+          storageClassName: gp2
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
 grafana:
   persistence:
     enabled: false
+
+  # ── OIDC auth через Keycloak ──────────────────────────
+  env:
+    GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+    GF_AUTH_GENERIC_OAUTH_NAME: "Keycloak"
+    GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "grafana"
+    GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email"
+    GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+    GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://keycloak.34.194.59.190.nip.io/realms/master/protocol/openid-connect/auth"
+    GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://keycloak.34.194.59.190.nip.io/realms/master/protocol/openid-connect/token"
+    GF_AUTH_GENERIC_OAUTH_API_URL: "https://keycloak.34.194.59.190.nip.io/realms/master/protocol/openid-connect/userinfo"
+    GF_SERVER_ROOT_URL: "https://grafana.34.194.59.190.nip.io"
+  envValueFrom:
+    GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
+      secretKeyRef:
+        name: grafana-oidc-secret
+        key: client-secret
 alertmanager:
   alertmanagerSpec:
     storageSpec:
