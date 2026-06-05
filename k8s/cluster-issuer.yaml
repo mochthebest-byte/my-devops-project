@@ -1,0 +1,24 @@
+---
+# Self-signed ClusterIssuer for nip.io testing
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned-issuer
+spec:
+  selfSigned: {}
+---
+# Certificate for nip.io domains (keycloak + grafana)
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nipio-tls
+  namespace: voting-app
+spec:
+  secretName: nipio-tls
+  commonName: keycloak.34.194.59.190.nip.io
+  dnsNames:
+    - keycloak.34.194.59.190.nip.io
+    - grafana.34.194.59.190.nip.io
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
