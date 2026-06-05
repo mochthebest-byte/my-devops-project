@@ -313,6 +313,14 @@ resource "helm_release" "lb_controller" {
     value = "true"
   }
 
+  # Default target type: "ip" for VPC CNI (EKS default).
+  # Gateway API controller does not read the annotation on Gateway objects,
+  # so the global default is required for Gateway API to work with IP targets.
+  set {
+    name  = "defaultTargetType"
+    value = "ip"
+  }
+
   depends_on = [
     module.eks,
     aws_iam_role_policy_attachment.lb_controller,
