@@ -84,7 +84,13 @@
       "Read(//tmp/lbc-chart/aws-load-balancer-controller/**)",
       "Bash(aws ec2 describe-subnets *)",
       "Bash(terraform output *)",
-      "Bash(aws configure *)"
+      "Bash(aws configure *)",
+      "Bash(aws iam get-role *)",
+      "Bash(aws iam list-policies *)",
+      "Bash(aws iam list-attached-role-policies *)",
+      "Bash(helm rollback *)",
+      "Bash(helm history *)",
+      "Read(//tmp/extdns-chart/**)"
     ]
   }
 }

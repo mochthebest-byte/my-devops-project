@@ -218,7 +218,7 @@ resource "helm_release" "lb_controller" {
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
   namespace  = "kube-system"
-  version    = "~> 1.17"
+  version    = "~> 3.4"
 
   set {
     name  = "clusterName"
@@ -288,13 +288,12 @@ resource "helm_release" "external_dns" {
   }
   set {
     name  = "policy"
-    value = "sync" # "sync" creates/deletes; use "upsert-only" for safety at first
+    value = "upsert-only" # creates/updates only; no deletions for safety
   }
   set {
     name  = "interval"
     value = "1m"
   }
-
   depends_on = [
     module.eks,
     aws_iam_role_policy_attachment.external_dns,
