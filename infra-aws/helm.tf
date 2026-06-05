@@ -396,3 +396,83 @@ resource "helm_release" "cert_manager" {
     module.eks,
   ]
 }
+
+# ─────────────────────────────────────────────────────────
+# IRSA — IAM Role for External Secrets Operator (ESO)
+# Permissions: read secrets from AWS Secrets Manager
+# ─────────────────────────────────────────────────────────
+data "aws_iam_policy_document" "eso" {
+  statement {
+    actions = [
+      "secretsmanager:GetSecretValue",
+      "secretsmanager:DescribeSecret",
+    ]
+    resources = ["arn:aws:secretsmanager:${var.aws_region}:${data.aws_caller_identity.current.account_id}:secret:*"]
+  }
+}
+
+resource "aws_iam_policy" "eso" {
+  name        = "${var.cluster_name}-eso"
+  description = "External Secrets Operator permissions for Secrets Manager"
+  policy      = data.aws_iam_policy_document.eso.json
+  tags        = var.tags
+}
+
+resource "aws_iam_role" "eso" {
+  name = "${var.cluster_name}-eso"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Federated = local.oidc_provider_arn
+        }
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Condition = {
+          StringEquals = {
+            "${local.oidc_issuer_url}:sub" = "system:serviceaccount:external-secrets:external-secrets"
+          }
+        }
+      }
+    ]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy_attachment" "eso" {
+  role       = aws_iam_role.eso.name
+  policy_arn = aws_iam_policy.eso.arn
+}
+
+# ─────────────────────────────────────────────────────────
+# Helm — External Secrets Operator
+# ─────────────────────────────────────────────────────────
+resource "helm_release" "external_secrets" {
+  name       = "external-secrets"
+  repository = "https://charts.external-secrets.io"
+  chart      = "external-secrets"
+  namespace  = "external-secrets"
+  version    = "~> 0.14"
+  create_namespace = true
+
+  set {
+    name  = "serviceAccount.create"
+    value = "true"
+  }
+  set {
+    name  = "serviceAccount.name"
+    value = "external-secrets"
+  }
+  set {
+    name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+    value = aws_iam_role.eso.arn
+  }
+
+  depends_on = [
+    module.eks,
+    aws_iam_role_policy_attachment.eso,
+  ]
+}
