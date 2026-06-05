@@ -7,7 +7,7 @@ kind: GatewayClass
 metadata:
   name: aws-lb-gateway-class
 spec:
-  controllerName: ingress.k8s.aws/gateway-api
+  controllerName: gateway.k8s.aws/alb
   description: "AWS Load Balancer Controller — provisions ALB/NLB for Gateways"
 ---
 # ────────────────────────────────────────────────
