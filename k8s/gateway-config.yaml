@@ -49,6 +49,12 @@ spec:
       allowedRoutes:
         namespaces:
           from: Same
+    - name: http-result
+      protocol: HTTP
+      port: 81
+      allowedRoutes:
+        namespaces:
+          from: Same
 ---
 # ─────────────────────────────────────────────────────
 # HTTPRoute — Route / → voting-app-vote:5000
@@ -61,6 +67,7 @@ metadata:
 spec:
   parentRefs:
     - name: voting-app-gateway
+      sectionName: http
   rules:
     - matches:
         - path:
@@ -71,7 +78,7 @@ spec:
           port: 5000
 ---
 # ─────────────────────────────────────────────────────
-# HTTPRoute — Route /result → result:81
+# HTTPRoute — Route port 81 → result:81
 # ─────────────────────────────────────────────────────
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -81,11 +88,12 @@ metadata:
 spec:
   parentRefs:
     - name: voting-app-gateway
+      sectionName: http-result
   rules:
     - matches:
         - path:
             type: PathPrefix
-            value: /result
+            value: /
       backendRefs:
         - name: result
           port: 81
