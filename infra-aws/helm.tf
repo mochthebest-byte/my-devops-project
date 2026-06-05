@@ -25,11 +25,15 @@ data "aws_iam_policy_document" "lb_controller" {
       "ec2:DescribeNetworkInterfaces",
       "ec2:DescribePrefixLists",
       "ec2:DescribeSecurityGroups",
+      "ec2:DescribeSecurityGroupRules",
       "ec2:DescribeSubnets",
       "ec2:DescribeTags",
       "ec2:DescribeVpcEndpoints",
       "ec2:DescribeVpcPeeringConnections",
       "ec2:DescribeVpcs",
+      "ec2:GetCoipPoolUsage",
+      "ec2:DescribeCoipPools",
+      "ec2:GetSecurityGroupsForVpc",
     ]
     resources = ["*"]
   }
@@ -42,6 +46,60 @@ data "aws_iam_policy_document" "lb_controller" {
       "ec2:UnassignPrivateIpAddresses",
     ]
     resources = ["*"]
+  }
+  statement {
+    actions = [
+      "ec2:CreateSecurityGroup",
+    ]
+    resources = ["*"]
+  }
+  statement {
+    actions = [
+      "ec2:AuthorizeSecurityGroupIngress",
+      "ec2:RevokeSecurityGroupIngress",
+    ]
+    resources = ["*"]
+  }
+  statement {
+    actions = [
+      "ec2:CreateTags",
+    ]
+    resources = ["arn:aws:ec2:*:*:security-group/*"]
+    condition {
+      test     = "StringEquals"
+      variable = "ec2:CreateAction"
+      values   = ["CreateSecurityGroup"]
+    }
+    condition {
+      test     = "Null"
+      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
+      values   = ["false"]
+    }
+  }
+  statement {
+    actions = [
+      "ec2:CreateTags",
+      "ec2:DeleteTags",
+    ]
+    resources = ["arn:aws:ec2:*:*:security-group/*"]
+    condition {
+      test     = "Null"
+      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
+      values   = ["false"]
+    }
+  }
+  statement {
+    actions = [
+      "ec2:AuthorizeSecurityGroupIngress",
+      "ec2:RevokeSecurityGroupIngress",
+      "ec2:DeleteSecurityGroup",
+    ]
+    resources = ["*"]
+    condition {
+      test     = "Null"
+      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
+      values   = ["false"]
+    }
   }
   statement {
     actions = [
@@ -66,11 +124,16 @@ data "aws_iam_policy_document" "lb_controller" {
       "elasticloadbalancing:DescribeTargetGroupAttributes",
       "elasticloadbalancing:DescribeTargetGroups",
       "elasticloadbalancing:DescribeTargetHealth",
+      "elasticloadbalancing:DescribeListenerAttributes",
+      "elasticloadbalancing:DescribeTrustStores",
+      "elasticloadbalancing:DescribeCapacityReservation",
       "elasticloadbalancing:ModifyListener",
+      "elasticloadbalancing:ModifyListenerAttributes",
       "elasticloadbalancing:ModifyLoadBalancerAttributes",
       "elasticloadbalancing:ModifyRule",
       "elasticloadbalancing:ModifyTargetGroup",
       "elasticloadbalancing:ModifyTargetGroupAttributes",
+      "elasticloadbalancing:ModifyCapacityReservation",
       "elasticloadbalancing:RegisterTargets",
       "elasticloadbalancing:RemoveTags",
       "elasticloadbalancing:SetIpAddressType",
