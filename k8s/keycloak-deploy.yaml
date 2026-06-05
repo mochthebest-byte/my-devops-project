@@ -45,6 +45,7 @@ spec:
             - start-dev
             - --http-port=8080
             - --proxy-headers=xforwarded
+            - --hostname-strict=false
           env:
             - name: KC_BOOTSTRAP_ADMIN_USERNAME
               value: admin
@@ -64,8 +65,8 @@ spec:
               value: keycloakadmin
             - name: KC_HTTP_ENABLED
               value: "true"
-            - name: KC_HOSTNAME_STRICT
-              value: "false"
+            - name: KC_HOSTNAME
+              value: keycloak.34.194.59.190.nip.io
           ports:
             - name: http
               containerPort: 8080
