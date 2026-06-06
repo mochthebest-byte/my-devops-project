@@ -72,6 +72,17 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: https-grafana
+      protocol: HTTPS
+      port: 443
+      hostname: grafana.34.194.59.190.nip.io
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: nipio-tls
+      allowedRoutes:
+        namespaces:
+          from: All
 ---
 # ─────────────────────────────────────────────────────
 # HTTPRoute — vote.example.com → voting-app-vote:5000
