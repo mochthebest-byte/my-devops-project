@@ -23,6 +23,7 @@ grafana:
     GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://keycloak.34.194.59.190.nip.io/realms/master/protocol/openid-connect/auth"
     GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://keycloak.34.194.59.190.nip.io/realms/master/protocol/openid-connect/token"
     GF_AUTH_GENERIC_OAUTH_API_URL: "https://keycloak.34.194.59.190.nip.io/realms/master/protocol/openid-connect/userinfo"
+    GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE: "true"
     GF_SERVER_ROOT_URL: "https://grafana.34.194.59.190.nip.io"
     # ── Role mapping ──
     GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(realm_access.roles[*], 'grafana-admin') && 'Admin' || contains(realm_access.roles[*], 'grafana-editor') && 'Editor' || 'Viewer'"
