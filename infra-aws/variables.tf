@@ -74,6 +74,22 @@ variable "node_max_size" {
 
 # ── Tags ──
 
+# ── GitHub OIDC CI/CD ──
+
+variable "create_aws_auth_ci_mapping" {
+  description = "Whether to add the GitHub CI role to the EKS aws-auth ConfigMap."
+  type        = bool
+  default     = false
+  # ⚠️  УВАГА: увімкніть лише якщо CI виконує kubectl напряму.
+  #    При використанні ArgoCD залиште false — CI лише оновлює GitOps-репо.
+}
+
+variable "github_ci_k8s_groups" {
+  description = "Kubernetes RBAG groups for the GitHub CI role in aws-auth."
+  type        = list(string)
+  default     = ["eks-console-dashboard-cluster-reader"]
+}
+
 variable "tags" {
   description = "Map of tags to apply to all resources."
   type        = map(string)

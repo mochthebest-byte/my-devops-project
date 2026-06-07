@@ -1,0 +1,77 @@
+# ═══════════════════════════════════════════════════════════════
+#  Приклад: Workflow сервісного репозиторію (voting-app)
+# ═══════════════════════════════════════════════════════════════
+#  Де зберігати:
+#    my-org/voting-app/.github/workflows/ci.yml
+#
+#  Як це працює:
+#    1. На push в main або PR — запускається цей workflow
+#    2. Він викликає центральний reusable пайплайн через
+#       uses: my-org/ci-pipelines/.github/workflows/reusable-build.yml
+#    3. AWS аутентифікація — через OIDC (без ключів!)
+#    4. Docker образ → ECR → GitOps репозиторій ← ArgoCD
+# ═══════════════════════════════════════════════════════════════
+
+name: CI — Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ─── Крок 1: CI (тести + лінтер) ─────────────────────
+  test:
+    name: "Test & Lint"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: |
+          pip install -r requirements.txt
+          # Приклад тестів:
+          # python -m pytest tests/
+          # flake8 .
+
+      - name: Security scan (Trivy)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          scan-ref: .
+          format: table
+          exit-code: 0
+          severity: HIGH,CRITICAL
+
+  # ─── Крок 2: Build + Push + GitOps ──────────────────
+  #      Викликає центральний reusable пайплайн
+  build-and-deploy:
+    name: "Build & deploy voting-app"
+    needs: test
+    # ── Дозволяємо тільки main (не PR) ──────────────
+    if: github.ref == 'refs/heads/main'
+    uses: my-org/ci-pipelines/.github/workflows/reusable-build.yml@main
+    with:
+      # ── Параметри сервісу ──────────────────────────
+      image_name: voting-app
+      ecr_repository: voting-app
+      service_name: voting-app
+
+      # ── AWS OIDC ───────────────────────────────────
+      aws_region: us-east-1
+      ci_role_arn: arn:aws:iam::123456789012:role/my-app-eks-github-ci
+
+      # ── GitOps ─────────────────────────────────────
+      gitops_repo: my-org/gitops-infra
+      gitops_branch: main
+      gitops_manifest_path: apps/voting-app/deployment.yaml
+
+    secrets:
+      # GitHub PAT з push-доступом до GitOps repo
+      gitops_token: ${{ secrets.GITOPS_PAT }}
