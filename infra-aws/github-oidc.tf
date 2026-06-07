@@ -187,7 +187,7 @@ resource "aws_ecr_repository" "services" {
   tags = var.tags
 }
 
-# Lifecycle policy: тримаємо останні 10 образів
+# Lifecycle policy: keep last 10 images, expire untagged older than 90 days
 resource "aws_ecr_lifecycle_policy" "cleanup" {
   for_each = aws_ecr_repository.services
 
@@ -197,11 +197,12 @@ resource "aws_ecr_lifecycle_policy" "cleanup" {
     rules = [
       {
         rulePriority = 1
-        description  = "Keep last 10 images"
+        description  = "Expire untagged images older than 90 days"
         selection = {
-          tagStatus   = "any"
-          countType   = "imageCountMoreThan"
-          countNumber = 10
+          tagStatus   = "untagged"
+          countType   = "sinceImagePushed"
+          countUnit   = "days"
+          countNumber = 90
         }
         action = {
           type = "expire"
@@ -209,12 +210,11 @@ resource "aws_ecr_lifecycle_policy" "cleanup" {
       },
       {
         rulePriority = 2
-        description  = "Expire images older than 90 days"
+        description  = "Keep last 10 images (any tag)"
         selection = {
           tagStatus   = "any"
-          countType   = "sinceImagePushed"
-          countUnit   = "days"
-          countNumber = 90
+          countType   = "imageCountMoreThan"
+          countNumber = 10
         }
         action = {
           type = "expire"
