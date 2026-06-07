@@ -102,20 +102,12 @@ jobs:
           ECR_REPOSITORY: my-app/${{ matrix.service }}
           IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
         run: |
-          # Docker context: vote=root, result/worker=subdirectory
-          if [ "${{ matrix.service }}" = "vote" ]; then
-            DOCKER_CTX="src/voting-app"
-          else
-            DOCKER_CTX="src/voting-app/${{ matrix.service }}"
-          fi
+          # Voting-app repo layout: vote/Dockerfile, result/Dockerfile, worker/Dockerfile
+          DOCKER_CTX="src/voting-app/${{ matrix.service }}"
           echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
           echo "  Context: ${DOCKER_CTX}"
           echo "  Platforms: linux/amd64,linux/arm64"
 
-          echo "PWD: $(pwd)"
-          echo "Listing checkout directory:"
-          ls -la src/voting-app/ || echo "src/voting-app/ not found"
-          echo "---"
           test -f "${DOCKER_CTX}/Dockerfile" || {
             echo "ERROR: Dockerfile not found at ${DOCKER_CTX}/Dockerfile"
             ls -la "${DOCKER_CTX}/" || true

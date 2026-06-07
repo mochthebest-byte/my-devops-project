@@ -161,7 +161,9 @@
       "Bash(aws s3 *)",
       "Bash(terraform import *)",
       "Bash(xargs -I {} gh run view {} --repo mochthebest-byte/voting-app --log)",
-      "Bash(xxd)"
+      "Bash(xxd)",
+      "Bash(grep -A30 \"PWD: \\\\$\\\\|Listing checkout\\\\|ERROR:\")",
+      "Bash(grep -v \"^Build & deploy vote\tPost \\\\|^$\")"
     ]
   }
 }
