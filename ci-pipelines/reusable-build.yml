@@ -61,6 +61,12 @@ on:
         type: string
 
       # ── Необов'язкові параметри ──────────────────────
+      docker_context:
+        description: "Docker build context path (default: .)"
+        required: false
+        type: string
+        default: "."
+
       gitops_manifest_path:
         description: "Path inside gitops_repo to the k8s manifest (default: apps/<service_name>/deployment.yaml)"
         required: false
@@ -135,10 +141,10 @@ jobs:
         run: |
           echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
 
-          # Build
+          # Build (з контекстом ${{ inputs.docker_context }})
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
                        -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
-                       .
+                       "${{ inputs.docker_context }}"
 
           # Push
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
