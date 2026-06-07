@@ -2,12 +2,12 @@
 #  Приклад: Workflow сервісного репозиторію (voting-app)
 # ═══════════════════════════════════════════════════════════════
 #  Де зберігати:
-#    my-org/voting-app/.github/workflows/ci.yml
+#    mochthebest-byte/voting-app/.github/workflows/ci.yml
 #
 #  Як це працює:
 #    1. На push в main або PR — запускається цей workflow
 #    2. Він викликає центральний reusable пайплайн через
-#       uses: my-org/ci-pipelines/.github/workflows/reusable-build.yml
+#       uses: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml
 #    3. AWS аутентифікація — через OIDC (без ключів!)
 #    4. Docker образ → ECR → GitOps репозиторій ← ArgoCD
 # ═══════════════════════════════════════════════════════════════
@@ -56,7 +56,7 @@ jobs:
     needs: test
     # ── Дозволяємо тільки main (не PR) ──────────────
     if: github.ref == 'refs/heads/main'
-    uses: my-org/ci-pipelines/.github/workflows/reusable-build.yml@main
+    uses: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml@main
     with:
       # ── Параметри сервісу ──────────────────────────
       image_name: voting-app
@@ -65,10 +65,10 @@ jobs:
 
       # ── AWS OIDC ───────────────────────────────────
       aws_region: us-east-1
-      ci_role_arn: arn:aws:iam::123456789012:role/my-app-eks-github-ci
+      ci_role_arn: arn:aws:iam::428156589409:role/my-app-eks-github-ci
 
       # ── GitOps ─────────────────────────────────────
-      gitops_repo: my-org/gitops-infra
+      gitops_repo: mochthebest-byte/gitops
       gitops_branch: main
       gitops_manifest_path: apps/voting-app/deployment.yaml
 

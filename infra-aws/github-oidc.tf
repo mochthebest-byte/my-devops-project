@@ -66,12 +66,11 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
       values   = ["sts.amazonaws.com"]
     }
 
-    # ═══ ЗМІНІТЬ НА ВАШЕ ЗНАЧЕННЯ ═══
-    # Варіант А: конкретний репозиторій
+    # ═══ Репозиторії організації mochthebest-byte ═══
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:my-org/*:*"]
+      values   = ["repo:mochthebest-byte/*:*"]
     }
   }
 }

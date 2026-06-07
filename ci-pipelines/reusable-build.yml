@@ -8,16 +8,16 @@
 #    4. Build + Push Docker образу (теґ: git sha + latest)
 #    5. Оновлення GitOps-репозиторію (новий image tag)
 #
-#  Де зберігати: my-org/ci-pipelines/.github/workflows/reusable-build.yml
+#  Де зберігати: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml
 #
 #  Як викликати (з сервісного репозиторію):
 #    jobs:
 #      deploy:
-#        uses: my-org/ci-pipelines/.github/workflows/reusable-build.yml@main
+#        uses: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml@main
 #        with:
 #          image_name: voting-app
 #          ecr_repository: voting-app
-#          gitops_repo: my-org/gitops-infra
+#          gitops_repo: mochthebest-byte/gitops
 #          service_name: voting-app
 #          aws_region: us-east-1
 #          ci_role_arn: arn:aws:iam::123456789012:role/my-app-eks-github-ci
