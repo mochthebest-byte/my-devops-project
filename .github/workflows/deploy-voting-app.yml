@@ -44,21 +44,15 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       services: ${{ steps.set-matrix.outputs.services }}
-      contexts: ${{ steps.set-matrix.outputs.contexts }}
     steps:
       - id: set-matrix
         run: |
           if [ "${{ inputs.service }}" = "all" ]; then
             echo 'services=["vote","result","worker"]' >> "$GITHUB_OUTPUT"
-            echo 'contexts=[".","result","worker"]' >> "$GITHUB_OUTPUT"
+          elif [ "${{ inputs.service }}" = "vote" ]; then
+            echo 'services=["vote"]' >> "$GITHUB_OUTPUT"
           else
-            if [ "${{ inputs.service }}" = "vote" ]; then
-              echo 'services=["vote"]' >> "$GITHUB_OUTPUT"
-              echo 'contexts=["."]' >> "$GITHUB_OUTPUT"
-            else
-              echo 'services=["${{ inputs.service }}"]' >> "$GITHUB_OUTPUT"
-              echo 'contexts=["${{ inputs.service }}"]' >> "$GITHUB_OUTPUT"
-            fi
+            echo 'services=["${{ inputs.service }}"]' >> "$GITHUB_OUTPUT"
           fi
 
   deploy:
@@ -74,7 +68,6 @@ jobs:
       fail-fast: false
       matrix:
         service: ${{ fromJSON(needs.resolve-matrix.outputs.services) }}
-        docker_context: ${{ fromJSON(needs.resolve-matrix.outputs.contexts) }}
 
     steps:
       # Clone voting-app source (contains all 3 services)
@@ -109,10 +102,21 @@ jobs:
           ECR_REPOSITORY: my-app/${{ matrix.service }}
           IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
         run: |
-          DOCKER_CONTEXT="src/voting-app/${{ matrix.docker_context }}"
+          # Docker context: vote=root, result/worker=subdirectory
+          if [ "${{ matrix.service }}" = "vote" ]; then
+            DOCKER_CTX="src/voting-app"
+          else
+            DOCKER_CTX="src/voting-app/${{ matrix.service }}"
+          fi
           echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
-          echo "  Context: ${DOCKER_CONTEXT}"
+          echo "  Context: ${DOCKER_CTX}"
           echo "  Platforms: linux/amd64,linux/arm64"
+
+          ls -la "${DOCKER_CTX}/Dockerfile" 2>/dev/null || {
+            echo "ERROR: Dockerfile not found at ${DOCKER_CTX}/Dockerfile"
+            ls -la "${DOCKER_CTX}/" || true
+            exit 1
+          }
 
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
@@ -121,7 +125,7 @@ jobs:
             --push \
             --cache-from "type=registry,ref=${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
             --cache-to "type=inline" \
-            "${DOCKER_CONTEXT}"
+            "${DOCKER_CTX}"
 
           echo "Pushed ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
           {
