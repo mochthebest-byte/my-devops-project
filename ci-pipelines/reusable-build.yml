@@ -132,24 +132,27 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      # ── 4. Build та Push Docker образу ──────────────
+      # ── 4. Setup Docker Buildx (multi-arch) ──────────
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # ── 5. Build та Push Docker образу (multi-arch) ───
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ inputs.ecr_repository }}
-          IMAGE_TAG: ${{ env.IMAGE_TAG }}
+          IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
         run: |
           echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
 
-          # Build (з контекстом ${{ inputs.docker_context }})
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
-                       -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
-                       "${{ inputs.docker_context }}"
-
-          # Push
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          # Buildx multi-arch: amd64 + arm64 у одному шоті
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
+            --push \
+            "${{ inputs.docker_context }}"
 
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
           echo "registry=$ECR_REGISTRY" >> $GITHUB_OUTPUT
@@ -174,7 +177,7 @@ jobs:
       - name: Update image tag in k8s manifest
         env:
           SERVICE_NAME: ${{ inputs.service_name }}
-          IMAGE_TAG: ${{ env.IMAGE_TAG }}
+          IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
           ECR_REGISTRY: ${{ needs.build-and-push.outputs.ecr_registry }}
           ECR_REPOSITORY: ${{ inputs.ecr_repository }}
           MANIFEST_PATH: ${{ inputs.gitops_manifest_path || format('apps/{0}/deployment.yaml', inputs.service_name) }}

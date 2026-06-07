@@ -42,8 +42,8 @@ metadata:
     alb.ingress.k8s.aws/target-type: ip
     # ExternalDNS: auto-create Route53 records pointing to the ALB
     external-dns.alpha.kubernetes.io/hostname: vote.example.com, result.example.com
-    # ACM certificate for HTTPS listeners (self-signed cert imported to ACM)
-    alb.ingress.k8s.aws/certificate-arn: arn:aws:acm:us-east-1:428156589409:certificate/be086015-cb4c-49bc-9852-de1d575a98c1
+    # TLS cert managed by cert-manager (Certificate → nipio-tls Secret)
+    # cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   gatewayClassName: aws-lb-gateway-class
   listeners:

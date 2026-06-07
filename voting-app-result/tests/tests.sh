@@ -19,6 +19,17 @@ RETRY_DELAY="${RETRY_DELAY:-2}"    # початковий інтервал мі�
 MAX_BACKOFF="${MAX_BACKOFF:-16}"   # максимальний backoff (сек)
 VOTE_CHECK_TIMEOUT="${VOTE_CHECK_TIMEOUT:-45}"  # скільки чекати на результат голосу
 
+# Імена деплоїв — налаштовуються під різні оточення
+# (docker-compose: vote/result/worker, EKS: voting-app-vote/result/worker)
+DEPLOY_VOTE="${DEPLOY_VOTE:-vote}"
+DEPLOY_RESULT="${DEPLOY_RESULT:-result}"
+DEPLOY_WORKER="${DEPLOY_WORKER:-worker}"
+
+# Kubernetes service names / URLs
+SERVICE_VOTE="${SERVICE_VOTE:-vote}"
+SERVICE_VOTE_PORT="${SERVICE_VOTE_PORT:-80}"
+SERVICE_RESULT="${SERVICE_RESULT:-result}"
+
 # ── Колірний вивід ──────────────────────────────────────────
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -46,13 +57,28 @@ dump_diagnostics() {
   kubectl get deployments -n "${NAMESPACE}" 2>&1 || true
 
   # Логи останніх 50 рядків від усіх relevant подів
-  for deployment in vote result worker; do
+  for deployment in "${DEPLOY_VOTE}" "${DEPLOY_RESULT}" "${DEPLOY_WORKER}"; do
     echo ""
     info "--- Last 50 lines of logs: deployment/${deployment} ---"
-    kubectl logs -n "${NAMESPACE}" -l "app.kubernetes.io/name=${deployment}" \
-      --tail=50 --prefix=true 2>&1 || \
-    kubectl logs -n "${NAMESPACE}" -l "app=${deployment}" \
-      --tail=50 --prefix=true 2>&1 || true
+    # Спочатку exact match, потім fallback на app.kubernetes.io/name,
+    # потім app=, потім просто беремо перший под з деплою
+    if ! kubectl logs -n "${NAMESPACE}" \
+         -l "app.kubernetes.io/name=${deployment}" \
+         --tail=50 --prefix=true 2>&1; then
+      # Fallback: pod label = short name (vote/result/worker)
+      short_name="${deployment##*-}"  # беремо останній сегмент після останнього '-'
+      short_name="${short_name:-${deployment}}"
+      kubectl logs -n "${NAMESPACE}" \
+        -l "app.kubernetes.io/name=${short_name}" \
+        --tail=50 --prefix=true 2>&1 || \
+      kubectl logs -n "${NAMESPACE}" \
+        -l "app=${deployment}" \
+        --tail=50 --prefix=true 2>&1 || \
+      kubectl logs -n "${NAMESPACE}" \
+        -l "app=${short_name}" \
+        --tail=50 --prefix=true 2>&1 || \
+      echo "(no logs found for ${deployment})"
+    fi
   done
 
   # Останні події
@@ -94,7 +120,7 @@ info "╔═══════════════════════�
 info "║  PHASE 1: Wait for deployments to be ready"
 info "╚════════════════════════════════════════════════════"
 
-for deployment in vote result worker; do
+for deployment in "${DEPLOY_VOTE}" "${DEPLOY_RESULT}" "${DEPLOY_WORKER}"; do
   echo ""
   info "Waiting for deployment/${deployment} rollout (timeout=${TIMEOUT}s)..."
   if ! kubectl rollout status "deployment/${deployment}" \
@@ -111,11 +137,11 @@ echo ""
 info "All pods status:"
 kubectl wait --for=condition=Ready pods \
   -n "${NAMESPACE}" \
-  -l "app.kubernetes.io/instance in (vote, result, worker)" \
+  -l "app.kubernetes.io/instance in (${DEPLOY_VOTE}, ${DEPLOY_RESULT}, ${DEPLOY_WORKER})" \
   --timeout="${TIMEOUT}s" 2>&1 || \
 kubectl wait --for=condition=Ready pods \
   -n "${NAMESPACE}" \
-  -l "app in (vote, result, worker)" \
+  -l "app in (${DEPLOY_VOTE}, ${DEPLOY_RESULT}, ${DEPLOY_WORKER})" \
   --timeout="${TIMEOUT}s" 2>&1 || {
     error "❌ Some pods are not Ready"
     dump_diagnostics "pods not ready"
@@ -130,10 +156,10 @@ info "╔═══════════════════════�
 info "║  PHASE 2: Verify vote is serving traffic"
 info "╚════════════════════════════════════════════════════"
 
-info "Checking HTTP response from http://vote..."
-if ! timeout 10 bash -c "while ! curl -sS -o /dev/null http://vote 2>/dev/null; do sleep 1; done"; then
-  error "❌ vote service is not responding"
-  dump_diagnostics "vote not responding"
+info "Checking HTTP response from http://${SERVICE_VOTE}:${SERVICE_VOTE_PORT}..."
+if ! timeout 10 bash -c "while ! curl -sS -o /dev/null http://${SERVICE_VOTE}:${SERVICE_VOTE_PORT} 2>/dev/null; do sleep 1; done"; then
+  error "❌ ${SERVICE_VOTE} service is not responding"
+  dump_diagnostics "${SERVICE_VOTE} not responding"
   exit 1
 fi
 info "✅ vote is serving"
@@ -146,8 +172,8 @@ info "╔═══════════════════════�
 info "║  PHASE 3: Cast vote and verify result"
 info "╚════════════════════════════════════════════════════"
 
-info "Casting vote via POST http://vote → vote=b"
-if ! curl -sS -X POST --data "vote=b" http://vote > /dev/null; then
+info "Casting vote via POST http://${SERVICE_VOTE}:${SERVICE_VOTE_PORT} → vote=b"
+if ! curl -sS -X POST --data "vote=b" "http://${SERVICE_VOTE}:${SERVICE_VOTE_PORT}" > /dev/null; then
   error "❌ Failed to POST vote"
   dump_diagnostics "POST vote failed"
   exit 1
@@ -155,9 +181,9 @@ fi
 info "✅ Vote cast successfully"
 
 # Чекаємо результат з retry-циклом замість sleep 10
-info "Waiting for vote to appear on result page..."
+info "Waiting for vote to appear on result page (http://${SERVICE_RESULT})..."
 MAX_ATTEMPTS=$((VOTE_CHECK_TIMEOUT / 2))
-if http_get_with_retry "http://result" "1 vote" "${MAX_ATTEMPTS}"; then
+if http_get_with_retry "http://${SERVICE_RESULT}" "1 vote" "${MAX_ATTEMPTS}"; then
   echo ""
   echo -e "${GREEN}╔══════════════════════════════════════════════╗"
   echo -e "${GREEN}║          TESTS PASSED ✓                     ║"
@@ -175,7 +201,7 @@ else
   # Фінальна спроба — показати що повернув result
   echo ""
   info "--- Raw result page content ---"
-  curl -sS http://result 2>&1 | head -20 || true
+  curl -sS "http://${SERVICE_RESULT}" 2>&1 | head -20 || true
 
   exit 1
 fi

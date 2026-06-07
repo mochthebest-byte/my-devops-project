@@ -1,0 +1,42 @@
+# ═══════════════════════════════════════════════════════════════
+#  Keycloak Helm chart — values
+# ═══════════════════════════════════════════════════════════════
+
+replicaCount: 1
+
+image:
+  repository: quay.io/keycloak/keycloak
+  tag: "26.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8080
+  targetPort: 8080
+  name: http
+
+postgresql:
+  host: keycloak-postgresql.keycloak.svc.cluster.local
+  port: 5432
+  database: keycloak
+  user: keycloak
+  existingSecret: keycloak-db
+  secretKey: KC_DB_PASSWORD
+
+admin:
+  user: admin
+  password: admin123
+
+hostname: keycloak.34.194.59.190.nip.io
+
+gateway:
+  name: voting-app-gateway
+  namespace: voting-app
+  sectionName: https-keycloak
+
+resources:
+  requests:
+    memory: 1Gi
+    cpu: 500m
+  limits:
+    memory: 2Gi
+    cpu: 1000m

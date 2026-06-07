@@ -1,5 +1,8 @@
-# base defines a base stage that uses the official python runtime base image
-FROM python:3.11-slim AS base
+# syntax=docker/dockerfile:1
+# Multi-arch: use BUILDPLATFORM for build stage, TARGETPLATFORM for final image
+FROM --platform=$BUILDPLATFORM python:3.11-slim AS base
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
 # Add curl for healthcheck
 RUN apt-get update && \

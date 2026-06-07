@@ -1,4 +1,8 @@
-FROM node:18-slim
+# syntax=docker/dockerfile:1
+# Multi-arch: use BUILDPLATFORM for build stage, TARGETPLATFORM for final image
+FROM --platform=$BUILDPLATFORM node:18-slim
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
 # add curl for healthcheck
 RUN apt-get update && \

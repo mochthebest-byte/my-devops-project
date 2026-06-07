@@ -1,4 +1,6 @@
+# syntax=docker/dockerfile:1
 FROM alpine:3.20
+ARG TARGETARCH
 
 # Встановлюємо curl, kubectl, bash, grep
 RUN apk add --no-cache \
@@ -6,9 +8,11 @@ RUN apk add --no-cache \
     bash \
     grep
 
-# Встановлюємо kubectl (остання стабільна версія)
+# Встановлюємо kubectl для правильної архітектури
 ARG KUBECTL_VERSION=1.30.3
-RUN curl -sLO "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" && \
+RUN ARCH="${TARGETARCH:-amd64}" && \
+    [ "$ARCH" = "arm64" ] && ARCH="arm64" || ARCH="amd64" && \
+    curl -sLO "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl" && \
     chmod +x kubectl && \
     mv kubectl /usr/local/bin/kubectl
 

@@ -403,6 +403,11 @@ resource "helm_release" "cert_manager" {
     name  = "serviceAccount.create"
     value = "true"
   }
+  # Gateway API support for HTTP-01 challenge (Let's Encrypt)
+  set {
+    name  = "extraArgs[0]"
+    value = "--feature-gates=ExperimentalGatewayAPISupport=true"
+  }
 
   depends_on = [
     module.eks,
