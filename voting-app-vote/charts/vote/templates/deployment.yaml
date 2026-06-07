@@ -16,6 +16,44 @@ spec:
         app.kubernetes.io/name: {{ include "vote.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      # ── InitContainers: чекаємо БД та Redis перед стартом ──
+      initContainers:
+        - name: wait-for-postgresql
+          image: busybox:1.36
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for PostgreSQL at {{ .Values.postgresql.host }}:{{ .Values.postgresql.port }}..."
+              until nc -z -w 2 "{{ .Values.postgresql.host }}" "{{ .Values.postgresql.port }}"; do
+                echo "  PostgreSQL not ready yet, retrying in 2s..."
+                sleep 2
+              done
+              echo "✅ PostgreSQL is available"
+          env:
+            - name: POSTGRES_HOST
+              value: {{ .Values.postgresql.host }}
+            - name: POSTGRES_PORT
+              value: {{ .Values.postgresql.port | quote }}
+        - name: wait-for-redis
+          image: busybox:1.36
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for Redis at {{ .Values.redis.host }}:{{ .Values.redis.port }}..."
+              until nc -z -w 2 "{{ .Values.redis.host }}" "{{ .Values.redis.port }}"; do
+                echo "  Redis not ready yet, retrying in 2s..."
+                sleep 2
+              done
+              echo "✅ Redis is available"
+          env:
+            - name: REDIS_HOST
+              value: {{ .Values.redis.host }}
+            - name: REDIS_PORT
+              value: {{ .Values.redis.port | quote }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -42,3 +80,20 @@ spec:
               value: {{ .Values.redis.host }}
             - name: REDIS_PORT
               value: {{ .Values.redis.port | quote }}
+          # ── Liveness/Readiness проби: перевірка HTTP ──
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.service.targetPort }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.service.targetPort }}
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
