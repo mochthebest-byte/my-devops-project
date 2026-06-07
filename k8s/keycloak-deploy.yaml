@@ -1,5 +1,108 @@
 ---
+# ─────────────────────────────────────────────────────
+# Keycloak namespace
+# ─────────────────────────────────────────────────────
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: keycloak
+---
+# ─────────────────────────────────────────────────────
+# Secret — DB credentials for Keycloak PostgreSQL
+# ─────────────────────────────────────────────────────
+apiVersion: v1
+kind: Secret
+metadata:
+  name: keycloak-db
+  namespace: keycloak
+type: Opaque
+stringData:
+  KC_DB_PASSWORD: "keycloakadmin"
+---
+# ─────────────────────────────────────────────────────
+# ConfigMap — realm import for Keycloak OIDC
+# Realm "myapp" with: grafana client, roles, test users
+# ─────────────────────────────────────────────────────
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-realm-myapp
+  namespace: keycloak
+data:
+  myapp-realm.json: |
+    {
+      "realm": "myapp",
+      "enabled": true,
+      "displayName": "MyApp",
+      "loginWithEmailAllowed": true,
+      "registrationAllowed": false,
+      "sslRequired": "external",
+      "users": [
+        {
+          "username": "admin",
+          "enabled": true,
+          "email": "admin@example.com",
+          "firstName": "Admin",
+          "lastName": "Keycloak",
+          "credentials": [{
+            "type": "password",
+            "value": "admin123",
+            "temporary": false
+          }],
+          "realmRoles": ["grafana-admin"]
+        },
+        {
+          "username": "user",
+          "enabled": true,
+          "email": "user@example.com",
+          "firstName": "Regular",
+          "lastName": "User",
+          "credentials": [{
+            "type": "password",
+            "value": "user123",
+            "temporary": false
+          }],
+          "realmRoles": ["grafana-editor"]
+        }
+      ],
+      "roles": {
+        "realm": [
+          {
+            "name": "grafana-admin",
+            "description": "Grafana Administrator — maps to Admin role in Grafana"
+          },
+          {
+            "name": "grafana-editor",
+            "description": "Grafana Editor — maps to Editor role in Grafana"
+          }
+        ]
+      },
+      "clients": [
+        {
+          "clientId": "grafana",
+          "enabled": true,
+          "protocol": "openid-connect",
+          "publicClient": false,
+          "secret": "UHHrSI9z9wXbPD1ZL0UCnNMltfnR6U+TUguXdyKwNK0=",
+          "redirectUris": [
+            "https://grafana.34.194.59.190.nip.io/login/generic_oauth"
+          ],
+          "webOrigins": ["+"],
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": false,
+          "serviceAccountsEnabled": false,
+          "fullScopeAllowed": true,
+          "attributes": {
+            "post.logout.redirect.uris": "+"
+          }
+        }
+      ]
+    }
+---
+# ─────────────────────────────────────────────────────
 # Keycloak Service
+# ─────────────────────────────────────────────────────
 apiVersion: v1
 kind: Service
 metadata:
@@ -14,7 +117,9 @@ spec:
   selector:
     app: keycloak
 ---
+# ─────────────────────────────────────────────────────
 # Keycloak StatefulSet (official image from quay.io)
+# ─────────────────────────────────────────────────────
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -43,6 +148,7 @@ spec:
           image: quay.io/keycloak/keycloak:26.0.0
           args:
             - start-dev
+            - --import-realm
             - --http-port=8080
             - --proxy-headers=xforwarded
             - --hostname-strict=false
@@ -61,24 +167,27 @@ spec:
               value: keycloak
             - name: KC_DB_USERNAME
               value: keycloak
-            - name: KC_DB_PASSWORD
-              value: keycloakadmin
             - name: KC_HTTP_ENABLED
               value: "true"
             - name: KC_HOSTNAME
               value: keycloak.34.194.59.190.nip.io
+            - name: KC_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-db
+                  key: KC_DB_PASSWORD
           ports:
             - name: http
               containerPort: 8080
           readinessProbe:
             httpGet:
-              path: /realms/master
+              path: /health/ready
               port: 8080
             initialDelaySeconds: 30
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              path: /realms/master
+              path: /health/live
               port: 8080
             initialDelaySeconds: 60
             periodSeconds: 30
@@ -89,8 +198,18 @@ spec:
             limits:
               memory: 2Gi
               cpu: 1000m
+          volumeMounts:
+            - name: realm-import
+              mountPath: /opt/keycloak/data/import
+              readOnly: true
+      volumes:
+        - name: realm-import
+          configMap:
+            name: keycloak-realm-myapp
 ---
-# Route for Keycloak
+# ─────────────────────────────────────────────────────
+# HTTPRoute — Keycloak via Gateway (HTTPS on 443)
+# ─────────────────────────────────────────────────────
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
