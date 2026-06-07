@@ -96,7 +96,6 @@ on:
 # ─────────────────────────────────────────────────────────────
 env:
   AWS_REGION: ${{ inputs.aws_region }}
-  ECR_REGISTRY: ${{ inputs.aws_region }}.dkr.ecr.${{ inputs.aws_region }}.amazonaws.com
   IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
 
 jobs:
@@ -106,6 +105,8 @@ jobs:
     permissions:
       id-token: write      # Потрібно для OIDC токена
       contents: read       # Для checkout сервісного репо
+    outputs:
+      ecr_registry: ${{ steps.login-ecr.outputs.registry }}
 
     steps:
       # ── 1. Checkout сервісного коду ────────────────
@@ -151,6 +152,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+          echo "registry=$ECR_REGISTRY" >> $GITHUB_OUTPUT
 
   update-gitops:
     name: "Update GitOps — ${{ inputs.service_name }}"
@@ -173,7 +175,7 @@ jobs:
         env:
           SERVICE_NAME: ${{ inputs.service_name }}
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
-          ECR_REGISTRY: ${{ inputs.aws_region }}.dkr.ecr.${{ inputs.aws_region }}.amazonaws.com
+          ECR_REGISTRY: ${{ needs.build-and-push.outputs.ecr_registry }}
           ECR_REPOSITORY: ${{ inputs.ecr_repository }}
           MANIFEST_PATH: ${{ inputs.gitops_manifest_path || format('apps/{0}/deployment.yaml', inputs.service_name) }}
         run: |
@@ -186,11 +188,22 @@ jobs:
             exit 1
           fi
 
-          # Оновлюємо image в deployment.yaml
-          sed -i "s|image:.*${ECR_REPOSITORY}:.*|image: ${NEW_IMAGE}|g" "${MANIFEST_PATH}"
+          # Визначаємо тип файлу: Helm values.yaml чи plain deployment.yaml
+          if grep -q "^image:" "${MANIFEST_PATH}"; then
+            # Plain deployment.yaml: image: repo:tag
+            echo "→ Detected: plain Deployment manifest"
+            sed -i "s|image:.*${ECR_REPOSITORY}:.*|image: ${NEW_IMAGE}|g" "${MANIFEST_PATH}"
+          elif grep -q "^  tag:" "${MANIFEST_PATH}"; then
+            # Helm values.yaml: tag: latest
+            echo "→ Detected: Helm values.yaml"
+            sed -i "s|^  tag:.*|  tag: ${IMAGE_TAG}|g" "${MANIFEST_PATH}"
+          else
+            echo "⚠️  Unknown manifest format — trying plain image: replacement"
+            sed -i "s|image:.*${ECR_REPOSITORY}:.*|image: ${NEW_IMAGE}|g" "${MANIFEST_PATH}"
+          fi
 
           echo "✅ Updated:"
-          grep "image:" "${MANIFEST_PATH}"
+          grep -E "(image:|  tag:)" "${MANIFEST_PATH}" || echo "(no image/tag line found)"
 
       # ── 7. Commit + Push в GitOps репозиторій ──────
       - name: Commit and push changes
