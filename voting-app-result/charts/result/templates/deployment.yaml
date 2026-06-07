@@ -16,7 +16,7 @@ spec:
         app.kubernetes.io/name: {{ include "result.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-      # ── InitContainer: чекаємо PostgreSQL перед стартом ──
+      # InitContainer: wait for PostgreSQL before starting
       initContainers:
         - name: wait-for-postgresql
           image: busybox:1.36
@@ -30,7 +30,7 @@ spec:
                 echo "  PostgreSQL not ready yet, retrying in 2s..."
                 sleep 2
               done
-              echo "✅ PostgreSQL is available"
+              echo "PostgreSQL is available"
           env:
             - name: POSTGRES_HOST
               value: {{ .Values.postgresql.host }}
@@ -58,7 +58,7 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.postgresql.existingSecret }}
                   key: {{ .Values.postgresql.secretPasswordKey }}
-          # ── Liveness/Readiness проби ──
+          # Liveness/Readiness probes
           readinessProbe:
             httpGet:
               path: /

@@ -1,23 +1,21 @@
-# ═══════════════════════════════════════════════════════════════
-#  CI/CD — сервісний репозиторій (template)
-# ═══════════════════════════════════════════════════════════════
-#  Куди зберігати:
-#    mochthebest-byte/voting-app/.github/workflows/ci.yml
-#    (аналогічно для worker, result та інших сервісів)
+# CI/CD - Service repository template
 #
-#  Що робить:
-#    1. Trivy vulnerability scan (на кожен PR + push)
-#    2. Multi-arch build + push в ECR (тільки main)
-#    3. Оновлює GitOps-репозиторій через ArgoCD
+# Save to:
+#   mochthebest-byte/voting-app/.github/workflows/ci.yml
+#   (similarly for worker, result, and other services)
 #
-#  Особливості:
-#    • Використовує центральний пайплайн без дублювання коду
-#    • OIDC-аутентифікація в AWS (без статичних ключів)
-#    • Concurrency — захист від race condition при pushes
-#    • Matrix strategy — один CI для vote, result, worker
-# ═══════════════════════════════════════════════════════════════
+# What it does:
+#   1. Trivy vulnerability scan (on every PR + push)
+#   2. Multi-arch build + push to ECR (main only)
+#   3. Update GitOps repo via ArgoCD
+#
+# Features:
+#   - Uses central pipeline, no CI code duplication
+#   - OIDC auth to AWS (no static keys)
+#   - Concurrency - race condition protection on pushes
+#   - Matrix strategy - single CI for vote, result, worker
 
-name: CI — Build & Deploy
+name: CI - Build & Deploy
 
 on:
   push:
@@ -25,14 +23,14 @@ on:
   pull_request:
     branches: [main]
 
-# Захист від race condition:
-# Якщо 2 pushes поспіль — зупиняємо попередній run
+# Race condition protection:
+# If 2 pushes happen in a row, cancel the previous run
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  # ─── Крок 1: Перевірка коду (PR + push) ──────────────────
+  # Step 1: Code check (PR + push)
   test:
     name: "Code quality"
     runs-on: ubuntu-latest
@@ -48,13 +46,13 @@ jobs:
           exit-code: 1
           severity: HIGH,CRITICAL
 
-  # ─── Крок 2: Build + Push ECR + GitOps (тільки main) ──
+  # Step 2: Build + Push ECR + GitOps (main only)
   build-and-deploy:
     name: "Build & deploy ${{ matrix.service }}"
     needs: test
     if: github.ref == 'refs/heads/main'
     strategy:
-      fail-fast: false      # Якщо vote впав — result все одно збираємо
+      fail-fast: false      # If vote fails, result still builds
       matrix:
         include:
           - service: vote
@@ -67,7 +65,7 @@ jobs:
             ecr_repo: my-app/worker
             docker_context: worker
 
-    # Викликаємо центральний пайплайн — без дублювання CI-коду
+    # Call central pipeline - no CI code duplication
     uses: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml@main
     with:
       image_name: ${{ matrix.service }}
@@ -82,7 +80,6 @@ jobs:
       # GitOps
       gitops_repo: mochthebest-byte/gitops
       gitops_branch: main
-      # gitops_manifest_path: apps/${{ matrix.service }}/values.yaml
 
     secrets:
       gitops_token: ${{ secrets.GITOPS_PAT }}

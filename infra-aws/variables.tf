@@ -80,8 +80,8 @@ variable "create_aws_auth_ci_mapping" {
   description = "Whether to add the GitHub CI role to the EKS aws-auth ConfigMap."
   type        = bool
   default     = false
-  # ⚠️  УВАГА: увімкніть лише якщо CI виконує kubectl напряму.
-  #    При використанні ArgoCD залиште false — CI лише оновлює GitOps-репо.
+  # ⚠️  Enable only if CI runs kubectl directly.
+  #    When using ArgoCD, keep false -- CI only updates the GitOps repo.
 }
 
 variable "github_ci_k8s_groups" {

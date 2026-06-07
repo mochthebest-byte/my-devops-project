@@ -1,24 +1,20 @@
-# ═══════════════════════════════════════════════════════════════
-#  GitHub Actions OIDC — безпарольний доступ до AWS
-# ═══════════════════════════════════════════════════════════════
-#  Що створює:
-#    1. OIDC Identity Provider для token.actions.githubusercontent.com
-#    2. IAM Role, яку GitHub Actions може assume через OIDC
-#    3. Політики доступу: ECR push/pull + EKS describe
-#    4. ECR репозиторії (my-app/vote, my-app/result, my-app/worker)
-#    5. Lifecycle policies (автоочищення старих образів)
+# GitHub Actions OIDC - passwordless access to AWS
 #
-#  Після terraform apply:
-#    - Видаліть AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY з GitHub Secrets
-#    - Використовуйте output github_ci_role_arn у workflows
+# Creates:
+#   1. OIDC Identity Provider for token.actions.githubusercontent.com
+#   2. IAM Role that GitHub Actions can assume via OIDC
+#   3. Access policies: ECR push/pull + EKS describe
+#   4. ECR repositories (my-app/vote, my-app/result, my-app/worker)
+#   5. Lifecycle policies (auto-cleanup of old images)
 #
-#  Документація:
-#    https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
-# ═══════════════════════════════════════════════════════════════
+# After terraform apply:
+#   - Remove AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY from GitHub Secrets
+#   - Use the github_ci_role_arn output in workflows
+#
+# Docs:
+#   https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
 
-# ═══════════════════════════════════════════════════════════════
-#  1. OIDC Identity Provider
-# ═══════════════════════════════════════════════════════════════
+# 1. OIDC Identity Provider
 resource "aws_iam_openid_connect_provider" "github" {
   url = "https://token.actions.githubusercontent.com"
 
@@ -36,22 +32,12 @@ resource "aws_iam_openid_connect_provider" "github" {
   })
 }
 
-# ═══════════════════════════════════════════════════════════════
-#  2. IAM Role + Trust Policy
-# ═══════════════════════════════════════════════════════════════
+# 2. IAM Role + Trust Policy
 #
-#  ╔══════════════════════════════════════════════════════════╗
-#  ║  ВИБІР SUBJECT (token.actions.githubusercontent.com:sub)║
-#  ║                                                        ║
-#  ║  Найбезпечніше (один репо):                            ║
-#  ║    repo:mochthebest-byte/voting-app:*                  ║
-#  ║                                                        ║
-#  ║  Організація (всі репо):                               ║
-#  ║    repo:mochthebest-byte/*:*                           ║
-#  ║                                                        ║
-#  ║  Найширше (будь-який репо — не рекомендовано):          ║
-#  ║    repo:*:*                                            ║
-#  ╚══════════════════════════════════════════════════════════╝
+# SUBJECT selection (token.actions.githubusercontent.com:sub)
+#   Most secure (single repo): repo:mochthebest-byte/voting-app:*
+#   Organization (all repos):   repo:mochthebest-byte/*:*
+#   Widest (any repo):          repo:*:* (not recommended)
 data "aws_iam_policy_document" "github_actions_assume_role" {
   statement {
     effect = "Allow"
@@ -63,14 +49,14 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
 
     actions = ["sts:AssumeRoleWithWebIdentity"]
 
-    # audience завжди sts.amazonaws.com для AWS
+    # audience is always sts.amazonaws.com for AWS
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:aud"
       values   = ["sts.amazonaws.com"]
     }
 
-    # Обмежуємо до конкретної організації/репозиторію
+    # Scoped to specific org/repos
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
@@ -85,11 +71,9 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
   }
 }
 
-# ═══════════════════════════════════════════════════════════════
-#  3. Політики доступу
-# ═══════════════════════════════════════════════════════════════
+# 3. Access Policies
 
-# ── ECR: push/pull образів ──────────────────────────────────
+# ECR: push/pull images
 data "aws_iam_policy_document" "github_ci_ecr" {
   statement {
     sid = "ECRAuth"
@@ -116,7 +100,7 @@ data "aws_iam_policy_document" "github_ci_ecr" {
   }
 }
 
-# ── EKS: читання кластера (для kubectl) ─────────────────────
+# EKS: read cluster state (for kubectl)
 data "aws_iam_policy_document" "github_ci_eks" {
   statement {
     sid = "EKSDescribe"
@@ -127,7 +111,7 @@ data "aws_iam_policy_document" "github_ci_eks" {
   }
 }
 
-# ── Об'єднана політика ──────────────────────────────────────
+# Merged policy
 resource "aws_iam_policy" "github_ci" {
   name        = "${var.cluster_name}-github-ci"
   description = "Permissions for GitHub Actions CI/CD"
@@ -143,14 +127,12 @@ data "aws_iam_policy_document" "merged_ci_policy" {
   ]
 }
 
-# ═══════════════════════════════════════════════════════════════
-#  4. IAM Role
-# ═══════════════════════════════════════════════════════════════
+# 4. IAM Role
 resource "aws_iam_role" "github_ci" {
   name               = "${var.cluster_name}-github-ci"
   assume_role_policy = data.aws_iam_policy_document.github_actions_assume_role.json
 
-  # Максимальна тривалість сесії — 1 година
+  # Max session duration: 1 hour
   max_session_duration = 3600
 
   tags = merge(var.tags, {
@@ -163,9 +145,7 @@ resource "aws_iam_role_policy_attachment" "github_ci" {
   policy_arn = aws_iam_policy.github_ci.arn
 }
 
-# ═══════════════════════════════════════════════════════════════
-#  5. ECR репозиторії
-# ═══════════════════════════════════════════════════════════════
+# 5. ECR Repositories
 locals {
   ecr_repositories = [
     "my-app/vote",
@@ -225,11 +205,9 @@ resource "aws_ecr_lifecycle_policy" "cleanup" {
   })
 }
 
-# ═══════════════════════════════════════════════════════════════
-#  Outputs
-# ═══════════════════════════════════════════════════════════════
+# Outputs
 output "github_ci_role_arn" {
-  description = "ARN of the GitHub CI IAM Role. Використовуйте в ci_role_arn у workflow."
+  description = "ARN of the GitHub CI IAM Role. Use as ci_role_arn in workflows."
   value       = aws_iam_role.github_ci.arn
 }
 
@@ -239,7 +217,7 @@ output "github_oidc_provider_arn" {
 }
 
 output "ecr_repositories" {
-  description = "Map of ECR repository names → ARN."
+  description = "Map of ECR repository names to ARN."
   value = {
     for k, r in aws_ecr_repository.services : k => r.repository_url
   }

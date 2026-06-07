@@ -13,7 +13,7 @@ grafana:
   persistence:
     enabled: false
 
-  # ── OIDC auth через Keycloak ──────────────────────────
+  # OIDC auth via Keycloak
   env:
     GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
     GF_AUTH_GENERIC_OAUTH_NAME: "Keycloak"
