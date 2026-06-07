@@ -112,7 +112,11 @@ jobs:
           echo "  Context: ${DOCKER_CTX}"
           echo "  Platforms: linux/amd64,linux/arm64"
 
-          ls -la "${DOCKER_CTX}/Dockerfile" 2>/dev/null || {
+          echo "PWD: $(pwd)"
+          echo "Listing checkout directory:"
+          ls -la src/voting-app/ || echo "src/voting-app/ not found"
+          echo "---"
+          test -f "${DOCKER_CTX}/Dockerfile" || {
             echo "ERROR: Dockerfile not found at ${DOCKER_CTX}/Dockerfile"
             ls -la "${DOCKER_CTX}/" || true
             exit 1
