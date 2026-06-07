@@ -1,15 +1,20 @@
 # ═══════════════════════════════════════════════════════════════
-#  Приклад: Workflow сервісного репозиторію (voting-app)
+#  CI/CD — сервісний репозиторій (template)
 # ═══════════════════════════════════════════════════════════════
-#  Де зберігати:
+#  Куди зберігати:
 #    mochthebest-byte/voting-app/.github/workflows/ci.yml
+#    (аналогічно для worker, result та інших сервісів)
 #
-#  Як це працює:
-#    1. На push в main або PR — запускається цей workflow
-#    2. Він викликає центральний reusable пайплайн через
-#       uses: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml
-#    3. AWS аутентифікація — через OIDC (без ключів!)
-#    4. Docker образ → ECR → GitOps репозиторій ← ArgoCD
+#  Що робить:
+#    1. Trivy vulnerability scan (на кожен PR + push)
+#    2. Multi-arch build + push в ECR (тільки main)
+#    3. Оновлює GitOps-репозиторій через ArgoCD
+#
+#  Особливості:
+#    • Використовує центральний пайплайн без дублювання коду
+#    • OIDC-аутентифікація в AWS (без статичних ключів)
+#    • Concurrency — захист від race condition при pushes
+#    • Matrix strategy — один CI для vote, result, worker
 # ═══════════════════════════════════════════════════════════════
 
 name: CI — Build & Deploy
@@ -20,58 +25,64 @@ on:
   pull_request:
     branches: [main]
 
+# Захист від race condition:
+# Якщо 2 pushes поспіль — зупиняємо попередній run
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  # ─── Крок 1: CI (тести + лінтер) ─────────────────────
+  # ─── Крок 1: Перевірка коду (PR + push) ──────────────────
   test:
-    name: "Test & Lint"
+    name: "Code quality"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - run: |
-          pip install -r requirements.txt
-          # Приклад тестів:
-          # python -m pytest tests/
-          # flake8 .
-
-      - name: Security scan (Trivy)
+      - name: Run Trivy vulnerability scan
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
           scan-ref: .
           format: table
-          exit-code: 0
+          exit-code: 1
           severity: HIGH,CRITICAL
 
-  # ─── Крок 2: Build + Push + GitOps ──────────────────
-  #      Викликає центральний reusable пайплайн
+  # ─── Крок 2: Build + Push ECR + GitOps (тільки main) ──
   build-and-deploy:
-    name: "Build & deploy voting-app"
+    name: "Build & deploy ${{ matrix.service }}"
     needs: test
-    # ── Дозволяємо тільки main (не PR) ──────────────
     if: github.ref == 'refs/heads/main'
+    strategy:
+      fail-fast: false      # Якщо vote впав — result все одно збираємо
+      matrix:
+        include:
+          - service: vote
+            ecr_repo: my-app/vote
+            docker_context: vote
+          - service: result
+            ecr_repo: my-app/result
+            docker_context: result
+          - service: worker
+            ecr_repo: my-app/worker
+            docker_context: worker
+
+    # Викликаємо центральний пайплайн — без дублювання CI-коду
     uses: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml@main
     with:
-      # ── Параметри сервісу ──────────────────────────
-      image_name: voting-app
-      ecr_repository: voting-app
-      service_name: voting-app
+      image_name: ${{ matrix.service }}
+      ecr_repository: ${{ matrix.ecr_repo }}
+      service_name: ${{ matrix.service }}
+      docker_context: ${{ matrix.docker_context }}
 
-      # ── AWS OIDC ───────────────────────────────────
+      # AWS OIDC
       aws_region: us-east-1
       ci_role_arn: arn:aws:iam::428156589409:role/my-app-eks-github-ci
 
-      # ── GitOps ─────────────────────────────────────
+      # GitOps
       gitops_repo: mochthebest-byte/gitops
       gitops_branch: main
-      gitops_manifest_path: apps/voting-app/deployment.yaml
+      # gitops_manifest_path: apps/${{ matrix.service }}/values.yaml
 
     secrets:
-      # GitHub PAT з push-доступом до GitOps repo
       gitops_token: ${{ secrets.GITOPS_PAT }}

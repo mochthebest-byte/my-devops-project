@@ -1,26 +1,31 @@
 # ═══════════════════════════════════════════════════════════════
 #  Reusable Workflow: Build & Push Docker → Update GitOps
 # ═══════════════════════════════════════════════════════════════
-#  Що робить:
+#  Місцезнаходження:
+#    mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml
+#
+#  Призначення:
 #    1. Checkout сервісного репозиторію
 #    2. OIDC-аутентифікація в AWS (без статичних ключів)
 #    3. Логін в Amazon ECR
-#    4. Build + Push Docker образу (теґ: git sha + latest)
+#    4. Multi-arch Build + Push Docker образу (linux/amd64 + linux/arm64)
 #    5. Оновлення GitOps-репозиторію (новий image tag)
 #
-#  Де зберігати: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml
+#  Викликається через:
+#    uses: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml@main
 #
-#  Як викликати (з сервісного репозиторію):
+#  Приклад виклику:
 #    jobs:
-#      deploy:
+#      build-and-deploy:
 #        uses: mochthebest-byte/ci-pipelines/.github/workflows/reusable-build.yml@main
 #        with:
-#          image_name: voting-app
-#          ecr_repository: voting-app
-#          gitops_repo: mochthebest-byte/gitops
-#          service_name: voting-app
+#          image_name: vote
+#          ecr_repository: my-app/vote
+#          service_name: vote
 #          aws_region: us-east-1
-#          ci_role_arn: arn:aws:iam::123456789012:role/my-app-eks-github-ci
+#          ci_role_arn: arn:aws:iam::428156589409:role/my-app-eks-github-ci
+#        secrets:
+#          gitops_token: ${{ secrets.GITOPS_PAT }}
 # ═══════════════════════════════════════════════════════════════
 
 name: Reusable CI — Build, Push ECR, Update GitOps
@@ -30,12 +35,12 @@ on:
     inputs:
       # ── Обов'язкові параметри ────────────────────────
       image_name:
-        description: "Docker image name (e.g., voting-app)"
+        description: "Docker image name (e.g., vote)"
         required: true
         type: string
 
       ecr_repository:
-        description: "ECR repository name (e.g., voting-app)"
+        description: "ECR repository name (e.g., my-app/vote)"
         required: true
         type: string
 
@@ -45,7 +50,7 @@ on:
         type: string
 
       service_name:
-        description: "Service name for GitOps manifest path (e.g., voting-app)"
+        description: "Service name for GitOps manifest path"
         required: true
         type: string
 
@@ -68,7 +73,7 @@ on:
         default: "."
 
       gitops_manifest_path:
-        description: "Path inside gitops_repo to the k8s manifest (default: apps/<service_name>/deployment.yaml)"
+        description: "Path inside gitops_repo to the k8s manifest"
         required: false
         type: string
         default: ""
@@ -85,14 +90,17 @@ on:
         type: string
         default: ""
 
+      build_platforms:
+        description: "Target platforms for multi-arch build"
+        required: false
+        type: string
+        default: "linux/amd64,linux/arm64"
+
     secrets:
-      # Єдиний секрет — токен для запису в GitOps репозиторій
       gitops_token:
         description: "GitHub token with push access to the GitOps repo"
         required: true
 
-# ─────────────────────────────────────────────────────────────
-#  ENVIRONMENT: теги контейнера
 # ─────────────────────────────────────────────────────────────
 env:
   AWS_REGION: ${{ inputs.aws_region }}
@@ -103,59 +111,66 @@ jobs:
     name: "Build & push ${{ inputs.image_name }}"
     runs-on: ubuntu-latest
     permissions:
-      id-token: write      # Потрібно для OIDC токена
-      contents: read       # Для checkout сервісного репо
+      id-token: write       # OIDC: GitHub → AWS (без ключів)
+      contents: read         # Для checkout сервісного репо
     outputs:
       ecr_registry: ${{ steps.login-ecr.outputs.registry }}
+      image_tag: ${{ env.IMAGE_TAG }}
 
     steps:
-      # ── 1. Checkout сервісного коду ────────────────
+      # ── 1. Checkout коду сервісу ─────────────────────
       - name: Checkout service code
         uses: actions/checkout@v4
 
-      # ── 2. OIDC → AWS (безпарольна аутентифікація) ──
+      # ── 2. OIDC → AWS (Workload Identity Federation) ──
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ inputs.ci_role_arn }}
           aws-region: ${{ inputs.aws_region }}
-          # ═══ КЛЮЧОВІ ПАРАМЕТРИ ═══
-          # role-to-assume: IAM Role, яку створив Terraform
-          # aws-region: регіон ECR та EKS
-          #
-          # Жодних AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY —
-          # GitHub сам запитує OIDC токен у token.actions.githubusercontent.com
-          # і обмінює його на тимчасові AWS credentials.
+          # ══════════════════════════════════════════════
+          #  Жодних AWS_ACCESS_KEY_ID / SECRET_ACCESS_KEY!
+          #  GitHub отримує OIDC-токен від
+          #  token.actions.githubusercontent.com і обмінює
+          #  його на тимчасові AWS credentials.
+          # ══════════════════════════════════════════════
 
       # ── 3. Login в Amazon ECR ───────────────────────
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      # ── 4. Setup Docker Buildx (multi-arch) ──────────
+      # ── 4. Setup Docker Buildx ───────────────────────
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-flags: --debug
+          driver-opts: network=host
 
-      # ── 5. Build та Push Docker образу (multi-arch) ───
-      - name: Build, tag, and push image to Amazon ECR
+      # ── 5. Build та Push (multi-arch) ────────────────
+      - name: Build and push multi-arch image
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ inputs.ecr_repository }}
-          IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
+          IMAGE_TAG: ${{ env.IMAGE_TAG }}
         run: |
-          echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+          echo "🏗️  Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+          echo "   Platforms: ${{ inputs.build_platforms }}"
 
-          # Buildx multi-arch: amd64 + arm64 у одному шоті
+          # Buildx multi-arch: один shot для amd64 + arm64
           docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
-            -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
+            --platform "${{ inputs.build_platforms }}" \
+            -t "${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}" \
+            -t "${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
             --push \
+            --cache-from "type=registry,ref=${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
+            --cache-to "type=inline" \
             "${{ inputs.docker_context }}"
 
-          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-          echo "registry=$ECR_REGISTRY" >> $GITHUB_OUTPUT
+          echo "✅  Pushed ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+          echo "image=${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "registry=${ECR_REGISTRY}" >> "$GITHUB_OUTPUT"
 
   update-gitops:
     name: "Update GitOps — ${{ inputs.service_name }}"
@@ -163,9 +178,10 @@ jobs:
     needs: build-and-push
     permissions:
       contents: write
+    if: success()  # Не оновлюємо GitOps, якщо build зламався
 
     steps:
-      # ── 5. Checkout GitOps репозиторію ─────────────
+      # ── 6. Checkout GitOps репозиторію ──────────────
       - name: Checkout GitOps repo
         uses: actions/checkout@v4
         with:
@@ -173,42 +189,47 @@ jobs:
           token: ${{ secrets.gitops_token }}
           ref: ${{ inputs.gitops_branch }}
 
-      # ── 6. Оновлення image tag в маніфесті ─────────
+      # ── 7. Оновлення image tag в маніфесті ──────────
       - name: Update image tag in k8s manifest
+        id: update-manifest
         env:
           SERVICE_NAME: ${{ inputs.service_name }}
-          IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
+          IMAGE_TAG: ${{ env.IMAGE_TAG }}
           ECR_REGISTRY: ${{ needs.build-and-push.outputs.ecr_registry }}
           ECR_REPOSITORY: ${{ inputs.ecr_repository }}
-          MANIFEST_PATH: ${{ inputs.gitops_manifest_path || format('apps/{0}/deployment.yaml', inputs.service_name) }}
+          MANIFEST_PATH: ${{ inputs.gitops_manifest_path || format('apps/{0}/values.yaml', inputs.service_name) }}
         run: |
           NEW_IMAGE="${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
           echo "Updating ${MANIFEST_PATH} → image: ${NEW_IMAGE}"
 
           if [ ! -f "${MANIFEST_PATH}" ]; then
             echo "❌ Manifest not found: ${MANIFEST_PATH}"
-            echo "   Create the file first or set gitops_manifest_path"
+            echo ""
+            echo "   Очікувані файли в GitOps репозиторії:"
+            echo "     - apps/vote/values.yaml"
+            echo "     - apps/result/values.yaml"
+            echo "     - apps/worker/values.yaml"
+            echo ""
+            echo "   Або вкажіть gitops_manifest_path явно."
             exit 1
           fi
 
-          # Визначаємо тип файлу: Helm values.yaml чи plain deployment.yaml
+          # Визначаємо тип файлу
           if grep -q "^image:" "${MANIFEST_PATH}"; then
-            # Plain deployment.yaml: image: repo:tag
             echo "→ Detected: plain Deployment manifest"
             sed -i "s|image:.*${ECR_REPOSITORY}:.*|image: ${NEW_IMAGE}|g" "${MANIFEST_PATH}"
           elif grep -q "^  tag:" "${MANIFEST_PATH}"; then
-            # Helm values.yaml: tag: latest
             echo "→ Detected: Helm values.yaml"
             sed -i "s|^  tag:.*|  tag: ${IMAGE_TAG}|g" "${MANIFEST_PATH}"
           else
-            echo "⚠️  Unknown manifest format — trying plain image: replacement"
+            echo "⚠️  Unknown format — trying image: replacement"
             sed -i "s|image:.*${ECR_REPOSITORY}:.*|image: ${NEW_IMAGE}|g" "${MANIFEST_PATH}"
           fi
 
           echo "✅ Updated:"
           grep -E "(image:|  tag:)" "${MANIFEST_PATH}" || echo "(no image/tag line found)"
 
-      # ── 7. Commit + Push в GitOps репозиторій ──────
+      # ── 8. Commit + Push в GitOps ────────────────────
       - name: Commit and push changes
         env:
           SERVICE_NAME: ${{ inputs.service_name }}
@@ -218,13 +239,16 @@ jobs:
 
           git add -A
           if git diff --cached --quiet; then
-            echo "ℹ️  No changes to commit"
+            echo "ℹ️  No changes to commit — already up to date."
             exit 0
           fi
 
           git commit -m "chore(${SERVICE_NAME}): bump image to ${IMAGE_TAG}
 
-          Automated by CI pipeline (GitHub Actions OIDC)."
+          Automated by CI pipeline.
+          Triggered by: ${{ github.repository }}@${{ github.sha }}
+          OIDC auth — no static keys."
+
           git push origin ${{ inputs.gitops_branch }}
 
           echo "✅ Pushed to ${GITOPS_REPO}:${GITOPS_BRANCH}"
