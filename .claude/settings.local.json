@@ -160,7 +160,8 @@
       "Bash(DEPLOY_VOTE=voting-app-vote DEPLOY_RESULT=result DEPLOY_WORKER=worker SERVICE_VOTE=voting-app-vote SERVICE_VOTE_PORT=5000 SERVICE_RESULT=result bash *)",
       "Bash(aws s3 *)",
       "Bash(terraform import *)",
-      "Bash(xargs -I {} gh run view {} --repo mochthebest-byte/voting-app --log)"
+      "Bash(xargs -I {} gh run view {} --repo mochthebest-byte/voting-app --log)",
+      "Bash(xxd)"
     ]
   }
 }

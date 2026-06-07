@@ -1,25 +1,10 @@
-# ═══════════════════════════════════════════════════════════════
-#  Monorepo CI — Deploy voting-app сервісів
-# ═══════════════════════════════════════════════════════════════
-#  Що робить:
-#    1. Checkout коду voting-app з його репозиторію
-#    2. OIDC → AWS (безпарольна аутентифікація)
-#    3. Multi-arch Build + Push в ECR (linux/amd64 + linux/arm64)
-#    4. Оновлення GitOps-репозиторію (новий image tag)
-#
-#  Особливості:
-#    • Усі білди видимі в my-devops-project/actions
-#    • Manual trigger (workflow_dispatch) з вибором сервісу
-#    • Matrix strategy — один запуск білдить vote, result, worker
-# ═══════════════════════════════════════════════════════════════
-
 name: 🚀 Deploy voting-app
 
 on:
   workflow_dispatch:
     inputs:
       service:
-        description: "Сервіс для деплою"
+        description: "Service to deploy (all/vote/result/worker)"
         required: true
         default: "all"
         type: choice
@@ -36,7 +21,7 @@ on:
         default: ""
 
       environment:
-        description: "Цільове середовище"
+        description: "Target environment"
         required: true
         default: "dev"
         type: choice
@@ -54,22 +39,28 @@ env:
   GITOPS_BRANCH: main
 
 jobs:
-  # ─── Крок 0: Визначити список сервісів для деплою ──────
   resolve-matrix:
     name: "Resolve service matrix"
     runs-on: ubuntu-latest
     outputs:
       services: ${{ steps.set-matrix.outputs.services }}
+      contexts: ${{ steps.set-matrix.outputs.contexts }}
     steps:
       - id: set-matrix
         run: |
           if [ "${{ inputs.service }}" = "all" ]; then
             echo 'services=["vote","result","worker"]' >> "$GITHUB_OUTPUT"
+            echo 'contexts=[".","result","worker"]' >> "$GITHUB_OUTPUT"
           else
-            echo 'services=["${{ inputs.service }}"]' >> "$GITHUB_OUTPUT"
+            if [ "${{ inputs.service }}" = "vote" ]; then
+              echo 'services=["vote"]' >> "$GITHUB_OUTPUT"
+              echo 'contexts=["."]' >> "$GITHUB_OUTPUT"
+            else
+              echo 'services=["${{ inputs.service }}"]' >> "$GITHUB_OUTPUT"
+              echo 'contexts=["${{ inputs.service }}"]' >> "$GITHUB_OUTPUT"
+            fi
           fi
 
-  # ─── Крок 1: Збірка та деплой ─────────────────────────
   deploy:
     name: "Build & deploy ${{ matrix.service }}"
     runs-on: ubuntu-latest
@@ -83,47 +74,45 @@ jobs:
       fail-fast: false
       matrix:
         service: ${{ fromJSON(needs.resolve-matrix.outputs.services) }}
+        docker_context: ${{ fromJSON(needs.resolve-matrix.outputs.contexts) }}
 
     steps:
-      # ── 1. Checkout коду СЕРВІСУ (voting-app репо) ──
+      # Clone voting-app source (contains all 3 services)
       - name: Checkout voting-app source code
         uses: actions/checkout@v4
         with:
           repository: mochthebest-byte/voting-app
           ref: main
-          path: src/${{ matrix.service }}
+          path: src/voting-app
 
-      # ── 2. OIDC → AWS ────────────────────────────────
+      # OIDC auth to AWS (no static keys)
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ env.CI_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
-      # ── 3. Login в Amazon ECR ─────────────────────────
+      # Login to ECR
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      # ── 4. Setup Docker Buildx ────────────────────────
+      # Setup Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        with:
-          buildkitd-flags: --debug
-          driver-opts: network=host
 
-      # ── 5. Build та Push (multi-arch) ─────────────────
+      # Multi-arch build and push
       - name: Build and push multi-arch image
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: my-app/${{ matrix.service }}
           IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
-          DOCKER_CONTEXT: src/${{ matrix.service }}/${{ matrix.service }}
         run: |
+          DOCKER_CONTEXT="src/voting-app/${{ matrix.docker_context }}"
           echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
-          echo "   Context: ${DOCKER_CONTEXT}"
-          echo "   Platforms: linux/amd64,linux/arm64"
+          echo "  Context: ${DOCKER_CONTEXT}"
+          echo "  Platforms: linux/amd64,linux/arm64"
 
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
@@ -141,7 +130,7 @@ jobs:
             echo "tag=${IMAGE_TAG}"
           } >> "$GITHUB_OUTPUT"
 
-      # ── 6. Checkout GitOps репозиторію ───────────────
+      # Update GitOps repo with new image tag
       - name: Checkout GitOps repo
         uses: actions/checkout@v4
         with:
@@ -150,7 +139,6 @@ jobs:
           ref: ${{ env.GITOPS_BRANCH }}
           path: gitops
 
-      # ── 7. Оновлення image tag в маніфесті ──────────
       - name: Update image tag in GitOps
         id: update-manifest
         env:
@@ -160,29 +148,25 @@ jobs:
           cd gitops
 
           if [ ! -f "${MANIFEST_PATH}" ]; then
-            echo "❌ Manifest not found: ${MANIFEST_PATH}"
-            ls -la apps/ 2>/dev/null || echo "apps/ directory not found"
+            echo "Manifest not found: ${MANIFEST_PATH}"
+            ls apps/ 2>/dev/null || echo "apps/ not found"
             exit 1
           fi
 
-          echo "Updating ${MANIFEST_PATH} → tag: ${IMAGE_TAG}"
+          echo "Updating ${MANIFEST_PATH} -> tag: ${IMAGE_TAG}"
 
           if grep -q "^image:" "${MANIFEST_PATH}"; then
-            echo "→ Detected: plain Deployment manifest"
-            NEW_IMAGE="428156589409.dkr.ecr.us-east-1.amazonaws.com/my-app/${{ matrix.service }}:${IMAGE_TAG}"
+            NEW_IMAGE="${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
             sed -i "s|image:.*|image: ${NEW_IMAGE}|g" "${MANIFEST_PATH}"
           elif grep -q "^  tag:" "${MANIFEST_PATH}"; then
-            echo "→ Detected: Helm values.yaml"
             sed -i "s|^  tag:.*|  tag: ${IMAGE_TAG}|g" "${MANIFEST_PATH}"
           else
-            echo "→ Trying tag: replacement"
             sed -i "s|^  tag:.*|  tag: ${IMAGE_TAG}|g" "${MANIFEST_PATH}"
           fi
 
-          echo "✅ Updated:"
+          echo "Updated:"
           grep -E "(image:|  tag:)" "${MANIFEST_PATH}"
 
-      # ── 8. Commit + Push в GitOps ─────────────────────
       - name: Commit and push changes
         env:
           SERVICE_NAME: ${{ matrix.service }}
@@ -193,12 +177,12 @@ jobs:
 
           git add -A
           if git diff --cached --quiet; then
-            echo "No changes to commit — already up to date."
+            echo "No changes to commit."
             exit 0
           fi
 
           git commit -m "chore(${SERVICE_NAME}): bump image to ${{ inputs.image_tag || github.sha }}
-
           Automated by my-devops-project CI via OIDC."
+
           git push origin ${{ env.GITOPS_BRANCH }}
           echo "Pushed to ${GITOPS_REPO}:${GITOPS_BRANCH}"
