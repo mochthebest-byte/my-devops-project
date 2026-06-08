@@ -8,9 +8,6 @@ spec:
   parentRefs:
     - name: voting-app-gateway
       namespace: voting-app
-      sectionName: https-grafana
-  hostnames:
-    - grafana.mochthebest.io
   rules:
     - backendRefs:
         - name: monitoring-grafana

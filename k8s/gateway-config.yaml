@@ -10,7 +10,7 @@ spec:
     namespace: kube-system
     group: gateway.k8s.aws
     kind: LoadBalancerConfiguration
-  description: "AWS Load Balancer Controller - provisions ALB for Gateways"
+  description: "AWS Load Balancer Controller"
 ---
 apiVersion: gateway.k8s.aws/v1beta1
 kind: LoadBalancerConfiguration

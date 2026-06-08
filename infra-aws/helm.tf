@@ -139,6 +139,7 @@ data "aws_iam_policy_document" "lb_controller" {
       "elasticloadbalancing:RemoveTags",
       "elasticloadbalancing:SetIpAddressType",
       "elasticloadbalancing:SetSecurityGroups",
+      "elasticloadbalancing:SetRulePriorities",
       "elasticloadbalancing:SetSubnets",
       "elasticloadbalancing:SetWebAcl",
     ]
@@ -172,6 +173,8 @@ data "aws_iam_policy_document" "lb_controller" {
       "cognito-idp:DescribeUserPoolClient",
       "acm:ListCertificates",
       "acm:DescribeCertificate",
+      "acm:ImportCertificate",
+      "acm:DeleteCertificate",
       "iam:ListServerCertificates",
       "iam:GetServerCertificate",
       "ec2:DescribeSecurityGroupRules",
