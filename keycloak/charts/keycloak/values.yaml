@@ -26,7 +26,7 @@ admin:
   user: admin
   password: admin123
 
-hostname: keycloak.mochthebest.io
+hostname: keycloak.34.194.59.190.nip.io
 
 gateway:
   name: voting-app-gateway

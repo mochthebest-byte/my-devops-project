@@ -23,7 +23,7 @@ spec:
   scheme: internet-facing
   ipAddressType: ipv4
 ---
-# Gateway - Internet-facing ALB for voting-app
+# Gateway - Internet-facing ALB
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
@@ -32,49 +32,35 @@ metadata:
   annotations:
     alb.ingress.k8s.aws/scheme: internet-facing
     alb.ingress.k8s.aws/target-type: ip
-    # ExternalDNS: auto-create Route53 records
-    external-dns.alpha.kubernetes.io/hostname: vote.mochthebest.io, result.mochthebest.io, grafana.mochthebest.io
 spec:
   gatewayClassName: aws-lb-gateway-class
   listeners:
     - name: http-vote
       protocol: HTTP
       port: 80
-      hostname: vote.mochthebest.io
       allowedRoutes:
         namespaces:
           from: Same
     - name: http-result
       protocol: HTTP
       port: 80
-      hostname: result.mochthebest.io
       allowedRoutes:
         namespaces:
           from: Same
-    - name: https-grafana
-      protocol: HTTPS
-      port: 443
-      hostname: grafana.mochthebest.io
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: mochthebest-tls
+    - name: http-grafana
+      protocol: HTTP
+      port: 80
       allowedRoutes:
         namespaces:
           from: All
-    - name: https-keycloak
-      protocol: HTTPS
-      port: 443
-      hostname: keycloak.mochthebest.io
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: mochthebest-tls
+    - name: http-keycloak
+      protocol: HTTP
+      port: 80
       allowedRoutes:
         namespaces:
           from: All
 ---
-# HTTPRoute - vote.mochthebest.io -> voting-app-vote:5000
+# HTTPRoute - vote via nip.io -> voting-app-vote:5000
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -84,14 +70,12 @@ spec:
   parentRefs:
     - name: voting-app-gateway
       sectionName: http-vote
-  hostnames:
-    - vote.mochthebest.io
   rules:
     - backendRefs:
         - name: voting-app-vote
           port: 5000
 ---
-# HTTPRoute - result.mochthebest.io -> result:81
+# HTTPRoute - result via nip.io -> result:81
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -101,9 +85,39 @@ spec:
   parentRefs:
     - name: voting-app-gateway
       sectionName: http-result
-  hostnames:
-    - result.mochthebest.io
   rules:
     - backendRefs:
         - name: result
           port: 81
+---
+# HTTPRoute - grafana via nip.io -> grafana:80
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: grafana-route
+  namespace: monitoring
+spec:
+  parentRefs:
+    - name: voting-app-gateway
+      namespace: voting-app
+      sectionName: http-grafana
+  rules:
+    - backendRefs:
+        - name: monitoring-grafana
+          port: 80
+---
+# HTTPRoute - keycloak via nip.io -> keycloak:8080
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: keycloak-route
+  namespace: keycloak
+spec:
+  parentRefs:
+    - name: voting-app-gateway
+      namespace: voting-app
+      sectionName: http-keycloak
+  rules:
+    - backendRefs:
+        - name: keycloak
+          port: 8080
