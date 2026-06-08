@@ -20,17 +20,17 @@ grafana:
     GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "grafana"
     GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email"
     GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
-    GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://keycloak.34.194.59.190.nip.io/realms/myapp/protocol/openid-connect/auth"
-    GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://keycloak.34.194.59.190.nip.io/realms/myapp/protocol/openid-connect/token"
-    GF_AUTH_GENERIC_OAUTH_API_URL: "https://keycloak.34.194.59.190.nip.io/realms/myapp/protocol/openid-connect/userinfo"
+    GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://keycloak.mochthebest.io/realms/myapp/protocol/openid-connect/auth"
+    GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://keycloak.mochthebest.io/realms/myapp/protocol/openid-connect/token"
+    GF_AUTH_GENERIC_OAUTH_API_URL: "https://keycloak.mochthebest.io/realms/myapp/protocol/openid-connect/userinfo"
     GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE: "true"
-    GF_SERVER_ROOT_URL: "https://grafana.34.194.59.190.nip.io"
+    GF_SERVER_ROOT_URL: "https://grafana.mochthebest.io"
     # ── Role mapping ──
     GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(realm_access.roles[*], 'grafana-admin') && 'Admin' || contains(realm_access.roles[*], 'grafana-editor') && 'Editor' || 'Viewer'"
     GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_STRICT: "true"
     GF_AUTH_GENERIC_OAUTH_ALLOW_ASSIGN_GRAFANA_ADMIN: "true"
     # ── Logout ──
-    GF_AUTH_SIGNOUT_REDIRECT_URL: "https://keycloak.34.194.59.190.nip.io/realms/myapp/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fgrafana.34.194.59.190.nip.io%2Flogin"
+    GF_AUTH_SIGNOUT_REDIRECT_URL: "https://keycloak.mochthebest.io/realms/myapp/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fgrafana.mochthebest.io%2Flogin"
   envValueFrom:
     GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
       secretKeyRef:

@@ -163,7 +163,11 @@
       "Bash(xargs -I {} gh run view {} --repo mochthebest-byte/voting-app --log)",
       "Bash(xxd)",
       "Bash(grep -A30 \"PWD: \\\\$\\\\|Listing checkout\\\\|ERROR:\")",
-      "Bash(grep -v \"^Build & deploy vote\tPost \\\\|^$\")"
+      "Bash(grep -v \"^Build & deploy vote\tPost \\\\|^$\")",
+      "Bash(aws route53domains *)",
+      "Bash(whois mochthebest.io)",
+      "Bash(whois -h whois.nic.io mochthebest.io)",
+      "Bash(aws route53 *)"
     ]
   }
 }

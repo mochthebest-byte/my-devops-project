@@ -41,22 +41,23 @@ spec:
                 namespace: voting-app
                 kind: Gateway
 ---
-# Certificate - nip.io domains (via Let's Encrypt staging)
-# For production: change issuerRef to letsencrypt-prod
-# and configure real DNS with Route53
+# Certificate - mochthebest.io domains (via Let's Encrypt Production)
+# Valid TLS for vote.mochthebest.io, result.mochthebest.io, etc.
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: nipio-tls
+  name: mochthebest-tls
   namespace: voting-app
 spec:
-  secretName: nipio-tls
-  commonName: keycloak.34.194.59.190.nip.io
+  secretName: mochthebest-tls
+  commonName: vote.mochthebest.io
   dnsNames:
-    - keycloak.34.194.59.190.nip.io
-    - grafana.34.194.59.190.nip.io
+    - vote.mochthebest.io
+    - result.mochthebest.io
+    - grafana.mochthebest.io
+    - keycloak.mochthebest.io
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-prod
     kind: ClusterIssuer
 ---
 # Self-signed ClusterIssuer (fallback for local dev)

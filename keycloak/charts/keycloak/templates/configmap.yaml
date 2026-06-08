@@ -61,7 +61,7 @@ data:
           "publicClient": false,
           "secret": "UHHrSI9z9wXbPD1ZL0UCnNMltfnR6U+TUguXdyKwNK0=",
           "redirectUris": [
-            "https://grafana.34.194.59.190.nip.io/login/generic_oauth"
+            "https://grafana.mochthebest.io/login/generic_oauth"
           ],
           "webOrigins": ["+"],
           "standardFlowEnabled": true,

@@ -10,7 +10,7 @@ spec:
       namespace: voting-app
       sectionName: https-grafana
   hostnames:
-    - grafana.34.194.59.190.nip.io
+    - grafana.mochthebest.io
   rules:
     - backendRefs:
         - name: monitoring-grafana

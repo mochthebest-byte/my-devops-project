@@ -1,7 +1,5 @@
 ---
-# ─────────────────────────────────────────────────────
-# GatewayClass — AWS Load Balancer Controller
-# ─────────────────────────────────────────────────────
+# GatewayClass - AWS Load Balancer Controller
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
@@ -13,11 +11,9 @@ spec:
     namespace: kube-system
     group: gateway.k8s.aws
     kind: LoadBalancerConfiguration
-  description: "AWS Load Balancer Controller — provisions ALB for Gateways"
+  description: "AWS Load Balancer Controller - provisions ALB for Gateways"
 ---
-# ─────────────────────────────────────────────────────
-# LoadBalancerConfiguration — ALB settings
-# ─────────────────────────────────────────────────────
+# LoadBalancerConfiguration - ALB settings
 apiVersion: gateway.k8s.aws/v1beta1
 kind: LoadBalancerConfiguration
 metadata:
@@ -27,66 +23,58 @@ spec:
   scheme: internet-facing
   ipAddressType: ipv4
 ---
-# ─────────────────────────────────────────────────────
-# Gateway — Internet-facing ALB for voting-app
-# ─────────────────────────────────────────────────────
+# Gateway - Internet-facing ALB for voting-app
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: voting-app-gateway
   namespace: voting-app
   annotations:
-    # internet-facing → public ALB with its own DNS name
     alb.ingress.k8s.aws/scheme: internet-facing
-    # IP target type — required when using the VPC CNI (EKS default)
     alb.ingress.k8s.aws/target-type: ip
-    # ExternalDNS: auto-create Route53 records pointing to the ALB
-    external-dns.alpha.kubernetes.io/hostname: vote.example.com, result.example.com
-    # TLS cert managed by cert-manager (Certificate → nipio-tls Secret)
-    # cert-manager.io/cluster-issuer: letsencrypt-staging
+    # ExternalDNS: auto-create Route53 records
+    external-dns.alpha.kubernetes.io/hostname: vote.mochthebest.io, result.mochthebest.io, grafana.mochthebest.io
 spec:
   gatewayClassName: aws-lb-gateway-class
   listeners:
     - name: http-vote
       protocol: HTTP
       port: 80
-      hostname: vote.example.com
+      hostname: vote.mochthebest.io
       allowedRoutes:
         namespaces:
           from: Same
     - name: http-result
       protocol: HTTP
       port: 80
-      hostname: result.example.com
+      hostname: result.mochthebest.io
       allowedRoutes:
         namespaces:
           from: Same
-    - name: https-keycloak
-      protocol: HTTPS
-      port: 443
-      hostname: keycloak.34.194.59.190.nip.io
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: nipio-tls
-      allowedRoutes:
-        namespaces:
-          from: All
     - name: https-grafana
       protocol: HTTPS
       port: 443
-      hostname: grafana.34.194.59.190.nip.io
+      hostname: grafana.mochthebest.io
       tls:
         mode: Terminate
         certificateRefs:
-          - name: nipio-tls
+          - name: mochthebest-tls
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: https-keycloak
+      protocol: HTTPS
+      port: 443
+      hostname: keycloak.mochthebest.io
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: mochthebest-tls
       allowedRoutes:
         namespaces:
           from: All
 ---
-# ─────────────────────────────────────────────────────
-# HTTPRoute — vote.example.com → voting-app-vote:5000
-# ─────────────────────────────────────────────────────
+# HTTPRoute - vote.mochthebest.io -> voting-app-vote:5000
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -97,15 +85,13 @@ spec:
     - name: voting-app-gateway
       sectionName: http-vote
   hostnames:
-    - vote.example.com
+    - vote.mochthebest.io
   rules:
     - backendRefs:
         - name: voting-app-vote
           port: 5000
 ---
-# ─────────────────────────────────────────────────────
-# HTTPRoute — result.example.com → result:81
-# ─────────────────────────────────────────────────────
+# HTTPRoute - result.mochthebest.io -> result:81
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -116,7 +102,7 @@ spec:
     - name: voting-app-gateway
       sectionName: http-result
   hostnames:
-    - result.example.com
+    - result.mochthebest.io
   rules:
     - backendRefs:
         - name: result
