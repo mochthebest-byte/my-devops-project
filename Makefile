@@ -1,0 +1,127 @@
+# Local Kind development — no AWS required
+# Usage: make <target>
+
+# ─── Cluster ───────────────────────────────────────
+.PHONY: cluster-create cluster-delete cluster-status
+
+cluster-create:
+	kind create cluster --config kind-config.yaml --name voting-app-local
+
+cluster-delete:
+	kind delete cluster --name voting-app-local
+
+cluster-status:
+	@echo "=== Nodes ==="
+	kubectl get nodes -o wide
+	@echo ""
+	@echo "=== Ingress ==="
+	kubectl get ingress -n voting-app 2>/dev/null || echo "(no ingress yet)"
+
+# ─── Ingress ───────────────────────────────────────
+.PHONY: ingress ingress-status
+
+ingress:
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+	# hostNetwork + nodeSelector required because Kind's kindnet CNI
+	# does not support hostPort. Without this, port 80 is unreachable.
+	kubectl patch deployment -n ingress-nginx ingress-nginx-controller \
+		-p '{"spec":{"template":{"spec":{"hostNetwork":true,"nodeSelector":{"kubernetes.io/hostname":"voting-app-local-control-plane"}}}}}'
+	kubectl wait --namespace ingress-nginx --for=condition=ready pod \
+		--selector=app.kubernetes.io/component=controller --timeout=180s
+
+ingress-status:
+	@kubectl get pods -n ingress-nginx -l app.kubernetes.io/component=controller
+
+# ─── Databases ─────────────────────────────────────
+.PHONY: dbs dbs-wait
+
+dbs:
+	helm repo add bitnami https://charts.bitnami.com/bitnami 2>/dev/null; \
+	helm repo update; \
+	kubectl create namespace voting-app --dry-run=client -o yaml | kubectl apply -f -; \
+	helm upgrade --install postgresql bitnami/postgresql \
+		--namespace voting-app --version 16.x --set image.tag=latest \
+		--set auth.database=db --set auth.username=vote_user --set auth.password=testpass; \
+	helm upgrade --install redis bitnami/redis \
+		--namespace voting-app --version 21.x --set image.tag=latest \
+		--set auth.enabled=false
+
+dbs-wait:
+	kubectl wait --namespace voting-app --for=condition=ready pod \
+		-l app.kubernetes.io/instance=postgresql --timeout=120s
+	kubectl wait --namespace voting-app --for=condition=ready pod \
+		-l app.kubernetes.io/instance=redis --timeout=120s
+
+# ─── Build & Deploy ────────────────────────────────
+.PHONY: build deploy deploy-ingress
+
+build:
+	docker build -t vote:latest voting-app-vote/
+	docker build -t result:latest voting-app-result/
+	docker build -t worker:latest voting-app-worker/
+	kind load docker-image vote:latest result:latest worker:latest --name voting-app-local
+
+deploy:
+	helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
+		--set image.repository=vote --set image.tag=latest --set image.pullPolicy=IfNotPresent \
+		--set postgresql.host=postgresql --set redis.host=redis-master
+	helm upgrade --install result voting-app-result/charts/result --namespace voting-app \
+		--set image.repository=result --set image.tag=latest --set image.pullPolicy=IfNotPresent \
+		--set postgresql.host=postgresql
+	helm upgrade --install worker voting-app-worker/charts/worker --namespace voting-app \
+		--set image.repository=worker --set image.tag=latest --set image.pullPolicy=IfNotPresent \
+		--set postgresql.host=postgresql --set redis.host=redis-master
+
+deploy-ingress:
+	kubectl apply -f - << 'EOF'
+	apiVersion: networking.k8s.io/v1
+	kind: Ingress
+	metadata:
+	  name: voting-app-ingress
+	  namespace: voting-app
+	spec:
+	  ingressClassName: nginx
+	  rules:
+	  - host: vote.local
+	    http:
+	      paths:
+	      - path: /
+	        pathType: Prefix
+	        backend:
+	          service:
+	            name: vote
+	            port:
+	              number: 5000
+	  - host: result.local
+	    http:
+	      paths:
+	      - path: /
+	        pathType: Prefix
+	        backend:
+	          service:
+	            name: result
+	            port:
+	              number: 81
+	EOF
+
+# ─── All-in-one ────────────────────────────────────
+.PHONY: all
+
+all: cluster-create ingress dbs dbs-wait build deploy deploy-ingress
+	@echo ""
+	@echo "============================================"
+	@echo "  Local cluster ready!"
+	@echo "  vote.local   -> http://vote.local"
+	@echo "  result.local -> http://result.local"
+	@echo "============================================"
+	@echo "  Add to /etc/hosts:"
+	@echo "  127.0.0.1 vote.local result.local"
+	@echo ""
+
+# ─── Cleanup ───────────────────────────────────────
+.PHONY: clean
+
+clean:
+	kind delete cluster --name voting-app-local 2>/dev/null || true
+	docker network prune -f 2>/dev/null || true
+	@echo "Cleaned up."

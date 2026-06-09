@@ -33,6 +33,10 @@ jobs:
       - name: Install ingress-nginx
         run: |
           kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+          # hostNetwork + nodeSelector required because Kind's kindnet CNI
+          # does not support hostPort.
+          kubectl patch deployment -n ingress-nginx ingress-nginx-controller \
+            -p '{"spec":{"template":{"spec":{"hostNetwork":true,"nodeSelector":{"kubernetes.io/hostname":"voting-app-local-control-plane"}}}}}'
           kubectl wait --namespace ingress-nginx --for=condition=ready pod \
             --selector=app.kubernetes.io/component=controller --timeout=120s
 
