@@ -6,7 +6,24 @@
 - `kind` CLI (`brew install kind` or `go install sigs.k8s.io/kind@latest`)
 - `kubectl`
 - `helm`
-- Ports 80 and 443 free on your host machine
+
+## Port Conflicts
+
+The Kind config maps ports 80/443 to the host. If those ports are in use:
+
+```bash
+# Check what's using port 80
+sudo lsof -i :80
+
+# Delete old Kind clusters if they have port 80 bound
+kind delete cluster --name devops-local
+kind delete cluster --name kind
+kind delete cluster --name rp
+
+# Or use existing cluster and skip 'kind create cluster'
+kind get clusters
+kind export kubeconfig --name <existing-cluster>
+```
 
 ## Step 1: Create Kind Cluster
 
