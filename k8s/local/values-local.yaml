@@ -1,0 +1,56 @@
+# Local (Kind) Helm overrides for all voting-app services
+# Apply with: helm upgrade --install -f values-local.yaml
+#
+# Differences from production (AWS):
+#   - Local: service type NodePort, Ingress ingress-nginx
+#   - Prod:   service type ClusterIP, Gateway API (ALB)
+#   - Local: no TLS (HTTP only)
+#   - Prod:   TLS via cert-manager + ACM
+#   - Local: no External Secrets (plain secrets OK)
+#   - Prod:   External Secrets Operator (AWS Secrets Manager)
+
+# --- vote ---
+vote:
+  ingress:
+    enabled: true
+    host: vote.local
+    className: nginx
+  postgresql:
+    host: postgresql
+  redis:
+    host: redis-master
+  service:
+    type: NodePort
+    port: 5000
+    targetPort: 80
+
+# --- result ---
+result:
+  ingress:
+    enabled: true
+    host: result.local
+    className: nginx
+  postgresql:
+    host: postgresql
+  service:
+    type: NodePort
+    port: 81
+    targetPort: 80
+
+# --- worker ---
+worker:
+  postgresql:
+    host: postgresql
+  redis:
+    host: redis-master
+
+# --- postgresql ---
+postgresql:
+  auth:
+    postgresPassword: localpass
+    password: localpass
+
+# --- redis ---
+redis:
+  auth:
+    enabled: false

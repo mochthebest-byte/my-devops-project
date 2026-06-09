@@ -168,7 +168,12 @@
       "Bash(whois mochthebest.io)",
       "Bash(whois -h whois.nic.io mochthebest.io)",
       "Bash(aws route53 *)",
-      "Bash(dig +short k8s-votingap-votingap-4ac80530c0-91778477.us-east-1.elb.amazonaws.com)"
+      "Bash(dig +short k8s-votingap-votingap-4ac80530c0-91778477.us-east-1.elb.amazonaws.com)",
+      "Bash(xargs -I{} kubectl patch application {} -n argocd --type merge -p '{\"spec\":{\"syncPolicy\":{\"automated\":{\"prune\":true,\"selfHeal\":true}},\"syncOptions\":[\"Force=true\"]}}')",
+      "Bash(aws acm *)",
+      "Bash(openssl req *)",
+      "Bash(terraform destroy *)",
+      "Bash(aws sts get-caller-identity *)"
     ]
   }
 }

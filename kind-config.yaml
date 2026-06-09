@@ -1,6 +1,7 @@
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
+  # Control-plane node with Ingress-ready label + port mappings
   - role: control-plane
     extraPortMappings:
       - containerPort: 80
@@ -15,3 +16,9 @@ nodes:
         nodeRegistration:
           kubeletExtraArgs:
             node-labels: "ingress-ready=true"
+
+  # Worker node 1
+  - role: worker
+
+  # Worker node 2
+  - role: worker

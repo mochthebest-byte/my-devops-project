@@ -1,0 +1,198 @@
+# CI — Integration test on ephemeral Kind cluster
+# Creates a temporary Kind cluster, deploys all charts via Helm,
+# runs tests, then tears everything down.
+#
+# Runs on every push to any branch (not just main).
+name: CI — Kind Integration Test
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+    branches: [main]
+
+env:
+  NAMESPACE: voting-app
+
+jobs:
+  kind-test:
+    name: "Kind: deploy + test"
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - uses: actions/checkout@v4
+
+      # Step 2: Create Kind cluster (3 nodes: 1 cp, 2 workers)
+      - name: Create Kind cluster
+        uses: helm/kind-action@v1
+        with:
+          config: kind-config.yaml
+          cluster_name: voting-app-local
+
+      # Step 3: Install ingress-nginx
+      - name: Install ingress-nginx
+        run: |
+          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+          kubectl wait --namespace ingress-nginx \
+            --for=condition=ready pod \
+            --selector=app.kubernetes.io/component=controller \
+            --timeout=120s
+
+      # Step 4: Add Bitnami Helm repo (for PostgreSQL, Redis)
+      - name: Add Helm repos
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo update
+
+      # Step 5: Install PostgreSQL
+      - name: Install PostgreSQL
+        run: |
+          kubectl create namespace ${{ env.NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
+          helm upgrade --install postgresql bitnami/postgresql \
+            --namespace ${{ env.NAMESPACE }} \
+            --version 16.x \
+            --set image.tag=latest \
+            --set auth.database=db \
+            --set auth.username=vote_user \
+            --set auth.password=testpass
+
+      # Step 6: Install Redis
+      - name: Install Redis
+        run: |
+          helm upgrade --install redis bitnami/redis \
+            --namespace ${{ env.NAMESPACE }} \
+            --version 21.x \
+            --set image.tag=latest \
+            --set auth.enabled=false
+
+      # Step 7: Wait for PostgreSQL and Redis
+      - name: Wait for DBs
+        run: |
+          kubectl wait --namespace ${{ env.NAMESPACE }} \
+            --for=condition=ready pod \
+            -l app.kubernetes.io/instance=postgresql \
+            --timeout=120s
+          kubectl wait --namespace ${{ env.NAMESPACE }} \
+            --for=condition=ready pod \
+            -l app.kubernetes.io/instance=redis \
+            --timeout=120s
+
+      # Step 8: Build Docker images locally (in Kind's registry)
+      - name: Build Docker images
+        run: |
+          # Build vote image
+          docker build -t vote:latest voting-app-vote/
+          # Build result image
+          docker build -t result:latest voting-app-result/
+          # Build worker image
+          docker build -t worker:latest voting-app-worker/
+          # Load images into Kind
+          kind load docker-image vote:latest result:latest worker:latest \
+            --name voting-app-local
+
+      # Step 9: Deploy Helm charts
+      - name: Deploy Helm charts
+        run: |
+          # Vote
+          helm upgrade --install vote voting-app-vote/charts/vote \
+            --namespace ${{ env.NAMESPACE }} \
+            --set image.repository=vote \
+            --set image.tag=latest \
+            --set image.pullPolicy=IfNotPresent \
+            --set postgresql.host=postgresql \
+            --set redis.host=redis-master \
+            --set replicaCount=2
+
+          # Result
+          helm upgrade --install result voting-app-result/charts/result \
+            --namespace ${{ env.NAMESPACE }} \
+            --set image.repository=result \
+            --set image.tag=latest \
+            --set image.pullPolicy=IfNotPresent \
+            --set postgresql.host=postgresql
+
+          # Worker
+          helm upgrade --install worker voting-app-worker/charts/worker \
+            --namespace ${{ env.NAMESPACE }} \
+            --set image.repository=worker \
+            --set image.tag=latest \
+            --set image.pullPolicy=IfNotPresent \
+            --set postgresql.host=postgresql \
+            --set redis.host=redis-master
+
+      # Step 10: Wait for deployments
+      - name: Wait for deployments
+        run: |
+          kubectl rollout status deployment/vote -n ${{ env.NAMESPACE }} --timeout=120s
+          kubectl rollout status deployment/result -n ${{ env.NAMESPACE }} --timeout=120s
+          kubectl rollout status deployment/worker -n ${{ env.NAMESPACE }} --timeout=120s
+
+      # Step 11: Create Ingress for local testing
+      - name: Create Ingress
+        run: |
+          cat <<EOF | kubectl apply -f -
+          apiVersion: networking.k8s.io/v1
+          kind: Ingress
+          metadata:
+            name: voting-app-ingress
+            namespace: ${{ env.NAMESPACE }}
+          spec:
+            ingressClassName: nginx
+            rules:
+              - host: vote.local
+                http:
+                  paths:
+                    - path: /
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: vote
+                          port:
+                            number: 5000
+              - host: result.local
+                http:
+                  paths:
+                    - path: /
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: result
+                          port:
+                            number: 81
+          EOF
+
+      # Step 12: Run integration tests
+      - name: Run integration tests
+        env:
+          NAMESPACE: ${{ env.NAMESPACE }}
+          DEPLOY_VOTE: vote
+          DEPLOY_RESULT: result
+          DEPLOY_WORKER: worker
+          SERVICE_VOTE: vote
+          SERVICE_VOTE_PORT: 80
+          SERVICE_RESULT: result
+        run: |
+          chmod +x voting-app-result/tests/tests.sh
+          # Port-forward vote and result for the test script
+          kubectl port-forward -n ${{ env.NAMESPACE }} svc/vote 5080:5000 &
+          kubectl port-forward -n ${{ env.NAMESPACE }} svc/result 5081:81 &
+          sleep 3
+          # Run tests against local port-forwards
+          SERVICE_VOTE=localhost SERVICE_VOTE_PORT=5080 SERVICE_RESULT=localhost:5081 \
+            voting-app-result/tests/tests.sh
+
+      # Step 13: Cleanup on failure — dump logs
+      - name: Dump logs on failure
+        if: failure()
+        run: |
+          echo "=== Pods ==="
+          kubectl get pods -n ${{ env.NAMESPACE }} -o wide
+          echo "=== Events ==="
+          kubectl get events -n ${{ env.NAMESPACE }} --sort-by='.lastTimestamp' | tail -20
+          echo "=== Vote logs ==="
+          kubectl logs -n ${{ env.NAMESPACE }} -l app.kubernetes.io/name=vote --tail=30
+          echo "=== Result logs ==="
+          kubectl logs -n ${{ env.NAMESPACE }} -l app.kubernetes.io/name=result --tail=30
+          echo "=== Worker logs ==="
+          kubectl logs -n ${{ env.NAMESPACE }} -l app.kubernetes.io/name=worker --tail=30
