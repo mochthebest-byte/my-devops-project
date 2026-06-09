@@ -1,0 +1,30 @@
+# Local (Kind) Grafana — no AWS, no OIDC, HTTP-only
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: standard
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 2Gi
+
+grafana:
+  persistence:
+    enabled: false
+  adminPassword: admin123
+  env:
+    GF_SERVER_ROOT_URL: "http://grafana.nip.io"
+  envValueFrom: {}
+
+alertmanager:
+  alertmanagerSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: standard
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 1Gi
