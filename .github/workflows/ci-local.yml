@@ -1,0 +1,167 @@
+# CI — Local-only pipeline (no AWS dependencies)
+# Builds Docker images, deploys to ephemeral Kind, runs tests.
+# Ignores all AWS secrets and Terraform.
+
+name: CI — Local
+
+on:
+  push:
+    branches: ["*"]
+    paths-ignore:
+      - 'infra-aws/**'
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - 'infra-aws/**'
+
+jobs:
+  build-and-test:
+    name: "Build + Kind + Test"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Create Kind cluster with 3 nodes
+      - name: Create Kind cluster
+        uses: helm/kind-action@v1
+        with:
+          config: kind-config.yaml
+          cluster_name: voting-app-local
+
+      # Install ingress-nginx
+      - name: Install ingress-nginx
+        run: |
+          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+          kubectl wait --namespace ingress-nginx --for=condition=ready pod \
+            --selector=app.kubernetes.io/component=controller --timeout=120s
+
+      # Add Helm repos
+      - name: Add Helm repos
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo update
+
+      # Create namespace
+      - name: Create namespace
+        run: |
+          kubectl create namespace voting-app --dry-run=client -o yaml | kubectl apply -f -
+
+      # Install PostgreSQL
+      - name: Install PostgreSQL
+        run: |
+          helm upgrade --install postgresql bitnami/postgresql \
+            --namespace voting-app --version 16.x --set image.tag=latest \
+            --set auth.database=db --set auth.username=vote_user \
+            --set auth.password=testpass
+
+      # Install Redis
+      - name: Install Redis
+        run: |
+          helm upgrade --install redis bitnami/redis \
+            --namespace voting-app --version 21.x --set image.tag=latest \
+            --set auth.enabled=false
+
+      # Wait for databases
+      - name: Wait for databases
+        run: |
+          kubectl wait --namespace voting-app --for=condition=ready pod \
+            -l app.kubernetes.io/instance=postgresql --timeout=180s
+          kubectl wait --namespace voting-app --for=condition=ready pod \
+            -l app.kubernetes.io/instance=redis --timeout=180s
+
+      # Build Docker images
+      - name: Build Docker images
+        run: |
+          docker build -t vote:latest voting-app-vote/
+          docker build -t result:latest voting-app-result/
+          docker build -t worker:latest voting-app-worker/
+
+      # Load images into Kind
+      - name: Load images into Kind
+        run: |
+          kind load docker-image vote:latest result:latest worker:latest \
+            --name voting-app-local
+
+      # Deploy Helm charts
+      - name: Deploy Helm charts
+        run: |
+          helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
+            --set image.repository=vote --set image.tag=latest \
+            --set image.pullPolicy=IfNotPresent \
+            --set postgresql.host=postgresql --set redis.host=redis-master
+          helm upgrade --install result voting-app-result/charts/result \
+            --namespace voting-app --set image.repository=result \
+            --set image.tag=latest --set image.pullPolicy=IfNotPresent \
+            --set postgresql.host=postgresql
+          helm upgrade --install worker voting-app-worker/charts/worker \
+            --namespace voting-app --set image.repository=worker \
+            --set image.tag=latest --set image.pullPolicy=IfNotPresent \
+            --set postgresql.host=postgresql --set redis.host=redis-master
+
+      # Wait for deployments
+      - name: Wait for deployments
+        run: |
+          kubectl rollout status deployment/vote -n voting-app --timeout=120s
+          kubectl rollout status deployment/result -n voting-app --timeout=120s
+          kubectl rollout status deployment/worker -n voting-app --timeout=120s
+          kubectl get pods -n voting-app -o wide
+
+      # Create Ingress
+      - name: Create Ingress
+        run: |
+          kubectl apply -f - << 'EOF'
+          apiVersion: networking.k8s.io/v1
+          kind: Ingress
+          metadata:
+            name: voting-app-ingress
+            namespace: voting-app
+          spec:
+            ingressClassName: nginx
+            rules:
+              - host: vote.local
+                http:
+                  paths:
+                    - path: /
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: vote
+                          port:
+                            number: 5000
+              - host: result.local
+                http:
+                  paths:
+                    - path: /
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: result
+                          port:
+                            number: 81
+          EOF
+
+      # Port-forward and run integration tests
+      - name: Run integration tests
+        run: |
+          chmod +x voting-app-result/tests/tests.sh
+          kubectl port-forward -n voting-app svc/vote 5080:5000 &
+          kubectl port-forward -n voting-app svc/result 5081:81 &
+          sleep 3
+          SERVICE_VOTE=localhost SERVICE_VOTE_PORT=5080 SERVICE_RESULT=localhost:5081 \
+            voting-app-result/tests/tests.sh
+
+      # Dump logs on failure
+      - name: Dump logs on failure
+        if: failure()
+        run: |
+          echo "=== Pods ==="
+          kubectl get pods -n voting-app -o wide
+          echo "=== Events ==="
+          kubectl get events -n voting-app --sort-by='.lastTimestamp' | tail -20
+          echo "=== Vote logs ==="
+          kubectl logs -n voting-app -l app.kubernetes.io/name=vote --tail=30
+          echo "=== Result logs ==="
+          kubectl logs -n voting-app -l app.kubernetes.io/name=result --tail=30
+          echo "=== Worker logs ==="
+          kubectl logs -n voting-app -l app.kubernetes.io/name=worker --tail=30
