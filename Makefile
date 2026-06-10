@@ -119,7 +119,7 @@ all: cluster-create ingress dbs dbs-wait build deploy deploy-ingress
 	@echo ""
 
 # ─── Tunnel ────────────────────────────────────────
-.PHONY: tunnel tunnel-stop
+.PHONY: tunnel tunnel-all tunnel-stop
 
 tunnel:
 	@echo "=== Starting Pinggy tunnel for vote ==="
@@ -128,8 +128,14 @@ tunnel:
 	@echo ""
 	scripts/tunnel-pinggy.sh
 
+tunnel-all:
+	@echo "=== Starting ALL Pinggy tunnels (vote, result, grafana, keycloak) ==="
+	@echo "Логи: ~/pinggy-tunnels/"
+	@echo ""
+	scripts/tunnel-all.sh
+
 tunnel-stop:
-	-pkill -f "a.pinggy.io" 2>/dev/null
+	-pkill -f "a.pinggy.io" 2>/dev/null || true
 	-rm -f /tmp/pinggy-tunnel.pid
 	@echo "Tunnel stopped"
 
