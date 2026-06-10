@@ -1,0 +1,19 @@
+# ─── OCI Credentials (obtain from OCI Console → Profile → API Keys) ───
+tenancy_ocid    = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+user_ocid       = "ocid1.user.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+fingerprint     = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
+private_key_path = "~/.oci/oci_api_key.pem"
+
+# ─── Compartment (use root or create separate) ────
+compartment_ocid = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+region           = "eu-frankfurt-1"
+
+# ─── OKE Options ─────────────────────────────────────
+oke_node_shape      = "VM.Standard.A1.Flex"   # ARM, free tier
+oke_node_ocpus      = 4                        # Max 4 for free
+oke_node_memory_gb  = 24                       # Max 24 for free
+oke_node_count      = 2                        # Number of nodes
+oke_k8s_version     = "v1.31.1"
+
+# ─── SSH (optional) ─────────────────────────────────
+# ssh_public_key = "ssh-rsa AAAAB3..."

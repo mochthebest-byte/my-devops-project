@@ -1,0 +1,84 @@
+# CI for Oracle Cloud Infrastructure (OCI)
+# Builds Docker images → pushes to OCI Container Registry → deploys via Helm
+
+name: CI — OCI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'infra-aws/**'
+      - 'infra-oci/**'
+
+env:
+  OCI_REGION: eu-frankfurt-1
+  OCI_REPOSITORY: voting-app
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Login to OCI Container Registry
+      - name: Login to OCI Registry
+        run: |
+          docker login ${{ env.OCI_REGION }}.ocir.io \
+            --username ${{ secrets.OCI_USERNAME }} \
+            --password ${{ secrets.OCI_AUTH_TOKEN }}
+
+      # Build & push images
+      - name: Build & Push — Vote
+        run: |
+          IMG=${{ env.OCI_REGION }}.ocir.io/${{ secrets.OCI_NAMESPACE }}/${{ env.OCI_REPOSITORY }}/vote:${{ github.sha }}
+          docker build -t $IMG voting-app-vote/
+          docker push $IMG
+
+      - name: Build & Push — Result
+        run: |
+          IMG=${{ env.OCI_REGION }}.ocir.io/${{ secrets.OCI_NAMESPACE }}/${{ env.OCI_REPOSITORY }}/result:${{ github.sha }}
+          docker build -t $IMG voting-app-result/
+          docker push $IMG
+
+      - name: Build & Push — Worker
+        run: |
+          IMG=${{ env.OCI_REGION }}.ocir.io/${{ secrets.OCI_NAMESPACE }}/${{ env.OCI_REPOSITORY }}/worker:${{ github.sha }}
+          docker build -t $IMG voting-app-worker/
+          docker push $IMG
+
+      # Setup kubectl
+      - name: Setup kubectl
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+
+      # Deploy via Helm
+      - name: Deploy — Vote
+        run: |
+          helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
+            --set image.repository=${{ env.OCI_REGION }}.ocir.io/${{ secrets.OCI_NAMESPACE }}/${{ env.OCI_REPOSITORY }}/vote \
+            --set image.tag=${{ github.sha }} \
+            --set postgresql.host=postgresql --set redis.host=redis-master
+
+      - name: Deploy — Result
+        run: |
+          helm upgrade --install result voting-app-result/charts/result --namespace voting-app \
+            --set image.repository=${{ env.OCI_REGION }}.ocir.io/${{ secrets.OCI_NAMESPACE }}/${{ env.OCI_REPOSITORY }}/result \
+            --set image.tag=${{ github.sha }} \
+            --set postgresql.host=postgresql
+
+      - name: Deploy — Worker
+        run: |
+          helm upgrade --install worker voting-app-worker/charts/worker --namespace voting-app \
+            --set image.repository=${{ env.OCI_REGION }}.ocir.io/${{ secrets.OCI_NAMESPACE }}/${{ env.OCI_REPOSITORY }}/worker \
+            --set image.tag=${{ github.sha }} \
+            --set postgresql.host=postgresql --set redis.host=redis-master
+
+      # Verify
+      - name: Verify deployment
+        run: |
+          kubectl rollout status deployment/vote -n voting-app --timeout=120s
+          kubectl rollout status deployment/result -n voting-app --timeout=120s
+          kubectl rollout status deployment/worker -n voting-app --timeout=120s

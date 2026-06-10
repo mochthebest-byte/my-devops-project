@@ -1,0 +1,48 @@
+# OCI — Grafana values for Oracle Kubernetes Engine
+# Заміни <domain> на свій домен
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: oci-bv
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+
+grafana:
+  persistence:
+    storageClassName: oci-bv
+    size: 5Gi
+  adminPassword: admin123
+  env:
+    GF_SERVER_ROOT_URL: "https://grafana.<domain>"
+    GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+    GF_AUTH_GENERIC_OAUTH_NAME: "Keycloak"
+    GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "grafana"
+    GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email"
+    GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+    GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://keycloak.<domain>/realms/myapp/protocol/openid-connect/auth"
+    GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://keycloak.<domain>/realms/myapp/protocol/openid-connect/token"
+    GF_AUTH_GENERIC_OAUTH_API_URL: "https://keycloak.<domain>/realms/myapp/protocol/openid-connect/userinfo"
+    GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE: "false"
+    GF_SERVER_ROOT_URL: "https://grafana.<domain>"
+    GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(realm_access.roles[*], 'grafana-admin') && 'Admin' || contains(realm_access.roles[*], 'grafana-editor') && 'Editor' || 'Viewer'"
+    GF_AUTH_SIGNOUT_REDIRECT_URL: "https://keycloak.<domain>/realms/myapp/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fgrafana.<domain>%2Flogin"
+  envValueFrom:
+    GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
+      secretKeyRef:
+        name: grafana-oidc-secret
+        key: client-secret
+
+alertmanager:
+  alertmanagerSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: oci-bv
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
