@@ -118,6 +118,21 @@ all: cluster-create ingress dbs dbs-wait build deploy deploy-ingress
 	@echo "  127.0.0.1 vote.local result.local"
 	@echo ""
 
+# ─── Tunnel ────────────────────────────────────────
+.PHONY: tunnel tunnel-stop
+
+tunnel:
+	@echo "=== Starting Pinggy tunnel for vote ==="
+	@echo "URL буде в ~/pinggy-auto.log"
+	@echo "Натисни Ctrl+C для зупинки"
+	@echo ""
+	scripts/tunnel-pinggy.sh
+
+tunnel-stop:
+	-pkill -f "a.pinggy.io" 2>/dev/null
+	-rm -f /tmp/pinggy-tunnel.pid
+	@echo "Tunnel stopped"
+
 # ─── Cleanup ───────────────────────────────────────
 .PHONY: clean
 
