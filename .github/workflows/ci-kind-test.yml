@@ -163,24 +163,85 @@ jobs:
           EOF
 
       # Step 12: Run integration tests
+      #
+      # Note: the result page is an AngularJS SPA that loads vote data via
+      # WebSocket — curl cannot see "1 vote" in the raw HTML (it gets
+      # Angular template variables {{aPercent}} instead).
+      #
+      # Instead, we verify the end-to-end flow by:
+      #   1. Check vote frontend serves HTTP
+      #   2. Cast a vote via POST
+      #   3. Query PostgreSQL directly — if the vote appears, the worker
+      #      processed it successfully
+      #   4. Check result app is serving (but not checking WebSocket content)
+      #
       - name: Run integration tests
         env:
           NAMESPACE: ${{ env.NAMESPACE }}
-          DEPLOY_VOTE: vote
-          DEPLOY_RESULT: result
-          DEPLOY_WORKER: worker
-          SERVICE_VOTE: vote
-          SERVICE_VOTE_PORT: 80
-          SERVICE_RESULT: result
         run: |
-          chmod +x voting-app-result/tests/tests.sh
-          # Port-forward vote and result for the test script
-          kubectl port-forward -n ${{ env.NAMESPACE }} svc/vote 5080:5000 &
-          kubectl port-forward -n ${{ env.NAMESPACE }} svc/result 5081:81 &
+          set -euo pipefail
+
+          # ── PHASE 1: Vote frontend ─────────────────────
+          kubectl port-forward -n "$NAMESPACE" svc/vote 5080:5000 &
+          VOTE_PF=$!
+          kubectl port-forward -n "$NAMESPACE" svc/result 5081:81 &
+          RESULT_PF=$!
           sleep 3
-          # Run tests against local port-forwards
-          SERVICE_VOTE=localhost SERVICE_VOTE_PORT=5080 SERVICE_RESULT=localhost:5081 \
-            voting-app-result/tests/tests.sh
+
+          echo "=== PHASE 1: Check vote serves HTTP ==="
+          if ! timeout 10 bash -c 'while ! curl -sS -o /dev/null http://localhost:5080 2>/dev/null; do sleep 1; done'; then
+            echo "FAIL: vote not serving"
+            exit 1
+          fi
+          echo "PASS: vote is serving"
+
+          # ── PHASE 2: Cast vote ─────────────────────────
+          echo "=== PHASE 2: Cast vote (POST vote=b) ==="
+          if ! curl -sS -X POST --data "vote=b" "http://localhost:5080" > /dev/null; then
+            echo "FAIL: could not POST vote"
+            exit 1
+          fi
+          echo "PASS: vote cast"
+
+          # ── PHASE 3: Verify worker processed it via DB ─
+          echo "=== PHASE 3: Check PostgreSQL for vote ==="
+          # Bitnami PostgreSQL uses release name as secret; key is 'password'
+          DB_PASS=$(kubectl get secret -n "$NAMESPACE" postgresql -o jsonpath='{.data.password}' | base64 -d)
+          for i in $(seq 1 15); do
+            VOTE_COUNT=$(kubectl exec -n "$NAMESPACE" postgresql-0 -- bash -c \
+              "PGPASSWORD='$DB_PASS' psql -U vote_user -d db -t -c \"SELECT COUNT(*) FROM votes WHERE vote='b';\"" 2>/dev/null || echo "0")
+            VOTE_COUNT=$(echo "$VOTE_COUNT" | tr -d ' ')
+            if [ "${VOTE_COUNT:-0}" -ge 1 ]; then
+              echo "PASS: worker processed vote (found $VOTE_COUNT vote(s) in DB)"
+              break
+            fi
+            echo "  Waiting for worker... (attempt $i/15)"
+            sleep 2
+          done
+
+          if [ "${VOTE_COUNT:-0}" -lt 1 ]; then
+            echo "FAIL: vote not found in DB after 30s"
+            echo "--- Worker logs ---"
+            kubectl logs -n "$NAMESPACE" -l app.kubernetes.io/name=worker --tail=20 2>/dev/null || true
+            kill $VOTE_PF $RESULT_PF 2>/dev/null || true
+            exit 1
+          fi
+
+          # ── PHASE 4: Check result page is serving ──────
+          echo "=== PHASE 4: Check result page serves HTTP ==="
+          if ! timeout 5 bash -c 'while ! curl -sS -o /dev/null http://localhost:5081 2>/dev/null; do sleep 1; done'; then
+            echo "FAIL: result not serving"
+            kill $VOTE_PF $RESULT_PF 2>/dev/null || true
+            exit 1
+          fi
+          echo "PASS: result is serving"
+
+          # ── DONE ──────────────────────────────────────
+          kill $VOTE_PF $RESULT_PF 2>/dev/null || true
+          echo ""
+          echo "=========================================="
+          echo "  ALL TESTS PASSED"
+          echo "=========================================="
 
       # Step 13: Cleanup on failure — dump logs
       - name: Dump logs on failure
