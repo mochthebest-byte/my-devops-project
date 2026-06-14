@@ -1,3 +1,20 @@
+# ═══════════════════════════════════════════════════════════════
+#  Keycloak Realm — myapp
+# ═══════════════════════════════════════════════════════════════
+#
+#  ⚠️  Безпека секретів:
+#     Client secret у цьому файлі — ПЛАЦЕБО.
+#     Реальний секрет зберігається в AWS Secrets Manager
+#     (/my-app/grafana-oidc) і постачається через ESO.
+#
+#     Після деплою:
+#       kubectl -n keycloak exec deploy/keycloak -- \
+#         /opt/keycloak/bin/kcadm.sh update clients/CLIENT_UUID \
+#         -r myapp -s secret="$(kubectl get secret grafana-oidc-secret \
+#           -n monitoring -o jsonpath='{.data.client-secret}' | base64 -d)"
+#
+#     У проді: автоматизувати через initContainer + kcadm.sh
+# ═══════════════════════════════════════════════════════════════
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -59,7 +76,7 @@ data:
           "enabled": true,
           "protocol": "openid-connect",
           "publicClient": false,
-          "secret": "UHHrSI9z9wXbPD1ZL0UCnNMltfnR6U+TUguXdyKwNK0=",
+          "secret": "CHANGE_ME_VIA_SECRETS_MANAGER",
           "redirectUris": [
             "https://grafana.34.194.59.190.nip.io/login/generic_oauth"
           ],

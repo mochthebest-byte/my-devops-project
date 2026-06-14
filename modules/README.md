@@ -1,21 +1,12 @@
-# Custom Terraform Modules
+# Terraform Modules — Library
 
-Reusable Terraform modules for the voting-app infrastructure.
+Shared and reusable Terraform modules for the voting-app infrastructure.
 
-## Available Modules
+## Active Modules
 
-### `my-app-sg`
+| Module | Location | Purpose |
+|--------|----------|---------|
+| `app-sg` | `infra-aws/modules/app-sg` | Custom security group for EKS workers (власний модуль) |
 
-Security group module for application workloads.
-
-**Usage:**
-
-```hcl
-module "my_app_sg" {
-  source = "./modules/my-app-sg"
-  vpc_id = module.vpc.vpc_id
-  # ... variables
-}
-```
-
-**Variables:** name, description, vpc_id, ingress_rules, egress_rules, tags
+> **Note:** `my-app-sg` at root level was removed — it was an unused duplicate.
+> Use `infra-aws/modules/app-sg` for EKS node security groups.

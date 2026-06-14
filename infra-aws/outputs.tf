@@ -27,3 +27,11 @@ output "alb_dns" {
   description = "ALB DNS name (after gateway is created)"
   value       = "Run: kubectl get gateway -n voting-app voting-app-gateway -o jsonpath='{.status.addresses[0].value}'"
 }
+
+# ─── ECR ──────────────────────────────────────────────
+output "ecr_repositories" {
+  description = "ECR repository URLs"
+  value = {
+    for name, repo in aws_ecr_repository.this : name => repo.repository_url
+  }
+}
