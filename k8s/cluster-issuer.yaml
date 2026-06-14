@@ -41,6 +41,11 @@ metadata:
   name: selfsigned-issuer
 spec:
   selfSigned: {}
+# ═══════════════════════════════════════════════════════
+#  Сертифікати
+# ═══════════════════════════════════════════════════════
+
+# Self-signed — для *.nip.io (тестування без домену)
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -54,4 +59,21 @@ spec:
     - "*.nip.io"
   issuerRef:
     name: selfsigned-issuer
+    kind: ClusterIssuer
+
+# Let's Encrypt Staging — для *.mochthebest.io (тестування HTTPS)
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: voting-app-tls-le
+  namespace: voting-app
+spec:
+  secretName: voting-app-tls-le
+  commonName: "*.mochthebest.io"
+  dnsNames:
+    - "*.mochthebest.io"
+    - "mochthebest.io"
+  issuerRef:
+    name: letsencrypt-staging
     kind: ClusterIssuer

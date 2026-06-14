@@ -8,7 +8,16 @@ AWS infrastructure for the voting-app EKS cluster, managed via Terraform.
 |--------|--------|---------|
 | `vpc` | `terraform-aws-modules/vpc/aws` (~> 5.0) | VPC with public/private subnets, NAT gateway |
 | `eks` | `terraform-aws-modules/eks/aws` (~> 20.0) | EKS cluster with managed node groups |
-| `my_app_sg` | `./modules/my-app-sg` | Custom application security group |
+| `app_sg` | `./modules/app-sg` | Custom application security group (власний модуль) |
+
+## Other Resources
+
+| File | Resource | Purpose |
+|------|----------|---------|
+| `ecr.tf` | `aws_ecr_repository` × 3 | ECR for vote/result/worker images |
+| `dns.tf` | Route53 zone + ACM cert | DNS for `mochthebest.io`, wildcard HTTPS cert |
+| `budget.tf` | `aws_budgets_budget` | $50/month alert at 80% and 100% |
+| `secrets.tf` | Secrets Manager + random password | `/my-app/grafana-oidc` for OIDC client secret |
 
 ## IAM / OIDC
 

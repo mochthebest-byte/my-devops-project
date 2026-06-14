@@ -35,3 +35,14 @@ output "ecr_repositories" {
     for name, repo in aws_ecr_repository.this : name => repo.repository_url
   }
 }
+
+# ─── DNS ────────────────────────────────────────────────
+output "dns_nameservers" {
+  description = "Route53 nameservers — вказати в реєстраторі домену"
+  value       = aws_route53_zone.main.name_servers
+}
+
+output "acm_certificate_arn" {
+  description = "ACM wildcard certificate ARN for HTTPS listener"
+  value       = aws_acm_certificate.wildcard.arn
+}
