@@ -96,14 +96,24 @@ button.b{
   margin-bottom: 10px;
   text-align: left;
   padding-left: 50px;
+
+  /* ── Анімація ─────────────────────── */
+  transition: all 200ms ease-in-out;
+  position: relative;
+  overflow: hidden;
 }
 
+/* ── Hover: підсвітка ─────────────── */
 #choice button.a:hover{
   background-color: #1488c6;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 #choice button.b:hover{
   background-color: #00a2a1;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 #choice button.a:focus{
@@ -112,6 +122,62 @@ button.b{
 
 #choice button.b:focus{
   background-color: #00a2a1;
+}
+
+/* ── Active: натискання ────────────── */
+#choice button:active {
+  transform: scale(0.96);
+}
+
+/* ── Disabled: після голосування ──── */
+#choice button:disabled {
+  cursor: default;
+  opacity: 1 !important;
+}
+
+/* ── Pulse-анімація для активної кнопки ── */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(26, 170, 248, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(26, 170, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(26, 170, 248, 0); }
+}
+
+#choice button.a:disabled {
+  animation: pulse 1.5s infinite;
+}
+
+#choice button.b:disabled {
+  animation: pulse 1.5s infinite;
+}
+
+#choice button i {
+  opacity: 0;
+  animation: fadeInCheck 0.4s ease-in-out forwards;
+}
+
+@keyframes fadeInCheck {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Spinner під час сабміту ────────── */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+form.submitting button::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -10px;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
 #background-stats{

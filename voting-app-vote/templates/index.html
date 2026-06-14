@@ -29,6 +29,16 @@
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
+    <script>
+      $(function() {
+        // ── Спінер при сабміті ─────────────────────
+        $("#choice").on("submit", function() {
+          $(this).addClass("submitting");
+          $(this).find("button").prop("disabled", true);
+        });
+      });
+    </script>
+
     {% if vote %}
     <script>
       var vote = "{{vote}}";
