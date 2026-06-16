@@ -1,0 +1,103 @@
+# ═══════════════════════════════════════════════════════════════
+#  Endpoint Syncer — cross-namespace endpoint sync для proxy
+#  ⚠️  Потрібен тільки при Ingress-підході.
+#      З Gateway API HTTPRoute створюється в namespace сервісу,
+#      тому proxy-сервіси не потрібні.
+# ═══════════════════════════════════════════════════════════════
+{{- if .Values.endpointSyncer.enabled }}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.endpointSyncer.serviceAccountName }}
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Values.endpointSyncer.serviceAccountName }}
+rules:
+  - apiGroups: [""]
+    resources: [endpoints, pods]
+    verbs: [get, list, watch]
+  - apiGroups: [""]
+    resources: [endpoints]
+    verbs: [create, patch, apply]
+    resourceNames:
+{{- range .Values.endpointSyncer.targets }}
+      - {{ .forwardName }}
+{{- end }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ .Values.endpointSyncer.serviceAccountName }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Values.endpointSyncer.serviceAccountName }}
+    namespace: {{ $.Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Values.endpointSyncer.serviceAccountName }}
+  namespace: {{ $.Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Values.endpointSyncer.serviceAccountName }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Values.endpointSyncer.serviceAccountName }}
+    namespace: {{ $.Release.Namespace }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.endpointSyncer.name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  replicas: {{ .Values.endpointSyncer.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.endpointSyncer.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.endpointSyncer.name }}
+    spec:
+      serviceAccountName: {{ .Values.endpointSyncer.serviceAccountName }}
+      containers:
+      - name: syncer
+        image: {{ .Values.endpointSyncer.image.repository }}:{{ .Values.endpointSyncer.image.tag }}
+        command:
+        - /bin/bash
+        - -c
+        - |
+          function sync_ep() {
+            local name=$1 ns=$2 namespace=$3 port=$4
+            local ep_name="${name}-forward"
+            local ip=$(kubectl get pods -n "$ns" -l "$namespace" -o jsonpath='{.items[0].status.podIP}' 2>/dev/null || echo "")
+            if [ -z "$ip" ]; then
+              ip=$(kubectl get endpoints -n "$ns" "$name" -o jsonpath='{.subsets[0].addresses[0].ip}' 2>/dev/null || echo "")
+            fi
+            if [ -n "$ip" ] && [ "$ip" != "0.0.0.0" ]; then
+              kubectl patch endpoints -n voting-app "$ep_name" --type=json \
+                -p="[{\"op\":\"replace\",\"path\":\"/subsets/0/addresses/0/ip\",\"value\":\"$ip\"}]" 2>/dev/null && \
+                echo "[$(date)] $ep_name -> $ip:$port" && return 0
+              printf '{"apiVersion":"v1","kind":"Endpoints","metadata":{"name":"%s","namespace":"voting-app"},"subsets":[{"addresses":[{"ip":"%s"}],"ports":[{"port":%d,"protocol":"TCP"}]}]}\n' "$ep_name" "$ip" "$port" | kubectl create -f - 2>/dev/null && \
+                echo "[$(date)] $ep_name created $ip:$port"
+            fi
+          }
+          echo "Endpoint syncer started"
+          while true; do
+          {{- range .Values.endpointSyncer.targets }}
+            sync_ep "{{ .name }}" "{{ .namespace }}" "{{ .labelSelector }}" {{ .port }}
+          {{- end }}
+            sleep {{ .Values.endpointSyncer.intervalSeconds }}
+          done
+{{- end }}

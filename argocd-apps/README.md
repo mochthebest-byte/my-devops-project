@@ -12,7 +12,7 @@ Each `.yaml` file declares an ArgoCD `Application` resource that points to a Hel
 | `voting-app.yaml` | Vote service | `mochthebest-byte/gitops/apps/vote` |
 | `result.yaml` | Result service | `mochthebest-byte/gitops/apps/result` |
 | `worker.yaml` | Worker service | `mochthebest-byte/gitops/apps/worker` |
-| `gateway-config.yaml` | Gateway + infra | `k8s/` directory |
+| `gateway-config.yaml` | Gateway + infra | `charts/gateway-config` Helm chart |
 | `keycloak.yaml` | Keycloak SSO | `keycloak/charts/keycloak` |
 | `keycloak-postgresql.yaml` | Keycloak DB | bitnami/postgresql chart |
 | `postgresql.yaml` | Voting DB | bitnami/postgresql chart |

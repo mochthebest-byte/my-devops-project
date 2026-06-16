@@ -1,27 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gateway-config
+  name: root-app
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/mochthebest-byte/my-devops-project.git
     targetRevision: HEAD
-    path: charts/gateway-config
-    helm:
-      values: |
-        enabled: true
-        endpointSyncer:
-          enabled: false
-        tls:
-          enabled: false
+    path: argocd-apps
+    directory:
+      exclude: "{root-app.yaml,README.md}"
   destination:
     server: https://kubernetes.default.svc
-    namespace: voting-app
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

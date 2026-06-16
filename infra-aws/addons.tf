@@ -41,6 +41,14 @@ data "aws_iam_policy_document" "lb_controller_extra" {
     resources = ["*"]
   }
 }
+  statement {
+    actions = [
+      "acm:DescribeCertificate",
+      "acm:ListCertificates",
+      "acm:GetCertificate",
+    ]
+    resources = ["*"]
+  }
 
 resource "aws_iam_policy" "lb_controller_extra" {
   name   = "${var.project_name}-lb-controller-extra"
@@ -83,6 +91,10 @@ resource "helm_release" "lb_controller" {
   set {
     name  = "vpcId"
     value = module.vpc.vpc_id
+  }
+  set {
+    name  = "defaultTargetType"
+    value = "ip"
   }
 
   depends_on = [aws_eks_addon.vpc_cni]
@@ -160,11 +172,12 @@ resource "aws_iam_role_policy_attachment" "eso_secrets" {
 }
 
 resource "helm_release" "external_secrets" {
-  name       = "external-secrets"
-  namespace  = "external-secrets"
-  repository = "https://charts.external-secrets.io"
-  chart      = "external-secrets"
-  version    = "~> 0.14"
+  name             = "external-secrets"
+  namespace        = "external-secrets"
+  create_namespace = true
+  repository       = "https://charts.external-secrets.io"
+  chart            = "external-secrets"
+  version          = "~> 0.14"
 
   set {
     name  = "installCRDs"
@@ -183,11 +196,14 @@ resource "helm_release" "external_secrets" {
     value = aws_iam_role.eso.arn
   }
 
-  depends_on = [helm_release.lb_controller]
+  depends_on = [helm_release.lb_controller, aws_eks_node_group.main]
 }
 
 # ══════════════════════════════════════════════════════════
 #  ExternalDNS — створює DNS-записи в Route53
+#
+#  ⚠️  Залежить від LB Controller webhook, який готовий
+#      тільки після того, як ноди запустились.
 # ══════════════════════════════════════════════════════════
 data "aws_iam_policy_document" "external_dns" {
   statement {
@@ -250,6 +266,10 @@ resource "helm_release" "external_dns" {
   set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
     value = aws_iam_role.external_dns.arn
+  }
+  set {
+    name  = "service.enabled"
+    value = "false"
   }
   set {
     name  = "aws.region"

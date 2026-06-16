@@ -26,7 +26,7 @@ admin:
   user: admin
   password: admin123
 
-hostname: keycloak.34.194.59.190.nip.io
+hostname: keycloak.mochthebest.pp.ua
 
 gateway:
   name: voting-app-gateway
@@ -40,3 +40,68 @@ resources:
   limits:
     memory: 2Gi
     cpu: 1000m
+
+# ─── Realm конфігурація (myapp) ──────────────────────────
+realm:
+  name: myapp
+  displayName: MyApp
+  loginWithEmailAllowed: true
+  registrationAllowed: false
+  sslRequired: external
+
+  users:
+    - username: admin
+      enabled: true
+      email: admin@example.com
+      firstName: Admin
+      lastName: Keycloak
+      credentials:
+        type: password
+        value: admin123
+        temporary: false
+      realmRoles: ["grafana-admin"]
+    - username: user
+      enabled: true
+      email: user@example.com
+      firstName: Regular
+      lastName: User
+      credentials:
+        type: password
+        value: user123
+        temporary: false
+      realmRoles: ["grafana-editor"]
+
+  roles:
+    - name: grafana-admin
+      description: Grafana Administrator — maps to Admin role in Grafana
+    - name: grafana-editor
+      description: Grafana Editor — maps to Editor role in Grafana
+
+  clients:
+    - clientId: grafana
+      enabled: true
+      protocol: openid-connect
+      publicClient: false
+      secret: CHANGE_ME_VIA_SECRETS_MANAGER
+      redirectUris:
+        - https://grafana.mochthebest.pp.ua/login/generic_oauth
+      webOrigins: ["+"]
+      standardFlowEnabled: true
+      implicitFlowEnabled: false
+      directAccessGrantsEnabled: false
+      serviceAccountsEnabled: false
+      fullScopeAllowed: true
+      attributes:
+        post.logout.redirect.uris: "+"
+      protocolMappers:
+        - name: realm roles
+          protocol: openid-connect
+          protocolMapper: oidc-usermodel-realm-role-mapper
+          consentRequired: false
+          config:
+            multivalued: true
+            userinfo.token.claim: true
+            id.token.claim: true
+            access.token.claim: true
+            claim.name: roles
+            jsonType.label: String

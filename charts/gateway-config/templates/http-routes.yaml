@@ -1,0 +1,29 @@
+{{- if .Values.enabled }}
+# ═══════════════════════════════════════════════════════════════
+#  HTTPRoutes — генеруються з .Values.routes
+# ═══════════════════════════════════════════════════════════════
+{{- range $name, $route := .Values.routes }}
+{{- if $route.enabled }}
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: {{ $name }}-route
+  namespace: {{ $route.namespace }}
+  {{- if $.Values.externalDNS.enabled }}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "{{ $name }}.{{ $.Values.domain }}"
+  {{- end }}
+spec:
+  parentRefs:
+    - name: {{ $.Values.gateway.name }}
+      namespace: {{ $.Values.gateway.namespace }}
+  hostnames:
+{{ toYaml $route.hostnames | indent 4 }}
+  rules:
+    - backendRefs:
+        - name: {{ $route.serviceName }}
+          port: {{ $route.port }}
+{{- end }}
+{{- end }}
+{{- end }}

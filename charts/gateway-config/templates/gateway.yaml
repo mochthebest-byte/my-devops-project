@@ -1,0 +1,58 @@
+{{- if .Values.enabled }}
+# ═══════════════════════════════════════════════════════════════
+#  GatewayClass — AWS ALB
+# ═══════════════════════════════════════════════════════════════
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: {{ .Values.gateway.className }}
+spec:
+  controllerName: gateway.k8s.aws/alb
+  description: "AWS ALB — створює Application Load Balancer через Gateway API"
+
+# ═══════════════════════════════════════════════════════════════
+#  Gateway — один ALB на всі сервіси
+# ═══════════════════════════════════════════════════════════════
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.gateway.name }}
+  namespace: {{ .Values.gateway.namespace }}
+  annotations:
+    alb.ingress.kubernetes.io/scheme: {{ .Values.gateway.scheme }}
+    alb.ingress.kubernetes.io/target-type: {{ .Values.gateway.targetType }}
+    {{- if .Values.externalDNS.enabled }}
+    external-dns.alpha.kubernetes.io/hostname: {{ tpl .Values.externalDNS.hostname $ }}
+    {{- end }}
+    {{- if and (not .Values.tls.secretName) .Values.tls.certificateArn }}
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.tls.certificateArn }}
+    {{- end }}
+spec:
+  gatewayClassName: {{ .Values.gateway.className }}
+  listeners:
+    # ── HTTP ────────────────────────────────────────────
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+    {{- if .Values.tls.enabled }}
+    # ── HTTPS ───────────────────────────────────────────
+    - name: https
+      protocol: HTTPS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        {{- if or .Values.tls.secretName (not .Values.tls.secretName) }}
+        certificateRefs:
+          - name: "{{ .Values.tls.secretName | default "voting-app-tls" }}"
+            kind: Secret
+        {{- end }}
+    {{- end }}
+{{- end }}
