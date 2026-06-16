@@ -84,4 +84,4 @@ spec:
       volumes:
         - name: realm-import
           configMap:
-            name: keycloak-realm-myapp
+            name: keycloak-realm-{{ .Values.realm.name }}

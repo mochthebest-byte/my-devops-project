@@ -26,12 +26,28 @@ module "eks" {
   control_plane_subnet_ids = module.vpc.public_subnets
 
   # Без публічного доступу до API (безпека)
-  cluster_endpoint_public_access = true  # kubectl має працювати
+  cluster_endpoint_public_access  = true # kubectl має працювати
   cluster_endpoint_private_access = true
 
   # EBS CSI Driver — додамо нижче
   # Node Security Group
   node_security_group_id = module.app_sg.node_security_group_id
+
+  # Access Entry для terraform-user (замість старого aws-auth)
+  access_entries = {
+    terraform_user = {
+      kubernetes_groups = []
+      principal_arn     = "arn:aws:iam::765776786215:user/terraform-user"
+      policy_associations = {
+        admins = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
+    }
+  }
 
   tags = var.tags
 }
@@ -50,11 +66,6 @@ resource "aws_eks_node_group" "main" {
     desired_size = var.eks_desired_nodes
     min_size     = var.eks_min_nodes
     max_size     = var.eks_max_nodes
-  }
-
-  # Без публічних IP
-  remote_access {
-    ec2_ssh_key = null
   }
 
   tags = var.tags

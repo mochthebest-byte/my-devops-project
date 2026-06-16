@@ -1,3 +1,9 @@
 .venv/
 *.tfstate
 *.tfstate.backup
+*.helm-migrated
+lb-values.yaml
+tfplan
+charts/voting-app-ingress/
+1.9/
+69.0/

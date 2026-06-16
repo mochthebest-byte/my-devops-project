@@ -1,0 +1,97 @@
+# ═══════════════════════════════════════════════════════════════
+#  Endpoint Syncer — синхронізує cross-namespace ендпоїнти
+#  для proxy-сервісів (grafana-forward, keycloak-forward)
+# ═══════════════════════════════════════════════════════════════
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: endpoint-syncer
+  namespace: voting-app
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: endpoint-syncer
+rules:
+  - apiGroups: [""]
+    resources: [endpoints, pods]
+    verbs: [get, list, watch]
+  - apiGroups: [""]
+    resources: [endpoints]
+    verbs: [create, patch, apply]
+    resourceNames:
+      - grafana-forward
+      - keycloak-forward
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: endpoint-syncer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+  - kind: ServiceAccount
+    name: endpoint-syncer
+    namespace: voting-app
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: endpoint-syncer
+  namespace: voting-app
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: endpoint-syncer
+subjects:
+  - kind: ServiceAccount
+    name: endpoint-syncer
+    namespace: voting-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: endpoint-syncer
+  namespace: voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: endpoint-syncer
+  template:
+    metadata:
+      labels:
+        app: endpoint-syncer
+    spec:
+      serviceAccountName: endpoint-syncer
+      containers:
+      - name: syncer
+        image: bitnami/kubectl:latest
+        command:
+        - /bin/bash
+        - -c
+        - |
+          function sync_ep() {
+            local name=$1 ns=$2 namespace=$3 port=$4
+            local ep_name="${name}-forward"
+            local ip=$(kubectl get pods -n "$ns" -l "$namespace" -o jsonpath='{.items[0].status.podIP}' 2>/dev/null || echo "")
+            if [ -z "$ip" ]; then
+              ip=$(kubectl get endpoints -n "$ns" "$name" -o jsonpath='{.subsets[0].addresses[0].ip}' 2>/dev/null || echo "")
+            fi
+            if [ -n "$ip" ] && [ "$ip" != "0.0.0.0" ]; then
+              kubectl patch endpoints -n voting-app "$ep_name" --type=json \
+                -p="[{\"op\":\"replace\",\"path\":\"/subsets/0/addresses/0/ip\",\"value\":\"$ip\"}]" 2>/dev/null && \
+                echo "[$(date)] $ep_name -> $ip:$port" && return 0
+              # If patch fails, create the endpoint
+              printf '{"apiVersion":"v1","kind":"Endpoints","metadata":{"name":"%s","namespace":"voting-app"},"subsets":[{"addresses":[{"ip":"%s"}],"ports":[{"port":%d,"protocol":"TCP"}]}]}\n' "$ep_name" "$ip" "$port" | kubectl create -f - 2>/dev/null && \
+                echo "[$(date)] $ep_name created $ip:$port"
+            fi
+          }
+          echo "Endpoint syncer started"
+          while true; do
+            sync_ep "grafana" "monitoring" "app.kubernetes.io/name=grafana" 3000
+            sync_ep "keycloak" "keycloak" "app=keycloak" 8080
+            sleep 30
+          done

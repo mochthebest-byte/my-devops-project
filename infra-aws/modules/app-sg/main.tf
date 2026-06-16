@@ -39,7 +39,3 @@ resource "aws_vpc_security_group_egress_rule" "nodes_all" {
   description       = "All outbound traffic"
 }
 
-output "node_security_group_id" {
-  description = "Security Group ID for EKS nodes"
-  value       = aws_security_group.nodes.id
-}

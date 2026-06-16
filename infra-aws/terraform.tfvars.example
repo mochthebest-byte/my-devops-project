@@ -4,9 +4,9 @@ aws_region = "eu-central-1"
 # ─── EKS ──────────────────────────────────────────
 eks_cluster_version     = "1.31"
 eks_node_instance_types = ["t3.small"]
-eks_desired_nodes       = 2
-eks_min_nodes           = 1
-eks_max_nodes           = 2
+eks_desired_nodes       = 5
+eks_min_nodes           = 3
+eks_max_nodes           = 5
 
 # ─── VPC ──────────────────────────────────────────
 vpc_cidr         = "10.0.0.0/16"

@@ -9,8 +9,8 @@ module "vpc" {
   cidr = var.vpc_cidr
 
   azs             = var.azs
-  private_subnets = [for i, az in var.azs : cidrsubnet(var.vpc_cidr, 8, i)]       # 10.0.0.0/24, 10.0.1.0/24
-  public_subnets  = [for i, az in var.azs : cidrsubnet(var.vpc_cidr, 8, i + 10)]  # 10.0.10.0/24, 10.0.11.0/24
+  private_subnets = [for i, az in var.azs : cidrsubnet(var.vpc_cidr, 8, i)]      # 10.0.0.0/24, 10.0.1.0/24
+  public_subnets  = [for i, az in var.azs : cidrsubnet(var.vpc_cidr, 8, i + 10)] # 10.0.10.0/24, 10.0.11.0/24
 
   # NAT для приватних subnet (ноди отримують інтернет через NAT)
   enable_nat_gateway     = var.enable_nat_gateway

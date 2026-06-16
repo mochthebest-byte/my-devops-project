@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════
-#  Keycloak Realm — myapp
+#  Keycloak Realm — {{ .Values.realm.name }}
 # ═══════════════════════════════════════════════════════════════
 #
 #  ⚠️  Безпека секретів:
@@ -10,7 +10,7 @@
 #     Після деплою:
 #       kubectl -n keycloak exec deploy/keycloak -- \
 #         /opt/keycloak/bin/kcadm.sh update clients/CLIENT_UUID \
-#         -r myapp -s secret="$(kubectl get secret grafana-oidc-secret \
+#         -r {{ .Values.realm.name }} -s secret="$(kubectl get secret grafana-oidc-secret \
 #           -n monitoring -o jsonpath='{.data.client-secret}' | base64 -d)"
 #
 #     У проді: автоматизувати через initContainer + kcadm.sh
@@ -19,76 +19,65 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: keycloak-realm-myapp
+  name: keycloak-realm-{{ .Values.realm.name }}
   namespace: {{ .Release.Namespace }}
 data:
-  myapp-realm.json: |
+  {{ .Values.realm.name }}-realm.json: |
     {
-      "realm": "myapp",
+      "realm": {{ .Values.realm.name | quote }},
       "enabled": true,
-      "displayName": "MyApp",
-      "loginWithEmailAllowed": true,
-      "registrationAllowed": false,
-      "sslRequired": "external",
+      "displayName": {{ .Values.realm.displayName | quote }},
+      "loginWithEmailAllowed": {{ .Values.realm.loginWithEmailAllowed }},
+      "registrationAllowed": {{ .Values.realm.registrationAllowed }},
+      "sslRequired": {{ .Values.realm.sslRequired | quote }},
       "users": [
+        {{- range $i, $u := .Values.realm.users }}
+        {{- if $i }},{{ end }}
         {
-          "username": "admin",
-          "enabled": true,
-          "email": "admin@example.com",
-          "firstName": "Admin",
-          "lastName": "Keycloak",
+          "username": {{ $u.username | quote }},
+          "enabled": {{ $u.enabled }},
+          "email": {{ $u.email | quote }},
+          "firstName": {{ $u.firstName | quote }},
+          "lastName": {{ $u.lastName | quote }},
           "credentials": [{
-            "type": "password",
-            "value": "admin123",
-            "temporary": false
+            "type": {{ $u.credentials.type | quote }},
+            "value": {{ $u.credentials.value | quote }},
+            "temporary": {{ $u.credentials.temporary }}
           }],
-          "realmRoles": ["grafana-admin"]
-        },
-        {
-          "username": "user",
-          "enabled": true,
-          "email": "user@example.com",
-          "firstName": "Regular",
-          "lastName": "User",
-          "credentials": [{
-            "type": "password",
-            "value": "user123",
-            "temporary": false
-          }],
-          "realmRoles": ["grafana-editor"]
+          "realmRoles": {{ $u.realmRoles | toJson }}
         }
+        {{- end }}
       ],
       "roles": {
         "realm": [
+        {{- range $i, $r := .Values.realm.roles }}
+        {{- if $i }},{{ end }}
           {
-            "name": "grafana-admin",
-            "description": "Grafana Administrator — maps to Admin role in Grafana"
-          },
-          {
-            "name": "grafana-editor",
-            "description": "Grafana Editor — maps to Editor role in Grafana"
+            "name": {{ $r.name | quote }},
+            "description": {{ $r.description | quote }}
           }
+        {{- end }}
         ]
       },
       "clients": [
+      {{- range $i, $c := .Values.realm.clients }}
+      {{- if $i }},{{ end }}
         {
-          "clientId": "grafana",
-          "enabled": true,
-          "protocol": "openid-connect",
-          "publicClient": false,
-          "secret": "CHANGE_ME_VIA_SECRETS_MANAGER",
-          "redirectUris": [
-            "https://grafana.34.194.59.190.nip.io/login/generic_oauth"
-          ],
-          "webOrigins": ["+"],
-          "standardFlowEnabled": true,
-          "implicitFlowEnabled": false,
-          "directAccessGrantsEnabled": false,
-          "serviceAccountsEnabled": false,
-          "fullScopeAllowed": true,
-          "attributes": {
-            "post.logout.redirect.uris": "+"
-          }
+          "clientId": {{ $c.clientId | quote }},
+          "enabled": {{ $c.enabled }},
+          "protocol": {{ $c.protocol | quote }},
+          "publicClient": {{ $c.publicClient }},
+          "secret": {{ $c.secret | quote }},
+          "redirectUris": {{ $c.redirectUris | toJson }},
+          "webOrigins": {{ $c.webOrigins | toJson }},
+          "standardFlowEnabled": {{ $c.standardFlowEnabled }},
+          "implicitFlowEnabled": {{ $c.implicitFlowEnabled }},
+          "directAccessGrantsEnabled": {{ $c.directAccessGrantsEnabled }},
+          "serviceAccountsEnabled": {{ $c.serviceAccountsEnabled }},
+          "fullScopeAllowed": {{ $c.fullScopeAllowed }},
+          "attributes": {{ $c.attributes | toJson }}{{ if $c.protocolMappers }},
+          "protocolMappers": {{ $c.protocolMappers | toJson }}{{ end }}
         }
+      {{- end }}
       ]
     }

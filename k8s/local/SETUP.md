@@ -1,218 +1,111 @@
-# Local Development with Kind + Ingress-Nginx
+# Local Voting-App Development — Zero AWS Dependencies
 
-## Prerequisites
-
-- Docker Desktop / Rancher Desktop (running)
-- `kind` CLI (`brew install kind` or `go install sigs.k8s.io/kind@latest`)
-- `kubectl`
-- `helm`
-
-## Port Conflicts
-
-The Kind config maps ports 80/443 to the host. If those ports are in use:
+## Quickstart
 
 ```bash
-# Check what's using port 80
-sudo lsof -i :80
+# 1. Delete old clusters if any
+kind delete cluster --name voting-app-local 2>/dev/null; \
+kind delete cluster --name devops-local 2>/dev/null; \
+kind delete cluster --name rp 2>/dev/null
 
-# Delete old Kind clusters if they have port 80 bound
-kind delete cluster --name devops-local
-kind delete cluster --name kind
-kind delete cluster --name rp
+# 2. Create fresh cluster
+make cluster-create
 
-# Or use existing cluster and skip 'kind create cluster'
-kind get clusters
-kind export kubeconfig --name <existing-cluster>
+# 3. Install ingress-nginx
+make ingress
+
+# 4. Deploy PostgreSQL + Redis
+make dbs
+make dbs-wait
+
+# 5. Build & deploy voting-app
+make build
+make deploy
+make deploy-ingress
+
+# 6. Add to /etc/hosts (one time)
+echo "127.0.0.1 vote.local result.local" | sudo tee -a /etc/hosts
+
+# 7. Open browser
+open http://vote.local
+open http://result.local
 ```
 
-## Step 1: Create Kind Cluster
+Or just run all at once:
+```bash
+make all
+# then: echo "127.0.0.1 vote.local result.local" | sudo tee -a /etc/hosts
+```
+
+## Available Make Commands
+
+| Command | Description |
+|---------|-------------|
+| `make cluster-create` | Create Kind cluster (3 nodes) |
+| `make cluster-delete` | Delete the cluster |
+| `make cluster-status` | Show nodes and ingress |
+| `make ingress` | Install ingress-nginx |
+| `make ingress-status` | Check ingress pods |
+| `make dbs` | Install PostgreSQL + Redis via Helm |
+| `make dbs-wait` | Wait for DBs to be ready |
+| `make build` | Build Docker images + load into Kind |
+| `make deploy` | Helm install vote, result, worker |
+| `make deploy-ingress` | Create Ingress for vote.local/result.local |
+| `make all` | All of the above in sequence |
+| `make clean` | Delete cluster + prune Docker networks |
+
+## Port Conflict? (Port 80 in use)
 
 ```bash
-# From the project root
-kind create cluster --config kind-config.yaml --name voting-app-local
+# Check what is listening on port 80
+ss -tlnp | grep :80
+# or: sudo lsof -i :80
+
+# Free port 80 — delete conflicting containers
+docker ps --format "table {{.Names}}\t{{.Ports}}"
+docker stop <container-name>
+docker rm <container-name>
+
+# Or use different ports in kind-config.yaml, then add to /etc/hosts:
+echo "127.0.0.1 vote.local result.local" | sudo tee -a /etc/hosts
+# And test via: curl -H "Host: vote.local" http://localhost:8080
 ```
 
-This creates:
-- 1 control-plane node (with `ingress-ready=true` label, ports 80+443 mapped)
-- 2 worker nodes
+## Disable AWS Terraform
 
-Verify:
-```bash
-kubectl cluster-info --context kind-voting-app-local
-kubectl get nodes
-```
-
-## Step 2: Install Ingress-Nginx
-
-```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-
-# Wait for it to be ready
-kubectl wait --namespace ingress-nginx \
-  --for=condition=ready pod \
-  --selector=app.kubernetes.io/component=controller \
-  --timeout=120s
-```
-
-Why ingress-nginx for Kind instead of AWS Gateway API:
-- Kind does not support AWS ALB (no cloud)
-- ingress-nginx is the standard for local dev
-- Works with `*.local` / `*.nip.io` domains without LoadBalancer
-- The Ingress YAML is simple and portable
-
-## Step 3: Add Local Domains to /etc/hosts
+Since AWS account is closed:
 
 ```bash
-# Linux/macOS
-echo "127.0.0.1 vote.local result.local grafana.local keycloak.local" | sudo tee -a /etc/hosts
-
-# Windows (PowerShell as Admin):
-# Add-Content C:\Windows\System32\drivers\etc\hosts "`n127.0.0.1 vote.local result.local grafana.local keycloak.local"
+chmod +x scripts/disable-aws.sh
+./scripts/disable-aws.sh
 ```
 
-Now `http://vote.local` points to your local Kind cluster's Ingress.
+This renames `*.tf` → `*.tf.disabled` in `infra-aws/`.
+To re-enable: `./scripts/enable-aws.sh`
 
-## Step 4: Install Dependencies (PostgreSQL, Redis)
+## Architecture
 
-```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm repo update
-
-kubectl create namespace voting-app
-
-# PostgreSQL
-helm upgrade --install postgresql bitnami/postgresql \
-  --namespace voting-app --version 16.x --set auth.database=db \
-  --set auth.username=vote_user --set auth.password=testpass
-
-# Redis
-helm upgrade --install redis bitnami/redis \
-  --namespace voting-app --version 21.x --set auth.enabled=false
-
-# Wait for both
-kubectl wait --namespace voting-app --for=condition=ready pod \
-  -l app.kubernetes.io/instance=postgresql --timeout=120s
-kubectl wait --namespace voting-app --for=condition=ready pod \
-  -l app.kubernetes.io/instance=redis --timeout=120s
+```
+Browser
+  │
+  │ http://vote.local / http://result.local
+  ▼
+/etc/hosts → 127.0.0.1
+  │
+  ▼
+ingress-nginx (port 80 on host, mapped to port 80 in Kind)
+  │
+  ├── vote.local  ──▶ vote:5000 ──▶ Python/Flask ──▶ Redis + PostgreSQL
+  └── result.local ──▶ result:81  ──▶ Node.js     ──▶ PostgreSQL
+                         worker    ──▶ .NET        ──▶ Redis + PostgreSQL
 ```
 
-## Step 5: Build & Deploy Services
+## CI (GitHub Actions — No AWS)
 
-```bash
-# Build images
-docker build -t vote:latest voting-app-vote/
-docker build -t result:latest voting-app-result/
-docker build -t worker:latest voting-app-worker/
-
-# Load into Kind
-kind load docker-image vote:latest result:latest worker:latest --name voting-app-local
-
-# Deploy via Helm
-helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
-  --set image.repository=vote --set image.tag=latest \
-  --set image.pullPolicy=IfNotPresent
-helm upgrade --install result voting-app-result/charts/result --namespace voting-app \
-  --set image.repository=result --set image.tag=latest \
-  --set image.pullPolicy=IfNotPresent
-helm upgrade --install worker voting-app-worker/charts/worker --namespace voting-app \
-  --set image.repository=worker --set image.tag=latest \
-  --set image.pullPolicy=IfNotPresent
-```
-
-## Step 6: Create Ingress
-
-```bash
-kubectl apply -f - << 'EOF'
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: voting-app-ingress
-  namespace: voting-app
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: vote.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: vote
-                port:
-                  number: 5000
-    - host: result.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: result
-                port:
-                  number: 81
-EOF
-```
-
-## Step 7: Test
-
-```bash
-# These should now work from your browser:
-curl -H "Host: vote.local" http://localhost
-curl -H "Host: result.local" http://localhost
-
-# Or directly via /etc/hosts:
-curl http://vote.local
-curl http://result.local
-```
-
-## Adapting Helm Charts for Local vs Production
-
-### Pattern: `values-{env}.yaml`
-
-The same charts support both Kind and AWS by using environment-specific values files:
-
-```bash
-# Local dev (Kind + Ingress)
-helm upgrade --install vote ./charts/vote \
-  --namespace voting-app \
-  -f k8s/local/values-local.yaml
-
-# Production (EKS + Gateway API)
-helm upgrade --install vote ./charts/vote \
-  --namespace voting-app \
-  -f k8s/values-production.yaml
-```
-
-### Key Differences
-
-| Aspect | Local (Kind) | Production (EKS) |
-|--------|-------------|-------------------|
-| **Ingress** | ingress-nginx | Gateway API (ALB) |
-| **Service type** | NodePort | ClusterIP |
-| **Secrets** | Plain (no ESO) | External Secrets |
-| **TLS** | None (HTTP only) | cert-manager + ACM |
-| **DNS** | `/etc/hosts` | Route53 |
-| **PostgreSQL** | bitnami chart with localpass | AWS Secrets Manager |
-| **Build** | `docker build` + `kind load` | ECR + GitHub Actions |
-
-## CI: Ephemeral Kind Cluster in GitHub Actions
-
-The workflow `.github/workflows/ci-kind-test.yml` does this automatically:
-
-1. Create Kind cluster with 3 nodes
-2. Install ingress-nginx
-3. Install PostgreSQL, Redis
-4. Build Docker images, load into Kind
-5. Deploy all 3 services via Helm
-6. Create Ingress rules
-7. Run integration tests
-8. Dump logs on failure (auto-diagnostics)
-
-Trigger with any push:
-
-```bash
-git push origin <branch>
-```
-
-Watch at: `https://github.com/mochthebest-byte/my-devops-project/actions`
+The workflow `.github/workflows/ci-local.yml` runs on every push:
+1. Creates ephemeral Kind cluster
+2. Installs ingress-nginx + PostgreSQL + Redis
+3. Builds Docker images
+4. Deploys via Helm
+5. Runs integration tests (tests.sh)
+6. Dumps logs on failure
