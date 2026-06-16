@@ -40,7 +40,6 @@ data "aws_iam_policy_document" "lb_controller_extra" {
     ]
     resources = ["*"]
   }
-}
   statement {
     actions = [
       "acm:DescribeCertificate",
@@ -49,6 +48,7 @@ data "aws_iam_policy_document" "lb_controller_extra" {
     ]
     resources = ["*"]
   }
+}
 
 resource "aws_iam_policy" "lb_controller_extra" {
   name   = "${var.project_name}-lb-controller-extra"
@@ -66,7 +66,7 @@ resource "helm_release" "lb_controller" {
   namespace  = "kube-system"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
-  version    = "~> 1.9"
+  version    = "~> 1.17"
 
   set {
     name  = "clusterName"
