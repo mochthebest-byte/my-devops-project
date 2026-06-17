@@ -284,7 +284,10 @@
       "Bash(nslookup \"k8s-votingap-votingap-c1675d400d-695531136.eu-central-1.elb.amazonaws.com\")",
       "Bash(awk '{print $1,$3,$4,$5,$6}')",
       "Bash(awk ' *)",
-      "Bash(mv /tmp/addons_new.tf addons.tf)"
+      "Bash(mv /tmp/addons_new.tf addons.tf)",
+      "Bash(awk '{print $1,$2,$3}')",
+      "Bash(docker tag *)",
+      "Bash(echo \"Gateway resourceVersion: $\\(kubectl get gateway voting-app-gateway -n voting-app -o jsonpath='{.metadata.resourceVersion}' \\)\")"
     ]
   }
 }
