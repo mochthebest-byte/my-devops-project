@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mochthebest-byte/gitops.git
+    repoURL: https://github.com/mochthebest-byte/my-devops-project.git
     targetRevision: HEAD
-    path: apps/result
+    path: voting-app-result/charts/result
   destination:
     server: https://kubernetes.default.svc
     namespace: voting-app
