@@ -15,7 +15,7 @@ spec:
         endpointSyncer:
           enabled: false
         tls:
-          enabled: false
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: voting-app
