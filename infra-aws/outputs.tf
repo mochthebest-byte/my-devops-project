@@ -46,3 +46,14 @@ output "acm_certificate_arn" {
   description = "ACM wildcard certificate ARN for HTTPS listener"
   value       = aws_acm_certificate.wildcard.arn
 }
+
+# ─── GitHub OIDC (WIF) ──────────────────────────────────
+output "github_ci_role_arn" {
+  description = "IAM Role ARN for GitHub Actions CI (OIDC/WIF)"
+  value       = var.create_github_oidc ? aws_iam_role.github_ci[0].arn : null
+}
+
+output "github_oidc_provider_arn" {
+  description = "GitHub OIDC provider ARN"
+  value       = var.create_github_oidc ? aws_iam_openid_connect_provider.github[0].arn : null
+}

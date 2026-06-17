@@ -70,6 +70,33 @@ variable "single_nat_gateway" {
   default     = true
 }
 
+# ══════════════════════════════════════════════════════════
+#  GitHub OIDC (WIF) — опційно
+# ══════════════════════════════════════════════════════════
+variable "create_github_oidc" {
+  description = "Створити GitHub OIDC provider + IAM role для CI (WIF без статичних ключів)"
+  type        = bool
+  default     = false
+}
+
+variable "github_ci_role_name" {
+  description = "Назва IAM ролі для GitHub Actions CI"
+  type        = string
+  default     = "my-app-eks-github-ci"
+}
+
+variable "github_repo_allowlist" {
+  description = "Список GitHub репозиторіїв, які можуть асумувати CI роль"
+  type        = list(string)
+  default     = ["mochthebest-byte/my-devops-project", "mochthebest-byte/voting-app"]
+}
+
+variable "github_oidc_provider_name" {
+  description = "Назва OIDC provider для GitHub Actions"
+  type        = string
+  default     = "github-oidc"
+}
+
 variable "tags" {
   description = "Tags for all resources"
   type        = map(string)

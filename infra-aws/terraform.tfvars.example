@@ -16,3 +16,8 @@ single_nat_gateway = true
 
 # ─── Domain ───────────────────────────────────────
 domain_name = "mochthebest.io"
+
+# ─── GitHub OIDC (WIF) — опційно ──────────────────
+# create_github_oidc = true
+# github_ci_role_name = "my-app-eks-github-ci"
+# github_repo_allowlist = ["my-org/my-repo"]

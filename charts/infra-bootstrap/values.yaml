@@ -1,0 +1,73 @@
+# ═══════════════════════════════════════════════════════════════
+#  Infra Bootstrap — values
+# ═══════════════════════════════════════════════════════════════
+
+# ─── Master switch ──────────────────────────────────────
+global:
+  enabled: true
+
+# ─── cert-manager ClusterIssuers ───────────────────────
+clusterIssuer:
+  enabled: true
+  email: admin@example.com
+  gateway:
+    name: voting-app-gateway
+    namespace: voting-app
+
+certificates:
+  enabled: true
+  # Self-signed — для *.nip.io (локальне тестування)
+  selfSigned:
+    enabled: true
+    commonName: "*.nip.io"
+    dnsNames:
+      - "*.nip.io"
+    secretName: voting-app-tls
+    issuerName: selfsigned-issuer
+  # Let's Encrypt Staging — для тестування HTTPS
+  letsEncryptStaging:
+    enabled: true
+    commonName: "*.mochthebest.io"
+    dnsNames:
+      - "*.mochthebest.io"
+      - "mochthebest.io"
+    secretName: voting-app-tls-le
+    issuerName: letsencrypt-staging
+
+# ─── External Secrets Operator (ESO) — ClusterSecretStore ──
+secretStore:
+  enabled: true
+  aws:
+    region: eu-central-1
+    serviceAccount:
+      name: external-secrets
+      namespace: external-secrets
+
+# ─── External Secrets — синхронізація з AWS Secrets Manager ──
+externalSecrets:
+  enabled: true
+
+  grafanaOidc:
+    enabled: true
+    namespace: monitoring
+    refreshInterval: "1h"
+    secretStore:
+      name: aws-secretsmanager
+      kind: ClusterSecretStore
+    target:
+      name: grafana-oidc-secret
+    remoteRef:
+      key: /my-app/grafana-oidc
+      property: client-secret
+
+  postgresql:
+    enabled: true
+    namespace: voting-app
+    refreshInterval: "1h"
+    secretStore:
+      name: aws-secretsmanager
+      kind: ClusterSecretStore
+    target:
+      name: postgresql
+    remoteRef:
+      key: /my-app/postgresql

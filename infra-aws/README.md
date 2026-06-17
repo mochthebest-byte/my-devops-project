@@ -21,13 +21,13 @@ AWS infrastructure for the voting-app EKS cluster, managed via Terraform.
 
 ## IAM / OIDC
 
-| Resource | Purpose |
-|----------|---------|
-| `github-oidc` | OIDC identity provider for GitHub Actions (`token.actions.githubusercontent.com`) |
-| `my-app-eks-github-ci` | IAM role assumed by GitHub Actions via OIDC |
-| `my-app-eks-eso` | IAM role for External Secrets Operator (IRSA) |
-| `my-app-eks-lb-controller` | IAM role for AWS Load Balancer Controller |
-| `my-app-eks-external-dns` | IAM role for ExternalDNS |
+| Resource | Purpose | Managed by |
+|----------|---------|-----------|
+| `github-oidc` | OIDC identity provider for GitHub Actions (`token.actions.githubusercontent.com`) | Terraform (`github-oidc.tf`, opt-in via `create_github_oidc = true`) |
+| `my-app-eks-github-ci` | IAM role assumed by GitHub Actions via OIDC | Terraform (`github-oidc.tf`, opt-in) |
+| `my-app-eks-eso` | IAM role for External Secrets Operator (IRSA) | `addons.tf` |
+| `my-app-eks-lb-controller` | IAM role for AWS Load Balancer Controller | `addons.tf` |
+| `my-app-eks-external-dns` | IAM role for ExternalDNS | `addons.tf` |
 
 ## Helm Releases (deployed via Terraform)
 

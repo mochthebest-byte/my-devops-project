@@ -1,2 +1,0 @@
-Release "monitoring" does not exist. Installing it now.
-Error: chart "kube-prometheus-stack" matching /home/psihson not found in prometheus-community index. (try 'helm repo update'): improper constraint: "/home/psihson"
