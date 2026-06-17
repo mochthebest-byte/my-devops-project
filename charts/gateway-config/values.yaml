@@ -41,7 +41,7 @@ routes:
     hostnames:
       - "vote.mochthebest.pp.ua"
     namespace: voting-app
-    serviceName: vote
+    serviceName: voting-app-vote
     port: 5000
 
   result:
