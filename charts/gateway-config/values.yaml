@@ -27,7 +27,6 @@ gateway:
   namespace: voting-app
   className: aws-lb-gateway-class
   scheme: internet-facing        # internet-facing | internal
-  targetType: ip                 # ip | instance
 
 # ─── ExternalDNS ─────────────────────────────────────────
 externalDNS:
