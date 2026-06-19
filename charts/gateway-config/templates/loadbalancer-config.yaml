@@ -1,0 +1,17 @@
+{{- if .Values.enabled }}
+# ═══════════════════════════════════════════════════════════════
+#  LoadBalancerConfiguration — схема ALB (internet-facing)
+# ═══════════════════════════════════════════════════════════════
+# Gateway API не використовує alb.ingress.kubernetes.io/scheme annotation —
+# схема задається через LoadBalancerConfiguration CRD, який посилається
+# через infrastructure.parametersRef в Gateway spec.
+# ═══════════════════════════════════════════════════════════════
+---
+apiVersion: gateway.k8s.aws/v1beta1
+kind: LoadBalancerConfiguration
+metadata:
+  name: {{ .Values.gateway.name }}-config
+  namespace: {{ .Values.gateway.namespace }}
+spec:
+  scheme: {{ .Values.gateway.scheme }}
+{{- end }}
