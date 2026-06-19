@@ -49,10 +49,9 @@ spec:
           from: All
       tls:
         mode: Terminate
-        {{- if .Values.tls.secretName }}
+        # AWS LB Controller requires certificateRefs when mode=Terminate,
+        # even when ACM auto-discovery is used via annotation.
         certificateRefs:
-          - name: {{ .Values.tls.secretName }}
+          - name: {{ .Values.tls.secretName | default "voting-app-tls" }}
             kind: Secret
-        {{- end }}
-    {{- end }}
 {{- end }}
