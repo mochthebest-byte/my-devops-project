@@ -1,12 +1,13 @@
 # ═══════════════════════════════════════════════════════════════
 #  Helm Chart — Infra Bootstrap
-#  ClusterIssuer, ClusterSecretStore, ExternalSecrets
-#  Призначений для деплою через ArgoCD (Argocd Application)
+#  ClusterSecretStore, ExternalSecrets (ESO)
+#  Призначений для деплою через ArgoCD (ArgoCD Application)
 #  Замінює ручний kubectl apply з k8s/
+#  TLS — через ACM (cert-manager/ClusterIssuer не потрібні)
 # ═══════════════════════════════════════════════════════════════
 apiVersion: v2
 name: infra-bootstrap
-description: Cluster-level infra resources — cert-manager issuers, ESO secret store, external secrets
+description: Cluster-level infra resources — ESO ClusterSecretStore, external secrets
 type: application
 version: 1.0.0
 appVersion: "1.0"

@@ -10,14 +10,15 @@ domain: mochthebest.pp.ua
 
 # ─── TLS ─────────────────────────────────────────────────
 # HTTPS listener with ACM certificate (auto-discovered by AWS LB Controller).
-# Certificate ARN is passed via alb.ingress.kubernetes.io/certificate-arn annotation.
-# certificateRefs with kind:Secret is only needed when using k8s TLS Secrets
-# (e.g. cert-manager) — left empty here because ACM handles termination.
+# Gateway API використовує certificateRefs — для ACM сертифікати
+# прив'язуються до ALB через теґи (kubernetes.io/cluster/*).
+# Аргумент certificateArn передається через LoadBalancerConfiguration
+# при потребі явної прив'язки.
 tls:
   enabled: true
   # k8s TLS Secret name (leave empty for ACM auto-discovery)
   secretName: ""
-  # ACM ARN — прив'язка ACM сертифіката до ALB через annotation
+  # ACM ARN — не використовується напряму (збережено для довідки)
   certificateArn: "arn:aws:acm:eu-central-1:765776786215:certificate/2832556a-442a-40a7-9287-91ab5cde01fc"
 
 # ─── Gateway ─────────────────────────────────────────────
@@ -38,6 +39,7 @@ externalDNS:
 routes:
   vote:
     enabled: true
+    sectionName: https
     hostnames:
       - "vote.mochthebest.pp.ua"
     namespace: voting-app
@@ -46,6 +48,7 @@ routes:
 
   result:
     enabled: true
+    sectionName: https
     hostnames:
       - "result.mochthebest.pp.ua"
     namespace: voting-app
@@ -54,6 +57,7 @@ routes:
 
   grafana:
     enabled: true
+    sectionName: https
     hostnames:
       - "grafana.mochthebest.pp.ua"
     namespace: monitoring
@@ -62,6 +66,7 @@ routes:
 
   keycloak:
     enabled: true
+    sectionName: https
     hostnames:
       - "keycloak.mochthebest.pp.ua"
     namespace: keycloak
@@ -70,6 +75,7 @@ routes:
 
   argocd:
     enabled: true
+    sectionName: https
     hostnames:
       - "argocd.mochthebest.pp.ua"
     namespace: argocd

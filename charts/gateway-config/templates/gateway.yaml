@@ -21,13 +21,8 @@ metadata:
   name: {{ .Values.gateway.name }}
   namespace: {{ .Values.gateway.namespace }}
   annotations:
-    alb.ingress.kubernetes.io/scheme: {{ .Values.gateway.scheme }}
-    alb.ingress.kubernetes.io/target-type: {{ .Values.gateway.targetType }}
     {{- if .Values.externalDNS.enabled }}
     external-dns.alpha.kubernetes.io/hostname: {{ tpl .Values.externalDNS.hostname $ }}
-    {{- end }}
-    {{- if .Values.tls.certificateArn }}
-    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.tls.certificateArn }}
     {{- end }}
 spec:
   gatewayClassName: {{ .Values.gateway.className }}

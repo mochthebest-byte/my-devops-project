@@ -18,6 +18,9 @@ spec:
   parentRefs:
     - name: {{ $.Values.gateway.name }}
       namespace: {{ $.Values.gateway.namespace }}
+      {{- if $route.sectionName }}
+      sectionName: {{ $route.sectionName }}
+      {{- end }}
   hostnames:
 {{ toYaml $route.hostnames | indent 4 }}
   rules:
