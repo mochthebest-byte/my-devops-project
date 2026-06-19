@@ -47,13 +47,21 @@ jobs:
         run: |
           kubectl create namespace voting-app --dry-run=client -o yaml | kubectl apply -f -
 
-      # Install PostgreSQL
+      # Create PostgreSQL secret (CI without ESO)
+      - name: Create PostgreSQL secret
+        run: |
+          kubectl create secret generic postgresql \
+            --namespace voting-app \
+            --from-literal=password=testpass \
+            --from-literal=postgres-password=testpass
+
+      # Install PostgreSQL (uses existingSecret — same pattern as prod ESO)
       - name: Install PostgreSQL
         run: |
           helm upgrade --install postgresql bitnami/postgresql \
             --namespace voting-app --version 16.x --set image.tag=latest \
             --set auth.database=db --set auth.username=vote_user \
-            --set auth.password=testpass
+            --set auth.existingSecret=postgresql
 
       # Install Redis
       - name: Install Redis

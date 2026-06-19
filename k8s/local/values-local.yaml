@@ -45,9 +45,12 @@ worker:
     host: redis-master
 
 # --- postgresql ---
+# ⚠️  Паролі в plaintext — тільки для локального Kind-кластера.
+#      В production (AWS) пароль постачається через ESO з AWS Secrets Manager.
 postgresql:
   auth:
     postgresPassword: localpass
+    existingSecret: ""          # без ESO — використовуємо inline password
     password: localpass
 
 # --- redis ---

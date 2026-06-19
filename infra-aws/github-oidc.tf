@@ -64,9 +64,9 @@ data "aws_iam_policy_document" "github_ci_assume_role" {
 resource "aws_iam_role" "github_ci" {
   count = var.create_github_oidc ? 1 : 0
 
-  name               = var.github_ci_role_name
-  assume_role_policy = data.aws_iam_policy_document.github_ci_assume_role[0].json
-  description        = "IAM role for GitHub Actions CI — OIDC (Workload Identity Federation)"
+  name                 = var.github_ci_role_name
+  assume_role_policy   = data.aws_iam_policy_document.github_ci_assume_role[0].json
+  description          = "IAM role for GitHub Actions CI — OIDC (Workload Identity Federation)"
   max_session_duration = 3600
 
   tags = merge(var.tags, {

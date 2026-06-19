@@ -17,13 +17,22 @@ echo "=== 2. Namespace ==="
 kubectl create namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f -
 
 echo ""
-echo "=== 3. PostgreSQL + Redis (Helm) ==="
+echo "=== 3. PostgreSQL secret + Helm install ==="
 helm repo add bitnami https://charts.bitnami.com/bitnami 2>/dev/null
 helm repo update
 
+# DEV ONLY: створюємо Secret вручну (без ESO).
+# В production секрет створюється через ESO з AWS Secrets Manager.
+kubectl create secret generic postgresql \
+  --namespace "$NAMESPACE" \
+  --from-literal=password=testpass \
+  --from-literal=postgres-password=testpass \
+  --dry-run=client -o yaml | kubectl apply -f -
+
 helm upgrade --install postgresql bitnami/postgresql \
   --namespace "$NAMESPACE" --version 16.x \
-  --set auth.database=db --set auth.username=vote_user --set auth.password=testpass
+  --set auth.database=db --set auth.username=vote_user \
+  --set auth.existingSecret=postgresql
 
 helm upgrade --install redis bitnami/redis \
   --namespace "$NAMESPACE" --version 21.x \

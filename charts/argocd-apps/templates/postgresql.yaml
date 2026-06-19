@@ -16,7 +16,7 @@ spec:
         auth:
           database: db
           username: vote_user
-          password: vote_db_pass_456
+          existingSecret: postgresql   # створюється ESO з AWS Secrets Manager /my-app/postgresql
         primary:
           service:
             type: ClusterIP

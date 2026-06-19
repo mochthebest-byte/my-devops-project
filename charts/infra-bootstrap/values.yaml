@@ -71,3 +71,27 @@ externalSecrets:
       name: postgresql
     remoteRef:
       key: /my-app/postgresql
+
+  keycloakPostgresql:
+    enabled: true
+    namespace: keycloak
+    refreshInterval: "1h"
+    secretStore:
+      name: aws-secretsmanager
+      kind: ClusterSecretStore
+    target:
+      name: keycloak-db
+    remoteRef:
+      key: /my-app/postgresql
+
+  keycloakAdmin:
+    enabled: true
+    namespace: keycloak
+    refreshInterval: "1h"
+    secretStore:
+      name: aws-secretsmanager
+      kind: ClusterSecretStore
+    target:
+      name: keycloak-admin
+    remoteRef:
+      key: /my-app/keycloak-admin

@@ -24,7 +24,8 @@ postgresql:
 
 admin:
   user: admin
-  password: admin123
+  existingSecret: keycloak-admin
+  secretKey: admin-password
 
 hostname: keycloak.mochthebest.pp.ua
 
@@ -42,6 +43,19 @@ resources:
     cpu: 1000m
 
 # ─── Realm конфігурація (myapp) ──────────────────────────
+#
+# ⚠️  Паролі користувачів realm — BOOTSTRAP-ONLY. Вони потрібні
+#      для першого імпорту realmʼу. Після створення керування
+#      паролями — через Keycloak UI/API (змінити пароль, email,
+#      зовнішній IdP).
+#
+#      Для production / OCI — перевизначити в environment-specific
+#      values (напр. k8s/oci/values-keycloak-oci.yaml).
+#
+#      Паролі в Git — це технічний борг: вони потрапляють у
+#      ConfigMap, який не підтримує valueFrom.secretKeyRef.
+#      Фікс: initContainer + Secret volume (див. TODO).
+# ─────────────────────────────────────────────────────────
 realm:
   name: myapp
   displayName: MyApp
@@ -57,7 +71,7 @@ realm:
       lastName: Keycloak
       credentials:
         type: password
-        value: admin123
+        value: admin123   # DEV ONLY — override in prod
         temporary: false
       realmRoles: ["grafana-admin"]
     - username: user
@@ -67,7 +81,7 @@ realm:
       lastName: User
       credentials:
         type: password
-        value: user123
+        value: user123    # DEV ONLY — override in prod
         temporary: false
       realmRoles: ["grafana-editor"]
 

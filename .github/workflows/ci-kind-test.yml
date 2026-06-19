@@ -45,17 +45,26 @@ jobs:
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo update
 
-      # Step 5: Install PostgreSQL
-      - name: Install PostgreSQL
+      # Step 5: Create PostgreSQL secret + Install PostgreSQL
+      # ⚠️  CI-специфічний пароль в K8s Secret (без ESO, Kind кластер).
+      #      В production пароль постачається через ESO з AWS Secrets Manager.
+      - name: Create PostgreSQL secret
         run: |
           kubectl create namespace ${{ env.NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
+          kubectl create secret generic postgresql \
+            --namespace ${{ env.NAMESPACE }} \
+            --from-literal=password=testpass \
+            --from-literal=postgres-password=testpass
+
+      - name: Install PostgreSQL
+        run: |
           helm upgrade --install postgresql bitnami/postgresql \
             --namespace ${{ env.NAMESPACE }} \
             --version 16.x \
             --set image.tag=latest \
             --set auth.database=db \
             --set auth.username=vote_user \
-            --set auth.password=testpass
+            --set auth.existingSecret=postgresql
 
       # Step 6: Install Redis
       - name: Install Redis

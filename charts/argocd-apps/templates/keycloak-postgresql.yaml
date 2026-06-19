@@ -16,7 +16,7 @@ spec:
         auth:
           database: keycloak
           username: keycloak
-          password: keycloakadmin
+          existingSecret: keycloak-db  # створюється ESO з AWS Secrets Manager /my-app/postgresql
         primary:
           service:
             type: ClusterIP

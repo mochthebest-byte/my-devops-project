@@ -28,35 +28,17 @@ resource "aws_iam_role_policy_attachment" "lb_controller" {
   role       = aws_iam_role.lb_controller.name
 }
 
-# Додаткова політика для ALB
-data "aws_iam_policy_document" "lb_controller_extra" {
-  statement {
-    actions = [
-      "ec2:*",
-      "elasticloadbalancing:*",
-      "iam:CreateServiceLinkedRole",
-      "cognito-idp:DescribeUserPoolClient",
-      "waf-regional:GetWebACL",
-    ]
-    resources = ["*"]
-  }
-  statement {
-    actions = [
-      "acm:DescribeCertificate",
-      "acm:ListCertificates",
-      "acm:GetCertificate",
-    ]
-    resources = ["*"]
-  }
+# Додаткова політика для ALB (scoped — iam_policy.json)
+#
+# Замість широких ec2:* + elasticloadbalancing:* на * використовуємо
+# гранулярну політику з умовами на теґ elbv2.k8s.aws/cluster.
+resource "aws_iam_policy" "lb_controller_scoped" {
+  name   = "${var.project_name}-lb-controller-scoped"
+  policy = file("${path.module}/iam_policy.json")
 }
 
-resource "aws_iam_policy" "lb_controller_extra" {
-  name   = "${var.project_name}-lb-controller-extra"
-  policy = data.aws_iam_policy_document.lb_controller_extra.json
-}
-
-resource "aws_iam_role_policy_attachment" "lb_controller_extra" {
-  policy_arn = aws_iam_policy.lb_controller_extra.arn
+resource "aws_iam_role_policy_attachment" "lb_controller_scoped" {
+  policy_arn = aws_iam_policy.lb_controller_scoped.arn
   role       = aws_iam_role.lb_controller.name
 }
 

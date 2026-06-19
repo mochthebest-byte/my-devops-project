@@ -40,7 +40,10 @@ spec:
             - name: KC_BOOTSTRAP_ADMIN_USERNAME
               value: {{ .Values.admin.user }}
             - name: KC_BOOTSTRAP_ADMIN_PASSWORD
-              value: {{ .Values.admin.password }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.admin.existingSecret }}
+                  key: {{ .Values.admin.secretKey }}
             - name: KC_DB
               value: postgres
             - name: KC_DB_URL_HOST
