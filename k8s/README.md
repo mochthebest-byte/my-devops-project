@@ -1,38 +1,31 @@
-# Kubernetes Infrastructure Manifests
+# Kubernetes — legacy manifests
 
-Shared k8s resources applied via ArgoCD (`gateway-config` app).
+> **⚠️  Ці файли залишені для локальної розробки.**
+> Виробничі ресурси управляються через Helm-чарти + ArgoCD.
 
-## Files
+## Файли
 
-| File | Kind | Purpose |
-|------|------|---------|
-| `gateway-config.yaml.helm-migrated` | GatewayClass + Gateway | ALB for HTTP/HTTPS traffic (migrated to Helm) |
-| `secretstore.yaml` | ClusterSecretStore | AWS Secrets Manager backend for ESO |
-| `postgres-external-secret.yaml` | ExternalSecret | PostgreSQL password from Secrets Manager |
-| `grafana-oidc-external-secret.yaml` | ExternalSecret | Grafana OIDC client secret from Secrets Manager |
-| `cluster-issuer.yaml` | ClusterIssuer + Certificate | Let's Encrypt + self-signed TLS |
+| Файл | Призначення |
+|------|-------------|
+| `local/values-local.yaml` | Helm overrides для локального Kind кластера |
+| `local/values-grafana-local.yaml` | Grafana overrides для локального Kind кластера |
 
-> **Примітка:** Усі HTTPRoute (vote, result, grafana, keycloak) тепер в одному файлі `gateway-config.yaml`, а не окремими файлами.
+## Деплой
 
-## Migration to Helm
+- **Production:** `charts/infra-bootstrap/` (ClusterSecretStore, ExternalSecrets) +
+  `charts/gateway-config/` (Gateway, HTTPRoutes, ExternalDNS)
+- **Local:** `k8s/local/values-*.yaml` + `helm upgrade --install -f ...`
 
-Файли в `k8s/` застосовуються напряму (kubectl), що порушує принцип "деплой тільки через Helm".
-Для міграції створено Helm-чарт `charts/infra-bootstrap/`, який вміщує всі ці ресурси:
+## Migration status
 
-| k8s/ файл | Helm template |
-|-----------|---------------|
-| `cluster-issuer.yaml` | `charts/infra-bootstrap/templates/cluster-issuer.yaml` |
-| `secretstore.yaml` | `charts/infra-bootstrap/templates/secretstore.yaml` |
-| `grafana-oidc-external-secret.yaml` | `charts/infra-bootstrap/templates/external-secrets.yaml` |
-| `postgres-external-secret.yaml` | `charts/infra-bootstrap/templates/external-secrets.yaml` |
-
-Після створення ArgoCD Application для `charts/infra-bootstrap`:
-1. Додати `charts/argocd-apps/templates/infra-bootstrap.yaml`
-2. Переконатися що ресурси створились коректно
-3. Видалити ручні kubectl apply
+| Legacy file | Helm chart | Status |
+|-------------|-----------|--------|
+| `secretstore.yaml` | `charts/infra-bootstrap/` | ✅ Migrated |
+| `postgres-external-secret.yaml` | `charts/infra-bootstrap/` | ✅ Migrated |
+| `grafana-oidc-external-secret.yaml` | `charts/infra-bootstrap/` | ✅ Migrated |
+| `cluster-issuer.yaml` | Видалено (TLS = ACM) | ✅ Removed |
 
 ## Dependencies
 
-- External Secrets Operator (installed via Terraform)
-- cert-manager (installed via Terraform)
-- AWS Load Balancer Controller (installed via Terraform, IAM + Helm в `infra-aws/addons.tf`)
+- External Secrets Operator (встановлено через Terraform)
+- AWS Load Balancer Controller (Terraform + Helm)

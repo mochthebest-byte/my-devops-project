@@ -5,7 +5,7 @@
 #   - Local: service type NodePort, Ingress ingress-nginx
 #   - Prod:   service type ClusterIP, Gateway API (ALB)
 #   - Local: no TLS (HTTP only)
-#   - Prod:   TLS via cert-manager + ACM
+#   - Prod:   TLS via ACM (AWS Certificate Manager)
 #   - Local: no External Secrets (plain secrets OK)
 #   - Prod:   External Secrets Operator (AWS Secrets Manager)
 

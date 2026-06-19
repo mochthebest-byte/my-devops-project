@@ -100,6 +100,31 @@ jobs:
           kind load docker-image vote:latest result:latest worker:latest \
             --name voting-app-local
 
+      # Step 8b: Trivy vulnerability scan on built images
+      - name: Trivy scan images
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'vote:latest'
+          format: 'table'
+          exit-code: '1'
+          severity: 'HIGH,CRITICAL'
+
+      - name: Trivy scan result
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'result:latest'
+          format: 'table'
+          exit-code: '1'
+          severity: 'HIGH,CRITICAL'
+
+      - name: Trivy scan worker
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'worker:latest'
+          format: 'table'
+          exit-code: '1'
+          severity: 'HIGH,CRITICAL'
+
       # Step 9: Deploy Helm charts
       - name: Deploy Helm charts
         run: |
