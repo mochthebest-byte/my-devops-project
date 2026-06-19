@@ -11,12 +11,6 @@ spec:
     repoURL: https://github.com/mochthebest-byte/my-devops-project.git
     targetRevision: HEAD
     path: charts/infra-bootstrap
-    helm:
-      values: |
-        clusterIssuer:
-          enabled: false
-        certificates:
-          enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

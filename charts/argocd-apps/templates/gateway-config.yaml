@@ -14,8 +14,6 @@ spec:
     helm:
       values: |
         enabled: true
-        endpointSyncer:
-          enabled: false
         tls:
           enabled: true
   destination:

@@ -13,6 +13,14 @@ postgresql:
   existingSecret: postgresql
   secretPasswordKey: password
 
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 200m
+  limits:
+    memory: 512Mi
+    cpu: 1000m
+
 redis:
   host: redis-master
   port: 6379

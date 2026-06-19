@@ -49,8 +49,10 @@ spec:
           from: All
       tls:
         mode: Terminate
+        {{- if .Values.tls.secretName }}
         certificateRefs:
-          - name: "{{ .Values.tls.secretName | default "voting-app-tls" }}"
+          - name: {{ .Values.tls.secretName }}
             kind: Secret
+        {{- end }}
     {{- end }}
 {{- end }}

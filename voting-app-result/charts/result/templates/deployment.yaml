@@ -69,6 +69,8 @@ spec:
             capabilities:
               drop: ["ALL"]
             readOnlyRootFilesystem: true
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
           # Liveness/Readiness probes
           readinessProbe:
             httpGet:

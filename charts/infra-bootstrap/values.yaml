@@ -6,34 +6,6 @@
 global:
   enabled: true
 
-# ─── cert-manager ClusterIssuers ───────────────────────
-clusterIssuer:
-  enabled: true
-  email: admin@example.com
-  gateway:
-    name: voting-app-gateway
-    namespace: voting-app
-
-certificates:
-  enabled: true
-  # Self-signed — для *.nip.io (локальне тестування)
-  selfSigned:
-    enabled: true
-    commonName: "*.nip.io"
-    dnsNames:
-      - "*.nip.io"
-    secretName: voting-app-tls
-    issuerName: selfsigned-issuer
-  # Let's Encrypt Staging — для тестування HTTPS
-  letsEncryptStaging:
-    enabled: true
-    commonName: "*.mochthebest.io"
-    dnsNames:
-      - "*.mochthebest.io"
-      - "mochthebest.io"
-    secretName: voting-app-tls-le
-    issuerName: letsencrypt-staging
-
 # ─── External Secrets Operator (ESO) — ClusterSecretStore ──
 secretStore:
   enabled: true
