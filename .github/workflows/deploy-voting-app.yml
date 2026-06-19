@@ -33,8 +33,8 @@ on:
     types: [deploy-voting-app]
 
 env:
-  AWS_REGION: us-east-1
-  CI_ROLE_ARN: arn:aws:iam::428156589409:role/my-app-eks-github-ci
+  AWS_REGION: eu-central-1
+  CI_ROLE_ARN: arn:aws:iam::765776786215:role/my-app-eks-github-ci
   GITOPS_REPO: mochthebest-byte/gitops
   GITOPS_BRANCH: main
 
@@ -139,6 +139,10 @@ jobs:
           ref: ${{ env.GITOPS_BRANCH }}
           path: gitops
 
+      # Install yq for structured YAML patching
+      - name: Install yq
+        uses: mikefarah/yq@v4.44.3
+
       - name: Update image tag in GitOps
         id: update-manifest
         env:
@@ -155,17 +159,18 @@ jobs:
 
           echo "Updating ${MANIFEST_PATH} -> tag: ${IMAGE_TAG}"
 
-          if grep -q "^image:" "${MANIFEST_PATH}"; then
-            NEW_IMAGE="${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
-            sed -i "s|image:.*|image: ${NEW_IMAGE}|g" "${MANIFEST_PATH}"
-          elif grep -q "^  tag:" "${MANIFEST_PATH}"; then
-            sed -i "s|^  tag:.*|  tag: ${IMAGE_TAG}|g" "${MANIFEST_PATH}"
+          # Use yq for structured YAML patching
+          if yq eval '.image' "${MANIFEST_PATH}" | grep -q "null"; then
+            # Helm values.yaml with tag: field
+            yq eval ".image.tag = \"${IMAGE_TAG}\"" -i "${MANIFEST_PATH}"
           else
-            sed -i "s|^  tag:.*|  tag: ${IMAGE_TAG}|g" "${MANIFEST_PATH}"
+            # Plain Deployment manifest with image: field
+            NEW_IMAGE="${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+            yq eval ".spec.template.spec.containers[0].image = \"${NEW_IMAGE}\"" -i "${MANIFEST_PATH}"
           fi
 
           echo "Updated:"
-          grep -E "(image:|  tag:)" "${MANIFEST_PATH}"
+          yq eval '.image' "${MANIFEST_PATH}" 2>/dev/null || yq eval '.spec.template.spec.containers[0].image' "${MANIFEST_PATH}"
 
       - name: Commit and push changes
         env:

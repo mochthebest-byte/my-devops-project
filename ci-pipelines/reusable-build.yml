@@ -21,8 +21,8 @@
 #         image_name: vote
 #         ecr_repository: my-app/vote
 #         service_name: vote
-#         aws_region: us-east-1
-#         ci_role_arn: arn:aws:iam::428156589409:role/my-app-eks-github-ci
+#         aws_region: eu-central-1
+#         ci_role_arn: arn:aws:iam::765776786215:role/my-app-eks-github-ci
 #       secrets:
 #         gitops_token: ${{ secrets.GITOPS_PAT }}
 

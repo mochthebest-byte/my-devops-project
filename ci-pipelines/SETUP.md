@@ -68,7 +68,7 @@ terraform output github_ci_role_arn
 
 Output example:
 ```
-arn:aws:iam::428156589409:role/my-app-eks-github-ci
+arn:aws:iam::765776786215:role/my-app-eks-github-ci
 ```
 
 Use this as `ci_role_arn` in your workflow.
@@ -104,7 +104,7 @@ These must exist in `mochthebest-byte/gitops` and contain:
 
 ```yaml
 image:
-  repository: 428156589409.dkr.ecr.us-east-1.amazonaws.com/my-app/vote
+  repository: 765776786215.dkr.ecr.eu-central-1.amazonaws.com/my-app/vote
   tag: latest    # ← CI updates this line
 ```
 

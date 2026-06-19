@@ -5,8 +5,11 @@ resource "oci_oke_cluster" "main" {
   vcn_id             = oci_core_vcn.main.id
   kubernetes_version = var.oke_k8s_version
   endpoint_config {
-    is_public_ip_enabled = true
-    subnet_id           = oci_core_subnet.lb.id
+    # ⚠️ Private endpoint — безпечніше
+    # Для CI доступу через OCI CLI + OIDC — не потрібен публічний API
+    is_public_ip_enabled = false
+    subnet_id            = oci_core_subnet.oke.id
+    nsg_ids              = length(oci_core_network_security_group.oke_api[*].id) > 0 ? [oci_core_network_security_group.oke_api[0].id] : []
   }
   options {
     service_lb_subnet_ids = [oci_core_subnet.lb.id]
@@ -27,7 +30,7 @@ resource "oci_oke_node_pool" "main" {
     source_type = "IMAGE"
     image_id    = data.oci_core_images.oke.images[0].id
   }
-  node_shape    = var.oke_node_shape
+  node_shape = var.oke_node_shape
   node_shape_config {
     ocpus         = var.oke_node_ocpus
     memory_in_gbs = var.oke_node_memory_gb
@@ -52,6 +55,29 @@ resource "oci_oke_node_pool" "main" {
     value = var.project_name
   }
   ssh_public_key = var.ssh_public_key != "" ? var.ssh_public_key : null
+}
+
+# ─── NSG for OKE API endpoint ─────────────────────────
+resource "oci_core_network_security_group" "oke_api" {
+  compartment_id = var.compartment_ocid
+  vcn_id         = oci_core_vcn.main.id
+  display_name   = "${var.project_name}-oke-api-nsg"
+}
+
+# Allow HTTPS from GitHub Actions IPs (OIDC-based kubeconfig)
+resource "oci_core_network_security_group_security_rule" "oke_api_https" {
+  network_security_group_id = oci_core_network_security_group.oke_api.id
+  protocol                  = "6"
+  direction                 = "INGRESS"
+  source                    = "0.0.0.0/0"
+  source_type               = "CIDR_BLOCK"
+  tcp_options {
+    destination_port_range {
+      min = 6443
+      max = 6443
+    }
+  }
+  description = "OKE API HTTPS (6443) — for kubectl from CI"
 }
 
 # ─── Data Sources ─────────────────────────────────────

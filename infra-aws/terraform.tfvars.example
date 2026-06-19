@@ -15,7 +15,7 @@ enable_nat_gateway = true
 single_nat_gateway = true
 
 # ─── Domain ───────────────────────────────────────
-domain_name = "mochthebest.io"
+domain_name = "mochthebest.pp.ua"
 
 # ─── GitHub OIDC (WIF) — опційно ──────────────────
 # create_github_oidc = true
