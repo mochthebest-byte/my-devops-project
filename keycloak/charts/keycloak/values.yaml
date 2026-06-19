@@ -20,7 +20,7 @@ postgresql:
   database: keycloak
   user: keycloak
   existingSecret: keycloak-db
-  secretKey: KC_DB_PASSWORD
+  secretKey: password
 
 admin:
   user: admin

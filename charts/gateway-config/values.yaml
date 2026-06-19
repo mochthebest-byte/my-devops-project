@@ -18,8 +18,9 @@ tls:
   enabled: true
   # k8s TLS Secret name (leave empty for ACM auto-discovery)
   secretName: ""
-  # ACM ARN — deprecated on Gateway API (kept for backward compat)
-  certificateArn: ""
+  # ACM ARN — використовується для certificate discovery
+  # Коли certificateArn задано, certificateRefs вказує на fallback Secret
+  certificateArn: "arn:aws:acm:eu-central-1:765776786215:certificate/2832556a-442a-40a7-9287-91ab5cde01fc"
 
 # ─── Gateway ─────────────────────────────────────────────
 gateway:
