@@ -32,6 +32,19 @@ externalSecrets:
       key: /my-app/grafana-oidc
       property: client-secret
 
+  grafanaOidcKeycloak:
+    enabled: true
+    namespace: keycloak
+    refreshInterval: "1h"
+    secretStore:
+      name: aws-secretsmanager
+      kind: ClusterSecretStore
+    target:
+      name: grafana-oidc-secret
+    remoteRef:
+      key: /my-app/grafana-oidc
+      property: client-secret
+
   postgresql:
     enabled: true
     namespace: voting-app

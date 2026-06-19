@@ -164,6 +164,27 @@ spec:
                     fi
                     {{- end }}
                     {{- end }}
+                    # ── Sync OIDC client secrets from /etc/oidc-secrets ──
+                    {{- range $c := $.Values.oidc.clients }}
+                    if [ -f "/etc/oidc-secrets/{{ $c.secretKey }}" ]; then
+                      CLIENT_SECRET=$(cat "/etc/oidc-secrets/{{ $c.secretKey }}")
+                      CLIENT_ID=$($KCADM get clients --config "$CONFIG" \
+                        -r "{{ $c.realm }}" -q clientId={{ $c.clientId }} \
+                        --fields id 2>/dev/null \
+                        | grep '"id"' \
+                        | sed 's/.*"id" : "\(.*\)".*/\1/')
+                      if [ -n "$CLIENT_ID" ]; then
+                        $KCADM update clients/"$CLIENT_ID" --config "$CONFIG" \
+                          -r "{{ $c.realm }}" \
+                          -s "secret=$CLIENT_SECRET" \
+                          > /dev/null 2>&1 \
+                          && echo "[postStart] Synced OIDC secret for client {{ $c.clientId }}" \
+                          || echo "[postStart] Failed to sync OIDC secret for client {{ $c.clientId }}"
+                      else
+                        echo "[postStart] Client {{ $c.clientId }} not found in realm {{ $c.realm }}"
+                      fi
+                    fi
+                    {{- end }}
                     exit 0
           readinessProbe:
             httpGet:
@@ -188,6 +209,9 @@ spec:
             - name: realm-secrets
               mountPath: /etc/realm-secrets
               readOnly: true
+            - name: oidc-secrets
+              mountPath: /etc/oidc-secrets
+              readOnly: true
       volumes:
         - name: tmp
           emptyDir: {}
@@ -200,3 +224,6 @@ spec:
         - name: db-secrets
           secret:
             secretName: {{ .Values.postgresql.existingSecret }}
+        - name: oidc-secrets
+          secret:
+            secretName: {{ .Values.oidc.existingSecret }}

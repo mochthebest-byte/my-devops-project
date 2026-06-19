@@ -22,6 +22,15 @@ postgresql:
   existingSecret: keycloak-db
   secretKey: password
 
+# ─── Grafana OIDC client ──────────────────────────────
+# Синхронізує client-secret з grafana-oidc-secret в Keycloak
+oidc:
+  existingSecret: grafana-oidc-secret
+  clients:
+    - clientId: grafana
+      realm: myapp
+      secretKey: client-secret
+
 admin:
   user: admin
   existingSecret: keycloak-admin
