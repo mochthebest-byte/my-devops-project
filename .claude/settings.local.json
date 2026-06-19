@@ -293,7 +293,13 @@
       "Bash(awk '{print $1,$2,$3,$4,$5}')",
       "Bash(awk '{print $1,$2,$3,$4}')",
       "Bash(echo \"---EXIT:$?\")",
-      "Bash(xargs basename -a)"
+      "Bash(xargs basename -a)",
+      "WebFetch(domain:vote.mochthebest.pp.ua)",
+      "WebFetch(domain:argocd.mochthebest.pp.ua)",
+      "WebFetch(domain:keycloak.mochthebest.pp.ua)",
+      "WebFetch(domain:grafana.mochthebest.pp.ua)",
+      "Bash(grep -rn -E '\\(password|secret|passwd|postgresPassword|adminPassword|connection_string|dsn|jdbc|jdbc_url|jdbcUrl|connectionString\\)[[:space:]]*:.*[a-zA-Z0-9_!@#$%^&*\\(\\)=+]{4,}' /home/psihson/my-devops-project/voting-app-vote /home/psihson/my-devops-project/voting-app-result /home/psihson/my-devops-project/voting-app-worker)",
+      "Bash(echo \"===EXIT:$?\")"
     ]
   }
 }

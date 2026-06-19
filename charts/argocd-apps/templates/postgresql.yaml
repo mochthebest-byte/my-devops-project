@@ -14,7 +14,7 @@ spec:
     helm:
       values: |
         image:
-          tag: latest
+          tag: 16.8.0
         auth:
           database: db
           username: vote_user

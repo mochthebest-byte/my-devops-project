@@ -61,6 +61,7 @@ realm:
   loginWithEmailAllowed: true
   registrationAllowed: false
   sslRequired: external
+  existingSecret: keycloak-realm-users
 
   users:
     - username: admin
@@ -70,7 +71,8 @@ realm:
       lastName: Keycloak
       credentials:
         type: password
-        value: admin123   # DEV ONLY — override in prod
+        secretKey: admin-password
+        # sourced from AWS Secrets Manager via ESO
         temporary: false
       realmRoles: ["grafana-admin"]
     - username: user
@@ -80,7 +82,8 @@ realm:
       lastName: User
       credentials:
         type: password
-        value: user123    # DEV ONLY — override in prod
+        secretKey: user-password
+        # sourced from AWS Secrets Manager via ESO
         temporary: false
       realmRoles: ["grafana-editor"]
 

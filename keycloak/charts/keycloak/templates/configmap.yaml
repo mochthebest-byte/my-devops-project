@@ -41,7 +41,11 @@ data:
           "lastName": {{ $u.lastName | quote }},
           "credentials": [{
             "type": {{ $u.credentials.type | quote }},
+            {{- if $u.credentials.value }}
             "value": {{ $u.credentials.value | quote }},
+            {{- else }}
+            "value": "",
+            {{- end }}
             "temporary": {{ $u.credentials.temporary }}
           }],
           "realmRoles": {{ $u.realmRoles | toJson }}
