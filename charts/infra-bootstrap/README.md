@@ -15,7 +15,7 @@ Cluster-level інфраструктурні ресурси для EKS.
 ## Деплой через ArgoCD
 
 ```yaml
-# argocd-apps/infra-bootstrap.yaml
+# charts/argocd-apps/templates/infra-bootstrap.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:

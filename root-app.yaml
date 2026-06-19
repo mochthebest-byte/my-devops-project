@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/mochthebest-byte/my-devops-project.git
     targetRevision: HEAD
-    path: argocd-apps
+    path: charts/argocd-apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

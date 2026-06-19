@@ -1,13 +1,12 @@
 # ══════════════════════════════════════════════════════════
-#  Gateway API — ресурси перенесено в k8s/gateway-config.yaml
-#  (керується через ArgoCD, а не Terraform kubectl_manifest)
+#  Gateway API — керується через ArgoCD, а не Terraform
 # ══════════════════════════════════════════════════════════
 #
 #  Terraform керує тільки інфраструктурою:
 #    - IAM + Helm AWS Load Balancer Controller → addons.tf
 #
 #  Усі Gateway-ресурси (GatewayClass, Gateway, HTTPRoute):
-#    → k8s/gateway-config.yaml (ArgoCD Application: gateway-config)
+#    → charts/gateway-config/ (ArgoCD Application: gateway-config)
 #
 #  🔄 Якщо GatewayClass потрібен до встановлення ArgoCD,
-#     застосувати вручну: kubectl apply -f k8s/gateway-config.yaml
+#     застосувати вручну: helm template charts/gateway-config | kubectl apply -f -

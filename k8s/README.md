@@ -27,7 +27,7 @@ Shared k8s resources applied via ArgoCD (`gateway-config` app).
 | `postgres-external-secret.yaml` | `charts/infra-bootstrap/templates/external-secrets.yaml` |
 
 Після створення ArgoCD Application для `charts/infra-bootstrap`:
-1. Додати `argocd-apps/infra-bootstrap.yaml`
+1. Додати `charts/argocd-apps/templates/infra-bootstrap.yaml`
 2. Переконатися що ресурси створились коректно
 3. Видалити ручні kubectl apply
 
