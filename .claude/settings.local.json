@@ -292,7 +292,8 @@
       "Bash(openssl s_client -connect vote.mochthebest.pp.ua:443 -servername vote.mochthebest.pp.ua)",
       "Bash(awk '{print $1,$2,$3,$4,$5}')",
       "Bash(awk '{print $1,$2,$3,$4}')",
-      "Bash(echo \"---EXIT:$?\")"
+      "Bash(echo \"---EXIT:$?\")",
+      "Bash(xargs basename -a)"
     ]
   }
 }
