@@ -25,10 +25,11 @@ module "eks" {
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.public_subnets
 
-  # Публічний доступ до API — kubectl має працювати з CI
-  # ⚠️ Обмежити IP-адресами через cluster_endpoint_public_access_cidrs
-  cluster_endpoint_public_access  = true
-  cluster_endpoint_private_access = true
+  # Публічний доступ до API — обмежений VPC CIDR
+  # Для GitHub Actions / офісу — додати CIDR у змінну eks_public_access_cidrs
+  cluster_endpoint_public_access       = true
+  cluster_endpoint_public_access_cidrs = var.eks_public_access_cidrs
+  cluster_endpoint_private_access      = true
 
   # EBS CSI Driver — додамо нижче
   # Node Security Group

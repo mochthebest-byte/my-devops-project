@@ -28,6 +28,12 @@ variable "eks_cluster_version" {
   default     = "1.31"
 }
 
+variable "eks_public_access_cidrs" {
+  description = "CIDR blocks allowed for EKS public API endpoint. Default = VPC CIDR (private access via VPC). Додати IP GitHub Actions / офісу при потребі."
+  type        = list(string)
+  default     = ["10.0.0.0/16"]
+}
+
 variable "eks_node_instance_types" {
   description = "EC2 instance types for EKS nodes"
   type        = list(string)

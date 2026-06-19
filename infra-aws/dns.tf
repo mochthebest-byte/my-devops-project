@@ -53,15 +53,12 @@ resource "aws_route53_record" "cert_validation" {
   zone_id         = aws_route53_zone.main.zone_id
 }
 
-# ╠═ ACM Validation — ВИМКНЕНО ═══════════════════════════
+# ╠════ ACM Validation — АКТИВНО ════════════════════════════
 #  Сертифікат створено, CNAME-записи додано в Route53.
-#  Валідація потребує делегування домену на NS-сервери Route53:
-#
+#  Валідація виконується автоматично через DNS-01.
+#  ⚠️  Домен має бути делеговано на NS-сервери Route53:
 #     terraform output dns_nameservers
-#
-#  Після делегування — розкоментувати ресурс нижче або
-#  зробити вручну через AWS Console → ACM → Validate.
-#
+
 resource "aws_acm_certificate_validation" "wildcard" {
   certificate_arn         = aws_acm_certificate.wildcard.arn
   validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
