@@ -7,12 +7,12 @@ spec:
   project: default
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 21.x
+    targetRevision: 21.2.x
     chart: redis
     helm:
       values: |
         image:
-          tag: latest
+          tag: 7.4.2
         architecture: standalone
         auth:
           enabled: false

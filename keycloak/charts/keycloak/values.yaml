@@ -32,7 +32,6 @@ hostname: keycloak.mochthebest.pp.ua
 gateway:
   name: voting-app-gateway
   namespace: voting-app
-  sectionName: https-keycloak
 
 resources:
   requests:

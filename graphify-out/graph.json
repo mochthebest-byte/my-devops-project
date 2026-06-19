@@ -279,7 +279,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_c",
-      "community": 0,
+      "community": 2,
       "norm_label": "c()"
     },
     {
@@ -324,7 +324,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_d",
-      "community": 0,
+      "community": 2,
       "norm_label": "d()"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_y",
-      "community": 0,
+      "community": 2,
       "norm_label": "y()"
     },
     {
@@ -351,7 +351,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_j",
-      "community": 1,
+      "community": 2,
       "norm_label": "j()"
     },
     {
@@ -486,7 +486,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L1",
       "id": "voting_app_result_views_angular_min_js",
-      "community": 4,
+      "community": 1,
       "norm_label": "angular.min.js"
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L8",
       "id": "views_angular_min_oc",
-      "community": 6,
+      "community": 3,
       "norm_label": "oc()"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L8",
       "id": "views_angular_min_pc",
-      "community": 6,
+      "community": 3,
       "norm_label": "pc()"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L8",
       "id": "views_angular_min_xd",
-      "community": 4,
+      "community": 1,
       "norm_label": "xd()"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_n",
-      "community": 14,
+      "community": 1,
       "norm_label": "n()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_ca",
-      "community": 9,
+      "community": 1,
       "norm_label": "ca()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_ob",
-      "community": 14,
+      "community": 1,
       "norm_label": "ob()"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_v",
-      "community": 4,
+      "community": 1,
       "norm_label": "v()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_ma",
-      "community": 3,
+      "community": 0,
       "norm_label": "ma()"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_qc",
-      "community": 10,
+      "community": 1,
       "norm_label": "qc()"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_r",
-      "community": 3,
+      "community": 1,
       "norm_label": "r()"
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_u",
-      "community": 6,
+      "community": 3,
       "norm_label": "u()"
     },
     {
@@ -657,7 +657,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_nc",
-      "community": 3,
+      "community": 1,
       "norm_label": "nc()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_ea",
-      "community": 1,
+      "community": 0,
       "norm_label": "ea()"
     },
     {
@@ -720,7 +720,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_sc",
-      "community": 12,
+      "community": 2,
       "norm_label": "sc()"
     },
     {
@@ -738,7 +738,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_d",
-      "community": 0,
+      "community": 2,
       "norm_label": "$d()"
     },
     {
@@ -747,7 +747,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_oa",
-      "community": 3,
+      "community": 1,
       "norm_label": "oa()"
     },
     {
@@ -756,7 +756,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_ab",
-      "community": 6,
+      "community": 3,
       "norm_label": "ab()"
     },
     {
@@ -765,7 +765,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_na",
-      "community": 12,
+      "community": 2,
       "norm_label": "na()"
     },
     {
@@ -810,7 +810,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L15",
       "id": "views_angular_min_cb",
-      "community": 3,
+      "community": 1,
       "norm_label": "cb()"
     },
     {
@@ -828,7 +828,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_vc",
-      "community": 1,
+      "community": 0,
       "norm_label": "vc()"
     },
     {
@@ -837,7 +837,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_pb",
-      "community": 1,
+      "community": 0,
       "norm_label": "pb()"
     },
     {
@@ -846,7 +846,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_ua",
-      "community": 0,
+      "community": 2,
       "norm_label": "ua()"
     },
     {
@@ -855,7 +855,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_wc",
-      "community": 6,
+      "community": 3,
       "norm_label": "wc()"
     },
     {
@@ -864,7 +864,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L17",
       "id": "views_angular_min_xc",
-      "community": 6,
+      "community": 3,
       "norm_label": "xc()"
     },
     {
@@ -909,7 +909,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L19",
       "id": "views_angular_min_yc",
-      "community": 0,
+      "community": 2,
       "norm_label": "yc()"
     },
     {
@@ -918,7 +918,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L20",
       "id": "views_angular_min_ee",
-      "community": 4,
+      "community": 1,
       "norm_label": "ee()"
     },
     {
@@ -927,7 +927,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L21",
       "id": "views_angular_min_fe",
-      "community": 12,
+      "community": 3,
       "norm_label": "fe()"
     },
     {
@@ -945,7 +945,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L21",
       "id": "views_angular_min_he",
-      "community": 14,
+      "community": 1,
       "norm_label": "he()"
     },
     {
@@ -963,7 +963,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L22",
       "id": "views_angular_min_sa",
-      "community": 0,
+      "community": 3,
       "norm_label": "sa()"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L23",
       "id": "views_angular_min_ie",
-      "community": 0,
+      "community": 2,
       "norm_label": "ie()"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L25",
       "id": "views_angular_min_je",
-      "community": 0,
+      "community": 1,
       "norm_label": "je()"
     },
     {
@@ -1017,7 +1017,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L29",
       "id": "views_angular_min_kc",
-      "community": 6,
+      "community": 1,
       "norm_label": "kc()"
     },
     {
@@ -1035,7 +1035,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L29",
       "id": "views_angular_min_mc",
-      "community": 4,
+      "community": 1,
       "norm_label": "mc()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L30",
       "id": "views_angular_min_vb",
-      "community": 6,
+      "community": 1,
       "norm_label": "vb()"
     },
     {
@@ -1062,7 +1062,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L30",
       "id": "views_angular_min_tb",
-      "community": 10,
+      "community": 1,
       "norm_label": "tb()"
     },
     {
@@ -1071,7 +1071,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L31",
       "id": "views_angular_min_ub",
-      "community": 10,
+      "community": 1,
       "norm_label": "ub()"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_wb",
-      "community": 6,
+      "community": 1,
       "norm_label": "wb()"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_xb",
-      "community": 14,
+      "community": 1,
       "norm_label": "xb()"
     },
     {
@@ -1107,7 +1107,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_zb",
-      "community": 3,
+      "community": 0,
       "norm_label": "zb()"
     },
     {
@@ -1116,7 +1116,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L34",
       "id": "views_angular_min_nf",
-      "community": 0,
+      "community": 1,
       "norm_label": "nf()"
     },
     {
@@ -1125,7 +1125,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L34",
       "id": "views_angular_min_rc",
-      "community": 3,
+      "community": 1,
       "norm_label": "rc()"
     },
     {
@@ -1143,7 +1143,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L35",
       "id": "views_angular_min_pf",
-      "community": 3,
+      "community": 1,
       "norm_label": "pf()"
     },
     {
@@ -1152,7 +1152,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L35",
       "id": "views_angular_min_qf",
-      "community": 6,
+      "community": 3,
       "norm_label": "qf()"
     },
     {
@@ -1161,7 +1161,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L36",
       "id": "views_angular_min_ef",
-      "community": 14,
+      "community": 0,
       "norm_label": "ef()"
     },
     {
@@ -1170,7 +1170,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L36",
       "id": "views_angular_min_da",
-      "community": 0,
+      "community": 2,
       "norm_label": "da()"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L36",
       "id": "views_angular_min_ta",
-      "community": 4,
+      "community": 0,
       "norm_label": "ta()"
     },
     {
@@ -1188,7 +1188,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L37",
       "id": "views_angular_min_sf",
-      "community": 1,
+      "community": 2,
       "norm_label": "sf()"
     },
     {
@@ -1206,7 +1206,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L41",
       "id": "views_angular_min_ve",
-      "community": 0,
+      "community": 1,
       "norm_label": "ve()"
     },
     {
@@ -1215,7 +1215,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L43",
       "id": "views_angular_min_gb",
-      "community": 12,
+      "community": 3,
       "norm_label": "gb()"
     },
     {
@@ -1233,7 +1233,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L43",
       "id": "views_angular_min_uf",
-      "community": 0,
+      "community": 2,
       "norm_label": "uf()"
     },
     {
@@ -1242,7 +1242,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L46",
       "id": "views_angular_min_bf",
-      "community": 4,
+      "community": 1,
       "norm_label": "bf()"
     },
     {
@@ -1251,7 +1251,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L47",
       "id": "views_angular_min_cf",
-      "community": 3,
+      "community": 0,
       "norm_label": "cf()"
     },
     {
@@ -1260,7 +1260,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L48",
       "id": "views_angular_min_yf",
-      "community": 2,
+      "community": 0,
       "norm_label": "yf()"
     },
     {
@@ -1287,7 +1287,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L79",
       "id": "views_angular_min_c",
-      "community": 0,
+      "community": 2,
       "norm_label": "$c()"
     },
     {
@@ -1305,7 +1305,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L81",
       "id": "views_angular_min_ff",
-      "community": 4,
+      "community": 1,
       "norm_label": "ff()"
     },
     {
@@ -1314,7 +1314,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L82",
       "id": "views_angular_min_lf",
-      "community": 3,
+      "community": 0,
       "norm_label": "lf()"
     },
     {
@@ -1341,7 +1341,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L83",
       "id": "views_angular_min_dd",
-      "community": 13,
+      "community": 1,
       "norm_label": "dd()"
     },
     {
@@ -1377,7 +1377,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L94",
       "id": "views_angular_min_hf",
-      "community": 4,
+      "community": 1,
       "norm_label": "hf()"
     },
     {
@@ -1386,7 +1386,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L97",
       "id": "views_angular_min_jf",
-      "community": 4,
+      "community": 1,
       "norm_label": "jf()"
     },
     {
@@ -1395,7 +1395,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L98",
       "id": "views_angular_min_hd",
-      "community": 9,
+      "community": 3,
       "norm_label": "hd()"
     },
     {
@@ -1404,7 +1404,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L99",
       "id": "views_angular_min_id",
-      "community": 0,
+      "community": 3,
       "norm_label": "id()"
     },
     {
@@ -1422,7 +1422,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L99",
       "id": "views_angular_min_hb",
-      "community": 3,
+      "community": 1,
       "norm_label": "hb()"
     },
     {
@@ -1449,7 +1449,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L103",
       "id": "views_angular_min_kd",
-      "community": 0,
+      "community": 1,
       "norm_label": "kd()"
     },
     {
@@ -1485,7 +1485,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L110",
       "id": "views_angular_min_gg",
-      "community": 4,
+      "community": 1,
       "norm_label": "gg()"
     },
     {
@@ -1494,7 +1494,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L110",
       "id": "views_angular_min_nd",
-      "community": 4,
+      "community": 1,
       "norm_label": "nd()"
     },
     {
@@ -1521,7 +1521,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L114",
       "id": "views_angular_min_pd",
-      "community": 4,
+      "community": 1,
       "norm_label": "pd()"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L114",
       "id": "views_angular_min_qd",
-      "community": 4,
+      "community": 1,
       "norm_label": "qd()"
     },
     {
@@ -1539,7 +1539,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L114",
       "id": "views_angular_min_rd",
-      "community": 4,
+      "community": 1,
       "norm_label": "rd()"
     },
     {
@@ -1548,7 +1548,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L114",
       "id": "views_angular_min_sd",
-      "community": 4,
+      "community": 1,
       "norm_label": "sd()"
     },
     {
@@ -1557,7 +1557,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L114",
       "id": "views_angular_min_td",
-      "community": 4,
+      "community": 1,
       "norm_label": "td()"
     },
     {
@@ -1566,7 +1566,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L115",
       "id": "views_angular_min_fb",
-      "community": 4,
+      "community": 1,
       "norm_label": "fb()"
     },
     {
@@ -1575,7 +1575,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L115",
       "id": "views_angular_min_ec",
-      "community": 4,
+      "community": 0,
       "norm_label": "ec()"
     },
     {
@@ -1584,7 +1584,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L115",
       "id": "views_angular_min_rf",
-      "community": 9,
+      "community": 1,
       "norm_label": "rf()"
     },
     {
@@ -1602,7 +1602,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L138",
       "id": "views_angular_min_le",
-      "community": 6,
+      "community": 3,
       "norm_label": "le()"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L144",
       "id": "views_angular_min_xf",
-      "community": 9,
+      "community": 1,
       "norm_label": "xf()"
     },
     {
@@ -1656,7 +1656,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L145",
       "id": "views_angular_min_zf",
-      "community": 4,
+      "community": 1,
       "norm_label": "zf()"
     },
     {
@@ -1665,7 +1665,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L146",
       "id": "views_angular_min_af",
-      "community": 4,
+      "community": 0,
       "norm_label": "af()"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L149",
       "id": "views_angular_min_xa",
-      "community": 9,
+      "community": 3,
       "norm_label": "xa()"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L149",
       "id": "views_angular_min_gd",
-      "community": 9,
+      "community": 3,
       "norm_label": "gd()"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L150",
       "id": "views_angular_min_gf",
-      "community": 4,
+      "community": 1,
       "norm_label": "gf()"
     },
     {
@@ -1710,7 +1710,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L151",
       "id": "views_angular_min_jg",
-      "community": 10,
+      "community": 1,
       "norm_label": "jg()"
     },
     {
@@ -1719,7 +1719,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L151",
       "id": "views_angular_min_og",
-      "community": 10,
+      "community": 1,
       "norm_label": "og()"
     },
     {
@@ -1728,7 +1728,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L152",
       "id": "views_angular_min_ja",
-      "community": 10,
+      "community": 1,
       "norm_label": "ja()"
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L153",
       "id": "views_angular_min_hc",
-      "community": 10,
+      "community": 1,
       "norm_label": "hc()"
     },
     {
@@ -1746,7 +1746,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L153",
       "id": "views_angular_min_zd",
-      "community": 13,
+      "community": 1,
       "norm_label": "zd()"
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L153",
       "id": "views_angular_min_bd",
-      "community": 13,
+      "community": 1,
       "norm_label": "bd()"
     },
     {
@@ -1764,7 +1764,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L153",
       "id": "views_angular_min_pg",
-      "community": 13,
+      "community": 1,
       "norm_label": "pg()"
     },
     {
@@ -1773,7 +1773,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L154",
       "id": "views_angular_min_qg",
-      "community": 13,
+      "community": 1,
       "norm_label": "qg()"
     },
     {
@@ -1782,7 +1782,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L156",
       "id": "views_angular_min_ba",
-      "community": 12,
+      "community": 3,
       "norm_label": "ba()"
     },
     {
@@ -1791,7 +1791,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L157",
       "id": "views_angular_min_ad",
-      "community": 1,
+      "community": 0,
       "norm_label": "ad()"
     },
     {
@@ -1800,7 +1800,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L159",
       "id": "views_angular_min_kg",
-      "community": 3,
+      "community": 1,
       "norm_label": "kg()"
     },
     {
@@ -1809,7 +1809,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L159",
       "id": "views_angular_min_lg",
-      "community": 9,
+      "community": 1,
       "norm_label": "lg()"
     },
     {
@@ -1818,7 +1818,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L162",
       "id": "views_angular_min_ka",
-      "community": 3,
+      "community": 0,
       "norm_label": "ka()"
     },
     {
@@ -1941,7 +1941,7 @@
       "label": "info()",
       "file_type": "code",
       "source_file": "voting-app-result/tests/tests.sh",
-      "source_location": "L39",
+      "source_location": "L37",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -1954,7 +1954,7 @@
       "label": "warn()",
       "file_type": "code",
       "source_file": "voting-app-result/tests/tests.sh",
-      "source_location": "L40",
+      "source_location": "L38",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -1967,7 +1967,7 @@
       "label": "error()",
       "file_type": "code",
       "source_file": "voting-app-result/tests/tests.sh",
-      "source_location": "L41",
+      "source_location": "L39",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -1980,7 +1980,7 @@
       "label": "dump_diagnostics()",
       "file_type": "code",
       "source_file": "voting-app-result/tests/tests.sh",
-      "source_location": "L44",
+      "source_location": "L42",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -1993,7 +1993,7 @@
       "label": "http_get_with_retry()",
       "file_type": "code",
       "source_file": "voting-app-result/tests/tests.sh",
-      "source_location": "L92",
+      "source_location": "L90",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2174,6 +2174,331 @@
       "norm_label": "hello()"
     },
     {
+      "label": "setup.sh",
+      "file_type": "code",
+      "source_file": "k8s/oci/setup.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "k8s_oci_setup_sh",
+      "community": 35,
+      "norm_label": "setup.sh"
+    },
+    {
+      "label": "setup.sh script",
+      "file_type": "code",
+      "source_file": "k8s/oci/setup.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "home_psihson_my_devops_project_k8s_oci_setup_sh__entry",
+      "community": 35,
+      "norm_label": "setup.sh script"
+    },
+    {
+      "label": "bootstrap-backend.sh",
+      "file_type": "code",
+      "source_file": "scripts/bootstrap-backend.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "scripts_bootstrap_backend_sh",
+      "community": 36,
+      "norm_label": "bootstrap-backend.sh"
+    },
+    {
+      "label": "bootstrap-backend.sh script",
+      "file_type": "code",
+      "source_file": "scripts/bootstrap-backend.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "home_psihson_my_devops_project_scripts_bootstrap_backend_sh__entry",
+      "community": 36,
+      "norm_label": "bootstrap-backend.sh script"
+    },
+    {
+      "label": "setup-oci.sh",
+      "file_type": "code",
+      "source_file": "scripts/setup-oci.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "scripts_setup_oci_sh",
+      "community": 39,
+      "norm_label": "setup-oci.sh"
+    },
+    {
+      "label": "setup-oci.sh script",
+      "file_type": "code",
+      "source_file": "scripts/setup-oci.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "home_psihson_my_devops_project_scripts_setup_oci_sh__entry",
+      "community": 39,
+      "norm_label": "setup-oci.sh script"
+    },
+    {
+      "label": "tunnel-all.sh",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "scripts_tunnel_all_sh",
+      "community": 9,
+      "norm_label": "tunnel-all.sh"
+    },
+    {
+      "label": "tunnel-all.sh script",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
+      "community": 9,
+      "norm_label": "tunnel-all.sh script"
+    },
+    {
+      "label": "log()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L23",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_all_log",
+      "community": 9,
+      "norm_label": "log()"
+    },
+    {
+      "label": "die()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L24",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_all_die",
+      "community": 9,
+      "norm_label": "die()"
+    },
+    {
+      "label": "clean()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L25",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_all_clean",
+      "community": 9,
+      "norm_label": "clean()"
+    },
+    {
+      "label": "start_tunnel()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L33",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_all_start_tunnel",
+      "community": 9,
+      "norm_label": "start_tunnel()"
+    },
+    {
+      "label": "add_ingress_rule()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L62",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_all_add_ingress_rule",
+      "community": 9,
+      "norm_label": "add_ingress_rule()"
+    },
+    {
+      "label": "verify_tunnel()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L88",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_all_verify_tunnel",
+      "community": 9,
+      "norm_label": "verify_tunnel()"
+    },
+    {
+      "label": "disable-aws.sh",
+      "file_type": "code",
+      "source_file": "scripts/disable-aws.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "scripts_disable_aws_sh",
+      "community": 37,
+      "norm_label": "disable-aws.sh"
+    },
+    {
+      "label": "disable-aws.sh script",
+      "file_type": "code",
+      "source_file": "scripts/disable-aws.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "home_psihson_my_devops_project_scripts_disable_aws_sh__entry",
+      "community": 37,
+      "norm_label": "disable-aws.sh script"
+    },
+    {
+      "label": "tunnel-pinggy.sh",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "scripts_tunnel_pinggy_sh",
+      "community": 13,
+      "norm_label": "tunnel-pinggy.sh"
+    },
+    {
+      "label": "tunnel-pinggy.sh script",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
+      "community": 13,
+      "norm_label": "tunnel-pinggy.sh script"
+    },
+    {
+      "label": "log()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L15",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_pinggy_log",
+      "community": 13,
+      "norm_label": "log()"
+    },
+    {
+      "label": "cleanup()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L19",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_pinggy_cleanup",
+      "community": 13,
+      "norm_label": "cleanup()"
+    },
+    {
+      "label": "start_tunnel()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L28",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_pinggy_start_tunnel",
+      "community": 13,
+      "norm_label": "start_tunnel()"
+    },
+    {
+      "label": "update_ingress()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L59",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_pinggy_update_ingress",
+      "community": 13,
+      "norm_label": "update_ingress()"
+    },
+    {
+      "label": "verify()",
+      "file_type": "code",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L94",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "id": "scripts_tunnel_pinggy_verify",
+      "community": 13,
+      "norm_label": "verify()"
+    },
+    {
+      "label": "enable-aws.sh",
+      "file_type": "code",
+      "source_file": "scripts/enable-aws.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "scripts_enable_aws_sh",
+      "community": 38,
+      "norm_label": "enable-aws.sh"
+    },
+    {
+      "label": "enable-aws.sh script",
+      "file_type": "code",
+      "source_file": "scripts/enable-aws.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "home_psihson_my_devops_project_scripts_enable_aws_sh__entry",
+      "community": 38,
+      "norm_label": "enable-aws.sh script"
+    },
+    {
       "label": "settings.local.json",
       "file_type": "code",
       "source_file": ".claude/settings.local.json",
@@ -2252,6 +2577,987 @@
       "id": "home_psihson_my_devops_project_infra_aws_scripts_setup_eks_post_sh__entry",
       "community": 19,
       "norm_label": "setup-eks-post.sh script"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 14,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "My DevOps Project",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "my_devops_project_readme_my_devops_project",
+      "community": 14,
+      "norm_label": "my devops project"
+    },
+    {
+      "label": "Architecture Overview",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "id": "my_devops_project_readme_architecture_overview",
+      "community": 14,
+      "norm_label": "architecture overview"
+    },
+    {
+      "label": "CI/CD Flow",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L23",
+      "id": "my_devops_project_readme_ci_cd_flow",
+      "community": 14,
+      "norm_label": "ci/cd flow"
+    },
+    {
+      "label": "Components",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "id": "my_devops_project_readme_components",
+      "community": 14,
+      "norm_label": "components"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "id": "my_devops_project_readme_prerequisites",
+      "community": 14,
+      "norm_label": "prerequisites"
+    },
+    {
+      "label": "Quick Start",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L59",
+      "id": "my_devops_project_readme_quick_start",
+      "community": 14,
+      "norm_label": "quick start"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L1",
+      "id": "voting_app_result_readme_md",
+      "community": 24,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Voting App \u2014 Result Service (Node.js)",
+      "file_type": "document",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L1",
+      "id": "voting_app_result_readme_voting_app_result_service_node_js",
+      "community": 24,
+      "norm_label": "voting app \u2014 result service (node.js)"
+    },
+    {
+      "label": "Structure",
+      "file_type": "document",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L5",
+      "id": "voting_app_result_readme_structure",
+      "community": 24,
+      "norm_label": "structure"
+    },
+    {
+      "label": "How It Works",
+      "file_type": "document",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L26",
+      "id": "voting_app_result_readme_how_it_works",
+      "community": 24,
+      "norm_label": "how it works"
+    },
+    {
+      "label": "Helm Values",
+      "file_type": "document",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L33",
+      "id": "voting_app_result_readme_helm_values",
+      "community": 24,
+      "norm_label": "helm values"
+    },
+    {
+      "label": "Tests",
+      "file_type": "document",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L43",
+      "id": "voting_app_result_readme_tests",
+      "community": 24,
+      "norm_label": "tests"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-result/charts/result/README.md",
+      "source_location": "L1",
+      "id": "voting_app_result_charts_result_readme_md",
+      "community": 31,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Result Helm Chart",
+      "file_type": "document",
+      "source_file": "voting-app-result/charts/result/README.md",
+      "source_location": "L1",
+      "id": "result_readme_result_helm_chart",
+      "community": 31,
+      "norm_label": "result helm chart"
+    },
+    {
+      "label": "Features",
+      "file_type": "document",
+      "source_file": "voting-app-result/charts/result/README.md",
+      "source_location": "L5",
+      "id": "result_readme_features",
+      "community": 31,
+      "norm_label": "features"
+    },
+    {
+      "label": "Values",
+      "file_type": "document",
+      "source_file": "voting-app-result/charts/result/README.md",
+      "source_location": "L11",
+      "id": "result_readme_values",
+      "community": 31,
+      "norm_label": "values"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L1",
+      "id": "ci_pipelines_readme_md",
+      "community": 12,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "CI/CD Pipelines \u2014 Centralized Workflows",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L1",
+      "id": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "community": 12,
+      "norm_label": "ci/cd pipelines \u2014 centralized workflows"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L5",
+      "id": "ci_pipelines_readme_architecture",
+      "community": 12,
+      "norm_label": "architecture"
+    },
+    {
+      "label": "Files",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L28",
+      "id": "ci_pipelines_readme_files",
+      "community": 12,
+      "norm_label": "files"
+    },
+    {
+      "label": "Monorepo CI (Alternative)",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L36",
+      "id": "ci_pipelines_readme_monorepo_ci_alternative",
+      "community": 12,
+      "norm_label": "monorepo ci (alternative)"
+    },
+    {
+      "label": "Required Secrets",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L46",
+      "id": "ci_pipelines_readme_required_secrets",
+      "community": 12,
+      "norm_label": "required secrets"
+    },
+    {
+      "label": "Troubleshooting",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L52",
+      "id": "ci_pipelines_readme_troubleshooting",
+      "community": 12,
+      "norm_label": "troubleshooting"
+    },
+    {
+      "label": "SETUP.md",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L1",
+      "id": "ci_pipelines_setup_md",
+      "community": 4,
+      "norm_label": "setup.md"
+    },
+    {
+      "label": "Phase 10 \u2014 Production CI Setup Guide",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L1",
+      "id": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "community": 4,
+      "norm_label": "phase 10 \u2014 production ci setup guide"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L3",
+      "id": "ci_pipelines_setup_architecture",
+      "community": 4,
+      "norm_label": "architecture"
+    },
+    {
+      "label": "1. What Terraform Creates",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L27",
+      "id": "ci_pipelines_setup_1_what_terraform_creates",
+      "community": 4,
+      "norm_label": "1. what terraform creates"
+    },
+    {
+      "label": "Key parameters to check",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L40",
+      "id": "ci_pipelines_setup_key_parameters_to_check",
+      "community": 4,
+      "norm_label": "key parameters to check"
+    },
+    {
+      "label": "2. Role ARN for GitHub Actions",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L60",
+      "id": "ci_pipelines_setup_2_role_arn_for_github_actions",
+      "community": 4,
+      "norm_label": "2. role arn for github actions"
+    },
+    {
+      "label": "3. Setting Up a Service Repository",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L76",
+      "id": "ci_pipelines_setup_3_setting_up_a_service_repository",
+      "community": 4,
+      "norm_label": "3. setting up a service repository"
+    },
+    {
+      "label": "Step 1: Add `.github/workflows/ci.yml`",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L78",
+      "id": "ci_pipelines_setup_step_1_add_github_workflows_ci_yml",
+      "community": 4,
+      "norm_label": "step 1: add `.github/workflows/ci.yml`"
+    },
+    {
+      "label": "Step 2: Add the `GITOPS_PAT` secret",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L88",
+      "id": "ci_pipelines_setup_step_2_add_the_gitops_pat_secret",
+      "community": 4,
+      "norm_label": "step 2: add the `gitops_pat` secret"
+    },
+    {
+      "label": "Step 3: Verify GitOps manifests exist",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L96",
+      "id": "ci_pipelines_setup_step_3_verify_gitops_manifests_exist",
+      "community": 4,
+      "norm_label": "step 3: verify gitops manifests exist"
+    },
+    {
+      "label": "4. Monorepo CI (Alternative)",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L111",
+      "id": "ci_pipelines_setup_4_monorepo_ci_alternative",
+      "community": 4,
+      "norm_label": "4. monorepo ci (alternative)"
+    },
+    {
+      "label": "5. ECR Cleanup",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L130",
+      "id": "ci_pipelines_setup_5_ecr_cleanup",
+      "community": 4,
+      "norm_label": "5. ecr cleanup"
+    },
+    {
+      "label": "6. Verification",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L137",
+      "id": "ci_pipelines_setup_6_verification",
+      "community": 4,
+      "norm_label": "6. verification"
+    },
+    {
+      "label": "7. Troubleshooting",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L153",
+      "id": "ci_pipelines_setup_7_troubleshooting",
+      "community": 4,
+      "norm_label": "7. troubleshooting"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L1",
+      "id": "voting_app_gitops_readme_md",
+      "community": 34,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Voting App \u2014 GitOps Configuration",
+      "file_type": "document",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L1",
+      "id": "voting_app_gitops_readme_voting_app_gitops_configuration",
+      "community": 34,
+      "norm_label": "voting app \u2014 gitops configuration"
+    },
+    {
+      "label": "Related",
+      "file_type": "document",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L8",
+      "id": "voting_app_gitops_readme_related",
+      "community": 34,
+      "norm_label": "related"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L1",
+      "id": "voting_app_worker_readme_md",
+      "community": 25,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Voting App \u2014 Worker Service (.NET)",
+      "file_type": "document",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L1",
+      "id": "voting_app_worker_readme_voting_app_worker_service_net",
+      "community": 25,
+      "norm_label": "voting app \u2014 worker service (.net)"
+    },
+    {
+      "label": "Structure",
+      "file_type": "document",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L5",
+      "id": "voting_app_worker_readme_structure",
+      "community": 25,
+      "norm_label": "structure"
+    },
+    {
+      "label": "How It Works",
+      "file_type": "document",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L19",
+      "id": "voting_app_worker_readme_how_it_works",
+      "community": 25,
+      "norm_label": "how it works"
+    },
+    {
+      "label": "Helm Values",
+      "file_type": "document",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L26",
+      "id": "voting_app_worker_readme_helm_values",
+      "community": 25,
+      "norm_label": "helm values"
+    },
+    {
+      "label": "Features",
+      "file_type": "document",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L36",
+      "id": "voting_app_worker_readme_features",
+      "community": 25,
+      "norm_label": "features"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-worker/charts/worker/README.md",
+      "source_location": "L1",
+      "id": "voting_app_worker_charts_worker_readme_md",
+      "community": 32,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Worker Helm Chart",
+      "file_type": "document",
+      "source_file": "voting-app-worker/charts/worker/README.md",
+      "source_location": "L1",
+      "id": "worker_readme_worker_helm_chart",
+      "community": 32,
+      "norm_label": "worker helm chart"
+    },
+    {
+      "label": "Features",
+      "file_type": "document",
+      "source_file": "voting-app-worker/charts/worker/README.md",
+      "source_location": "L5",
+      "id": "worker_readme_features",
+      "community": 32,
+      "norm_label": "features"
+    },
+    {
+      "label": "Values",
+      "file_type": "document",
+      "source_file": "voting-app-worker/charts/worker/README.md",
+      "source_location": "L10",
+      "id": "worker_readme_values",
+      "community": 32,
+      "norm_label": "values"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L1",
+      "id": "voting_app_vote_readme_md",
+      "community": 29,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Voting App \u2014 Vote Service (Python/Flask)",
+      "file_type": "document",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L1",
+      "id": "voting_app_vote_readme_voting_app_vote_service_python_flask",
+      "community": 29,
+      "norm_label": "voting app \u2014 vote service (python/flask)"
+    },
+    {
+      "label": "Structure",
+      "file_type": "document",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L5",
+      "id": "voting_app_vote_readme_structure",
+      "community": 29,
+      "norm_label": "structure"
+    },
+    {
+      "label": "Helm Values",
+      "file_type": "document",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L23",
+      "id": "voting_app_vote_readme_helm_values",
+      "community": 29,
+      "norm_label": "helm values"
+    },
+    {
+      "label": "Features",
+      "file_type": "document",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L35",
+      "id": "voting_app_vote_readme_features",
+      "community": 29,
+      "norm_label": "features"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L1",
+      "id": "voting_app_vote_charts_vote_readme_md",
+      "community": 23,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Vote Helm Chart",
+      "file_type": "document",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L1",
+      "id": "vote_readme_vote_helm_chart",
+      "community": 23,
+      "norm_label": "vote helm chart"
+    },
+    {
+      "label": "Features",
+      "file_type": "document",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L5",
+      "id": "vote_readme_features",
+      "community": 23,
+      "norm_label": "features"
+    },
+    {
+      "label": "Dependencies",
+      "file_type": "document",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L12",
+      "id": "vote_readme_dependencies",
+      "community": 23,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "Values",
+      "file_type": "document",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L17",
+      "id": "vote_readme_values",
+      "community": 23,
+      "norm_label": "values"
+    },
+    {
+      "label": "How CI Updates This",
+      "file_type": "document",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L29",
+      "id": "vote_readme_how_ci_updates_this",
+      "community": 23,
+      "norm_label": "how ci updates this"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "keycloak/README.md",
+      "source_location": "L1",
+      "id": "keycloak_readme_md",
+      "community": 28,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Keycloak \u2014 OIDC Provider",
+      "file_type": "document",
+      "source_file": "keycloak/README.md",
+      "source_location": "L1",
+      "id": "keycloak_readme_keycloak_oidc_provider",
+      "community": 28,
+      "norm_label": "keycloak \u2014 oidc provider"
+    },
+    {
+      "label": "Structure",
+      "file_type": "document",
+      "source_file": "keycloak/README.md",
+      "source_location": "L5",
+      "id": "keycloak_readme_structure",
+      "community": 28,
+      "norm_label": "structure"
+    },
+    {
+      "label": "Integration",
+      "file_type": "document",
+      "source_file": "keycloak/README.md",
+      "source_location": "L20",
+      "id": "keycloak_readme_integration",
+      "community": 28,
+      "norm_label": "integration"
+    },
+    {
+      "label": "Dependencies",
+      "file_type": "document",
+      "source_file": "keycloak/README.md",
+      "source_location": "L27",
+      "id": "keycloak_readme_md_keycloak_readme_dependencies",
+      "community": 28,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L1",
+      "id": "keycloak_charts_keycloak_readme_md",
+      "community": 22,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Keycloak Helm Chart",
+      "file_type": "document",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L1",
+      "id": "keycloak_readme_keycloak_helm_chart",
+      "community": 22,
+      "norm_label": "keycloak helm chart"
+    },
+    {
+      "label": "What it deploys",
+      "file_type": "document",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L5",
+      "id": "keycloak_readme_what_it_deploys",
+      "community": 22,
+      "norm_label": "what it deploys"
+    },
+    {
+      "label": "Dependencies",
+      "file_type": "document",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L13",
+      "id": "keycloak_charts_keycloak_readme_md_keycloak_readme_dependencies",
+      "community": 22,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "Values",
+      "file_type": "document",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L19",
+      "id": "keycloak_readme_values",
+      "community": 22,
+      "norm_label": "values"
+    },
+    {
+      "label": "Deployment via ArgoCD",
+      "file_type": "document",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L31",
+      "id": "keycloak_readme_deployment_via_argocd",
+      "community": 22,
+      "norm_label": "deployment via argocd"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L1",
+      "id": "k8s_readme_md",
+      "community": 27,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Kubernetes Infrastructure Manifests",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L1",
+      "id": "k8s_readme_kubernetes_infrastructure_manifests",
+      "community": 27,
+      "norm_label": "kubernetes infrastructure manifests"
+    },
+    {
+      "label": "Files",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L5",
+      "id": "k8s_readme_files",
+      "community": 27,
+      "norm_label": "files"
+    },
+    {
+      "label": "Migration to Helm",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L17",
+      "id": "k8s_readme_migration_to_helm",
+      "community": 27,
+      "norm_label": "migration to helm"
+    },
+    {
+      "label": "Dependencies",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L34",
+      "id": "k8s_readme_dependencies",
+      "community": 27,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "SETUP.md",
+      "file_type": "document",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L1",
+      "id": "k8s_local_setup_md",
+      "community": 10,
+      "norm_label": "setup.md"
+    },
+    {
+      "label": "Local Voting-App Development \u2014 Zero AWS Dependencies",
+      "file_type": "document",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L1",
+      "id": "local_setup_local_voting_app_development_zero_aws_dependencies",
+      "community": 10,
+      "norm_label": "local voting-app development \u2014 zero aws dependencies"
+    },
+    {
+      "label": "Quickstart",
+      "file_type": "document",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L3",
+      "id": "local_setup_quickstart",
+      "community": 10,
+      "norm_label": "quickstart"
+    },
+    {
+      "label": "Available Make Commands",
+      "file_type": "document",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L40",
+      "id": "local_setup_available_make_commands",
+      "community": 10,
+      "norm_label": "available make commands"
+    },
+    {
+      "label": "Port Conflict? (Port 80 in use)",
+      "file_type": "document",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L57",
+      "id": "local_setup_port_conflict_port_80_in_use",
+      "community": 10,
+      "norm_label": "port conflict? (port 80 in use)"
+    },
+    {
+      "label": "Disable AWS Terraform",
+      "file_type": "document",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L74",
+      "id": "local_setup_disable_aws_terraform",
+      "community": 10,
+      "norm_label": "disable aws terraform"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L86",
+      "id": "local_setup_architecture",
+      "community": 10,
+      "norm_label": "architecture"
+    },
+    {
+      "label": "CI (GitHub Actions \u2014 No AWS)",
+      "file_type": "document",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L103",
+      "id": "local_setup_ci_github_actions_no_aws",
+      "community": 10,
+      "norm_label": "ci (github actions \u2014 no aws)"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L1",
+      "id": "charts_infra_bootstrap_readme_md",
+      "community": 26,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Infra Bootstrap Helm Chart",
+      "file_type": "document",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L1",
+      "id": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
+      "community": 26,
+      "norm_label": "infra bootstrap helm chart"
+    },
+    {
+      "label": "\u0412\u043c\u0456\u0441\u0442",
+      "file_type": "document",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L5",
+      "id": "infra_bootstrap_readme_\u0432\u043c\u0456\u0441\u0442",
+      "community": 26,
+      "norm_label": "\u0432\u043c\u0456\u0441\u0442"
+    },
+    {
+      "label": "\u0414\u0435\u043f\u043b\u043e\u0439 \u0447\u0435\u0440\u0435\u0437 ArgoCD",
+      "file_type": "document",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L15",
+      "id": "infra_bootstrap_readme_\u0434\u0435\u043f\u043b\u043e\u0439_\u0447\u0435\u0440\u0435\u0437_argocd",
+      "community": 26,
+      "norm_label": "\u0434\u0435\u043f\u043b\u043e\u0438 \u0447\u0435\u0440\u0435\u0437 argocd"
+    },
+    {
+      "label": "Migration",
+      "file_type": "document",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L45",
+      "id": "infra_bootstrap_readme_migration",
+      "community": 26,
+      "norm_label": "migration"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-infra/README.md",
+      "source_location": "L1",
+      "id": "voting_app_infra_readme_md",
+      "community": 40,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Voting App \u2014 Infrastructure Files",
+      "file_type": "document",
+      "source_file": "voting-app-infra/README.md",
+      "source_location": "L1",
+      "id": "voting_app_infra_readme_voting_app_infrastructure_files",
+      "community": 40,
+      "norm_label": "voting app \u2014 infrastructure files"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L1",
+      "id": "infra_aws_readme_md",
+      "community": 6,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Infrastructure as Code \u2014 Terraform",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L1",
+      "id": "infra_aws_readme_infrastructure_as_code_terraform",
+      "community": 6,
+      "norm_label": "infrastructure as code \u2014 terraform"
+    },
+    {
+      "label": "Resources",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L5",
+      "id": "infra_aws_readme_resources",
+      "community": 6,
+      "norm_label": "resources"
+    },
+    {
+      "label": "Other Resources",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L13",
+      "id": "infra_aws_readme_other_resources",
+      "community": 6,
+      "norm_label": "other resources"
+    },
+    {
+      "label": "IAM / OIDC",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L22",
+      "id": "infra_aws_readme_iam_oidc",
+      "community": 6,
+      "norm_label": "iam / oidc"
+    },
+    {
+      "label": "Helm Releases (deployed via Terraform)",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L32",
+      "id": "infra_aws_readme_helm_releases_deployed_via_terraform",
+      "community": 6,
+      "norm_label": "helm releases (deployed via terraform)"
+    },
+    {
+      "label": "Secrets",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L41",
+      "id": "infra_aws_readme_secrets",
+      "community": 6,
+      "norm_label": "secrets"
+    },
+    {
+      "label": "State",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L50",
+      "id": "infra_aws_readme_state",
+      "community": 6,
+      "norm_label": "state"
+    },
+    {
+      "label": "Usage",
+      "file_type": "document",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L55",
+      "id": "infra_aws_readme_usage",
+      "community": 6,
+      "norm_label": "usage"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "argocd-apps/README.md",
+      "source_location": "L1",
+      "id": "argocd_apps_readme_md",
+      "community": 30,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "ArgoCD Applications \u2014 App-of-Apps",
+      "file_type": "document",
+      "source_file": "argocd-apps/README.md",
+      "source_location": "L1",
+      "id": "argocd_apps_readme_argocd_applications_app_of_apps",
+      "community": 30,
+      "norm_label": "argocd applications \u2014 app-of-apps"
+    },
+    {
+      "label": "Structure",
+      "file_type": "document",
+      "source_file": "argocd-apps/README.md",
+      "source_location": "L5",
+      "id": "argocd_apps_readme_structure",
+      "community": 30,
+      "norm_label": "structure"
+    },
+    {
+      "label": "Sync Flow",
+      "file_type": "document",
+      "source_file": "argocd-apps/README.md",
+      "source_location": "L21",
+      "id": "argocd_apps_readme_sync_flow",
+      "community": 30,
+      "norm_label": "sync flow"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "modules/README.md",
+      "source_location": "L1",
+      "id": "modules_readme_md",
+      "community": 33,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Terraform Modules \u2014 Library",
+      "file_type": "document",
+      "source_file": "modules/README.md",
+      "source_location": "L1",
+      "id": "modules_readme_terraform_modules_library",
+      "community": 33,
+      "norm_label": "terraform modules \u2014 library"
+    },
+    {
+      "label": "Active Modules",
+      "file_type": "document",
+      "source_file": "modules/README.md",
+      "source_location": "L5",
+      "id": "modules_readme_active_modules",
+      "community": 33,
+      "norm_label": "active modules"
     }
   ],
   "links": [
@@ -9870,6 +11176,351 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "k8s/oci/setup.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "k8s_oci_setup_sh",
+      "target": "home_psihson_my_devops_project_k8s_oci_setup_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/bootstrap-backend.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_bootstrap_backend_sh",
+      "target": "home_psihson_my_devops_project_scripts_bootstrap_backend_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/setup-oci.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_setup_oci_sh",
+      "target": "home_psihson_my_devops_project_scripts_setup_oci_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_tunnel_all_sh",
+      "target": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "scripts_tunnel_all_sh",
+      "target": "scripts_tunnel_all_add_ingress_rule",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "scripts_tunnel_all_sh",
+      "target": "scripts_tunnel_all_clean",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "scripts_tunnel_all_sh",
+      "target": "scripts_tunnel_all_die",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "scripts_tunnel_all_sh",
+      "target": "scripts_tunnel_all_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "scripts_tunnel_all_sh",
+      "target": "scripts_tunnel_all_start_tunnel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "scripts_tunnel_all_sh",
+      "target": "scripts_tunnel_all_verify_tunnel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L136",
+      "weight": 1.0,
+      "context": "call",
+      "source": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
+      "target": "scripts_tunnel_all_add_ingress_rule",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L96",
+      "weight": 1.0,
+      "context": "call",
+      "source": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
+      "target": "scripts_tunnel_all_clean",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L97",
+      "weight": 1.0,
+      "context": "call",
+      "source": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
+      "target": "scripts_tunnel_all_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L164",
+      "weight": 1.0,
+      "context": "call",
+      "source": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
+      "target": "scripts_tunnel_all_verify_tunnel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L68",
+      "weight": 1.0,
+      "context": "call",
+      "source": "scripts_tunnel_all_add_ingress_rule",
+      "target": "scripts_tunnel_all_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L26",
+      "weight": 1.0,
+      "context": "call",
+      "source": "scripts_tunnel_all_clean",
+      "target": "scripts_tunnel_all_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L24",
+      "weight": 1.0,
+      "context": "call",
+      "source": "scripts_tunnel_all_die",
+      "target": "scripts_tunnel_all_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-all.sh",
+      "source_location": "L91",
+      "weight": 1.0,
+      "context": "call",
+      "source": "scripts_tunnel_all_verify_tunnel",
+      "target": "scripts_tunnel_all_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/disable-aws.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_disable_aws_sh",
+      "target": "home_psihson_my_devops_project_scripts_disable_aws_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_tunnel_pinggy_sh",
+      "target": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "scripts_tunnel_pinggy_sh",
+      "target": "scripts_tunnel_pinggy_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "scripts_tunnel_pinggy_sh",
+      "target": "scripts_tunnel_pinggy_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "scripts_tunnel_pinggy_sh",
+      "target": "scripts_tunnel_pinggy_start_tunnel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "scripts_tunnel_pinggy_sh",
+      "target": "scripts_tunnel_pinggy_update_ingress",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "scripts_tunnel_pinggy_sh",
+      "target": "scripts_tunnel_pinggy_verify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L107",
+      "weight": 1.0,
+      "context": "call",
+      "source": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
+      "target": "scripts_tunnel_pinggy_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L108",
+      "weight": 1.0,
+      "context": "call",
+      "source": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
+      "target": "scripts_tunnel_pinggy_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L124",
+      "weight": 1.0,
+      "context": "call",
+      "source": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
+      "target": "scripts_tunnel_pinggy_update_ingress",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L126",
+      "weight": 1.0,
+      "context": "call",
+      "source": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
+      "target": "scripts_tunnel_pinggy_verify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L20",
+      "weight": 1.0,
+      "context": "call",
+      "source": "scripts_tunnel_pinggy_cleanup",
+      "target": "scripts_tunnel_pinggy_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L64",
+      "weight": 1.0,
+      "context": "call",
+      "source": "scripts_tunnel_pinggy_update_ingress",
+      "target": "scripts_tunnel_pinggy_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tunnel-pinggy.sh",
+      "source_location": "L98",
+      "weight": 1.0,
+      "context": "call",
+      "source": "scripts_tunnel_pinggy_verify",
+      "target": "scripts_tunnel_pinggy_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/enable-aws.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_enable_aws_sh",
+      "target": "home_psihson_my_devops_project_scripts_enable_aws_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".claude/settings.local.json",
       "source_location": "L2",
       "weight": 1.0,
@@ -9916,8 +11567,908 @@
       "confidence_score": 1.0,
       "source": "infra_aws_scripts_setup_eks_post_sh",
       "target": "home_psihson_my_devops_project_infra_aws_scripts_setup_eks_post_sh__entry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "my_devops_project_readme_my_devops_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "my_devops_project_readme_my_devops_project",
+      "target": "my_devops_project_readme_architecture_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "my_devops_project_readme_my_devops_project",
+      "target": "my_devops_project_readme_ci_cd_flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "my_devops_project_readme_my_devops_project",
+      "target": "my_devops_project_readme_components",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "my_devops_project_readme_my_devops_project",
+      "target": "my_devops_project_readme_prerequisites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "my_devops_project_readme_my_devops_project",
+      "target": "my_devops_project_readme_quick_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "voting_app_result_readme_md",
+      "target": "voting_app_result_readme_voting_app_result_service_node_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "voting_app_result_readme_voting_app_result_service_node_js",
+      "target": "voting_app_result_readme_helm_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "voting_app_result_readme_voting_app_result_service_node_js",
+      "target": "voting_app_result_readme_how_it_works",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "voting_app_result_readme_voting_app_result_service_node_js",
+      "target": "voting_app_result_readme_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-result/README.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "voting_app_result_readme_voting_app_result_service_node_js",
+      "target": "voting_app_result_readme_tests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-result/charts/result/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "voting_app_result_charts_result_readme_md",
+      "target": "result_readme_result_helm_chart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-result/charts/result/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "result_readme_result_helm_chart",
+      "target": "result_readme_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-result/charts/result/README.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "result_readme_result_helm_chart",
+      "target": "result_readme_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "ci_pipelines_readme_md",
+      "target": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_monorepo_ci_alternative",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_required_secrets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_troubleshooting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_md",
+      "target": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_1_what_terraform_creates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_2_role_arn_for_github_actions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_3_setting_up_a_service_repository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_4_monorepo_ci_alternative",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_5_ecr_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_6_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L153",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_7_troubleshooting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_1_what_terraform_creates",
+      "target": "ci_pipelines_setup_key_parameters_to_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
+      "target": "ci_pipelines_setup_step_1_add_github_workflows_ci_yml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
+      "target": "ci_pipelines_setup_step_2_add_the_gitops_pat_secret",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
+      "target": "ci_pipelines_setup_step_3_verify_gitops_manifests_exist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "voting_app_gitops_readme_md",
+      "target": "voting_app_gitops_readme_voting_app_gitops_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "voting_app_gitops_readme_voting_app_gitops_configuration",
+      "target": "voting_app_gitops_readme_related",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "voting_app_worker_readme_md",
+      "target": "voting_app_worker_readme_voting_app_worker_service_net",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "voting_app_worker_readme_voting_app_worker_service_net",
+      "target": "voting_app_worker_readme_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "voting_app_worker_readme_voting_app_worker_service_net",
+      "target": "voting_app_worker_readme_helm_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "voting_app_worker_readme_voting_app_worker_service_net",
+      "target": "voting_app_worker_readme_how_it_works",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "voting_app_worker_readme_voting_app_worker_service_net",
+      "target": "voting_app_worker_readme_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/charts/worker/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "voting_app_worker_charts_worker_readme_md",
+      "target": "worker_readme_worker_helm_chart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/charts/worker/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "worker_readme_worker_helm_chart",
+      "target": "worker_readme_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/charts/worker/README.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "worker_readme_worker_helm_chart",
+      "target": "worker_readme_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "voting_app_vote_readme_md",
+      "target": "voting_app_vote_readme_voting_app_vote_service_python_flask",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "voting_app_vote_readme_voting_app_vote_service_python_flask",
+      "target": "voting_app_vote_readme_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "voting_app_vote_readme_voting_app_vote_service_python_flask",
+      "target": "voting_app_vote_readme_helm_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "voting_app_vote_readme_voting_app_vote_service_python_flask",
+      "target": "voting_app_vote_readme_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "voting_app_vote_charts_vote_readme_md",
+      "target": "vote_readme_vote_helm_chart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "vote_readme_vote_helm_chart",
+      "target": "vote_readme_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "vote_readme_vote_helm_chart",
+      "target": "vote_readme_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "vote_readme_vote_helm_chart",
+      "target": "vote_readme_how_ci_updates_this",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/charts/vote/README.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "vote_readme_vote_helm_chart",
+      "target": "vote_readme_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "keycloak_readme_md",
+      "target": "keycloak_readme_keycloak_oidc_provider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/README.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "keycloak_readme_keycloak_oidc_provider",
+      "target": "keycloak_readme_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "keycloak_readme_keycloak_oidc_provider",
+      "target": "keycloak_readme_md_keycloak_readme_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "keycloak_readme_keycloak_oidc_provider",
+      "target": "keycloak_readme_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "keycloak_charts_keycloak_readme_md",
+      "target": "keycloak_readme_keycloak_helm_chart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "keycloak_readme_keycloak_helm_chart",
+      "target": "keycloak_charts_keycloak_readme_md_keycloak_readme_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "keycloak_readme_keycloak_helm_chart",
+      "target": "keycloak_readme_deployment_via_argocd",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "keycloak_readme_keycloak_helm_chart",
+      "target": "keycloak_readme_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "keycloak/charts/keycloak/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "keycloak_readme_keycloak_helm_chart",
+      "target": "keycloak_readme_what_it_deploys",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "k8s_readme_md",
+      "target": "k8s_readme_kubernetes_infrastructure_manifests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "k8s_readme_kubernetes_infrastructure_manifests",
+      "target": "k8s_readme_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "k8s_readme_kubernetes_infrastructure_manifests",
+      "target": "k8s_readme_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "k8s_readme_kubernetes_infrastructure_manifests",
+      "target": "k8s_readme_migration_to_helm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "k8s_local_setup_md",
+      "target": "local_setup_local_voting_app_development_zero_aws_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
+      "target": "local_setup_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
+      "target": "local_setup_available_make_commands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
+      "target": "local_setup_ci_github_actions_no_aws",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
+      "target": "local_setup_disable_aws_terraform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
+      "target": "local_setup_port_conflict_port_80_in_use",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/local/SETUP.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
+      "target": "local_setup_quickstart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "charts_infra_bootstrap_readme_md",
+      "target": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
+      "target": "infra_bootstrap_readme_migration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
+      "target": "infra_bootstrap_readme_\u0432\u043c\u0456\u0441\u0442",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "charts/infra-bootstrap/README.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
+      "target": "infra_bootstrap_readme_\u0434\u0435\u043f\u043b\u043e\u0439_\u0447\u0435\u0440\u0435\u0437_argocd",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-infra/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "voting_app_infra_readme_md",
+      "target": "voting_app_infra_readme_voting_app_infrastructure_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "infra_aws_readme_md",
+      "target": "infra_aws_readme_infrastructure_as_code_terraform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_helm_releases_deployed_via_terraform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_iam_oidc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_other_resources",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_resources",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_secrets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "infra-aws/README.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_usage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "argocd-apps/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "argocd_apps_readme_md",
+      "target": "argocd_apps_readme_argocd_applications_app_of_apps",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "argocd-apps/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "argocd_apps_readme_argocd_applications_app_of_apps",
+      "target": "argocd_apps_readme_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "argocd-apps/README.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "argocd_apps_readme_argocd_applications_app_of_apps",
+      "target": "argocd_apps_readme_sync_flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "modules_readme_md",
+      "target": "modules_readme_terraform_modules_library",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "modules_readme_terraform_modules_library",
+      "target": "modules_readme_active_modules",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9c6071c907807c52dc371305cab07239cdf21b60"
+  "built_at_commit": "b0c15a5db4afa5c01420153c063371f32347c540"
 }

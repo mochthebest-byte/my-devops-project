@@ -10,15 +10,16 @@ domain: mochthebest.pp.ua
 
 # ─── TLS ─────────────────────────────────────────────────
 # TLS-сертифікат для HTTPS
-# ⚠️  Gateway API AWS не читає certificateRefs — використовує
-#      certificate discovery. Потрібен ACM ARN.
+# AWS ALB Gateway API auto-discovers ACM certificates matching
+# listener hostnames — certificateRefs with kind:Secret is only
+# needed when using k8s TLS Secrets (e.g. cert-manager).
 tls:
-  # Увімкнути HTTPS listener (certificate discovery через AWS ACM)
+  # Увімкнути HTTPS listener
   enabled: true
-  # k8s Secret — не працює з AWS Gateway API
+  # k8s TLS Secret name (leave empty for ACM auto-discovery)
   secretName: ""
-  # ACM ARN — для Ingress-аннотації (не для Gateway API)
-  certificateArn: "arn:aws:acm:eu-central-1:765776786215:certificate/2832556a-442a-40a7-9287-91ab5cde01fc"
+  # ACM ARN — deprecated on Gateway API (kept for backward compat)
+  certificateArn: ""
 
 # ─── Gateway ─────────────────────────────────────────────
 gateway:
@@ -88,7 +89,7 @@ endpointSyncer:
   intervalSeconds: 30
   image:
     repository: bitnami/kubectl
-    tag: latest
+    tag: 1.31
   targets:
     - name: grafana
       namespace: monitoring

@@ -1,16 +1,16 @@
-# Graph Report - my-devops-project  (2026-06-07)
+# Graph Report - my-devops-project  (2026-06-19)
 
 ## Corpus Check
-- 13 files · ~10,888 words
+- 39 files · ~22,419 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 246 nodes · 718 edges · 22 communities (17 shown, 5 thin omitted)
-- Extraction: 79% EXTRACTED · 21% INFERRED · 0% AMBIGUOUS · INFERRED: 148 edges (avg confidence: 0.8)
+- 380 nodes · 841 edges · 41 communities (28 shown, 13 thin omitted)
+- Extraction: 82% EXTRACTED · 18% INFERRED · 0% AMBIGUOUS · INFERRED: 148 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9c6071c9`
+- Built from commit: `b0c15a5d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -35,6 +35,25 @@
 - [[_COMMUNITY_Community 17|Community 17]]
 - [[_COMMUNITY_Community 18|Community 18]]
 - [[_COMMUNITY_Community 19|Community 19]]
+- [[_COMMUNITY_Community 22|Community 22]]
+- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 27|Community 27]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 33|Community 33]]
+- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
+- [[_COMMUNITY_Community 40|Community 40]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `p()` - 36 edges
@@ -53,37 +72,37 @@
   voting-app-result/views/angular.min.js → voting-app-result/views/socket.io.js
 - `cd()` --calls--> `t()`  [INFERRED]
   voting-app-result/views/angular.min.js → voting-app-result/views/socket.io.js
-- `$d()` --calls--> `t()`  [INFERRED]
-  voting-app-result/views/angular.min.js → voting-app-result/views/socket.io.js
 - `ib()` --calls--> `t()`  [INFERRED]
   voting-app-result/views/angular.min.js → voting-app-result/views/socket.io.js
 - `S()` --calls--> `t()`  [INFERRED]
+  voting-app-result/views/angular.min.js → voting-app-result/views/socket.io.js
+- `yb()` --calls--> `t()`  [INFERRED]
   voting-app-result/views/angular.min.js → voting-app-result/views/socket.io.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (22 total, 5 thin omitted)
+## Communities (41 total, 13 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.13
-Nodes (41): B(), bg(), $c(), ce(), $d(), Da(), db(), de() (+33 more)
+Cohesion: 0.11
+Nodes (39): Ad(), Af(), B(), bg(), ce(), cf(), db(), de() (+31 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.11
-Nodes (32): $a(), Aa(), Ad(), ae(), bb(), cd(), ea(), eb() (+24 more)
+Cohesion: 0.06
+Nodes (63): $a(), Aa(), ae(), bb(), Bd(), ca(), cb(), cd() (+55 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.14
-Nodes (24): yf(), a(), at(), Ct(), e(), Et(), f(), G() (+16 more)
+Cohesion: 0.11
+Nodes (37): $c(), $d(), Da(), ie(), Na(), sc(), Sf(), ua() (+29 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.17
-Nodes (24): Bc(), cb(), Cc(), cf(), dc(), Ga(), ha(), hb() (+16 more)
+Cohesion: 0.13
+Nodes (27): ab(), ba(), Bc(), Cc(), dc(), fe(), Ga(), gb() (+19 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.10
-Nodes (5): Af(), ec(), pd(), qd(), Ta()
+Cohesion: 0.14
+Nodes (13): 1. What Terraform Creates, 2. Role ARN for GitHub Actions, 3. Setting Up a Service Repository, 4. Monorepo CI (Alternative), 5. ECR Cleanup, 6. Verification, 7. Troubleshooting, Architecture (+5 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.12
@@ -91,7 +110,7 @@ Nodes (16): author, dependencies, async, cookie-parser, express, method-override
 
 ### Community 6 - "Community 6"
 Cohesion: 0.22
-Nodes (11): ab(), Kc(), le(), oc(), pc(), Qf(), u(), Vb() (+3 more)
+Nodes (8): Helm Releases (deployed via Terraform), IAM / OIDC, Infrastructure as Code — Terraform, Other Resources, Resources, Secrets, State, Usage
 
 ### Community 7 - "Community 7"
 Cohesion: 0.31
@@ -102,43 +121,87 @@ Cohesion: 0.62
 Nodes (5): tests.sh script, dump_diagnostics(), error(), http_get_with_retry(), info()
 
 ### Community 9 - "Community 9"
-Cohesion: 0.33
-Nodes (7): ca(), gd(), hd(), lg(), rf(), xa(), xf()
+Cohesion: 0.54
+Nodes (6): tunnel-all.sh script, add_ingress_rule(), clean(), die(), log(), verify_tunnel()
 
 ### Community 10 - "Community 10"
-Cohesion: 0.33
-Nodes (7): hc(), Ja(), jg(), og(), qc(), tb(), ub()
+Cohesion: 0.25
+Nodes (7): Architecture, Available Make Commands, CI (GitHub Actions — No AWS), Disable AWS Terraform, Local Voting-App Development — Zero AWS Dependencies, Port Conflict? (Port 80 in use), Quickstart
 
 ### Community 11 - "Community 11"
 Cohesion: 0.33
 Nodes (5): net7.0, Newtonsoft.Json (13.0.1), Npgsql (4.1.9), StackExchange.Redis (2.2.4), Microsoft.NET.Sdk
 
 ### Community 12 - "Community 12"
-Cohesion: 0.40
-Nodes (5): ba(), fe(), gb(), Na(), sc()
+Cohesion: 0.29
+Nodes (6): Architecture, CI/CD Pipelines — Centralized Workflows, Files, Monorepo CI (Alternative), Required Secrets, Troubleshooting
 
 ### Community 13 - "Community 13"
-Cohesion: 0.40
-Nodes (5): Bd(), dd(), pg(), qg(), zd()
+Cohesion: 0.62
+Nodes (5): tunnel-pinggy.sh script, cleanup(), log(), update_ingress(), verify()
 
 ### Community 14 - "Community 14"
-Cohesion: 0.60
-Nodes (5): Ef(), he(), N(), Ob(), xb()
+Cohesion: 0.29
+Nodes (6): Architecture Overview, CI/CD Flow, Components, My DevOps Project, Prerequisites, Quick Start
+
+### Community 22 - "Community 22"
+Cohesion: 0.33
+Nodes (5): Dependencies, Deployment via ArgoCD, Keycloak Helm Chart, Values, What it deploys
+
+### Community 23 - "Community 23"
+Cohesion: 0.33
+Nodes (5): Dependencies, Features, How CI Updates This, Values, Vote Helm Chart
+
+### Community 24 - "Community 24"
+Cohesion: 0.33
+Nodes (5): Helm Values, How It Works, Structure, Tests, Voting App — Result Service (Node.js)
+
+### Community 25 - "Community 25"
+Cohesion: 0.33
+Nodes (5): Features, Helm Values, How It Works, Structure, Voting App — Worker Service (.NET)
+
+### Community 26 - "Community 26"
+Cohesion: 0.40
+Nodes (4): Infra Bootstrap Helm Chart, Migration, Вміст, Деплой через ArgoCD
+
+### Community 27 - "Community 27"
+Cohesion: 0.40
+Nodes (4): Dependencies, Files, Kubernetes Infrastructure Manifests, Migration to Helm
+
+### Community 28 - "Community 28"
+Cohesion: 0.40
+Nodes (4): Integration, Keycloak — OIDC Provider, Dependencies, Structure
+
+### Community 29 - "Community 29"
+Cohesion: 0.40
+Nodes (4): Features, Helm Values, Structure, Voting App — Vote Service (Python/Flask)
+
+### Community 30 - "Community 30"
+Cohesion: 0.50
+Nodes (3): ArgoCD Applications — App-of-Apps, Structure, Sync Flow
+
+### Community 31 - "Community 31"
+Cohesion: 0.50
+Nodes (3): Features, Result Helm Chart, Values
+
+### Community 32 - "Community 32"
+Cohesion: 0.50
+Nodes (3): Features, Values, Worker Helm Chart
 
 ## Knowledge Gaps
-- **25 isolated node(s):** `name`, `version`, `description`, `main`, `test` (+20 more)
+- **100 isolated node(s):** `name`, `version`, `description`, `main`, `test` (+95 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `a()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`, `Community 6`, `Community 14`?**
-  _High betweenness centrality (0.042) - this node is a cross-community bridge._
-- **Why does `d()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 6`, `Community 10`, `Community 12`, `Community 14`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+- **Why does `a()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Why does `d()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Why does `t()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `Cc()` (e.g. with `B()` and `Bc()`) actually correct?**
   _`Cc()` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 18 inferred relationships involving `B()` (e.g. with `Ad()` and `a()`) actually correct?**
@@ -146,4 +209,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 22 inferred relationships involving `d()` (e.g. with `bg()` and `$c()`) actually correct?**
   _`d()` has 22 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `version`, `description` to the rest of the system?**
-  _25 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _100 weakly-connected nodes found - possible documentation gaps or missing edges._
