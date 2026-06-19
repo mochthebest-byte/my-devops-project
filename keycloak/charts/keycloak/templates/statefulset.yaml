@@ -83,39 +83,41 @@ spec:
                   - /bin/bash
                   - -c
                   - |
-                    # ── Wait for Keycloak HTTP ──
+                    set -eu
+                    SERVER="http://localhost:{{ $.Values.service.port }}"
+                    REALM="{{ $.Values.realm.name }}"
+                    KCADM="/opt/keycloak/bin/kcadm.sh"
+                    CONFIG="/tmp/kcadm.config"
+                    # ── Wait for Keycloak + authenticate (kcadm.config in /tmp — writable) ──
                     for i in $(seq 1 30); do
-                      if curl -sf http://localhost:{{ $.Values.service.port }}/realms/master > /dev/null 2>&1; then
+                      if $KCADM config credentials \
+                        --config "$CONFIG" \
+                        --server "$SERVER" --realm master \
+                        --user "$KC_BOOTSTRAP_ADMIN_USERNAME" \
+                        --password "$KC_BOOTSTRAP_ADMIN_PASSWORD" > /dev/null 2>&1; then
                         echo "[postStart] Keycloak ready"
                         break
                       fi
                       sleep 2
                     done
-                    # ── Authenticate kcadm.sh ──
-                    /opt/keycloak/bin/kcadm.sh config credentials \
-                      --server http://localhost:{{ $.Values.service.port }} \
-                      --realm master \
-                      --user "$KC_BOOTSTRAP_ADMIN_USERNAME" \
-                      --password "$KC_BOOTSTRAP_ADMIN_PASSWORD" > /dev/null 2>&1 || {
-                      echo "[postStart] kcadm.sh auth failed — skipping"
-                      exit 0
-                    }
                     # ── Update realm user passwords from Secret volume ──
                     {{- range $u := $.Values.realm.users }}
                     {{- if $u.credentials.secretKey }}
                     if [ -f "/etc/realm-secrets/{{ $u.credentials.secretKey }}" ]; then
                       PASSWORD=$(cat "/etc/realm-secrets/{{ $u.credentials.secretKey }}")
-                      USER_ID=$(/opt/keycloak/bin/kcadm.sh get users \
-                        -r {{ $.Values.realm.name }} \
-                        -q username={{ $u.username }} \
-                        --fields id 2>/dev/null | jq -r '.[0].id // empty')
+                      # kcadm.sh outputs JSON — parse with grep/sed (no jq in image)
+                      USER_ID=$($KCADM get users --config "$CONFIG" \
+                        -r "$REALM" -q username={{ $u.username }} \
+                        --fields id 2>/dev/null \
+                        | grep '"id"' \
+                        | sed 's/.*"id" : "\(.*\)".*/\1/')
                       if [ -n "$USER_ID" ]; then
-                        /opt/keycloak/bin/kcadm.sh update users/"$USER_ID" \
-                          -r {{ $.Values.realm.name }} \
-                          -s "credentials: [{\"type\":\"password\",\"value\":\"$PASSWORD\",\"temporary\":false}]" \
-                          > /dev/null 2>&1 && \
-                          echo "[postStart] Updated password for {{ $u.username }}" || \
-                          echo "[postStart] Failed to update password for {{ $u.username }}"
+                        $KCADM update users/"$USER_ID" --config "$CONFIG" \
+                          -r "$REALM" \
+                          -s "credentials=[{\"type\":\"password\",\"value\":\"$PASSWORD\",\"temporary\":false}]" \
+                          > /dev/null 2>&1 \
+                          && echo "[postStart] Updated password for {{ $u.username }}" \
+                          || echo "[postStart] Failed to update password for {{ $u.username }}"
                       else
                         echo "[postStart] User {{ $u.username }} not found in realm"
                       fi
