@@ -32,6 +32,46 @@ spec:
                 echo "$(date) - Waiting for PostgreSQL..."; sleep 2
               done
               echo "$(date) - PostgreSQL is ready!"
+        - name: sync-db-password
+          image: postgres:16-alpine
+          command:
+            - sh
+            - -eu
+            - -c
+            - |
+              echo "$(date) - Syncing PostgreSQL password..."
+              DB_PASSWORD=$(cat /etc/db-secrets/password)
+              DB_HOST={{ .Values.postgresql.host }}
+              DB_NAME={{ .Values.postgresql.database }}
+              DB_USER={{ .Values.postgresql.user }}
+
+              # Step 1 — test if current secret password already works
+              if PGPASSWORD="$DB_PASSWORD" psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" \
+                -c "SELECT 1" > /dev/null 2>&1; then
+                echo "$(date) - Password already in sync — nothing to do"
+                exit 0
+              fi
+              echo "$(date) - Password mismatch detected — attempting fix..."
+
+              # Step 2 — try as postgres superuser
+              POSTGRES_PASSWORD=$(cat /etc/db-secrets/postgres-password)
+              export PGPASSWORD="$POSTGRES_PASSWORD"
+              if psql -h "$DB_HOST" -U postgres -d "$DB_NAME" \
+                -c "ALTER USER ${DB_USER} WITH PASSWORD '${DB_PASSWORD}'" > /dev/null 2>&1; then
+                echo "$(date) - Password synced successfully"
+              else
+                echo "$(date) - WARNING: could not sync password (postgres superuser auth failed)"
+                echo "$(date) - Keycloak may fail to connect if DB password is out of sync"
+                echo "$(date) - Fix manually: kubectl exec keycloak-postgresql-0 -n keycloak -- psql -U postgres -c \"ALTER USER ${DB_USER} WITH PASSWORD '...'\""
+              fi
+              echo "$(date) - Password sync complete"
+          env:
+            - name: PGSSLMODE
+              value: disable
+          volumeMounts:
+            - name: db-secrets
+              mountPath: /etc/db-secrets
+              readOnly: true
       containers:
         - name: keycloak
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -157,3 +197,6 @@ spec:
         - name: realm-secrets
           secret:
             secretName: {{ .Values.realm.existingSecret }}
+        - name: db-secrets
+          secret:
+            secretName: {{ .Values.postgresql.existingSecret }}
