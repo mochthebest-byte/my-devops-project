@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 # Multi-arch: use BUILDPLATFORM for build stage, TARGETPLATFORM for final image
-FROM --platform=$BUILDPLATFORM node:18-slim
+FROM --platform=$BUILDPLATFORM node:22-slim
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
@@ -9,10 +9,10 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends curl tini && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/local/app
-
 # have nodemon available for local dev use (file watching)
 RUN npm install -g nodemon
+
+WORKDIR /usr/local/app
 
 COPY package*.json ./
 
@@ -24,6 +24,10 @@ COPY . .
 
 ENV PORT=80
 EXPOSE 80
+
+# Run as non-root user for security
+RUN useradd -u 1001 -r -s /bin/false appuser
+USER appuser
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["node", "server.js"]
