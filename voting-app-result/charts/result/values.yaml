@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: 765776786215.dkr.ecr.eu-central-1.amazonaws.com/my-app/result
-  tag: 1.0.0
+  tag: latest
   pullPolicy: IfNotPresent
 
 service:

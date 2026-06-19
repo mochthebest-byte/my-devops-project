@@ -45,11 +45,11 @@ dbs:
 		--from-literal=postgres-password=testpass \
 		--dry-run=client -o yaml | kubectl apply -f -; \
 	helm upgrade --install postgresql bitnami/postgresql \
-		--namespace voting-app --version 16.6.x --set image.tag=16.6.0 \
+		--namespace voting-app --version 16.x --set image.tag=16.6.0 \
 		--set auth.database=db --set auth.username=vote_user \
 		--set auth.existingSecret=postgresql; \
 	helm upgrade --install redis bitnami/redis \
-		--namespace voting-app --version 21.2.x --set image.tag=7.4.2 \
+		--namespace voting-app --version 21.x --set image.tag=7.4.2 \
 		--set auth.enabled=false
 
 dbs-wait:
