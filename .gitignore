@@ -7,3 +7,7 @@ tfplan
 charts/voting-app-ingress/
 1.9/
 69.0/
+
+# Local dev secrets — не комітити
+k8s/local/values-grafana-local.yaml
+k8s/local/values-local.yaml
