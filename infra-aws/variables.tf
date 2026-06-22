@@ -29,9 +29,9 @@ variable "eks_cluster_version" {
 }
 
 variable "eks_public_access_cidrs" {
-  description = "CIDR blocks allowed for EKS public API endpoint. Default = VPC CIDR (private access via VPC). Додати IP GitHub Actions / офісу при потребі."
+  description = "CIDRs allowed for EKS public API. Default 0.0.0.0/0 = всі. Обмежити через terraform.tfvars: [\"<ваш_IP>/32\"]"
   type        = list(string)
-  default     = ["10.0.0.0/16"]
+  default     = ["0.0.0.0/0"]
 }
 
 variable "eks_node_instance_types" {
@@ -61,7 +61,7 @@ variable "eks_max_nodes" {
 variable "domain_name" {
   description = "Domain name for Route53 zone"
   type        = string
-  default     = "mochthebest.io"
+  default     = "mochthebest.pp.ua"
 }
 
 variable "enable_nat_gateway" {

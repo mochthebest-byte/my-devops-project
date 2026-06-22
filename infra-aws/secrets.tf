@@ -74,3 +74,31 @@ resource "aws_secretsmanager_secret_version" "keycloak_admin" {
     admin-password = random_password.keycloak_admin.result
   })
 }
+
+# ══════════════════════════════════════════════════════════
+#  Secrets Manager — Keycloak realm users (myapp)
+# ══════════════════════════════════════════════════════════
+#
+#  Зберігає паролі для realm-користувачів (admin, user).
+#  The keycloak-realm-users ExternalSecret (charts/infra-bootstrap/)
+#  читає цей шлях і створює K8s Secret, який монтується в
+#  Keycloak StatefulSet для postStart синхронізації.
+
+resource "random_password" "keycloak_realm_users" {
+  length  = 24
+  special = false
+}
+
+resource "aws_secretsmanager_secret" "keycloak_realm_users" {
+  name                    = "/my-app/keycloak-realm-users"
+  recovery_window_in_days = 0
+  tags                    = var.tags
+}
+
+resource "aws_secretsmanager_secret_version" "keycloak_realm_users" {
+  secret_id = aws_secretsmanager_secret.keycloak_realm_users.id
+  secret_string = jsonencode({
+    admin-password = random_password.keycloak_realm_users.result
+    user-password  = random_password.keycloak_realm_users.result
+  })
+}

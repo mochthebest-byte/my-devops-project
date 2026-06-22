@@ -133,7 +133,8 @@ data "aws_iam_policy_document" "eso_secrets" {
       "secretsmanager:GetSecretValue",
       "secretsmanager:DescribeSecret",
     ]
-    resources = ["*"]
+    # Обмежено до проєктних секретів — /my-app/* та його варіації
+    resources = ["arn:aws:secretsmanager:*:*:secret:/my-app/*"]
   }
 }
 
@@ -206,11 +207,16 @@ data "aws_iam_policy_document" "external_dns" {
 data "aws_iam_policy_document" "external_dns_route53" {
   statement {
     actions = [
-      "route53:ChangeResourceRecordSets",
-      "route53:ListResourceRecordSets",
       "route53:ListHostedZones",
     ]
     resources = ["*"]
+  }
+  statement {
+    actions = [
+      "route53:ChangeResourceRecordSets",
+      "route53:ListResourceRecordSets",
+    ]
+    resources = [aws_route53_zone.main.arn]
   }
 }
 
