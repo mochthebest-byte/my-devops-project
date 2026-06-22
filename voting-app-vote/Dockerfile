@@ -4,8 +4,9 @@ FROM --platform=$BUILDPLATFORM python:3.11-slim AS base
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
-# Add curl for healthcheck
+# Add curl for healthcheck + fix CVEs in base image
 RUN apt-get update && \
+    apt-get upgrade -y --no-install-recommends && \
     apt-get install -y --no-install-recommends curl && \
     rm -rf /var/lib/apt/lists/*
 

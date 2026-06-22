@@ -4,8 +4,9 @@ FROM --platform=$BUILDPLATFORM node:22-slim
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
-# add curl for healthcheck
+# add curl for healthcheck + fix CVEs in base image
 RUN apt-get update && \
+    apt-get upgrade -y --no-install-recommends && \
     apt-get install -y --no-install-recommends curl tini && \
     rm -rf /var/lib/apt/lists/*
 
