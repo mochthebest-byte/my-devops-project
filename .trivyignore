@@ -1,0 +1,10 @@
+# perl-base — fix_deferred/no-fix CVEs in python:3.11-slim base image
+# Debian hasn't released patched packages yet.
+# Remove once Debian ships fixes.
+CVE-2026-42496
+CVE-2026-8376
+
+# System.Drawing.Common — dotnet/runtime:8.0 NuGet dependency
+# CVE-2021-24112 — fixed in 4.7.2/5.0.3, but the runtime ships 5.0.0.
+# Upgrade when Microsoft releases patched runtime image.
+CVE-2021-24112
