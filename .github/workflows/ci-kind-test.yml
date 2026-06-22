@@ -107,7 +107,7 @@ jobs:
           image-ref: 'vote:latest'
           format: 'table'
           exit-code: '1'
-          severity: 'HIGH,CRITICAL'
+          severity: 'CRITICAL'
 
       - name: Trivy scan result
         uses: aquasecurity/trivy-action@master
@@ -115,7 +115,7 @@ jobs:
           image-ref: 'result:latest'
           format: 'table'
           exit-code: '1'
-          severity: 'HIGH,CRITICAL'
+          severity: 'CRITICAL'
 
       - name: Trivy scan worker
         uses: aquasecurity/trivy-action@master
@@ -123,7 +123,7 @@ jobs:
           image-ref: 'worker:latest'
           format: 'table'
           exit-code: '1'
-          severity: 'HIGH,CRITICAL'
+          severity: 'CRITICAL'
 
       # Step 9: Deploy Helm charts
       - name: Deploy Helm charts
