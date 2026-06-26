@@ -9,13 +9,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 16.x
+    repoURL: oci://registry-1.docker.io/bitnamicharts
+    targetRevision: 18.7.x
     chart: postgresql
     helm:
       values: |
         image:
-          tag: latest@sha256:256bf40a7343862b9a66d1d27cd34599e80dad99284fc5450b24cb02e26ff34e
+          tag: latest
         auth:
           database: db
           username: vote_user
