@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "vote.fullname" . }}
+  annotations:
+    alb.ingress.kubernetes.io/target-type: ip
   labels:
     {{- include "vote.labels" . | nindent 4 }}
 spec:

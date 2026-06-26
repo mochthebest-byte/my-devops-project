@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: keycloak
   namespace: {{ .Release.Namespace }}
+  annotations:
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
   type: {{ .Values.service.type }}
   ports:
