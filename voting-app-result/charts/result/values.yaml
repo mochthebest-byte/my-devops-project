@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: 657954628960.dkr.ecr.eu-central-1.amazonaws.com/my-app/result
   # pinned by digest — immutable reference, never changes
-  tag: latest@sha256:03348ac1e299d11fb4d6cb040efbf4a207cb460cacf12ea59ba7caa157a3bb2c
+  tag: latest@sha256:9143215539bec49d12db77517f1d54edb664bd9cdc008fb03543cfe2e890fd78
   pullPolicy: IfNotPresent
 
 service:

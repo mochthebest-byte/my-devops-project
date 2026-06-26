@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: 657954628960.dkr.ecr.eu-central-1.amazonaws.com/my-app/worker
   # pinned by digest — immutable reference, never changes
-  tag: latest@sha256:a3376d483a2157f7e7e7bf82b7923d845a3dc685847a5cc254812fd5a1327336
+  tag: latest@sha256:b12ac955d7e612eabb1f23ab5aa7245f902c1b68f3c1099e85b6fa95637a118b
   pullPolicy: IfNotPresent
 
 postgresql:
