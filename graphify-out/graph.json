@@ -279,7 +279,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_c",
-      "community": 2,
+      "community": 0,
       "norm_label": "c()"
     },
     {
@@ -324,7 +324,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_d",
-      "community": 2,
+      "community": 0,
       "norm_label": "d()"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_n",
-      "community": 1,
+      "community": 0,
       "norm_label": "n()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_ma",
-      "community": 0,
+      "community": 3,
       "norm_label": "ma()"
     },
     {
@@ -666,7 +666,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_h",
-      "community": 0,
+      "community": 1,
       "norm_label": "h()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_ea",
-      "community": 0,
+      "community": 1,
       "norm_label": "ea()"
     },
     {
@@ -720,7 +720,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_sc",
-      "community": 2,
+      "community": 1,
       "norm_label": "sc()"
     },
     {
@@ -738,7 +738,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_d",
-      "community": 2,
+      "community": 0,
       "norm_label": "$d()"
     },
     {
@@ -765,7 +765,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_na",
-      "community": 2,
+      "community": 0,
       "norm_label": "na()"
     },
     {
@@ -819,7 +819,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L15",
       "id": "views_angular_min_uc",
-      "community": 0,
+      "community": 1,
       "norm_label": "uc()"
     },
     {
@@ -828,7 +828,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_vc",
-      "community": 0,
+      "community": 1,
       "norm_label": "vc()"
     },
     {
@@ -837,7 +837,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_pb",
-      "community": 0,
+      "community": 1,
       "norm_label": "pb()"
     },
     {
@@ -846,7 +846,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_ua",
-      "community": 2,
+      "community": 0,
       "norm_label": "ua()"
     },
     {
@@ -855,7 +855,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_wc",
-      "community": 3,
+      "community": 1,
       "norm_label": "wc()"
     },
     {
@@ -864,7 +864,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L17",
       "id": "views_angular_min_xc",
-      "community": 3,
+      "community": 0,
       "norm_label": "xc()"
     },
     {
@@ -891,7 +891,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L18",
       "id": "views_angular_min_ce",
-      "community": 0,
+      "community": 1,
       "norm_label": "ce()"
     },
     {
@@ -900,7 +900,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L18",
       "id": "views_angular_min_de",
-      "community": 0,
+      "community": 1,
       "norm_label": "de()"
     },
     {
@@ -909,7 +909,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L19",
       "id": "views_angular_min_yc",
-      "community": 2,
+      "community": 0,
       "norm_label": "yc()"
     },
     {
@@ -927,7 +927,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L21",
       "id": "views_angular_min_fe",
-      "community": 3,
+      "community": 1,
       "norm_label": "fe()"
     },
     {
@@ -963,7 +963,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L22",
       "id": "views_angular_min_sa",
-      "community": 3,
+      "community": 0,
       "norm_label": "sa()"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L23",
       "id": "views_angular_min_ie",
-      "community": 2,
+      "community": 0,
       "norm_label": "ie()"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L25",
       "id": "views_angular_min_je",
-      "community": 1,
+      "community": 0,
       "norm_label": "je()"
     },
     {
@@ -1017,7 +1017,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L29",
       "id": "views_angular_min_kc",
-      "community": 1,
+      "community": 3,
       "norm_label": "kc()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L30",
       "id": "views_angular_min_vb",
-      "community": 1,
+      "community": 3,
       "norm_label": "vb()"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_wb",
-      "community": 1,
+      "community": 3,
       "norm_label": "wb()"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_xb",
-      "community": 1,
+      "community": 0,
       "norm_label": "xb()"
     },
     {
@@ -1143,7 +1143,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L35",
       "id": "views_angular_min_pf",
-      "community": 1,
+      "community": 3,
       "norm_label": "pf()"
     },
     {
@@ -1170,7 +1170,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L36",
       "id": "views_angular_min_da",
-      "community": 2,
+      "community": 0,
       "norm_label": "da()"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L36",
       "id": "views_angular_min_ta",
-      "community": 0,
+      "community": 1,
       "norm_label": "ta()"
     },
     {
@@ -1215,7 +1215,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L43",
       "id": "views_angular_min_gb",
-      "community": 3,
+      "community": 1,
       "norm_label": "gb()"
     },
     {
@@ -1233,7 +1233,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L43",
       "id": "views_angular_min_uf",
-      "community": 2,
+      "community": 0,
       "norm_label": "uf()"
     },
     {
@@ -1251,7 +1251,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L47",
       "id": "views_angular_min_cf",
-      "community": 0,
+      "community": 3,
       "norm_label": "cf()"
     },
     {
@@ -1260,7 +1260,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L48",
       "id": "views_angular_min_yf",
-      "community": 0,
+      "community": 2,
       "norm_label": "yf()"
     },
     {
@@ -1287,7 +1287,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L79",
       "id": "views_angular_min_c",
-      "community": 2,
+      "community": 0,
       "norm_label": "$c()"
     },
     {
@@ -1404,7 +1404,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L99",
       "id": "views_angular_min_id",
-      "community": 3,
+      "community": 0,
       "norm_label": "id()"
     },
     {
@@ -1422,7 +1422,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L99",
       "id": "views_angular_min_hb",
-      "community": 1,
+      "community": 3,
       "norm_label": "hb()"
     },
     {
@@ -1575,7 +1575,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L115",
       "id": "views_angular_min_ec",
-      "community": 0,
+      "community": 1,
       "norm_label": "ec()"
     },
     {
@@ -1665,7 +1665,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L146",
       "id": "views_angular_min_af",
-      "community": 0,
+      "community": 1,
       "norm_label": "af()"
     },
     {
@@ -1782,7 +1782,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L156",
       "id": "views_angular_min_ba",
-      "community": 3,
+      "community": 1,
       "norm_label": "ba()"
     },
     {
@@ -1791,7 +1791,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L157",
       "id": "views_angular_min_ad",
-      "community": 0,
+      "community": 1,
       "norm_label": "ad()"
     },
     {
@@ -1818,7 +1818,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L162",
       "id": "views_angular_min_ka",
-      "community": 0,
+      "community": 3,
       "norm_label": "ka()"
     },
     {
@@ -1836,7 +1836,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L167",
       "id": "views_angular_min_kb",
-      "community": 0,
+      "community": 1,
       "norm_label": "kb()"
     },
     {
@@ -2102,13 +2102,13 @@
       "norm_label": "worker.csproj"
     },
     {
-      "label": "net7.0",
+      "label": "net8.0",
       "file_type": "concept",
       "source_file": "voting-app-worker/Worker.csproj",
       "source_location": null,
-      "id": "framework_net7_0",
+      "id": "framework_net8_0",
       "community": 11,
-      "norm_label": "net7.0"
+      "norm_label": "net8.0"
     },
     {
       "label": "StackExchange.Redis (2.2.4)",
@@ -2174,32 +2174,6 @@
       "norm_label": "hello()"
     },
     {
-      "label": "setup.sh",
-      "file_type": "code",
-      "source_file": "k8s/oci/setup.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "file"
-      },
-      "id": "k8s_oci_setup_sh",
-      "community": 35,
-      "norm_label": "setup.sh"
-    },
-    {
-      "label": "setup.sh script",
-      "file_type": "code",
-      "source_file": "k8s/oci/setup.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_entrypoint"
-      },
-      "id": "home_psihson_my_devops_project_k8s_oci_setup_sh__entry",
-      "community": 35,
-      "norm_label": "setup.sh script"
-    },
-    {
       "label": "bootstrap-backend.sh",
       "file_type": "code",
       "source_file": "scripts/bootstrap-backend.sh",
@@ -2224,32 +2198,6 @@
       "id": "home_psihson_my_devops_project_scripts_bootstrap_backend_sh__entry",
       "community": 36,
       "norm_label": "bootstrap-backend.sh script"
-    },
-    {
-      "label": "setup-oci.sh",
-      "file_type": "code",
-      "source_file": "scripts/setup-oci.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "file"
-      },
-      "id": "scripts_setup_oci_sh",
-      "community": 39,
-      "norm_label": "setup-oci.sh"
-    },
-    {
-      "label": "setup-oci.sh script",
-      "file_type": "code",
-      "source_file": "scripts/setup-oci.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_entrypoint"
-      },
-      "id": "home_psihson_my_devops_project_scripts_setup_oci_sh__entry",
-      "community": 39,
-      "norm_label": "setup-oci.sh script"
     },
     {
       "label": "tunnel-all.sh",
@@ -2281,7 +2229,7 @@
       "label": "log()",
       "file_type": "code",
       "source_file": "scripts/tunnel-all.sh",
-      "source_location": "L23",
+      "source_location": "L24",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2294,7 +2242,7 @@
       "label": "die()",
       "file_type": "code",
       "source_file": "scripts/tunnel-all.sh",
-      "source_location": "L24",
+      "source_location": "L25",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2307,7 +2255,7 @@
       "label": "clean()",
       "file_type": "code",
       "source_file": "scripts/tunnel-all.sh",
-      "source_location": "L25",
+      "source_location": "L26",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2320,7 +2268,7 @@
       "label": "start_tunnel()",
       "file_type": "code",
       "source_file": "scripts/tunnel-all.sh",
-      "source_location": "L33",
+      "source_location": "L34",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2333,7 +2281,7 @@
       "label": "add_ingress_rule()",
       "file_type": "code",
       "source_file": "scripts/tunnel-all.sh",
-      "source_location": "L62",
+      "source_location": "L63",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2346,7 +2294,7 @@
       "label": "verify_tunnel()",
       "file_type": "code",
       "source_file": "scripts/tunnel-all.sh",
-      "source_location": "L88",
+      "source_location": "L89",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2411,7 +2359,7 @@
       "label": "log()",
       "file_type": "code",
       "source_file": "scripts/tunnel-pinggy.sh",
-      "source_location": "L15",
+      "source_location": "L16",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2424,7 +2372,7 @@
       "label": "cleanup()",
       "file_type": "code",
       "source_file": "scripts/tunnel-pinggy.sh",
-      "source_location": "L19",
+      "source_location": "L20",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2437,7 +2385,7 @@
       "label": "start_tunnel()",
       "file_type": "code",
       "source_file": "scripts/tunnel-pinggy.sh",
-      "source_location": "L28",
+      "source_location": "L29",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2450,7 +2398,7 @@
       "label": "update_ingress()",
       "file_type": "code",
       "source_file": "scripts/tunnel-pinggy.sh",
-      "source_location": "L59",
+      "source_location": "L60",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2463,7 +2411,7 @@
       "label": "verify()",
       "file_type": "code",
       "source_file": "scripts/tunnel-pinggy.sh",
-      "source_location": "L94",
+      "source_location": "L95",
       "metadata": {
         "language": "bash",
         "kind": "bash_function"
@@ -2609,7 +2557,7 @@
       "label": "CI/CD Flow",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L23",
+      "source_location": "L25",
       "id": "my_devops_project_readme_ci_cd_flow",
       "community": 14,
       "norm_label": "ci/cd flow"
@@ -2618,7 +2566,7 @@
       "label": "Components",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L41",
+      "source_location": "L43",
       "id": "my_devops_project_readme_components",
       "community": 14,
       "norm_label": "components"
@@ -2627,7 +2575,7 @@
       "label": "Prerequisites",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L52",
+      "source_location": "L55",
       "id": "my_devops_project_readme_prerequisites",
       "community": 14,
       "norm_label": "prerequisites"
@@ -2636,7 +2584,7 @@
       "label": "Quick Start",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L59",
+      "source_location": "L62",
       "id": "my_devops_project_readme_quick_start",
       "community": 14,
       "norm_label": "quick start"
@@ -2730,222 +2678,6 @@
       "id": "result_readme_values",
       "community": 31,
       "norm_label": "values"
-    },
-    {
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L1",
-      "id": "ci_pipelines_readme_md",
-      "community": 12,
-      "norm_label": "readme.md"
-    },
-    {
-      "label": "CI/CD Pipelines \u2014 Centralized Workflows",
-      "file_type": "document",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L1",
-      "id": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
-      "community": 12,
-      "norm_label": "ci/cd pipelines \u2014 centralized workflows"
-    },
-    {
-      "label": "Architecture",
-      "file_type": "document",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L5",
-      "id": "ci_pipelines_readme_architecture",
-      "community": 12,
-      "norm_label": "architecture"
-    },
-    {
-      "label": "Files",
-      "file_type": "document",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L28",
-      "id": "ci_pipelines_readme_files",
-      "community": 12,
-      "norm_label": "files"
-    },
-    {
-      "label": "Monorepo CI (Alternative)",
-      "file_type": "document",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L36",
-      "id": "ci_pipelines_readme_monorepo_ci_alternative",
-      "community": 12,
-      "norm_label": "monorepo ci (alternative)"
-    },
-    {
-      "label": "Required Secrets",
-      "file_type": "document",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L46",
-      "id": "ci_pipelines_readme_required_secrets",
-      "community": 12,
-      "norm_label": "required secrets"
-    },
-    {
-      "label": "Troubleshooting",
-      "file_type": "document",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L52",
-      "id": "ci_pipelines_readme_troubleshooting",
-      "community": 12,
-      "norm_label": "troubleshooting"
-    },
-    {
-      "label": "SETUP.md",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L1",
-      "id": "ci_pipelines_setup_md",
-      "community": 4,
-      "norm_label": "setup.md"
-    },
-    {
-      "label": "Phase 10 \u2014 Production CI Setup Guide",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L1",
-      "id": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "community": 4,
-      "norm_label": "phase 10 \u2014 production ci setup guide"
-    },
-    {
-      "label": "Architecture",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L3",
-      "id": "ci_pipelines_setup_architecture",
-      "community": 4,
-      "norm_label": "architecture"
-    },
-    {
-      "label": "1. What Terraform Creates",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L27",
-      "id": "ci_pipelines_setup_1_what_terraform_creates",
-      "community": 4,
-      "norm_label": "1. what terraform creates"
-    },
-    {
-      "label": "Key parameters to check",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L40",
-      "id": "ci_pipelines_setup_key_parameters_to_check",
-      "community": 4,
-      "norm_label": "key parameters to check"
-    },
-    {
-      "label": "2. Role ARN for GitHub Actions",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L60",
-      "id": "ci_pipelines_setup_2_role_arn_for_github_actions",
-      "community": 4,
-      "norm_label": "2. role arn for github actions"
-    },
-    {
-      "label": "3. Setting Up a Service Repository",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L76",
-      "id": "ci_pipelines_setup_3_setting_up_a_service_repository",
-      "community": 4,
-      "norm_label": "3. setting up a service repository"
-    },
-    {
-      "label": "Step 1: Add `.github/workflows/ci.yml`",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L78",
-      "id": "ci_pipelines_setup_step_1_add_github_workflows_ci_yml",
-      "community": 4,
-      "norm_label": "step 1: add `.github/workflows/ci.yml`"
-    },
-    {
-      "label": "Step 2: Add the `GITOPS_PAT` secret",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L88",
-      "id": "ci_pipelines_setup_step_2_add_the_gitops_pat_secret",
-      "community": 4,
-      "norm_label": "step 2: add the `gitops_pat` secret"
-    },
-    {
-      "label": "Step 3: Verify GitOps manifests exist",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L96",
-      "id": "ci_pipelines_setup_step_3_verify_gitops_manifests_exist",
-      "community": 4,
-      "norm_label": "step 3: verify gitops manifests exist"
-    },
-    {
-      "label": "4. Monorepo CI (Alternative)",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L111",
-      "id": "ci_pipelines_setup_4_monorepo_ci_alternative",
-      "community": 4,
-      "norm_label": "4. monorepo ci (alternative)"
-    },
-    {
-      "label": "5. ECR Cleanup",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L130",
-      "id": "ci_pipelines_setup_5_ecr_cleanup",
-      "community": 4,
-      "norm_label": "5. ecr cleanup"
-    },
-    {
-      "label": "6. Verification",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L137",
-      "id": "ci_pipelines_setup_6_verification",
-      "community": 4,
-      "norm_label": "6. verification"
-    },
-    {
-      "label": "7. Troubleshooting",
-      "file_type": "document",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L153",
-      "id": "ci_pipelines_setup_7_troubleshooting",
-      "community": 4,
-      "norm_label": "7. troubleshooting"
-    },
-    {
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "voting-app-gitops/README.md",
-      "source_location": "L1",
-      "id": "voting_app_gitops_readme_md",
-      "community": 34,
-      "norm_label": "readme.md"
-    },
-    {
-      "label": "Voting App \u2014 GitOps Configuration",
-      "file_type": "document",
-      "source_file": "voting-app-gitops/README.md",
-      "source_location": "L1",
-      "id": "voting_app_gitops_readme_voting_app_gitops_configuration",
-      "community": 34,
-      "norm_label": "voting app \u2014 gitops configuration"
-    },
-    {
-      "label": "Related",
-      "file_type": "document",
-      "source_file": "voting-app-gitops/README.md",
-      "source_location": "L8",
-      "id": "voting_app_gitops_readme_related",
-      "community": 34,
-      "norm_label": "related"
     },
     {
       "label": "README.md",
@@ -3245,37 +2977,46 @@
       "norm_label": "readme.md"
     },
     {
-      "label": "Kubernetes Infrastructure Manifests",
+      "label": "Kubernetes \u2014 legacy manifests",
       "file_type": "document",
       "source_file": "k8s/README.md",
       "source_location": "L1",
-      "id": "k8s_readme_kubernetes_infrastructure_manifests",
+      "id": "k8s_readme_kubernetes_legacy_manifests",
       "community": 27,
-      "norm_label": "kubernetes infrastructure manifests"
+      "norm_label": "kubernetes \u2014 legacy manifests"
     },
     {
-      "label": "Files",
+      "label": "\u0424\u0430\u0439\u043b\u0438",
       "file_type": "document",
       "source_file": "k8s/README.md",
-      "source_location": "L5",
-      "id": "k8s_readme_files",
+      "source_location": "L6",
+      "id": "k8s_readme_\u0444\u0430\u0439\u043b\u0438",
       "community": 27,
-      "norm_label": "files"
+      "norm_label": "\u0444\u0430\u0438\u043b\u0438"
     },
     {
-      "label": "Migration to Helm",
+      "label": "\u0414\u0435\u043f\u043b\u043e\u0439",
       "file_type": "document",
       "source_file": "k8s/README.md",
-      "source_location": "L17",
-      "id": "k8s_readme_migration_to_helm",
+      "source_location": "L13",
+      "id": "k8s_readme_\u0434\u0435\u043f\u043b\u043e\u0439",
       "community": 27,
-      "norm_label": "migration to helm"
+      "norm_label": "\u0434\u0435\u043f\u043b\u043e\u0438"
+    },
+    {
+      "label": "Migration status",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L19",
+      "id": "k8s_readme_migration_status",
+      "community": 27,
+      "norm_label": "migration status"
     },
     {
       "label": "Dependencies",
       "file_type": "document",
       "source_file": "k8s/README.md",
-      "source_location": "L34",
+      "source_location": "L28",
       "id": "k8s_readme_dependencies",
       "community": 27,
       "norm_label": "dependencies"
@@ -3400,24 +3141,6 @@
     {
       "label": "README.md",
       "file_type": "document",
-      "source_file": "voting-app-infra/README.md",
-      "source_location": "L1",
-      "id": "voting_app_infra_readme_md",
-      "community": 40,
-      "norm_label": "readme.md"
-    },
-    {
-      "label": "Voting App \u2014 Infrastructure Files",
-      "file_type": "document",
-      "source_file": "voting-app-infra/README.md",
-      "source_location": "L1",
-      "id": "voting_app_infra_readme_voting_app_infrastructure_files",
-      "community": 40,
-      "norm_label": "voting app \u2014 infrastructure files"
-    },
-    {
-      "label": "README.md",
-      "file_type": "document",
       "source_file": "infra-aws/README.md",
       "source_location": "L1",
       "id": "infra_aws_readme_md",
@@ -3497,67 +3220,337 @@
       "norm_label": "usage"
     },
     {
+      "label": "net7.0",
+      "file_type": "concept",
+      "source_file": "voting-app-worker/Worker.csproj",
+      "source_location": null,
+      "community": 11,
+      "norm_label": "net7.0",
+      "id": "framework_net7_0"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L1",
+      "community": 12,
+      "norm_label": "readme.md",
+      "id": "ci_pipelines_readme_md"
+    },
+    {
+      "label": "CI/CD Pipelines \u2014 Centralized Workflows",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L1",
+      "community": 12,
+      "norm_label": "ci/cd pipelines \u2014 centralized workflows",
+      "id": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L5",
+      "community": 12,
+      "norm_label": "architecture",
+      "id": "ci_pipelines_readme_architecture"
+    },
+    {
+      "label": "Files",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L28",
+      "community": 12,
+      "norm_label": "files",
+      "id": "ci_pipelines_readme_files"
+    },
+    {
+      "label": "Monorepo CI (Alternative)",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L36",
+      "community": 12,
+      "norm_label": "monorepo ci (alternative)",
+      "id": "ci_pipelines_readme_monorepo_ci_alternative"
+    },
+    {
+      "label": "Required Secrets",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L46",
+      "community": 12,
+      "norm_label": "required secrets",
+      "id": "ci_pipelines_readme_required_secrets"
+    },
+    {
+      "label": "Troubleshooting",
+      "file_type": "document",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L52",
+      "community": 12,
+      "norm_label": "troubleshooting",
+      "id": "ci_pipelines_readme_troubleshooting"
+    },
+    {
+      "label": "SETUP.md",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "setup.md",
+      "id": "ci_pipelines_setup_md"
+    },
+    {
+      "label": "Phase 10 \u2014 Production CI Setup Guide",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "phase 10 \u2014 production ci setup guide",
+      "id": "ci_pipelines_setup_phase_10_production_ci_setup_guide"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L3",
+      "community": 4,
+      "norm_label": "architecture",
+      "id": "ci_pipelines_setup_architecture"
+    },
+    {
+      "label": "1. What Terraform Creates",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L27",
+      "community": 4,
+      "norm_label": "1. what terraform creates",
+      "id": "ci_pipelines_setup_1_what_terraform_creates"
+    },
+    {
+      "label": "Key parameters to check",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L40",
+      "community": 4,
+      "norm_label": "key parameters to check",
+      "id": "ci_pipelines_setup_key_parameters_to_check"
+    },
+    {
+      "label": "2. Role ARN for GitHub Actions",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L60",
+      "community": 4,
+      "norm_label": "2. role arn for github actions",
+      "id": "ci_pipelines_setup_2_role_arn_for_github_actions"
+    },
+    {
+      "label": "3. Setting Up a Service Repository",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L76",
+      "community": 4,
+      "norm_label": "3. setting up a service repository",
+      "id": "ci_pipelines_setup_3_setting_up_a_service_repository"
+    },
+    {
+      "label": "Step 1: Add `.github/workflows/ci.yml`",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L78",
+      "community": 4,
+      "norm_label": "step 1: add `.github/workflows/ci.yml`",
+      "id": "ci_pipelines_setup_step_1_add_github_workflows_ci_yml"
+    },
+    {
+      "label": "Step 2: Add the `GITOPS_PAT` secret",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L88",
+      "community": 4,
+      "norm_label": "step 2: add the `gitops_pat` secret",
+      "id": "ci_pipelines_setup_step_2_add_the_gitops_pat_secret"
+    },
+    {
+      "label": "Step 3: Verify GitOps manifests exist",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L96",
+      "community": 4,
+      "norm_label": "step 3: verify gitops manifests exist",
+      "id": "ci_pipelines_setup_step_3_verify_gitops_manifests_exist"
+    },
+    {
+      "label": "4. Monorepo CI (Alternative)",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L111",
+      "community": 4,
+      "norm_label": "4. monorepo ci (alternative)",
+      "id": "ci_pipelines_setup_4_monorepo_ci_alternative"
+    },
+    {
+      "label": "5. ECR Cleanup",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L130",
+      "community": 4,
+      "norm_label": "5. ecr cleanup",
+      "id": "ci_pipelines_setup_5_ecr_cleanup"
+    },
+    {
+      "label": "6. Verification",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L137",
+      "community": 4,
+      "norm_label": "6. verification",
+      "id": "ci_pipelines_setup_6_verification"
+    },
+    {
+      "label": "7. Troubleshooting",
+      "file_type": "document",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L153",
+      "community": 4,
+      "norm_label": "7. troubleshooting",
+      "id": "ci_pipelines_setup_7_troubleshooting"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L1",
+      "community": 34,
+      "norm_label": "readme.md",
+      "id": "voting_app_gitops_readme_md"
+    },
+    {
+      "label": "Voting App \u2014 GitOps Configuration",
+      "file_type": "document",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L1",
+      "community": 34,
+      "norm_label": "voting app \u2014 gitops configuration",
+      "id": "voting_app_gitops_readme_voting_app_gitops_configuration"
+    },
+    {
+      "label": "Related",
+      "file_type": "document",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L8",
+      "community": 34,
+      "norm_label": "related",
+      "id": "voting_app_gitops_readme_related"
+    },
+    {
+      "label": "Kubernetes Infrastructure Manifests",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L1",
+      "community": 27,
+      "norm_label": "kubernetes infrastructure manifests",
+      "id": "k8s_readme_kubernetes_infrastructure_manifests"
+    },
+    {
+      "label": "Files",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L5",
+      "community": 27,
+      "norm_label": "files",
+      "id": "k8s_readme_files"
+    },
+    {
+      "label": "Migration to Helm",
+      "file_type": "document",
+      "source_file": "k8s/README.md",
+      "source_location": "L17",
+      "community": 27,
+      "norm_label": "migration to helm",
+      "id": "k8s_readme_migration_to_helm"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "voting-app-infra/README.md",
+      "source_location": "L1",
+      "community": 40,
+      "norm_label": "readme.md",
+      "id": "voting_app_infra_readme_md"
+    },
+    {
+      "label": "Voting App \u2014 Infrastructure Files",
+      "file_type": "document",
+      "source_file": "voting-app-infra/README.md",
+      "source_location": "L1",
+      "community": 40,
+      "norm_label": "voting app \u2014 infrastructure files",
+      "id": "voting_app_infra_readme_voting_app_infrastructure_files"
+    },
+    {
       "label": "README.md",
       "file_type": "document",
       "source_file": "argocd-apps/README.md",
       "source_location": "L1",
-      "id": "argocd_apps_readme_md",
       "community": 30,
-      "norm_label": "readme.md"
+      "norm_label": "readme.md",
+      "id": "argocd_apps_readme_md"
     },
     {
       "label": "ArgoCD Applications \u2014 App-of-Apps",
       "file_type": "document",
       "source_file": "argocd-apps/README.md",
       "source_location": "L1",
-      "id": "argocd_apps_readme_argocd_applications_app_of_apps",
       "community": 30,
-      "norm_label": "argocd applications \u2014 app-of-apps"
+      "norm_label": "argocd applications \u2014 app-of-apps",
+      "id": "argocd_apps_readme_argocd_applications_app_of_apps"
     },
     {
       "label": "Structure",
       "file_type": "document",
       "source_file": "argocd-apps/README.md",
       "source_location": "L5",
-      "id": "argocd_apps_readme_structure",
       "community": 30,
-      "norm_label": "structure"
+      "norm_label": "structure",
+      "id": "argocd_apps_readme_structure"
     },
     {
       "label": "Sync Flow",
       "file_type": "document",
       "source_file": "argocd-apps/README.md",
       "source_location": "L21",
-      "id": "argocd_apps_readme_sync_flow",
       "community": 30,
-      "norm_label": "sync flow"
+      "norm_label": "sync flow",
+      "id": "argocd_apps_readme_sync_flow"
     },
     {
       "label": "README.md",
       "file_type": "document",
       "source_file": "modules/README.md",
       "source_location": "L1",
-      "id": "modules_readme_md",
       "community": 33,
-      "norm_label": "readme.md"
+      "norm_label": "readme.md",
+      "id": "modules_readme_md"
     },
     {
       "label": "Terraform Modules \u2014 Library",
       "file_type": "document",
       "source_file": "modules/README.md",
       "source_location": "L1",
-      "id": "modules_readme_terraform_modules_library",
       "community": 33,
-      "norm_label": "terraform modules \u2014 library"
+      "norm_label": "terraform modules \u2014 library",
+      "id": "modules_readme_terraform_modules_library"
     },
     {
       "label": "Active Modules",
       "file_type": "document",
       "source_file": "modules/README.md",
       "source_location": "L5",
-      "id": "modules_readme_active_modules",
       "community": 33,
-      "norm_label": "active modules"
+      "norm_label": "active modules",
+      "id": "modules_readme_active_modules"
     }
   ],
   "links": [
@@ -11107,6 +11100,15 @@
       "target": "framework_net7_0"
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/Worker.csproj",
+      "weight": 1.0,
+      "source": "voting_app_worker_worker_csproj",
+      "target": "framework_net8_0",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "voting-app-worker/Worker.csproj",
@@ -11176,32 +11178,12 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "k8s/oci/setup.sh",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "k8s_oci_setup_sh",
-      "target": "home_psihson_my_devops_project_k8s_oci_setup_sh__entry",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "scripts/bootstrap-backend.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_bootstrap_backend_sh",
-      "target": "home_psihson_my_devops_project_scripts_bootstrap_backend_sh__entry",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/setup-oci.sh",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "scripts_setup_oci_sh",
-      "target": "home_psihson_my_devops_project_scripts_setup_oci_sh__entry",
-      "confidence_score": 1.0
+      "target": "home_psihson_my_devops_project_scripts_bootstrap_backend_sh__entry"
     },
     {
       "relation": "contains",
@@ -11209,9 +11191,9 @@
       "source_file": "scripts/tunnel-all.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_sh",
-      "target": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
-      "confidence_score": 1.0
+      "target": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry"
     },
     {
       "relation": "defines",
@@ -11219,9 +11201,9 @@
       "source_file": "scripts/tunnel-all.sh",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_sh",
-      "target": "scripts_tunnel_all_add_ingress_rule",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_add_ingress_rule"
     },
     {
       "relation": "defines",
@@ -11229,9 +11211,9 @@
       "source_file": "scripts/tunnel-all.sh",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_sh",
-      "target": "scripts_tunnel_all_clean",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_clean"
     },
     {
       "relation": "defines",
@@ -11239,9 +11221,9 @@
       "source_file": "scripts/tunnel-all.sh",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_sh",
-      "target": "scripts_tunnel_all_die",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_die"
     },
     {
       "relation": "defines",
@@ -11249,9 +11231,9 @@
       "source_file": "scripts/tunnel-all.sh",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_sh",
-      "target": "scripts_tunnel_all_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_log"
     },
     {
       "relation": "defines",
@@ -11259,9 +11241,9 @@
       "source_file": "scripts/tunnel-all.sh",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_sh",
-      "target": "scripts_tunnel_all_start_tunnel",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_start_tunnel"
     },
     {
       "relation": "defines",
@@ -11269,9 +11251,9 @@
       "source_file": "scripts/tunnel-all.sh",
       "source_location": "L88",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_sh",
-      "target": "scripts_tunnel_all_verify_tunnel",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_verify_tunnel"
     },
     {
       "relation": "calls",
@@ -11280,9 +11262,9 @@
       "source_location": "L136",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
-      "target": "scripts_tunnel_all_add_ingress_rule",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_add_ingress_rule"
     },
     {
       "relation": "calls",
@@ -11291,9 +11273,9 @@
       "source_location": "L96",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
-      "target": "scripts_tunnel_all_clean",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_clean"
     },
     {
       "relation": "calls",
@@ -11302,9 +11284,9 @@
       "source_location": "L97",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
-      "target": "scripts_tunnel_all_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_log"
     },
     {
       "relation": "calls",
@@ -11313,9 +11295,9 @@
       "source_location": "L164",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "home_psihson_my_devops_project_scripts_tunnel_all_sh__entry",
-      "target": "scripts_tunnel_all_verify_tunnel",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_verify_tunnel"
     },
     {
       "relation": "calls",
@@ -11324,9 +11306,9 @@
       "source_location": "L68",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_add_ingress_rule",
-      "target": "scripts_tunnel_all_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_log"
     },
     {
       "relation": "calls",
@@ -11335,9 +11317,9 @@
       "source_location": "L26",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_clean",
-      "target": "scripts_tunnel_all_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_log"
     },
     {
       "relation": "calls",
@@ -11346,9 +11328,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_die",
-      "target": "scripts_tunnel_all_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_log"
     },
     {
       "relation": "calls",
@@ -11357,9 +11339,9 @@
       "source_location": "L91",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_all_verify_tunnel",
-      "target": "scripts_tunnel_all_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_all_log"
     },
     {
       "relation": "contains",
@@ -11367,9 +11349,9 @@
       "source_file": "scripts/disable-aws.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_disable_aws_sh",
-      "target": "home_psihson_my_devops_project_scripts_disable_aws_sh__entry",
-      "confidence_score": 1.0
+      "target": "home_psihson_my_devops_project_scripts_disable_aws_sh__entry"
     },
     {
       "relation": "contains",
@@ -11377,9 +11359,9 @@
       "source_file": "scripts/tunnel-pinggy.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_sh",
-      "target": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
-      "confidence_score": 1.0
+      "target": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry"
     },
     {
       "relation": "defines",
@@ -11387,9 +11369,9 @@
       "source_file": "scripts/tunnel-pinggy.sh",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_sh",
-      "target": "scripts_tunnel_pinggy_cleanup",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_cleanup"
     },
     {
       "relation": "defines",
@@ -11397,9 +11379,9 @@
       "source_file": "scripts/tunnel-pinggy.sh",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_sh",
-      "target": "scripts_tunnel_pinggy_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_log"
     },
     {
       "relation": "defines",
@@ -11407,9 +11389,9 @@
       "source_file": "scripts/tunnel-pinggy.sh",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_sh",
-      "target": "scripts_tunnel_pinggy_start_tunnel",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_start_tunnel"
     },
     {
       "relation": "defines",
@@ -11417,9 +11399,9 @@
       "source_file": "scripts/tunnel-pinggy.sh",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_sh",
-      "target": "scripts_tunnel_pinggy_update_ingress",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_update_ingress"
     },
     {
       "relation": "defines",
@@ -11427,9 +11409,9 @@
       "source_file": "scripts/tunnel-pinggy.sh",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_sh",
-      "target": "scripts_tunnel_pinggy_verify",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_verify"
     },
     {
       "relation": "calls",
@@ -11438,9 +11420,9 @@
       "source_location": "L107",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
-      "target": "scripts_tunnel_pinggy_cleanup",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_cleanup"
     },
     {
       "relation": "calls",
@@ -11449,9 +11431,9 @@
       "source_location": "L108",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
-      "target": "scripts_tunnel_pinggy_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_log"
     },
     {
       "relation": "calls",
@@ -11460,9 +11442,9 @@
       "source_location": "L124",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
-      "target": "scripts_tunnel_pinggy_update_ingress",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_update_ingress"
     },
     {
       "relation": "calls",
@@ -11471,9 +11453,9 @@
       "source_location": "L126",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "home_psihson_my_devops_project_scripts_tunnel_pinggy_sh__entry",
-      "target": "scripts_tunnel_pinggy_verify",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_verify"
     },
     {
       "relation": "calls",
@@ -11482,9 +11464,9 @@
       "source_location": "L20",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_cleanup",
-      "target": "scripts_tunnel_pinggy_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_log"
     },
     {
       "relation": "calls",
@@ -11493,9 +11475,9 @@
       "source_location": "L64",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_update_ingress",
-      "target": "scripts_tunnel_pinggy_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_log"
     },
     {
       "relation": "calls",
@@ -11504,9 +11486,9 @@
       "source_location": "L98",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "scripts_tunnel_pinggy_verify",
-      "target": "scripts_tunnel_pinggy_log",
-      "confidence_score": 1.0
+      "target": "scripts_tunnel_pinggy_log"
     },
     {
       "relation": "contains",
@@ -11514,9 +11496,9 @@
       "source_file": "scripts/enable-aws.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_enable_aws_sh",
-      "target": "home_psihson_my_devops_project_scripts_enable_aws_sh__entry",
-      "confidence_score": 1.0
+      "target": "home_psihson_my_devops_project_scripts_enable_aws_sh__entry"
     },
     {
       "relation": "contains",
@@ -11574,9 +11556,9 @@
       "source_file": "README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "readme_md",
-      "target": "my_devops_project_readme_my_devops_project",
-      "confidence_score": 1.0
+      "target": "my_devops_project_readme_my_devops_project"
     },
     {
       "relation": "contains",
@@ -11584,9 +11566,9 @@
       "source_file": "README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "my_devops_project_readme_my_devops_project",
-      "target": "my_devops_project_readme_architecture_overview",
-      "confidence_score": 1.0
+      "target": "my_devops_project_readme_architecture_overview"
     },
     {
       "relation": "contains",
@@ -11594,9 +11576,9 @@
       "source_file": "README.md",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "my_devops_project_readme_my_devops_project",
-      "target": "my_devops_project_readme_ci_cd_flow",
-      "confidence_score": 1.0
+      "target": "my_devops_project_readme_ci_cd_flow"
     },
     {
       "relation": "contains",
@@ -11604,9 +11586,9 @@
       "source_file": "README.md",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "my_devops_project_readme_my_devops_project",
-      "target": "my_devops_project_readme_components",
-      "confidence_score": 1.0
+      "target": "my_devops_project_readme_components"
     },
     {
       "relation": "contains",
@@ -11614,9 +11596,9 @@
       "source_file": "README.md",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "my_devops_project_readme_my_devops_project",
-      "target": "my_devops_project_readme_prerequisites",
-      "confidence_score": 1.0
+      "target": "my_devops_project_readme_prerequisites"
     },
     {
       "relation": "contains",
@@ -11624,9 +11606,9 @@
       "source_file": "README.md",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "my_devops_project_readme_my_devops_project",
-      "target": "my_devops_project_readme_quick_start",
-      "confidence_score": 1.0
+      "target": "my_devops_project_readme_quick_start"
     },
     {
       "relation": "contains",
@@ -11634,9 +11616,9 @@
       "source_file": "voting-app-result/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_result_readme_md",
-      "target": "voting_app_result_readme_voting_app_result_service_node_js",
-      "confidence_score": 1.0
+      "target": "voting_app_result_readme_voting_app_result_service_node_js"
     },
     {
       "relation": "contains",
@@ -11644,9 +11626,9 @@
       "source_file": "voting-app-result/README.md",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_result_readme_voting_app_result_service_node_js",
-      "target": "voting_app_result_readme_helm_values",
-      "confidence_score": 1.0
+      "target": "voting_app_result_readme_helm_values"
     },
     {
       "relation": "contains",
@@ -11654,9 +11636,9 @@
       "source_file": "voting-app-result/README.md",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_result_readme_voting_app_result_service_node_js",
-      "target": "voting_app_result_readme_how_it_works",
-      "confidence_score": 1.0
+      "target": "voting_app_result_readme_how_it_works"
     },
     {
       "relation": "contains",
@@ -11664,9 +11646,9 @@
       "source_file": "voting-app-result/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_result_readme_voting_app_result_service_node_js",
-      "target": "voting_app_result_readme_structure",
-      "confidence_score": 1.0
+      "target": "voting_app_result_readme_structure"
     },
     {
       "relation": "contains",
@@ -11674,9 +11656,9 @@
       "source_file": "voting-app-result/README.md",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_result_readme_voting_app_result_service_node_js",
-      "target": "voting_app_result_readme_tests",
-      "confidence_score": 1.0
+      "target": "voting_app_result_readme_tests"
     },
     {
       "relation": "contains",
@@ -11684,9 +11666,9 @@
       "source_file": "voting-app-result/charts/result/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_result_charts_result_readme_md",
-      "target": "result_readme_result_helm_chart",
-      "confidence_score": 1.0
+      "target": "result_readme_result_helm_chart"
     },
     {
       "relation": "contains",
@@ -11694,9 +11676,9 @@
       "source_file": "voting-app-result/charts/result/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "result_readme_result_helm_chart",
-      "target": "result_readme_features",
-      "confidence_score": 1.0
+      "target": "result_readme_features"
     },
     {
       "relation": "contains",
@@ -11704,219 +11686,9 @@
       "source_file": "voting-app-result/charts/result/README.md",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "result_readme_result_helm_chart",
-      "target": "result_readme_values",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "ci_pipelines_readme_md",
-      "target": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
-      "target": "ci_pipelines_readme_architecture",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L28",
-      "weight": 1.0,
-      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
-      "target": "ci_pipelines_readme_files",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
-      "target": "ci_pipelines_readme_monorepo_ci_alternative",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L46",
-      "weight": 1.0,
-      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
-      "target": "ci_pipelines_readme_required_secrets",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/README.md",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
-      "target": "ci_pipelines_readme_troubleshooting",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_md",
-      "target": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "target": "ci_pipelines_setup_1_what_terraform_creates",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L60",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "target": "ci_pipelines_setup_2_role_arn_for_github_actions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L76",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "target": "ci_pipelines_setup_3_setting_up_a_service_repository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L111",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "target": "ci_pipelines_setup_4_monorepo_ci_alternative",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L130",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "target": "ci_pipelines_setup_5_ecr_cleanup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L137",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "target": "ci_pipelines_setup_6_verification",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L153",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "target": "ci_pipelines_setup_7_troubleshooting",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
-      "target": "ci_pipelines_setup_architecture",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L40",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_1_what_terraform_creates",
-      "target": "ci_pipelines_setup_key_parameters_to_check",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L78",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
-      "target": "ci_pipelines_setup_step_1_add_github_workflows_ci_yml",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L88",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
-      "target": "ci_pipelines_setup_step_2_add_the_gitops_pat_secret",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "ci-pipelines/SETUP.md",
-      "source_location": "L96",
-      "weight": 1.0,
-      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
-      "target": "ci_pipelines_setup_step_3_verify_gitops_manifests_exist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "voting-app-gitops/README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "voting_app_gitops_readme_md",
-      "target": "voting_app_gitops_readme_voting_app_gitops_configuration",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "voting-app-gitops/README.md",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "voting_app_gitops_readme_voting_app_gitops_configuration",
-      "target": "voting_app_gitops_readme_related",
-      "confidence_score": 1.0
+      "target": "result_readme_values"
     },
     {
       "relation": "contains",
@@ -11924,9 +11696,9 @@
       "source_file": "voting-app-worker/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_worker_readme_md",
-      "target": "voting_app_worker_readme_voting_app_worker_service_net",
-      "confidence_score": 1.0
+      "target": "voting_app_worker_readme_voting_app_worker_service_net"
     },
     {
       "relation": "contains",
@@ -11934,9 +11706,9 @@
       "source_file": "voting-app-worker/README.md",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_worker_readme_voting_app_worker_service_net",
-      "target": "voting_app_worker_readme_features",
-      "confidence_score": 1.0
+      "target": "voting_app_worker_readme_features"
     },
     {
       "relation": "contains",
@@ -11944,9 +11716,9 @@
       "source_file": "voting-app-worker/README.md",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_worker_readme_voting_app_worker_service_net",
-      "target": "voting_app_worker_readme_helm_values",
-      "confidence_score": 1.0
+      "target": "voting_app_worker_readme_helm_values"
     },
     {
       "relation": "contains",
@@ -11954,9 +11726,9 @@
       "source_file": "voting-app-worker/README.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_worker_readme_voting_app_worker_service_net",
-      "target": "voting_app_worker_readme_how_it_works",
-      "confidence_score": 1.0
+      "target": "voting_app_worker_readme_how_it_works"
     },
     {
       "relation": "contains",
@@ -11964,9 +11736,9 @@
       "source_file": "voting-app-worker/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_worker_readme_voting_app_worker_service_net",
-      "target": "voting_app_worker_readme_structure",
-      "confidence_score": 1.0
+      "target": "voting_app_worker_readme_structure"
     },
     {
       "relation": "contains",
@@ -11974,9 +11746,9 @@
       "source_file": "voting-app-worker/charts/worker/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_worker_charts_worker_readme_md",
-      "target": "worker_readme_worker_helm_chart",
-      "confidence_score": 1.0
+      "target": "worker_readme_worker_helm_chart"
     },
     {
       "relation": "contains",
@@ -11984,9 +11756,9 @@
       "source_file": "voting-app-worker/charts/worker/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "worker_readme_worker_helm_chart",
-      "target": "worker_readme_features",
-      "confidence_score": 1.0
+      "target": "worker_readme_features"
     },
     {
       "relation": "contains",
@@ -11994,9 +11766,9 @@
       "source_file": "voting-app-worker/charts/worker/README.md",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "worker_readme_worker_helm_chart",
-      "target": "worker_readme_values",
-      "confidence_score": 1.0
+      "target": "worker_readme_values"
     },
     {
       "relation": "contains",
@@ -12004,9 +11776,9 @@
       "source_file": "voting-app-vote/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_vote_readme_md",
-      "target": "voting_app_vote_readme_voting_app_vote_service_python_flask",
-      "confidence_score": 1.0
+      "target": "voting_app_vote_readme_voting_app_vote_service_python_flask"
     },
     {
       "relation": "contains",
@@ -12014,9 +11786,9 @@
       "source_file": "voting-app-vote/README.md",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_vote_readme_voting_app_vote_service_python_flask",
-      "target": "voting_app_vote_readme_features",
-      "confidence_score": 1.0
+      "target": "voting_app_vote_readme_features"
     },
     {
       "relation": "contains",
@@ -12024,9 +11796,9 @@
       "source_file": "voting-app-vote/README.md",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_vote_readme_voting_app_vote_service_python_flask",
-      "target": "voting_app_vote_readme_helm_values",
-      "confidence_score": 1.0
+      "target": "voting_app_vote_readme_helm_values"
     },
     {
       "relation": "contains",
@@ -12034,9 +11806,9 @@
       "source_file": "voting-app-vote/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_vote_readme_voting_app_vote_service_python_flask",
-      "target": "voting_app_vote_readme_structure",
-      "confidence_score": 1.0
+      "target": "voting_app_vote_readme_structure"
     },
     {
       "relation": "contains",
@@ -12044,9 +11816,9 @@
       "source_file": "voting-app-vote/charts/vote/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_vote_charts_vote_readme_md",
-      "target": "vote_readme_vote_helm_chart",
-      "confidence_score": 1.0
+      "target": "vote_readme_vote_helm_chart"
     },
     {
       "relation": "contains",
@@ -12054,9 +11826,9 @@
       "source_file": "voting-app-vote/charts/vote/README.md",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "vote_readme_vote_helm_chart",
-      "target": "vote_readme_dependencies",
-      "confidence_score": 1.0
+      "target": "vote_readme_dependencies"
     },
     {
       "relation": "contains",
@@ -12064,9 +11836,9 @@
       "source_file": "voting-app-vote/charts/vote/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "vote_readme_vote_helm_chart",
-      "target": "vote_readme_features",
-      "confidence_score": 1.0
+      "target": "vote_readme_features"
     },
     {
       "relation": "contains",
@@ -12074,9 +11846,9 @@
       "source_file": "voting-app-vote/charts/vote/README.md",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "vote_readme_vote_helm_chart",
-      "target": "vote_readme_how_ci_updates_this",
-      "confidence_score": 1.0
+      "target": "vote_readme_how_ci_updates_this"
     },
     {
       "relation": "contains",
@@ -12084,9 +11856,9 @@
       "source_file": "voting-app-vote/charts/vote/README.md",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "vote_readme_vote_helm_chart",
-      "target": "vote_readme_values",
-      "confidence_score": 1.0
+      "target": "vote_readme_values"
     },
     {
       "relation": "contains",
@@ -12094,9 +11866,9 @@
       "source_file": "keycloak/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_readme_md",
-      "target": "keycloak_readme_keycloak_oidc_provider",
-      "confidence_score": 1.0
+      "target": "keycloak_readme_keycloak_oidc_provider"
     },
     {
       "relation": "contains",
@@ -12104,9 +11876,9 @@
       "source_file": "keycloak/README.md",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_readme_keycloak_oidc_provider",
-      "target": "keycloak_readme_integration",
-      "confidence_score": 1.0
+      "target": "keycloak_readme_integration"
     },
     {
       "relation": "contains",
@@ -12114,9 +11886,9 @@
       "source_file": "keycloak/README.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_readme_keycloak_oidc_provider",
-      "target": "keycloak_readme_md_keycloak_readme_dependencies",
-      "confidence_score": 1.0
+      "target": "keycloak_readme_md_keycloak_readme_dependencies"
     },
     {
       "relation": "contains",
@@ -12124,9 +11896,9 @@
       "source_file": "keycloak/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_readme_keycloak_oidc_provider",
-      "target": "keycloak_readme_structure",
-      "confidence_score": 1.0
+      "target": "keycloak_readme_structure"
     },
     {
       "relation": "contains",
@@ -12134,9 +11906,9 @@
       "source_file": "keycloak/charts/keycloak/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_charts_keycloak_readme_md",
-      "target": "keycloak_readme_keycloak_helm_chart",
-      "confidence_score": 1.0
+      "target": "keycloak_readme_keycloak_helm_chart"
     },
     {
       "relation": "contains",
@@ -12144,9 +11916,9 @@
       "source_file": "keycloak/charts/keycloak/README.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_readme_keycloak_helm_chart",
-      "target": "keycloak_charts_keycloak_readme_md_keycloak_readme_dependencies",
-      "confidence_score": 1.0
+      "target": "keycloak_charts_keycloak_readme_md_keycloak_readme_dependencies"
     },
     {
       "relation": "contains",
@@ -12154,9 +11926,9 @@
       "source_file": "keycloak/charts/keycloak/README.md",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_readme_keycloak_helm_chart",
-      "target": "keycloak_readme_deployment_via_argocd",
-      "confidence_score": 1.0
+      "target": "keycloak_readme_deployment_via_argocd"
     },
     {
       "relation": "contains",
@@ -12164,9 +11936,9 @@
       "source_file": "keycloak/charts/keycloak/README.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_readme_keycloak_helm_chart",
-      "target": "keycloak_readme_values",
-      "confidence_score": 1.0
+      "target": "keycloak_readme_values"
     },
     {
       "relation": "contains",
@@ -12174,9 +11946,19 @@
       "source_file": "keycloak/charts/keycloak/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keycloak_readme_keycloak_helm_chart",
-      "target": "keycloak_readme_what_it_deploys",
-      "confidence_score": 1.0
+      "target": "keycloak_readme_what_it_deploys"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "k8s_readme_md",
+      "target": "k8s_readme_kubernetes_infrastructure_manifests"
     },
     {
       "relation": "contains",
@@ -12185,7 +11967,47 @@
       "source_location": "L1",
       "weight": 1.0,
       "source": "k8s_readme_md",
-      "target": "k8s_readme_kubernetes_infrastructure_manifests",
+      "target": "k8s_readme_kubernetes_legacy_manifests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "k8s_readme_kubernetes_legacy_manifests",
+      "target": "k8s_readme_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "k8s_readme_kubernetes_legacy_manifests",
+      "target": "k8s_readme_migration_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "k8s_readme_kubernetes_legacy_manifests",
+      "target": "k8s_readme_\u0434\u0435\u043f\u043b\u043e\u0439",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "k8s_readme_kubernetes_legacy_manifests",
+      "target": "k8s_readme_\u0444\u0430\u0439\u043b\u0438",
       "confidence_score": 1.0
     },
     {
@@ -12194,29 +12016,9 @@
       "source_file": "k8s/README.md",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "k8s_readme_kubernetes_infrastructure_manifests",
-      "target": "k8s_readme_dependencies",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "k8s/README.md",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "k8s_readme_kubernetes_infrastructure_manifests",
-      "target": "k8s_readme_files",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "k8s/README.md",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "k8s_readme_kubernetes_infrastructure_manifests",
-      "target": "k8s_readme_migration_to_helm",
-      "confidence_score": 1.0
+      "target": "k8s_readme_dependencies"
     },
     {
       "relation": "contains",
@@ -12224,9 +12026,9 @@
       "source_file": "k8s/local/SETUP.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "k8s_local_setup_md",
-      "target": "local_setup_local_voting_app_development_zero_aws_dependencies",
-      "confidence_score": 1.0
+      "target": "local_setup_local_voting_app_development_zero_aws_dependencies"
     },
     {
       "relation": "contains",
@@ -12234,9 +12036,9 @@
       "source_file": "k8s/local/SETUP.md",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
-      "target": "local_setup_architecture",
-      "confidence_score": 1.0
+      "target": "local_setup_architecture"
     },
     {
       "relation": "contains",
@@ -12244,9 +12046,9 @@
       "source_file": "k8s/local/SETUP.md",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
-      "target": "local_setup_available_make_commands",
-      "confidence_score": 1.0
+      "target": "local_setup_available_make_commands"
     },
     {
       "relation": "contains",
@@ -12254,9 +12056,9 @@
       "source_file": "k8s/local/SETUP.md",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
-      "target": "local_setup_ci_github_actions_no_aws",
-      "confidence_score": 1.0
+      "target": "local_setup_ci_github_actions_no_aws"
     },
     {
       "relation": "contains",
@@ -12264,9 +12066,9 @@
       "source_file": "k8s/local/SETUP.md",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
-      "target": "local_setup_disable_aws_terraform",
-      "confidence_score": 1.0
+      "target": "local_setup_disable_aws_terraform"
     },
     {
       "relation": "contains",
@@ -12274,9 +12076,9 @@
       "source_file": "k8s/local/SETUP.md",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
-      "target": "local_setup_port_conflict_port_80_in_use",
-      "confidence_score": 1.0
+      "target": "local_setup_port_conflict_port_80_in_use"
     },
     {
       "relation": "contains",
@@ -12284,9 +12086,9 @@
       "source_file": "k8s/local/SETUP.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "local_setup_local_voting_app_development_zero_aws_dependencies",
-      "target": "local_setup_quickstart",
-      "confidence_score": 1.0
+      "target": "local_setup_quickstart"
     },
     {
       "relation": "contains",
@@ -12294,9 +12096,9 @@
       "source_file": "charts/infra-bootstrap/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "charts_infra_bootstrap_readme_md",
-      "target": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
-      "confidence_score": 1.0
+      "target": "infra_bootstrap_readme_infra_bootstrap_helm_chart"
     },
     {
       "relation": "contains",
@@ -12304,9 +12106,9 @@
       "source_file": "charts/infra-bootstrap/README.md",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
-      "target": "infra_bootstrap_readme_migration",
-      "confidence_score": 1.0
+      "target": "infra_bootstrap_readme_migration"
     },
     {
       "relation": "contains",
@@ -12314,9 +12116,9 @@
       "source_file": "charts/infra-bootstrap/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
-      "target": "infra_bootstrap_readme_\u0432\u043c\u0456\u0441\u0442",
-      "confidence_score": 1.0
+      "target": "infra_bootstrap_readme_\u0432\u043c\u0456\u0441\u0442"
     },
     {
       "relation": "contains",
@@ -12324,19 +12126,9 @@
       "source_file": "charts/infra-bootstrap/README.md",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_bootstrap_readme_infra_bootstrap_helm_chart",
-      "target": "infra_bootstrap_readme_\u0434\u0435\u043f\u043b\u043e\u0439_\u0447\u0435\u0440\u0435\u0437_argocd",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "voting-app-infra/README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "voting_app_infra_readme_md",
-      "target": "voting_app_infra_readme_voting_app_infrastructure_files",
-      "confidence_score": 1.0
+      "target": "infra_bootstrap_readme_\u0434\u0435\u043f\u043b\u043e\u0439_\u0447\u0435\u0440\u0435\u0437_argocd"
     },
     {
       "relation": "contains",
@@ -12344,9 +12136,9 @@
       "source_file": "infra-aws/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_aws_readme_md",
-      "target": "infra_aws_readme_infrastructure_as_code_terraform",
-      "confidence_score": 1.0
+      "target": "infra_aws_readme_infrastructure_as_code_terraform"
     },
     {
       "relation": "contains",
@@ -12354,9 +12146,9 @@
       "source_file": "infra-aws/README.md",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_aws_readme_infrastructure_as_code_terraform",
-      "target": "infra_aws_readme_helm_releases_deployed_via_terraform",
-      "confidence_score": 1.0
+      "target": "infra_aws_readme_helm_releases_deployed_via_terraform"
     },
     {
       "relation": "contains",
@@ -12364,9 +12156,9 @@
       "source_file": "infra-aws/README.md",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_aws_readme_infrastructure_as_code_terraform",
-      "target": "infra_aws_readme_iam_oidc",
-      "confidence_score": 1.0
+      "target": "infra_aws_readme_iam_oidc"
     },
     {
       "relation": "contains",
@@ -12374,9 +12166,9 @@
       "source_file": "infra-aws/README.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_aws_readme_infrastructure_as_code_terraform",
-      "target": "infra_aws_readme_other_resources",
-      "confidence_score": 1.0
+      "target": "infra_aws_readme_other_resources"
     },
     {
       "relation": "contains",
@@ -12384,9 +12176,9 @@
       "source_file": "infra-aws/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_aws_readme_infrastructure_as_code_terraform",
-      "target": "infra_aws_readme_resources",
-      "confidence_score": 1.0
+      "target": "infra_aws_readme_resources"
     },
     {
       "relation": "contains",
@@ -12394,9 +12186,9 @@
       "source_file": "infra-aws/README.md",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_aws_readme_infrastructure_as_code_terraform",
-      "target": "infra_aws_readme_secrets",
-      "confidence_score": 1.0
+      "target": "infra_aws_readme_secrets"
     },
     {
       "relation": "contains",
@@ -12404,9 +12196,9 @@
       "source_file": "infra-aws/README.md",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_aws_readme_infrastructure_as_code_terraform",
-      "target": "infra_aws_readme_state",
-      "confidence_score": 1.0
+      "target": "infra_aws_readme_state"
     },
     {
       "relation": "contains",
@@ -12414,9 +12206,249 @@
       "source_file": "infra-aws/README.md",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "infra_aws_readme_infrastructure_as_code_terraform",
-      "target": "infra_aws_readme_usage",
-      "confidence_score": 1.0
+      "target": "infra_aws_readme_usage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_readme_md",
+      "target": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_architecture"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_files"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_monorepo_ci_alternative"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_required_secrets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/README.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_readme_ci_cd_pipelines_centralized_workflows",
+      "target": "ci_pipelines_readme_troubleshooting"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_md",
+      "target": "ci_pipelines_setup_phase_10_production_ci_setup_guide"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_1_what_terraform_creates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_2_role_arn_for_github_actions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_3_setting_up_a_service_repository"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L111",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_4_monorepo_ci_alternative"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L130",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_5_ecr_cleanup"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_6_verification"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L153",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_7_troubleshooting"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_phase_10_production_ci_setup_guide",
+      "target": "ci_pipelines_setup_architecture"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_1_what_terraform_creates",
+      "target": "ci_pipelines_setup_key_parameters_to_check"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
+      "target": "ci_pipelines_setup_step_1_add_github_workflows_ci_yml"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L88",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
+      "target": "ci_pipelines_setup_step_2_add_the_gitops_pat_secret"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ci-pipelines/SETUP.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ci_pipelines_setup_3_setting_up_a_service_repository",
+      "target": "ci_pipelines_setup_step_3_verify_gitops_manifests_exist"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "voting_app_gitops_readme_md",
+      "target": "voting_app_gitops_readme_voting_app_gitops_configuration"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-gitops/README.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "voting_app_gitops_readme_voting_app_gitops_configuration",
+      "target": "voting_app_gitops_readme_related"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "k8s_readme_kubernetes_infrastructure_manifests",
+      "target": "k8s_readme_files"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "k8s/README.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "k8s_readme_kubernetes_infrastructure_manifests",
+      "target": "k8s_readme_migration_to_helm"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-infra/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "voting_app_infra_readme_md",
+      "target": "voting_app_infra_readme_voting_app_infrastructure_files"
     },
     {
       "relation": "contains",
@@ -12424,9 +12456,9 @@
       "source_file": "argocd-apps/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "argocd_apps_readme_md",
-      "target": "argocd_apps_readme_argocd_applications_app_of_apps",
-      "confidence_score": 1.0
+      "target": "argocd_apps_readme_argocd_applications_app_of_apps"
     },
     {
       "relation": "contains",
@@ -12434,9 +12466,9 @@
       "source_file": "argocd-apps/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "argocd_apps_readme_argocd_applications_app_of_apps",
-      "target": "argocd_apps_readme_structure",
-      "confidence_score": 1.0
+      "target": "argocd_apps_readme_structure"
     },
     {
       "relation": "contains",
@@ -12444,9 +12476,9 @@
       "source_file": "argocd-apps/README.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "argocd_apps_readme_argocd_applications_app_of_apps",
-      "target": "argocd_apps_readme_sync_flow",
-      "confidence_score": 1.0
+      "target": "argocd_apps_readme_sync_flow"
     },
     {
       "relation": "contains",
@@ -12454,9 +12486,9 @@
       "source_file": "modules/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "modules_readme_md",
-      "target": "modules_readme_terraform_modules_library",
-      "confidence_score": 1.0
+      "target": "modules_readme_terraform_modules_library"
     },
     {
       "relation": "contains",
@@ -12464,11 +12496,11 @@
       "source_file": "modules/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "modules_readme_terraform_modules_library",
-      "target": "modules_readme_active_modules",
-      "confidence_score": 1.0
+      "target": "modules_readme_active_modules"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b0c15a5db4afa5c01420153c063371f32347c540"
+  "built_at_commit": "49eb3ac2e92c5ca199a5e1aced6af19d565fc851"
 }

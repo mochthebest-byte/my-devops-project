@@ -12,7 +12,7 @@ Helm chart for the voting-app result backend (Node.js).
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `image.repository` | `765776786215.dkr.ecr.eu-central-1.amazonaws.com/my-app/result` | ECR image |
+| `image.repository` | `657954628960.dkr.ecr.eu-central-1.amazonaws.com/my-app/result` | ECR image |
 | `image.tag` | `latest` | Image tag (updated by CI) |
 | `replicaCount` | `1` | Number of replicas |
 | `service.port` | `81` | Service port |

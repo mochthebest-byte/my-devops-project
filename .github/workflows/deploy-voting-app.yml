@@ -34,7 +34,7 @@ on:
 
 env:
   AWS_REGION: eu-central-1
-  CI_ROLE_ARN: arn:aws:iam::765776786215:role/my-app-eks-github-ci
+  CI_ROLE_ARN: arn:aws:iam::657954628960:role/my-app-eks-github-ci
   GITOPS_REPO: mochthebest-byte/gitops
   GITOPS_BRANCH: main
 

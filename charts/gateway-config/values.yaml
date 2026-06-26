@@ -19,7 +19,7 @@ tls:
   # k8s TLS Secret name (leave empty for ACM auto-discovery)
   secretName: ""
   # ACM ARN — не використовується напряму (збережено для довідки)
-  certificateArn: "arn:aws:acm:eu-central-1:765776786215:certificate/2832556a-442a-40a7-9287-91ab5cde01fc"
+  certificateArn: "arn:aws:acm:eu-central-1:657954628960:certificate/TO_BE_REPLACED_AFTER_TERRAFORM_APPLY"
 
 # ─── Gateway ─────────────────────────────────────────────
 gateway:
