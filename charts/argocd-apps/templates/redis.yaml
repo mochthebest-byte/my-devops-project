@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    repoURL: oci://registry-1.docker.io/bitnamicharts
+    targetRevision: 21.x
+    chart: redis
+    helm:
+      values: |
+        image:
+          tag: latest
+        architecture: standalone
+        auth:
+          enabled: false
+        master:
+          persistence:
+            storageClass: gp3
+            size: 4Gi
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: voting-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
