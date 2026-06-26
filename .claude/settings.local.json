@@ -359,7 +359,9 @@
       "Bash(KUBECONFIG=/tmp/kubeconfig kubectl get applications.argoproj.io -n argocd -o name)",
       "Bash(xargs -I {} kubectl patch {} -n argocd --type merge -p '{\"metadata\":{\"annotations\":{\"argocd.argoproj.io/refresh\":\"hard\"}}}')",
       "Bash(export KUBECONFIG=/tmp/kubeconfig)",
-      "Bash(argocd --help)"
+      "Bash(argocd --help)",
+      "Bash(awk '{print $1\": \"$2}')",
+      "Bash(awk '{print NR\". \"$1\" - \"$3}')"
     ]
   }
 }
