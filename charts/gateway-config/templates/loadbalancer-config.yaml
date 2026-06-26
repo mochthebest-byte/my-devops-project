@@ -14,5 +14,4 @@ metadata:
   namespace: {{ .Values.gateway.namespace }}
 spec:
   scheme: {{ .Values.gateway.scheme }}
-  targetType: ip
 {{- end }}
