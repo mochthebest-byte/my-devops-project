@@ -339,7 +339,27 @@
       "Bash(KUBECONFIG=/tmp/kubeconfig helm list *)",
       "Bash(KUBECONFIG=/tmp/kubeconfig kubectl cluster-info *)",
       "Bash(KUBECONFIG=/tmp/kubeconfig helm upgrade *)",
-      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=\"{.data.password}\")"
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=\"{.data.password}\")",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl get applications *)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig argocd app *)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl get pods *)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl get configmap *)",
+      "Bash(argocd context *)",
+      "Bash(argocd relogin *)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl argocd app list)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl plugin list)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl get application infra-bootstrap -n argocd -o yaml)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl get application infra-bootstrap -n argocd -o jsonpath='{.status.conditions}')",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl rollout restart deployment argocd-application-controller -n argocd)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl rollout restart statefulset argocd-application-controller -n argocd)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl patch application infra-bootstrap -n argocd --type merge -p '{\"status\":{\"operationState\":null,\"conditions\":null}}')",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl get application infra-bootstrap -n argocd -o jsonpath='{.status.sync.status}{\"\\\\t\"}{.status.health.status}{\"\\\\t\"}{.status.operationState.phase}{\"\\\\n\"}')",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl patch application gateway-config -n argocd --type merge -p '{\"status\":{\"operationState\":null,\"conditions\":null}}')",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl logs *)",
+      "Bash(KUBECONFIG=/tmp/kubeconfig kubectl get applications.argoproj.io -n argocd -o name)",
+      "Bash(xargs -I {} kubectl patch {} -n argocd --type merge -p '{\"metadata\":{\"annotations\":{\"argocd.argoproj.io/refresh\":\"hard\"}}}')",
+      "Bash(export KUBECONFIG=/tmp/kubeconfig)",
+      "Bash(argocd --help)"
     ]
   }
 }
