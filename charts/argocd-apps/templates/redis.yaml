@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: bitnami
+    repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 21.x
     chart: redis
     helm:
