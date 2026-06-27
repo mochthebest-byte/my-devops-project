@@ -13,22 +13,25 @@ spec:
     chart: velero
     helm:
       values: |
-        namespace: velero
         serviceAccount:
           server:
+            create: true
+            name: velero
             annotations:
               eks.amazonaws.com/role-arn: "arn:aws:iam::657954628960:role/voting-app-velero"
         credentials:
           useSecret: false
+          existingSecret: null
         configuration:
-          provider: aws
           backupStorageLocation:
             - name: default
+              provider: aws
               bucket: voting-app-velero-backups-657954628960
               config:
                 region: eu-central-1
           volumeSnapshotLocation:
             - name: default
+              provider: aws
               config:
                 region: eu-central-1
         schedules:
