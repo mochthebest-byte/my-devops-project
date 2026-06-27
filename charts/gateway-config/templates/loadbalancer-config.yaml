@@ -1,10 +1,13 @@
 {{- if .Values.enabled }}
 # ═══════════════════════════════════════════════════════════════
-#  LoadBalancerConfiguration — схема ALB (internet-facing)
+#  LoadBalancerConfiguration — схема ALB + TLS (C2 fix)
 # ═══════════════════════════════════════════════════════════════
 # Gateway API не використовує alb.ingress.kubernetes.io/scheme annotation —
 # схема задається через LoadBalancerConfiguration CRD, який посилається
 # через infrastructure.parametersRef в Gateway spec.
+#
+# TLS сертифікат прив'язується через listenerConfigurations,
+# а не через порожній Secret з Ingress-анотацією.
 # ═══════════════════════════════════════════════════════════════
 ---
 apiVersion: gateway.k8s.aws/v1beta1
@@ -14,4 +17,10 @@ metadata:
   namespace: {{ .Values.gateway.namespace }}
 spec:
   scheme: {{ .Values.gateway.scheme }}
+  {{- if and .Values.tls.enabled .Values.tls.acmCertificateArn }}
+  listenerConfigurations:
+    - listenerName: https
+      certificates:
+        - certificateArn: {{ .Values.tls.acmCertificateArn }}
+  {{- end }}
 {{- end }}

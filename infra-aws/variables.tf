@@ -29,9 +29,9 @@ variable "eks_cluster_version" {
 }
 
 variable "eks_public_access_cidrs" {
-  description = "CIDRs allowed for EKS public API. Default 0.0.0.0/0 = всі. Обмежити через terraform.tfvars: [\"<ваш_IP>/32\"]"
+  description = "CIDRs allowed for EKS public API. Default VPC CIDR. Якщо потрібен доступ зовні — перевизначити через terraform.tfvars: [\"<ваш_IP>/32\"]"
   type        = list(string)
-  default     = ["0.0.0.0/0"]
+  default     = ["10.0.0.0/16"]
 }
 
 variable "eks_node_instance_types" {

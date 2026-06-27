@@ -48,7 +48,9 @@ resource "helm_release" "lb_controller" {
   namespace  = "kube-system"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
-  version    = "~> 1.17"
+  version    = "~> 3.4"
+
+  values = [file("${path.module}/lb-values.yaml")]
 
   set {
     name  = "clusterName"
@@ -241,7 +243,7 @@ resource "helm_release" "external_dns" {
   namespace  = "kube-system"
   repository = "https://kubernetes-sigs.github.io/external-dns"
   chart      = "external-dns"
-  version    = "~> 1.15"
+  version    = "~> 1.21"
 
   set {
     name  = "serviceAccount.create"

@@ -14,11 +14,11 @@ resource "aws_security_group" "nodes" {
 # ─── Ingress: LB → Nodes (NodePort range) ────────────
 resource "aws_vpc_security_group_ingress_rule" "lb_to_nodes_np" {
   security_group_id = aws_security_group.nodes.id
-  cidr_ipv4         = "0.0.0.0/0"
+  cidr_ipv4         = var.vpc_cidr
   from_port         = 30000
   to_port           = 32767
   ip_protocol       = "tcp"
-  description       = "NodePort traffic"
+  description       = "NodePort traffic restricted to VPC (C4 fix)"
 }
 
 # ─── Ingress: внутрішній трафік VPC ──────────────────

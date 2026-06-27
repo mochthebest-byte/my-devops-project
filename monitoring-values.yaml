@@ -37,6 +37,9 @@ grafana:
     GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://keycloak.mochthebest.pp.ua/realms/myapp/protocol/openid-connect/auth"
     GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "http://keycloak.keycloak.svc.cluster.local:8080/realms/myapp/protocol/openid-connect/token"
     GF_AUTH_GENERIC_OAUTH_API_URL: "http://keycloak.keycloak.svc.cluster.local:8080/realms/myapp/protocol/openid-connect/userinfo"
+    # TLS_SKIP_VERIFY — required because token/API URLs use in-cluster HTTP
+    # (keycloak.keycloak.svc.cluster.local:8080, not HTTPS).
+    # TODO: remove once Keycloak in-cluster HTTPS is set up.
     GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE: "true"
     GF_SERVER_ROOT_URL: "https://grafana.mochthebest.pp.ua"
     # ── Role mapping ──

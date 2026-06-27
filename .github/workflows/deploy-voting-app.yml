@@ -35,6 +35,8 @@ on:
 env:
   AWS_REGION: eu-central-1
   CI_ROLE_ARN: arn:aws:iam::657954628960:role/my-app-eks-github-ci
+  # ⚠️  Account ID захардкоджено — при зміні акаунта оновити вручну
+  #     Або зробити OIDC-резолвінг через AWS, якщо CI запускається в тій же AWS.
   GITOPS_REPO: mochthebest-byte/gitops
   GITOPS_BRANCH: main
 
@@ -118,17 +120,42 @@ jobs:
             --platform linux/amd64,linux/arm64 \
             -t "${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}" \
             -t "${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
-            --push \
+            --load \
             --cache-from "type=registry,ref=${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
             --cache-to "type=inline" \
             "${DOCKER_CTX}"
 
-          echo "Pushed ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+          echo "Built ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
           {
             echo "image=${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
             echo "registry=${ECR_REGISTRY}"
             echo "tag=${IMAGE_TAG}"
           } >> "$GITHUB_OUTPUT"
+
+      # 🔒 Trivy scan BEFORE push (C5 fix)
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.29.0
+        with:
+          image-ref: ${{ steps.build-image.outputs.registry }}/my-app/${{ matrix.service }}:${{ steps.build-image.outputs.tag }}
+          format: table
+          exit-code: 1
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+
+      - name: Push multi-arch image to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: my-app/${{ matrix.service }}
+          IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
+        run: |
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            -t "${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}" \
+            -t "${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
+            --push \
+            --cache-from "type=registry,ref=${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
+            --cache-to "type=inline" \
+            "src/voting-app/${{ matrix.service }}"
 
       # Update GitOps repo with new image tag
       - name: Checkout GitOps repo

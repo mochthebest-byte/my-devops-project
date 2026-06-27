@@ -14,7 +14,7 @@ Infrastructure-as-Code, CI/CD pipelines, and Kubernetes deployment for the votin
                     ├── charts/
                     │   ├── argocd-apps/                # ArgoCD App-of-Apps (Helm)
                     │   ├── gateway-config/             # Gateway API + HTTPRoutes
-                    │   └── infra-bootstrap/            # cert-manager, ESO, SecretStore
+                    │   └── infra-bootstrap/            # ESO, SecretStore
                     ├── k8s/                            # ExternalSecret manifests
                     ├── keycloak/                       # Keycloak Helm chart (OIDC provider)
                     ├── voting-app-vote/                # Vote service (Python/Flask)
@@ -47,7 +47,7 @@ graph LR
 | `infra-aws/` | AWS infrastructure | Terraform (VPC, EKS, ECR, IAM, Secrets Manager) |
 | `charts/argocd-apps/` | ArgoCD App-of-Apps | Helm (GitOps bootstrapper) |
 | `charts/gateway-config/` | Gateway API + HTTPRoutes | Helm, Gateway API |
-| `charts/infra-bootstrap/` | cert-manager, ESO, SecretStore | Helm |
+| `charts/infra-bootstrap/` | ESO, SecretStore | Helm |
 | `k8s/` | ExternalSecret manifests | Kubernetes manifests |
 | `keycloak/` | SSO / OIDC provider | Keycloak Helm chart |
 | `voting-app-*/` | Microservice source code | Python / Node.js / .NET |

@@ -41,6 +41,9 @@ spec:
           from: All
     {{- if .Values.tls.enabled }}
     # ── HTTPS ───────────────────────────────────────────
+    # TLS terminated at ALB via ACM cert (C2 fix).
+    # certificateRefs не потрібен — ACM прив'язаний через
+    # LoadBalancerConfiguration.listenerConfigurations.
     - name: https
       protocol: HTTPS
       port: 443
@@ -49,10 +52,5 @@ spec:
           from: All
       tls:
         mode: Terminate
-        {{- if .Values.tls.secretName }}
-        certificateRefs:
-          - name: {{ .Values.tls.secretName }}
-            kind: Secret
-        {{- end }}
 {{- end }}
 {{- end }}

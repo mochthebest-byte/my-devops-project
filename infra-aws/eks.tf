@@ -25,8 +25,9 @@ module "eks" {
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.public_subnets
 
-  # Публічний доступ до API — обмежений CIDR з var.eks_public_access_cidrs.
-  # Безпека: звузити до офісного/GitHub CIDR через terraform.tfvars.
+  # Публічний доступ до API — обмежено конкретним IP (C3 fix).
+  # AWS не приймає приватні CIDR (10.0.0.0/16) у public_access_cidrs,
+  # тому використовуємо конкретний публічний IP з terraform.tfvars.
   cluster_endpoint_public_access       = true
   cluster_endpoint_public_access_cidrs = var.eks_public_access_cidrs
   cluster_endpoint_private_access      = true
@@ -39,7 +40,7 @@ module "eks" {
   access_entries = {
     terraform_user = {
       kubernetes_groups = []
-      principal_arn     = "arn:aws:iam::657954628960:user/terraform-user"
+      principal_arn     = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/terraform-user"
       policy_associations = {
         admins = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
