@@ -1,5 +1,0 @@
-apiVersion: v2
-name: acm-tls-secret
-version: 1.0.0
-description: TLS Secret referencing ACM certificate for Gateway API
-type: application

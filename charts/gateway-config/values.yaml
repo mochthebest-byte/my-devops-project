@@ -16,8 +16,10 @@ domain: mochthebest.pp.ua
 # при потребі явної прив'язки.
 tls:
   enabled: true
-  # k8s TLS Secret name (leave empty for ACM auto-discovery)
-  secretName: ""
+  # k8s TLS Secret name — створюється цим же чартом (tls-secret.yaml)
+  # з анотацією alb.ingress.kubernetes.io/certificate-arn для прив'язки ACM.
+  # AWS LB Controller автоматично підхоплює сертифікат і додає його до ALB.
+  secretName: "voting-app-tls"
   # ACM ARN — не використовується напряму (збережено для довідки)
   certificateArn: "arn:aws:acm:eu-central-1:657954628960:certificate/22036369-7242-4539-8cf7-dadec0e93164"
 

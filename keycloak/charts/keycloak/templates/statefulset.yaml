@@ -77,7 +77,11 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
+            {{- if eq .Values.mode "dev" }}
             - start-dev
+            {{- else }}
+            - start
+            {{- end }}
             - --import-realm
             - --http-port={{ .Values.service.port }}
             - --proxy-headers=xforwarded
