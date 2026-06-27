@@ -1,0 +1,5 @@
+apiVersion: v2
+name: kyverno-policies
+description: Kyverno policies for my-devops-project
+type: application
+version: 0.1.0

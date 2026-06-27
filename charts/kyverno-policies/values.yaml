@@ -1,0 +1,20 @@
+# ─── Kyverno policies ─────────────────────────────
+#   Ці поліси — це guardrails, які перетворюють
+#   слабкості проекту на автоматичні перевірки.
+
+# ─── Enforce vs Audit ─────────────────────────────
+#   audit     — логує порушення, але не блокує
+#   enforce   — блокує створення ресурсу
+# ──────────────────────────────────────────────────
+
+# requireResources: перевіряє наявність requests/limits
+requireResources:
+  action: audit  # поки audit — потім enforce
+
+# blockLatestTag: забороняє :latest теги
+blockLatestTag:
+  action: audit
+
+# requireSecurityContext: вимагає runAsNonRoot
+requireSecurityContext:
+  action: audit

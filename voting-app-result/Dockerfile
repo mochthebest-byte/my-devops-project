@@ -1,12 +1,15 @@
 # syntax=docker/dockerfile:1
 # Multi-arch: use BUILDPLATFORM for build stage, TARGETPLATFORM for final image
-FROM --platform=$BUILDPLATFORM node:22-slim
+# ═══════════════════════════════════════════════════════════════
+#  CVE fix: base image pinned by digest for deterministic builds.
+#  apt-get upgrade removed — CVE coverage via base image updates.
+# ═══════════════════════════════════════════════════════════════
+FROM --platform=$BUILDPLATFORM node:22-slim@sha256:813a7480f28fdadac1f7f5c824bcdad435b5bc1322a5968bbbdef8d058f9dff4
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
-# add curl for healthcheck + fix CVEs in base image
+# Install curl + tini for healthcheck (no apt-get upgrade — deterministic builds)
 RUN apt-get update && \
-    apt-get upgrade -y --no-install-recommends && \
     apt-get install -y --no-install-recommends curl tini && \
     rm -rf /var/lib/apt/lists/*
 

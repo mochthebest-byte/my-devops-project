@@ -1,0 +1,80 @@
+{{- if .Values.requireResources }}
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-resources
+spec:
+  validationFailureAction: {{ .Values.requireResources.action }}
+  background: true
+  rules:
+    - name: check-resources
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      validate:
+        message: "Resources and limits are required for all containers"
+        pattern:
+          spec:
+            containers:
+              - resources:
+                  requests:
+                    memory: "?*"
+                    cpu: "?*"
+                  limits:
+                    memory: "?*"
+                    cpu: "?*"
+{{- end }}
+
+{{- if .Values.blockLatestTag }}
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-latest-tag
+spec:
+  validationFailureAction: {{ .Values.blockLatestTag.action }}
+  background: true
+  rules:
+    - name: block-latest-image
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      validate:
+        message: "Using :latest tag is not allowed. Pin to a specific version."
+        pattern:
+          spec:
+            containers:
+              - image: "!*:latest"
+{{- end }}
+
+{{- if .Values.requireSecurityContext }}
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-security-context
+spec:
+  validationFailureAction: {{ .Values.requireSecurityContext.action }}
+  background: true
+  rules:
+    - name: check-security-context
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      validate:
+        message: "Security context is required (runAsNonRoot, capabilities drop)"
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  runAsNonRoot: true
+                  capabilities:
+                    drop: ["ALL"]
+{{- end }}

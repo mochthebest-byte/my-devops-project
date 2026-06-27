@@ -181,7 +181,7 @@ resource "helm_release" "external_secrets" {
     value = aws_iam_role.eso.arn
   }
 
-  depends_on = [helm_release.lb_controller, aws_eks_node_group.main]
+  depends_on = [helm_release.lb_controller, module.eks]
 }
 
 # ══════════════════════════════════════════════════════════

@@ -365,7 +365,11 @@
       "Bash(awk 'NR>1 {print $1, $2, $3}')",
       "Bash(awk 'NR>1 {print $2, $3}')",
       "Bash(awk '$3 > 1 {print $1, $2, \"replicas:\", $3}')",
-      "Bash(awk '{ *)"
+      "Bash(awk '{ *)",
+      "Skill(keybindings-help)",
+      "Bash(nslookup 28976692F5DF3DB74BB4A93EF46275AF.gr7.eu-central-1.eks.amazonaws.com)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(skopeo inspect *)"
     ]
   }
 }

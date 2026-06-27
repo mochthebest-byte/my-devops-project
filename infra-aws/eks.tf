@@ -12,7 +12,11 @@ data "aws_iam_policy_document" "eks_assume_role" {
   }
 }
 
-# ─── EKS Cluster ────────────────────────────────────
+# ─── EKS Cluster + Managed Node Group ──────────────
+# C15: використовуємо eks_managed_node_groups замість
+#      standalone aws_eks_node_group.
+#      IAM роль створює модуль (іменована voting-app-eks-ng).
+#      Стара роль voting-app-eks-nodes буде видалена після apply.
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
@@ -26,17 +30,14 @@ module "eks" {
   control_plane_subnet_ids = module.vpc.public_subnets
 
   # Публічний доступ до API — обмежено конкретним IP (C3 fix).
-  # AWS не приймає приватні CIDR (10.0.0.0/16) у public_access_cidrs,
-  # тому використовуємо конкретний публічний IP з terraform.tfvars.
   cluster_endpoint_public_access       = true
   cluster_endpoint_public_access_cidrs = var.eks_public_access_cidrs
   cluster_endpoint_private_access      = true
 
-  # EBS CSI Driver — додамо нижче
   # Node Security Group
   node_security_group_id = module.app_sg.node_security_group_id
 
-  # Access Entry для terraform-user (замість старого aws-auth)
+  # Access Entry для terraform-user
   access_entries = {
     terraform_user = {
       kubernetes_groups = []
@@ -52,35 +53,31 @@ module "eks" {
     }
   }
 
-  tags = var.tags
-}
+  # ─── Managed Node Group (C15 fix) ──────────────
+  # Заміняє standalone resource aws_eks_node_group
+  eks_managed_node_groups = {
+    main = {
+      instance_types = var.eks_node_instance_types
+      disk_size      = 20
 
-# ─── Managed Node Group ─────────────────────────────
-resource "aws_eks_node_group" "main" {
-  cluster_name    = module.eks.cluster_name
-  node_group_name = "${var.project_name}-ng"
-  node_role_arn   = aws_iam_role.nodes.arn
-  subnet_ids      = module.vpc.private_subnets
+      scaling_config = {
+        desired_size = var.eks_desired_nodes
+        min_size     = var.eks_min_nodes
+        max_size     = var.eks_max_nodes
+      }
 
-  instance_types = var.eks_node_instance_types
-  disk_size      = 20
+      subnet_ids = module.vpc.private_subnets
 
-  scaling_config {
-    desired_size = var.eks_desired_nodes
-    min_size     = var.eks_min_nodes
-    max_size     = var.eks_max_nodes
+      # Use existing IAM role to avoid recreating nodes
+      create_iam_role          = false
+      iam_role_arn             = aws_iam_role.nodes.arn
+    }
   }
 
   tags = var.tags
-
-  depends_on = [
-    aws_iam_role_policy_attachment.nodes_worker,
-    aws_iam_role_policy_attachment.nodes_cni,
-    aws_iam_role_policy_attachment.nodes_ecr,
-  ]
 }
 
-# ─── IAM Role для Nodes ────────────────────────────
+# ─── IAM Role для Nodes (використовується eks_managed_node_groups) ──
 resource "aws_iam_role" "nodes" {
   name = "${var.project_name}-eks-nodes"
 

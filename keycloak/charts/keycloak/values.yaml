@@ -138,3 +138,9 @@ realm:
             access.token.claim: true
             claim.name: roles
             jsonType.label: String
+
+# ─── Sync Job (C13 fix) ────────────────────────────────
+# Заміняє postStart kcadm (який мовчки провалювався).
+# Запускається ArgoCD PostSync hook.
+syncJob:
+  enabled: true

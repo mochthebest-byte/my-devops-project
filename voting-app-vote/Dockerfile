@@ -1,12 +1,16 @@
 # syntax=docker/dockerfile:1
 # Multi-arch: use BUILDPLATFORM for build stage, TARGETPLATFORM for final image
-FROM --platform=$BUILDPLATFORM python:3.11-slim AS base
+# ═══════════════════════════════════════════════════════════════
+#  CVE fix: base image pinned by digest for deterministic builds.
+#  Scheduled rebuild in CI keeps it fresh (see renovate/dependabot).
+#  apt-get upgrade removed — CVE coverage via base image updates.
+# ═══════════════════════════════════════════════════════════════
+FROM --platform=$BUILDPLATFORM python:3.11-slim@sha256:cdbd05fb6f457ca275ff51ce00d93d865ca0b6a25f5ffb08262d94f6835771e5 AS base
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
-# Add curl for healthcheck + fix CVEs in base image
+# Install curl for healthcheck (no apt-get upgrade — deterministic builds)
 RUN apt-get update && \
-    apt-get upgrade -y --no-install-recommends && \
     apt-get install -y --no-install-recommends curl && \
     rm -rf /var/lib/apt/lists/*
 
