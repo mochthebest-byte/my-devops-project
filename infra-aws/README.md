@@ -15,7 +15,7 @@ AWS infrastructure for the voting-app EKS cluster, managed via Terraform.
 | File | Resource | Purpose |
 |------|----------|---------|
 | `ecr.tf` | `aws_ecr_repository` × 3 | ECR for vote/result/worker images |
-| `dns.tf` | Route53 zone + ACM cert | DNS for `mochthebest.io`, wildcard HTTPS cert |
+| `dns.tf` | Route53 zone + ACM cert | DNS for `mochthebest.pp.ua`, wildcard HTTPS cert |
 | `budget.tf` | `aws_budgets_budget` | $50/month alert at 80% and 100% |
 | `secrets.tf` | Secrets Manager + random password | `/my-app/grafana-oidc` for OIDC client secret |
 

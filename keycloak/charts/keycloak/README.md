@@ -24,7 +24,7 @@ Helm chart for deploying Keycloak with Gateway API HTTPRoute and External Secret
 | `image.tag` | `26.0.0` | Keycloak version |
 | `admin.user` | `admin` | Bootstrap admin username |
 | `admin.password` | (from Secret `keycloak-admin`) | Bootstrap admin password |
-| `hostname` | `keycloak.34.194.59.190.nip.io` | Keycloak hostname |
+| `hostname` | `keycloak.mochthebest.pp.ua` | Keycloak hostname |
 | `postgresql.host` | `keycloak-postgresql.keycloak.svc` | PostgreSQL host |
 | `postgresql.existingSecret` | `keycloak-db` | Secret for DB password (from ExternalSecret) |
 
