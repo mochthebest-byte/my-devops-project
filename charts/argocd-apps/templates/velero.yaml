@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: velero
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+  source:
+    repoURL: https://vmware-tanzu.github.io/helm-charts
+    targetRevision: 12.1.x
+    chart: velero
+    helm:
+      values: |
+        namespace: velero
+        serviceAccount:
+          server:
+            annotations:
+              eks.amazonaws.com/role-arn: "arn:aws:iam::657954628960:role/voting-app-velero"
+        credentials:
+          useSecret: false
+        configuration:
+          provider: aws
+          backupStorageLocation:
+            - name: default
+              bucket: voting-app-velero-backups-657954628960
+              config:
+                region: eu-central-1
+          volumeSnapshotLocation:
+            - name: default
+              config:
+                region: eu-central-1
+        schedules:
+          daily:
+            disabled: false
+            schedule: "0 2 * * *"
+            template:
+              ttl: "720h"
+              includedNamespaces:
+                - voting-app
+                - keycloak
+                - monitoring
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: velero
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

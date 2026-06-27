@@ -60,11 +60,11 @@ module "eks" {
       instance_types = var.eks_node_instance_types
       disk_size      = 20
 
-      scaling_config = {
-        desired_size = var.eks_desired_nodes
-        min_size     = var.eks_min_nodes
-        max_size     = var.eks_max_nodes
-      }
+      # NOTE: desired/min/max_size are top-level keys in the module,
+      # NOT inside a scaling_config block (different from standalone resource)
+      desired_size = var.eks_desired_nodes
+      min_size     = var.eks_min_nodes
+      max_size     = var.eks_max_nodes
 
       subnet_ids = module.vpc.private_subnets
 

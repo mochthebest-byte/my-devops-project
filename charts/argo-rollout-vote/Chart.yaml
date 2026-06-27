@@ -1,0 +1,5 @@
+apiVersion: v2
+name: argo-rollout-vote
+description: Argo Rollout canary for vote service
+type: application
+version: 0.1.0

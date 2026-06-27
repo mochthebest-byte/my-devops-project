@@ -1,0 +1,98 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: voting-app-vote
+  namespace: voting-app
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    canary:
+      steps:
+{{ toYaml .Values.canary.steps | indent 8 }}
+      analysis:
+        templates:
+          - templateName: vote-success-rate
+        startingStep: 1
+        args:
+          - name: canary-hash
+            valueFrom:
+              podTemplateHashValue: Latest
+  selector:
+    matchLabels:
+      app: voting-app-vote
+  template:
+    metadata:
+      labels:
+        app: voting-app-vote
+    spec:
+      initContainers:
+        - name: wait-for-db
+          image: busybox:1.36
+          command: ['sh', '-c', 'until nc -z {{ .Values.postgresql.host }} {{ .Values.postgresql.port }}; do echo "waiting for postgresql"; sleep 2; done']
+        - name: wait-for-redis
+          image: busybox:1.36
+          command: ['sh', '-c', 'until nc -z {{ .Values.redis.host }} {{ .Values.redis.port }}; do echo "waiting for redis"; sleep 2; done']
+      containers:
+        - name: vote
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.existingSecret }}
+                  key: {{ .Values.postgresql.secretPasswordKey }}
+            - name: POSTGRES_USER
+              value: {{ .Values.postgresql.user }}
+            - name: POSTGRES_DATABASE
+              value: {{ .Values.postgresql.database }}
+            - name: POSTGRES_HOST
+              value: {{ .Values.postgresql.host }}
+            - name: POSTGRES_PORT
+              value: {{ .Values.postgresql.port | quote }}
+            - name: REDIS_HOST
+              value: {{ .Values.redis.host }}
+            - name: REDIS_PORT
+              value: {{ .Values.redis.port | quote }}
+            - name: OPTION_A
+              value: "Kubernetes"
+            - name: OPTION_B
+              value: "Docker"
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 100m
+            limits:
+              memory: 256Mi
+              cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-app-vote
+  namespace: voting-app
+  labels:
+    app: voting-app-vote
+spec:
+  selector:
+    app: voting-app-vote
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 80
+      protocol: TCP
+  type: ClusterIP

@@ -369,7 +369,9 @@
       "Skill(keybindings-help)",
       "Bash(nslookup 28976692F5DF3DB74BB4A93EF46275AF.gr7.eu-central-1.eks.amazonaws.com)",
       "Bash(ssh -T git@github.com)",
-      "Bash(skopeo inspect *)"
+      "Bash(skopeo inspect *)",
+      "Read(//root/**)",
+      "Read(//home/**)"
     ]
   }
 }
