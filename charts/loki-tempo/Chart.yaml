@@ -1,0 +1,5 @@
+apiVersion: v2
+name: loki-tempo
+description: Loki (logs) + Tempo (traces) + Promtail (log collection)
+type: application
+version: 0.1.0

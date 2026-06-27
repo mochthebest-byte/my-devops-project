@@ -1,0 +1,14 @@
+# ─── Loki ──────────────────────────────────────────
+loki:
+  storageSize: 10Gi
+  retention: 720h
+
+# ─── Tempo ─────────────────────────────────────────
+tempo:
+  storageSize: 5Gi
+  retention: 168h
+
+# ─── Promtail ──────────────────────────────────────
+promtail:
+  enabled: true
+  sendURL: http://loki.loki:3100/loki/api/v1/push

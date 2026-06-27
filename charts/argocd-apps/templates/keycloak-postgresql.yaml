@@ -14,7 +14,7 @@ spec:
     helm:
       values: |
         image:
-          tag: 18.4.0
+          tag: latest
         auth:
           database: keycloak
           username: keycloak
