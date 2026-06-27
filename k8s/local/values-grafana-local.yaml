@@ -21,7 +21,7 @@ grafana:
   persistence:
     enabled: false
   # ⚠️  DEV ONLY — admin пароль в plaintext. В production (OCI) — через ESO + OIDC.
-  adminPassword: admin123
+  adminPassword: CHANGEME
   env:
     GF_SERVER_ROOT_URL: "http://grafana.nip.io"
   envValueFrom: {}

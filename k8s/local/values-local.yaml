@@ -49,9 +49,9 @@ worker:
 #      В production (AWS) пароль постачається через ESO з AWS Secrets Manager.
 postgresql:
   auth:
-    postgresPassword: localpass
+    postgresPassword: CHANGEME
     existingSecret: ""          # без ESO — використовуємо inline password
-    password: localpass
+    password: CHANGEME
 
 # --- redis ---
 redis:
