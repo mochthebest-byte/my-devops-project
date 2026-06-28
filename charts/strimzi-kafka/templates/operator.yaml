@@ -1,7 +1,0 @@
-# ═══════════════════════════════════════════════════════════════
-#  Strimzi operator встановлюється окремо (див. KAFKA_DEPLOY.md)
-#  kubectl apply -f https://strimzi.io/install/latest?namespace=kafka
-#
-#  Цей чарт керує тільки Kafka CR (кластером).
-#  ArgoCD Application: kafka-cluster
-# ═══════════════════════════════════════════════════════════════
