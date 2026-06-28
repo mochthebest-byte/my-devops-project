@@ -19,7 +19,7 @@ spec:
   scheme: {{ .Values.gateway.scheme }}
   {{- if and .Values.tls.enabled .Values.tls.acmCertificateArn }}
   listenerConfigurations:
-    - protocolPort: 443
+    - protocolPort: "443"
       certificates:
         - {{ .Values.tls.acmCertificateArn }}
   {{- end }}
