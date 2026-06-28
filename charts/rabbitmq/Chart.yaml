@@ -1,0 +1,5 @@
+apiVersion: v2
+name: rabbitmq
+description: RabbitMQ message broker (official image)
+type: application
+version: 0.1.0
