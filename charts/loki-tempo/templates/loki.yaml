@@ -1,17 +1,7 @@
 # ═══════════════════════════════════════════════════════════════
-#  Loki — log aggregation (filesystem storage, simple mode)
+#  Loki — ВИДАЛЕНО (CrashLoopBackOff через ring module)
+#  ring module потребує consul/S3 які недоступні в поточному
+#  сетапі. При появі S3-сумісного storage можна повернути.
+#
+#  Tempo, OTel Collector, Promtail — продовжують працювати.
 # ═══════════════════════════════════════════════════════════════
-
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-apiVersion: v1
-kind: Service
-metadata:
