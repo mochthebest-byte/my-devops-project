@@ -1,0 +1,5 @@
+apiVersion: v2
+name: strimzi-kafka
+description: Strimzi Kafka operator + Kafka cluster
+type: application
+version: 0.1.0

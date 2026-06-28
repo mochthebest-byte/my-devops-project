@@ -1,0 +1,22 @@
+# ─── Strimzi Kafka ══════════════════════════════════════
+# Operator + Kafka cluster deployment
+# Образи з quay.io/strimzi/ — не потребують Docker Hub
+# ────────────────────────────────────────────────────────
+
+strimzi:
+  version: "0.45.0"
+  image: quay.io/strimzi/operator:0.45.0
+
+kafka:
+  clusterName: my-cluster
+  version: "3.9.0"
+  replicas: 1
+  storage:
+    type: ephemeral
+  zookeeper:
+    replicas: 1
+    storage:
+      type: ephemeral
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}

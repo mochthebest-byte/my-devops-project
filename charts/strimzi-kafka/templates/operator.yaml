@@ -1,0 +1,98 @@
+# ═══════════════════════════════════════════════════════════════
+#  Strimzi Cluster Operator (ServiceAccount, ClusterRole, Deployment)
+# ═══════════════════════════════════════════════════════════════
+#  При першому розгортанні: ArgoCD може не побачити CRDs одразу.
+#  Якщо Kafka CR не створюється — запустити повторний sync.
+# ═══════════════════════════════════════════════════════════════
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: strimzi-cluster-operator
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: strimzi
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: strimzi-cluster-operator-global
+  labels:
+    app: strimzi
+rules:
+  - resources: ["secrets"]
+    apiGroups: [""]
+    verbs: ["get", "list", "watch", "create", "patch", "update", "delete"]
+  - resources: ["poddisruptionbudgets"]
+    apiGroups: ["policy"]
+    verbs: ["get", "list", "watch", "create", "patch", "update", "delete"]
+  - resources: ["customresourcedefinitions"]
+    apiGroups: ["apiextensions.k8s.io"]
+    verbs: ["get", "list", "watch", "create", "patch", "update", "delete"]
+  - resources: ["kafkas", "kafkanodepools"]
+    apiGroups: ["kafka.strimzi.io"]
+    verbs: ["get", "list", "watch", "create", "patch", "update", "delete"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: strimzi-cluster-operator
+  labels:
+    app: strimzi
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: strimzi-cluster-operator-global
+subjects:
+  - kind: ServiceAccount
+    name: strimzi-cluster-operator
+    namespace: {{ .Release.Namespace }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strimzi-cluster-operator
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: strimzi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: strimzi
+      name: strimzi-cluster-operator
+  template:
+    metadata:
+      labels:
+        app: strimzi
+        name: strimzi-cluster-operator
+    spec:
+      serviceAccountName: strimzi-cluster-operator
+      containers:
+        - name: strimzi-cluster-operator
+          image: {{ .Values.strimzi.image }}
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: STRIMZI_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: STRIMZI_FULL_RECONCILIATION_INTERVAL_MS
+              value: "30000"
+            - name: STRIMZI_OPERATOR_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 100m
+            limits:
+              memory: 512Mi
+              cpu: 300m
