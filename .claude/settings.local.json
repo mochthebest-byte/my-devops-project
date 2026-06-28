@@ -371,7 +371,22 @@
       "Bash(ssh -T git@github.com)",
       "Bash(skopeo inspect *)",
       "Read(//root/**)",
-      "Read(//home/**)"
+      "Read(//home/**)",
+      "Bash(xargs -r kubectl delete crd)",
+      "Bash(sed -i 's/eks_desired_nodes = 9/eks_desired_nodes = 12/' /home/psihson/my-devops-project/infra-aws/terraform.tfvars)",
+      "Bash(sed -i 's/eks_min_nodes = 6/eks_min_nodes = 8/' /home/psihson/my-devops-project/infra-aws/terraform.tfvars)",
+      "Bash(sed -i 's/eks_max_nodes = 12/eks_max_nodes = 18/' /home/psihson/my-devops-project/infra-aws/terraform.tfvars)",
+      "Bash(aws service-quotas list-service-quotas *)",
+      "Bash(aws service-quotas *)",
+      "Bash(aws support *)",
+      "Bash(:context)",
+      "Bash(echo \"Або `:context` — подивитись який контекст активний\")",
+      "Bash(grep -v \"^\\\\s*$\")",
+      "Bash(awk '{print \"⚠ \" $1 \"/\" $2 \" - \" $4}')",
+      "Bash(awk '{print $1, $2, $3, $4}')",
+      "Bash(awk '{print \"  ⚠ \" $1 \"/\" $2 \" - \" $4}')",
+      "Bash(awk '{print \"  \" $1 \"/\" $2 \" - \" $4}')",
+      "Bash(echo \"Current IP: $\\(curl -s ifconfig.me 2>/dev/null\\)\")"
     ]
   }
 }
