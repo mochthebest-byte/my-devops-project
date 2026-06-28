@@ -1,0 +1,4 @@
+loki:
+  url: http://loki.loki.svc.cluster.local:3100
+tempo:
+  url: http://tempo.tempo.svc.cluster.local:3200

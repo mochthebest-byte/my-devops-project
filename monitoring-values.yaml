@@ -53,6 +53,20 @@ grafana:
       secretKeyRef:
         name: grafana-oidc-secret
         key: client-secret
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      url: http://loki.loki.svc.cluster.local:3100
+      access: proxy
+    - name: Tempo
+      type: tempo
+      url: http://tempo.tempo.svc.cluster.local:3200
+      access: proxy
+      jsonData:
+        httpMethod: GET
+        tracesToLogs:
+          datasourceUid: loki
+          tags: ['instance', 'pod', 'namespace']
 alertmanager:
   alertmanagerSpec:
     resources:
