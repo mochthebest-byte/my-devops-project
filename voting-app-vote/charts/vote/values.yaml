@@ -32,3 +32,14 @@ resources:
 redis:
   host: redis-master
   port: 6379
+
+# ─── Canary deployment (Argo Rollouts) ─────────────
+canary:
+  enabled: false
+  steps:
+    - setWeight: 20
+    - pause: {duration: 30}
+    - setWeight: 50
+    - pause: {duration: 30}
+    - setWeight: 80
+    - pause: {duration: 15}
