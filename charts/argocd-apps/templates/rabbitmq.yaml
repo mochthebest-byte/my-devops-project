@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rabbitmq
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision: 16.0.x
+    chart: rabbitmq
+    helm:
+      values: |
+        auth:
+          username: voting-app
+          password: CHANGEME_rabbitmq
+        replicaCount: 1
+        persistence:
+          enabled: true
+          size: 2Gi
+        metrics:
+          enabled: false
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
+          limits:
+            memory: 512Mi
+            cpu: 300m
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rabbitmq
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
