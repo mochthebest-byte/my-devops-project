@@ -20,6 +20,7 @@ spec:
   {{- if and .Values.tls.enabled .Values.tls.acmCertificateArn }}
   listenerConfigurations:
     - listenerName: https
+      protocolPort: 443
       certificates:
         - {{ .Values.tls.acmCertificateArn }}
   {{- end }}
