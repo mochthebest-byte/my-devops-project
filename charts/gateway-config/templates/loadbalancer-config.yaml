@@ -21,6 +21,6 @@ spec:
   listenerConfigurations:
     - listenerName: https
       certificates:
-        - certificateArn: {{ .Values.tls.acmCertificateArn }}
+        - {{ .Values.tls.acmCertificateArn }}
   {{- end }}
 {{- end }}
