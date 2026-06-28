@@ -52,6 +52,7 @@ spec:
           from: All
       tls:
         mode: Terminate
-        options: {}
+        options:
+          minVersion: TLSv1.2
 {{- end }}
 {{- end }}
