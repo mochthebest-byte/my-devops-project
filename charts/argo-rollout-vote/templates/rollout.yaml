@@ -79,20 +79,5 @@ spec:
             limits:
               memory: 256Mi
               cpu: 500m
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: voting-app-vote
-  namespace: voting-app
-  labels:
-    app: voting-app-vote
-spec:
-  selector:
-    app: voting-app-vote
-  ports:
-    - name: http
-      port: 5000
-      targetPort: 80
-      protocol: TCP
-  type: ClusterIP
+# Service створюється charts/voting-app-vote/charts/vote (уникнення конфлікту)
+# voting-app-vote Service managed by: argocd/voting-app
