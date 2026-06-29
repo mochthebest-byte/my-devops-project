@@ -40,9 +40,12 @@ COPY --from=build /usr/local/app /usr/local/app
 ENV PORT=80
 EXPOSE 80
 
+# Healthz endpoint server (separate process on port 8081)
+COPY healthz.js .
+
 # Run as non-root user for security
 RUN useradd -u 1001 -r -s /bin/false appuser
 USER appuser
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["node", "server.js"]
+CMD ["sh", "-c", "node healthz.js & exec node server.js"]

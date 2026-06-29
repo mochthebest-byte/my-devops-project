@@ -36,10 +36,13 @@ RUN useradd -u 1001 -r -s /bin/false appuser
 # Copy our code from the current folder to the working directory inside the container
 COPY . .
 
+# Healthz endpoint wrapper
+COPY wsgi.py .
+
 # Make port 80 available for links and/or publish
 EXPOSE 80
 
 USER appuser
 
 # Define our command to be run when launching the container
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "--log-file", "-", "--access-logfile", "-", "--workers", "4", "--keep-alive", "0"]
+CMD ["gunicorn", "wsgi:application", "-b", "0.0.0.0:80", "--log-file", "-", "--access-logfile", "-", "--workers", "4", "--keep-alive", "0"]

@@ -41,8 +41,9 @@ networkPolicy:
   create: true
 
 probes:
-  readinessPath: /
-  livenessPath: /
+  readinessPath: /healthz
+  livenessPath: /healthz
+  healthzPort: 8081
   readinessDelay: 5
   livenessDelay: 15
   periodSeconds: 10

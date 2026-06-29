@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/values.yaml": {
-    "mtime": 1782753172.9565163,
-    "ast_hash": "c885c8413bc797caf9f8a54d11f278bb",
+    "mtime": 1782754045.777604,
+    "ast_hash": "47b8a779a4042868a1147963661de7f4",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/Chart.yaml": {
@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/deployment.yaml": {
-    "mtime": 1782752547.4817762,
-    "ast_hash": "688423c725ad643e56be594a545198a5",
+    "mtime": 1782754048.7036407,
+    "ast_hash": "e42b593fe3cdf89eb99906ec76ff74cc",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/service.yaml": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/values.yaml": {
-    "mtime": 1782753167.3675196,
-    "ast_hash": "cb94e2896afd87e576d726297407a5d0",
+    "mtime": 1782754044.5395885,
+    "ast_hash": "86a1761b6da2fc6a88feeaf4f7857132",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/Chart.yaml": {
@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/deployment.yaml": {
-    "mtime": 1782752545.737785,
-    "ast_hash": "8859013a022dbf30a7848d31081064ba",
+    "mtime": 1782754048.5296385,
+    "ast_hash": "c35a2e9cca8e98c8dae4e3b599a58cd9",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/service.yaml": {
@@ -702,6 +702,16 @@
   "/home/psihson/my-devops-project/charts/karpenter-resources/templates/ec2nodeclass.yaml": {
     "mtime": 1782753506.4463458,
     "ast_hash": "4a6f3e44cb9ba40452afc514f57e4866",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-result/healthz.js": {
+    "mtime": 1782754039.5325258,
+    "ast_hash": "4b030413c088399f936687bf8d5d4b9b",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-vote/wsgi.py": {
+    "mtime": 1782754035.1344707,
+    "ast_hash": "4229a5365e5bc858cd424393fa3ddc86",
     "semantic_hash": ""
   }
 }
