@@ -45,10 +45,6 @@ jobs:
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo update
 
-            --namespace ${{ env.NAMESPACE }} \
-            --from-literal=password=testpass \
-            --from-literal=postgres-password=testpass
-
       - name: Install PostgreSQL
         run: |
           helm upgrade --install postgresql bitnami/postgresql \
