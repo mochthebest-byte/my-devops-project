@@ -35,14 +35,8 @@ grafana:
     GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email"
     GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
     GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://keycloak.mochthebest.pp.ua/realms/myapp/protocol/openid-connect/auth"
-    GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "http://keycloak.keycloak.svc.cluster.local:8080/realms/myapp/protocol/openid-connect/token"
-    GF_AUTH_GENERIC_OAUTH_API_URL: "http://keycloak.keycloak.svc.cluster.local:8080/realms/myapp/protocol/openid-connect/userinfo"
-    # TLS_SKIP_VERIFY — required because token/API URLs use in-cluster HTTP
-    # (keycloak.keycloak.svc.cluster.local:8080, not HTTPS).
-    # TODO: remove once Keycloak in-cluster HTTPS is set up (e.g., via
-    #       KeycloakOperator TLS cert or self-signed cert + trust).
-    #       Без цього Grafana не зможе виконати OIDC exchange всередині кластера.
-    GF_AUTH_GENERIC_OAUTH_TLS_SKIP_VERIFY_INSECURE: "true"
+    GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://keycloak.mochthebest.pp.ua/realms/myapp/protocol/openid-connect/token"
+    GF_AUTH_GENERIC_OAUTH_API_URL: "https://keycloak.mochthebest.pp.ua/realms/myapp/protocol/openid-connect/userinfo"
     GF_SERVER_ROOT_URL: "https://grafana.mochthebest.pp.ua"
     # ── Role mapping ──
     GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(roles[*], 'grafana-admin') && 'Admin' || contains(roles[*], 'grafana-editor') && 'Editor' || 'Viewer'"

@@ -1,0 +1,15 @@
+{{- if .Values.scaledObject.create }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ include "result.fullname" . }}
+  labels:
+    {{- include "result.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    name: {{ include "result.fullname" . }}
+  minReplicaCount: {{ .Values.scaledObject.minReplicas }}
+  maxReplicaCount: {{ .Values.scaledObject.maxReplicas }}
+  triggers:
+    {{- toYaml .Values.scaledObject.triggers | nindent 4 }}
+{{- end }}

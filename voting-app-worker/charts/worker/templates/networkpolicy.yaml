@@ -1,0 +1,26 @@
+{{- if .Values.networkPolicy.create }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "worker.fullname" . }}
+  labels:
+    {{- include "worker.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "worker.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0       # Allow all outbound traffic
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ .Values.redis.host }}
+      ports:
+        - port: {{ .Values.redis.port }}
+          protocol: TCP
+{{- end }}

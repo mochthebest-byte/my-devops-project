@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/.claude/settings.local.json": {
-    "mtime": 1782751444.8382194,
-    "ast_hash": "38fa69d18ca0403677e12ab9b49d4f09",
+    "mtime": 1782752488.2660747,
+    "ast_hash": "f530262de442879033ab33238637886d",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/infra-aws/iam_policy.json": {
@@ -70,8 +70,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/monitoring-values.yaml": {
-    "mtime": 1782751864.4721887,
-    "ast_hash": "1b07c4a893b7a511b156738d52acf537",
+    "mtime": 1782753161.0455232,
+    "ast_hash": "3f1dbb6fc0e8db666576d8ce82079351",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/root-app.yaml": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/values.yaml": {
-    "mtime": 1782751845.1912837,
-    "ast_hash": "49738f1a5d19f60c8e560e4f1d7af365",
+    "mtime": 1782753172.9565163,
+    "ast_hash": "c885c8413bc797caf9f8a54d11f278bb",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/Chart.yaml": {
@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/deployment.yaml": {
-    "mtime": 1782751843.1282938,
-    "ast_hash": "b73387fb73a82d2b75b300d21b8024e4",
+    "mtime": 1782752547.4817762,
+    "ast_hash": "688423c725ad643e56be594a545198a5",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/service.yaml": {
@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-worker/charts/worker/values.yaml": {
-    "mtime": 1782751848.0882695,
-    "ast_hash": "e2991e8da752bb0f4f35e6baccdf52d4",
+    "mtime": 1782753173.573516,
+    "ast_hash": "8700d234352b3b99dbad78fd30629ebc",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-worker/charts/worker/Chart.yaml": {
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-worker/charts/worker/templates/deployment.yaml": {
-    "mtime": 1782751846.0632794,
-    "ast_hash": "91e943b40d6e9650c54f325cb4295ccf",
+    "mtime": 1782752549.152768,
+    "ast_hash": "4ff264656ba782724a5847a825b09803",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/requirements.txt": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/values.yaml": {
-    "mtime": 1782751842.1322987,
-    "ast_hash": "3763a07d17dea0a6624d4f269775a05c",
+    "mtime": 1782753167.3675196,
+    "ast_hash": "cb94e2896afd87e576d726297407a5d0",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/Chart.yaml": {
@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/deployment.yaml": {
-    "mtime": 1782751840.012309,
-    "ast_hash": "3cab4735103d07b2cad0373eb68bca45",
+    "mtime": 1782752545.737785,
+    "ast_hash": "8859013a022dbf30a7848d31081064ba",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/service.yaml": {
@@ -170,8 +170,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/values.yaml": {
-    "mtime": 1782599125.5957377,
-    "ast_hash": "da0833a910ae837506021893b3ca30d5",
+    "mtime": 1782753161.362523,
+    "ast_hash": "4a2f64424c404702130e1e1c113af390",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/Chart.yaml": {
@@ -185,13 +185,13 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/templates/statefulset.yaml": {
-    "mtime": 1782599135.7725532,
-    "ast_hash": "63ab23ede2cbc59b3e7484df0083bf14",
+    "mtime": 1782752274.6301482,
+    "ast_hash": "71b7de90c91e89147fa560bc409f3874",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/templates/service.yaml": {
-    "mtime": 1782513385.7925227,
-    "ast_hash": "2aeac47ad2f0fb7f66b13d81014eb5a2",
+    "mtime": 1782752269.907172,
+    "ast_hash": "21d11f76adcb68a38fbe7acc0faf6077",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/scripts/bootstrap-backend.sh": {
@@ -515,8 +515,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argo-rollout-vote/values.yaml": {
-    "mtime": 1782751850.1702592,
-    "ast_hash": "8bf665d410e25a99028167cf7988587a",
+    "mtime": 1782752538.6508207,
+    "ast_hash": "bdbd5adb563bc3ecc34254cf3f7fd99c",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argo-rollout-vote/Chart.yaml": {
@@ -530,13 +530,13 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argo-rollout-vote/templates/rollout.yaml": {
-    "mtime": 1782751849.0532646,
-    "ast_hash": "cb7e986819a583e0e9c25daa1fed3847",
+    "mtime": 1782752550.9267588,
+    "ast_hash": "c80de98a300f463cc99104b8ef49d448",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/values.yaml": {
-    "mtime": 1782751833.6343405,
-    "ast_hash": "80e077258f7f4b1796f3c826572f5b71",
+    "mtime": 1782753218.0094905,
+    "ast_hash": "4f1ff7eed395a17dd4e9a46c5a33da7e",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/velero.yaml": {
@@ -612,6 +612,66 @@
   "/home/psihson/my-devops-project/.claude/projects/-home-psihson-my-devops-project/memory/helm-only-deployment.md": {
     "mtime": 1782470728.7164035,
     "ast_hash": "702ff48e3d0c2d72769d48110c34aa0c",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/keycloak/charts/keycloak/templates/tls-cert.yaml": {
+    "mtime": 1782753160.8245232,
+    "ast_hash": "0ac37152ce054e4be9f74ae6785ff071",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/pdb.yaml": {
+    "mtime": 1782753160.9515233,
+    "ast_hash": "292a72aabb6f48f7c32323135382ad34",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/scaledobject.yaml": {
+    "mtime": 1782753161.317523,
+    "ast_hash": "071c12a53d140e4ee43f852b7dc864f3",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-worker/charts/worker/templates/pdb.yaml": {
+    "mtime": 1782753161.389523,
+    "ast_hash": "50af7647ed54d59415f2171b42c3b803",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-worker/charts/worker/templates/scaledobject.yaml": {
+    "mtime": 1782753161.478523,
+    "ast_hash": "2d3b19be7d6b424748df1b5f9d417d78",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/pdb.yaml": {
+    "mtime": 1782753160.7165234,
+    "ast_hash": "d25ab1e2fc8cb501690d949aec35cbf6",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/scaledobject.yaml": {
+    "mtime": 1782753160.8245232,
+    "ast_hash": "fc3ccb3df70dd05adc640c9f50576963",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/argocd-apps/templates/cert-manager.yaml": {
+    "mtime": 1782753160.7165234,
+    "ast_hash": "fe48d2bc33d1dced27a893619f39b3ca",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/networkpolicy.yaml": {
+    "mtime": 1782753182.156511,
+    "ast_hash": "de9a8dbb8515d81799ffa437462512a6",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-worker/charts/worker/templates/networkpolicy.yaml": {
+    "mtime": 1782753183.2995105,
+    "ast_hash": "68a31039e5c3867d3ee7f9b40eeebf36",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/networkpolicy.yaml": {
+    "mtime": 1782753180.7585118,
+    "ast_hash": "fb455f258ae73dbcaee7087cfd7e7512",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/argocd-apps/templates/argocd-image-updater.yaml": {
+    "mtime": 1782753198.2385018,
+    "ast_hash": "62b73b724252540595035ee9daf40c58",
     "semantic_hash": ""
   }
 }

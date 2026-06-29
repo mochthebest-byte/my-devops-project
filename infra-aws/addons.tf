@@ -280,3 +280,52 @@ resource "helm_release" "external_dns" {
 
   depends_on = [helm_release.lb_controller]
 }
+
+# ══════════════════════════════════════════════════════════
+#  ArgoCD Image Updater — автоматичне оновлення образів
+# ══════════════════════════════════════════════════════════
+data "aws_iam_policy_document" "argocd_image_updater" {
+  statement {
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect  = "Allow"
+    principals {
+      type        = "Federated"
+      identifiers = [module.eks.oidc_provider_arn]
+    }
+    condition {
+      test     = "StringEquals"
+      variable = "${module.eks.oidc_provider}:sub"
+      values   = ["system:serviceaccount:argocd:argocd-image-updater"]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "argocd_image_updater_ecr" {
+  statement {
+    actions = [
+      "ecr:DescribeRepositories",
+      "ecr:ListImages",
+      "ecr:BatchGetImage",
+      "ecr:GetRepositoryPolicy",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:BatchCheckLayerAvailability",
+    ]
+    resources = ["arn:aws:ecr:*:*:repository/my-app/*"]
+  }
+}
+
+resource "aws_iam_role" "argocd_image_updater" {
+  name               = "${var.project_name}-eks-argocd-image-updater"
+  assume_role_policy = data.aws_iam_policy_document.argocd_image_updater.json
+  tags               = var.tags
+}
+
+resource "aws_iam_policy" "argocd_image_updater_ecr" {
+  name   = "${var.project_name}-argocd-image-updater-ecr"
+  policy = data.aws_iam_policy_document.argocd_image_updater_ecr.json
+}
+
+resource "aws_iam_role_policy_attachment" "argocd_image_updater_ecr" {
+  policy_arn = aws_iam_policy.argocd_image_updater_ecr.arn
+  role       = aws_iam_role.argocd_image_updater.name
+}

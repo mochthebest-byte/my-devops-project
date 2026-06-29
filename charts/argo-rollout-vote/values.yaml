@@ -7,6 +7,11 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
 
+serviceAccount:
+  create: false
+  name: ""
+  annotations: {}
+
 postgresql:
   host: postgresql
   port: 5432
@@ -18,6 +23,18 @@ postgresql:
 redis:
   host: redis-master
   port: 6379
+
+service:
+  targetPort: 80
+
+probes:
+  readinessPath: /
+  livenessPath: /
+  readinessDelay: 5
+  livenessDelay: 15
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 3
 
 canary:
   steps:

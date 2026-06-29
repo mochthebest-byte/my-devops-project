@@ -1,15 +1,12 @@
 replicaCount: 1
 
 global:
-  # ══════════════════════════════════════════════════════════
-  #  AWS — перевизначається per-environment (ArgoCD helm.values)
-  # ══════════════════════════════════════════════════════════
-  awsAccountId: "AWS_ACCOUNT_ID"   # ⚠️ Замінити на ID вашого AWS акаунта
+  awsAccountId: "AWS_ACCOUNT_ID"
   awsRegion: "eu-central-1"
 
 image:
-  repository: my-app/result            # Тільки ім'я репо (full URL збирається в шаблоні)
-  tag: stable                          # Overridden by CI via GitOps
+  repository: my-app/result
+  tag: stable
   pullPolicy: IfNotPresent
 
 service:
@@ -18,6 +15,39 @@ service:
   targetPort: 80
   protocol: TCP
   name: http
+
+serviceAccount:
+  create: false
+  name: ""
+  annotations: {}
+
+pdb:
+  create: true
+  minAvailable: 1
+
+scaledObject:
+  create: true
+  minReplicas: 1
+  maxReplicas: 5
+  triggers:
+    - type: cpu
+      metricType: Utilization
+      targetValue: 70
+    - type: memory
+      metricType: Utilization
+      targetValue: 80
+
+networkPolicy:
+  create: true
+
+probes:
+  readinessPath: /
+  livenessPath: /
+  readinessDelay: 5
+  livenessDelay: 15
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 3
 
 resources:
   requests:

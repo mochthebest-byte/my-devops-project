@@ -387,7 +387,14 @@
       "Bash(awk '{print \"  ⚠ \" $1 \"/\" $2 \" - \" $4}')",
       "Bash(awk '{print \"  \" $1 \"/\" $2 \" - \" $4}')",
       "Bash(echo \"Current IP: $\\(curl -s ifconfig.me 2>/dev/null\\)\")",
-      "Bash(grep -E '^\\(HTTP|HTTPS|TLS|TCP|UDP|TCP_UDP\\)?:\\(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[1-9][0-9]{0,3}\\)?$')"
+      "Bash(grep -E '^\\(HTTP|HTTPS|TLS|TCP|UDP|TCP_UDP\\)?:\\(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[1-9][0-9]{0,3}\\)?$')",
+      "Bash(nslookup grafana.mochthebest.pp.ua)",
+      "Bash(awk '{print $1, $5}')",
+      "Bash(xargs -I{} echo \"forbidden errors: {}\")",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(grep -n \"^# ═\\\\|^resource\\\\|^data\\\\|^}$\" infra-aws/addons.tf)",
+      "Bash(infra-aws/addons.tf wc *)",
+      "Bash(infra-aws/addons.tf tail *)"
     ]
   }
 }

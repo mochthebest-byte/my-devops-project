@@ -44,7 +44,7 @@ data:
             source_labels: [__meta_kubernetes_pod_label_app]
             target_label: app
           - action: replace
-            replacement: /var/log/pods/*$1/*.log
+            replacement: /var/log/pods/*$1*/$2/*.log
             separator: /
             source_labels: [__meta_kubernetes_pod_uid, __meta_kubernetes_pod_container_name]
             target_label: __path__
@@ -66,7 +66,7 @@ spec:
       labels:
         app: promtail
     spec:
-      serviceAccountName: default
+      serviceAccountName: promtail
       containers:
         - name: promtail
           image: docker.io/grafana/promtail:3.3.2

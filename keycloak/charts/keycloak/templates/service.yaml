@@ -13,5 +13,11 @@ spec:
       targetPort: {{ .Values.service.targetPort }}
       protocol: TCP
       name: {{ .Values.service.name }}
+    {{- if .Values.tls.enabled }}
+    - port: {{ .Values.tls.httpsPort }}
+      targetPort: {{ .Values.tls.httpsPort }}
+      protocol: TCP
+      name: https
+    {{- end }}
   selector:
     app: keycloak

@@ -1,0 +1,40 @@
+{{- if .Values.networkPolicy.create }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "vote.fullname" . }}
+  labels:
+    {{- include "vote.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "vote.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector: {}   # Allow from all namespaces
+      ports:
+        - port: {{ .Values.service.targetPort }}
+          protocol: {{ default "TCP" .Values.service.protocol }}
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0       # Allow all outbound traffic
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ .Values.postgresql.host }}
+      ports:
+        - port: {{ .Values.postgresql.port }}
+          protocol: TCP
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ .Values.redis.host }}
+      ports:
+        - port: {{ .Values.redis.port }}
+          protocol: TCP
+{{- end }}

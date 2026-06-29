@@ -84,6 +84,9 @@ spec:
             {{- end }}
             - --import-realm
             - --http-port={{ .Values.service.port }}
+            {{- if .Values.tls.enabled }}
+            - --https-port={{ .Values.tls.httpsPort }}
+            {{- end }}
             - --proxy-headers=xforwarded
             - --hostname-strict=false
           env:
@@ -106,6 +109,12 @@ spec:
               value: {{ .Values.postgresql.user }}
             - name: KC_HTTP_ENABLED
               value: "true"
+            {{- if .Values.tls.enabled }}
+            - name: KC_HTTPS_CERTIFICATE_FILE
+              value: /etc/keycloak/certs/tls.crt
+            - name: KC_HTTPS_CERTIFICATE_KEY_FILE
+              value: /etc/keycloak/certs/tls.key
+            {{- end }}
             - name: KC_HOSTNAME
               value: {{ .Values.hostname }}
             - name: KC_DB_PASSWORD
@@ -120,6 +129,10 @@ spec:
           ports:
             - name: {{ .Values.service.name }}
               containerPort: {{ .Values.service.targetPort }}
+            {{- if .Values.tls.enabled }}
+            - name: https
+              containerPort: {{ .Values.tls.httpsPort }}
+            {{- end }}
           # ═══════════════════════════════════════════════════════════════
           #  postStart — ВИДАЛЕНО (C13 fix).
           #  Синхронізацію realm паролів/OIDC секретів перенесено
@@ -153,6 +166,11 @@ spec:
             - name: oidc-secrets
               mountPath: /etc/oidc-secrets
               readOnly: true
+            {{- if .Values.tls.enabled }}
+            - name: keycloak-tls
+              mountPath: /etc/keycloak/certs
+              readOnly: true
+            {{- end }}
       volumes:
         - name: tmp
           emptyDir: {}
@@ -168,3 +186,8 @@ spec:
         - name: oidc-secrets
           secret:
             secretName: {{ .Values.oidc.existingSecret }}
+        {{- if .Values.tls.enabled }}
+        - name: keycloak-tls
+          secret:
+            secretName: keycloak-tls
+        {{- end }}

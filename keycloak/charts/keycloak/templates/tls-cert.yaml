@@ -1,0 +1,24 @@
+{{- if .Values.tls.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: keycloak-tls
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: keycloak
+spec:
+  secretName: keycloak-tls
+  commonName: {{ .Values.hostname }}
+  dnsNames:
+    - {{ .Values.hostname }}
+    - "keycloak.{{ .Release.Namespace }}.svc.cluster.local"
+    - localhost
+  issuerRef:
+    name: keycloak-selfsigned
+    kind: ClusterIssuer
+  usages:
+    - server auth
+  # 1 year
+  duration: 8760h
+  renewBefore: 720h
+{{- end }}

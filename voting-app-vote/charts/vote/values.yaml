@@ -19,6 +19,30 @@ service:
   protocol: TCP
   name: http
 
+serviceAccount:
+  create: false
+  name: ""
+  annotations: {}
+
+pdb:
+  create: true
+  minAvailable: 1
+
+scaledObject:
+  create: true
+  minReplicas: 1
+  maxReplicas: 5
+  triggers:
+    - type: cpu
+      metricType: Utilization
+      targetValue: 70
+    - type: memory
+      metricType: Utilization
+      targetValue: 80
+
+networkPolicy:
+  create: true
+
 postgresql:
   host: postgresql
   port: 5432
@@ -26,6 +50,15 @@ postgresql:
   user: vote_user
   existingSecret: postgresql
   secretPasswordKey: password
+
+probes:
+  readinessPath: /
+  livenessPath: /
+  readinessDelay: 5
+  livenessDelay: 15
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 3
 
 resources:
   requests:

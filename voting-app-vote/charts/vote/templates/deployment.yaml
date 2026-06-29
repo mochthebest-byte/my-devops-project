@@ -23,6 +23,9 @@ spec:
         fsGroup: 1001
         seccompProfile:
           type: RuntimeDefault
+      {{- if .Values.serviceAccount.create }}
+      serviceAccountName: {{ include "vote.fullname" . }}-sa
+      {{- end }}
       # InitContainers: wait for PostgreSQL and Redis before starting
       initContainers:
         - name: wait-for-postgresql
@@ -97,20 +100,20 @@ spec:
           # Liveness/Readiness probes: HTTP check
           readinessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.probes.readinessPath }}
               port: {{ .Values.service.targetPort }}
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            timeoutSeconds: 3
-            failureThreshold: 3
+            initialDelaySeconds: {{ .Values.probes.readinessDelay }}
+            periodSeconds: {{ .Values.probes.periodSeconds }}
+            timeoutSeconds: {{ .Values.probes.timeoutSeconds }}
+            failureThreshold: {{ .Values.probes.failureThreshold }}
           livenessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.probes.livenessPath }}
               port: {{ .Values.service.targetPort }}
-            initialDelaySeconds: 15
-            periodSeconds: 20
-            timeoutSeconds: 5
-            failureThreshold: 3
+            initialDelaySeconds: {{ .Values.probes.livenessDelay }}
+            periodSeconds: {{ .Values.probes.periodSeconds }}
+            timeoutSeconds: {{ .Values.probes.timeoutSeconds }}
+            failureThreshold: {{ .Values.probes.failureThreshold }}
           volumeMounts:
             - name: tmp
               mountPath: /tmp
