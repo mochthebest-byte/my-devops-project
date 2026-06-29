@@ -106,6 +106,12 @@ jobs:
         run: |
           # Voting-app repo layout: vote/Dockerfile, result/Dockerfile, worker/Dockerfile
           DOCKER_CTX="src/voting-app/${{ matrix.service }}"
+
+          # Copy enhanced Dockerfile + healthz support from this repo
+          cp "voting-app-${{ matrix.service }}/Dockerfile" "${DOCKER_CTX}/"
+          cp "voting-app-${{ matrix.service }}/wsgi.py" "${DOCKER_CTX}/" 2>/dev/null || true
+          cp "voting-app-${{ matrix.service }}/healthz.js" "${DOCKER_CTX}/" 2>/dev/null || true
+
           echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
           echo "  Context: ${DOCKER_CTX}"
           echo "  Platforms: linux/amd64,linux/arm64"
