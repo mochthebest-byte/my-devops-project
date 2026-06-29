@@ -54,10 +54,8 @@ jobs:
           helm upgrade --install postgresql bitnami/postgresql \
             --namespace ${{ env.NAMESPACE }} \
             --version 16.x \
-            --set image.tag=latest \
-            --set image.digest= \
-            --set auth.database=db \
-            --set auth.username=vote_user \
+            --set image.tag=latest --set image.digest= \
+            --set auth.database=db --set auth.username=vote_user \
             --set auth.postgresPassword=testpass --set auth.replicationPassword=testpass
 
       # Step 6: Install Redis
@@ -66,8 +64,7 @@ jobs:
           helm upgrade --install redis bitnami/redis \
             --namespace ${{ env.NAMESPACE }} \
             --version 21.x \
-            --set image.tag=latest \
-            --set image.digest= \
+            --set image.tag=latest --set image.digest= \
             --set auth.enabled=false
 
       # Step 7: Wait for PostgreSQL and Redis
@@ -75,25 +72,18 @@ jobs:
         run: |
           kubectl wait --namespace ${{ env.NAMESPACE }} \
             --for=condition=ready pod \
-            -l app.kubernetes.io/instance=postgresql \
-            --timeout=120s
+            -l app.kubernetes.io/instance=postgresql --timeout=120s
           kubectl wait --namespace ${{ env.NAMESPACE }} \
             --for=condition=ready pod \
-            -l app.kubernetes.io/instance=redis \
-            --timeout=120s
+            -l app.kubernetes.io/instance=redis --timeout=120s
 
       # Step 8: Build Docker images locally (in Kind's registry)
       - name: Build Docker images
         run: |
-          # Build (and tag) Docker images
           docker build -t vote:latest voting-app-vote/
-          # Build result image
           docker build -t result:latest voting-app-result/
-          # Build worker image
           docker build -t worker:latest voting-app-worker/
-          # Load images into Kind
-          kind load docker-image \
-            vote:latest result:latest worker:latest \
+          kind load docker-image vote:latest result:latest worker:latest \
             --name voting-app-local
 
       # Step 8b: Trivy vulnerability scan on built images
@@ -124,40 +114,31 @@ jobs:
           severity: 'CRITICAL'
           ignore-unfixed: true
 
-      # Step 9: Deploy Helm charts
+      # Step 9: Deploy Helm charts (disable CRD-dependent resources — no KEDA in Kind)
       - name: Deploy Helm charts
         run: |
-          # Vote (disable CRD-dependent resources in CI — no KEDA)
           helm upgrade --install vote voting-app-vote/charts/vote \
             --namespace ${{ env.NAMESPACE }} \
-            --set image.repository=vote --set image.digest= \
-            --set image.tag=latest --set image.digest= \
+            --set image.full=vote:latest \
             --set image.pullPolicy=IfNotPresent \
-            --set image.full=vote:latest --set image.digest= \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
             --set postgresql.host=postgresql \
             --set redis.host=redis-master \
             --set replicaCount=2
 
-          # Result
           helm upgrade --install result voting-app-result/charts/result \
             --namespace ${{ env.NAMESPACE }} \
-            --set image.repository=result --set image.digest= \
-            --set image.tag=latest --set image.digest= \
+            --set image.full=result:latest \
             --set image.pullPolicy=IfNotPresent \
-            --set image.full=vote:latest --set image.digest= \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
             --set postgresql.host=postgresql
 
-          # Worker
           helm upgrade --install worker voting-app-worker/charts/worker \
             --namespace ${{ env.NAMESPACE }} \
-            --set image.repository=worker --set image.digest= \
-            --set image.tag=latest --set image.digest= \
+            --set image.full=worker:latest \
             --set image.pullPolicy=IfNotPresent \
-            --set image.full=vote:latest --set image.digest= \
             --set scaledObject.create=false --set pdb.create=false \
             --set postgresql.host=postgresql \
             --set redis.host=redis-master

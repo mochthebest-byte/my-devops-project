@@ -51,7 +51,7 @@ jobs:
       - name: Create PostgreSQL secret
         run: |
           kubectl delete secret postgresql --namespace voting-app --ignore-not-found
-          kubectl create secret generic postgresql
+          kubectl create secret generic postgresql \
             --namespace voting-app \
             --from-literal=password=testpass \
             --from-literal=postgres-password=testpass
@@ -59,8 +59,9 @@ jobs:
       # Install PostgreSQL (uses existingSecret — same pattern as prod ESO)
       - name: Install PostgreSQL
         run: |
-          helm upgrade --install postgresql bitnami/postgresql
-            --namespace voting-app --version 16.x --set image.tag=latest --set image.digest= \
+          helm upgrade --install postgresql bitnami/postgresql \
+            --namespace voting-app --version 16.x \
+            --set image.tag=latest --set image.digest= \
             --set auth.database=db --set auth.username=vote_user \
             --set auth.existingSecret=postgresql
 
@@ -68,7 +69,8 @@ jobs:
       - name: Install Redis
         run: |
           helm upgrade --install redis bitnami/redis \
-            --namespace voting-app --version 21.x --set image.tag=latest --set image.digest= \
+            --namespace voting-app --version 21.x \
+            --set image.tag=latest --set image.digest= \
             --set auth.enabled=false
 
       # Wait for databases
@@ -82,7 +84,6 @@ jobs:
       # Build Docker images
       - name: Build Docker images
         run: |
-          # Tag with ECR-style name so Helm template resolves correctly
           docker build -t vote:latest voting-app-vote/
           docker build -t result:latest voting-app-result/
           docker build -t worker:latest voting-app-worker/
@@ -90,26 +91,37 @@ jobs:
       # Load images into Kind
       - name: Load images into Kind
         run: |
+          kind load docker-image vote:latest result:latest worker:latest \
             --name voting-app-local
 
       # Deploy Helm charts
       - name: Deploy Helm charts
         run: |
-          helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
+          # Vote (disable CRD-dependent resources — no KEDA in Kind)
+          helm upgrade --install vote voting-app-vote/charts/vote \
+            --namespace voting-app \
             --set image.full=vote:latest \
             --set image.pullPolicy=IfNotPresent \
-            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
-            --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql --set redis.host=redis-master
+            --set scaledObject.create=false --set pdb.create=false \
+            --set networkPolicy.create=false \
+            --set postgresql.host=postgresql --set redis.host=redis-master
+
+          # Result
           helm upgrade --install result voting-app-result/charts/result \
-            --namespace voting-app --set image.repository=result \
-            --set image.tag=latest --set image.digest= --set image.pullPolicy=IfNotPresent \
-            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
-            --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql
+            --namespace voting-app \
+            --set image.full=result:latest \
+            --set image.pullPolicy=IfNotPresent \
+            --set scaledObject.create=false --set pdb.create=false \
+            --set networkPolicy.create=false \
+            --set postgresql.host=postgresql
+
+          # Worker
           helm upgrade --install worker voting-app-worker/charts/worker \
-            --namespace voting-app --set image.repository=worker \
-            --set image.tag=latest --set image.digest= --set image.pullPolicy=IfNotPresent \
-            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
-            --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql --set redis.host=redis-master
+            --namespace voting-app \
+            --set image.full=worker:latest \
+            --set image.pullPolicy=IfNotPresent \
+            --set scaledObject.create=false --set pdb.create=false \
+            --set postgresql.host=postgresql --set redis.host=redis-master
 
       # Wait for deployments
       - name: Wait for deployments
