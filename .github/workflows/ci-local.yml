@@ -83,8 +83,6 @@ jobs:
       - name: Build Docker images
         run: |
           # Tag with ECR-style name so Helm template resolves correctly
-          export KIND_CLUSTER_NAME=voting-app-local
-          ECR_PREFIX="000000000000.dkr.ecr.eu-central-1.amazonaws.com"
           docker build -t vote:latest voting-app-vote/
           docker build -t result:latest voting-app-result/
           docker build -t worker:latest voting-app-worker/
@@ -92,10 +90,6 @@ jobs:
       # Load images into Kind
       - name: Load images into Kind
         run: |
-          export KIND_CLUSTER_NAME=voting-app-local
-          ECR_PREFIX="000000000000.dkr.ecr.eu-central-1.amazonaws.com"
-          kind load docker-image vote:latest result:latest worker:latest \
-            vote:latest \
             --name voting-app-local
 
       # Deploy Helm charts

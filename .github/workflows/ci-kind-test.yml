@@ -85,8 +85,7 @@ jobs:
       # Step 8: Build Docker images locally (in Kind's registry)
       - name: Build Docker images
         run: |
-          kind load docker-image vote:latest result:latest worker:latest --name voting-app-local
-          # Build vote image
+          # Build (and tag) Docker images
           docker build -t vote:latest voting-app-vote/
           # Build result image
           docker build -t result:latest voting-app-result/

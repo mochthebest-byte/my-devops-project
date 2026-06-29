@@ -418,7 +418,15 @@
       "Bash(sed -i 's/--set image.repository=worker \\\\\\\\/--set image.repository=worker --set image.digest= \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
       "Bash(sed -i 's/--set image.repository=vote --set image.tag=latest --set image.digest=/--set image.full=vote:latest/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
       "Bash(awk '/helm upgrade --install vote/,/--set replicaCount=2/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
-      "Bash(awk '/helm upgrade --install vote/,/redis-master/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)"
+      "Bash(awk '/helm upgrade --install vote/,/redis-master/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(awk '/Create PostgreSQL secret/,/Install PostgreSQL/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(xargs -I{} sh -c 'gh run view {} --log-failed 2>&1 | tail -20')",
+      "Bash(awk *)",
+      "Bash(sed -i '/export KIND_CLUSTER_NAME/d' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i '/ECR_PREFIX/d' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/vote:latest result:latest worker:latest \\\\\\\\$/vote:latest result:latest worker:latest \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i '/vote:latest result:latest worker:latest \\\\\\\\/,/--name voting-app-local/{/vote:latest/d}' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)"
     ]
   }
 }
