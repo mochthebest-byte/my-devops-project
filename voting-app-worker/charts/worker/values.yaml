@@ -6,7 +6,7 @@ global:
 
 image:
   repository: my-app/worker
-  digest: sha256:0898ee718c5d264f82a43acad7a2103308a1b16360b74364fbb64f6019482aa1
+  digest: sha256:6a7840a0accf5d4ca48061b99552b27be7b33a488c8dd95cd34f6c618c96ae76
   tag: ""
   pullPolicy: IfNotPresent
 

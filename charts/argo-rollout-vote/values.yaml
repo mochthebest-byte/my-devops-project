@@ -4,7 +4,7 @@ global:
   awsRegion: "eu-central-1"
 image:
   repository: my-app/vote
-  digest: sha256:65d09d0d98097aba758e48100a98383aae58d6bbfef5ae753ef6d193fa1b6c4e
+  digest: sha256:0e0118f594e5d348b7296cb268bdf9a4e3c72277e8bc333a0b6b50ccec297b48
   tag: ""
   pullPolicy: IfNotPresent
 

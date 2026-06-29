@@ -395,7 +395,8 @@
       "Bash(grep -n \"^# ═\\\\|^resource\\\\|^data\\\\|^}$\" infra-aws/addons.tf)",
       "Bash(infra-aws/addons.tf wc *)",
       "Bash(infra-aws/addons.tf tail *)",
-      "Bash(xargs -I{} gh run view {} --log-failed)"
+      "Bash(xargs -I{} gh run view {} --log-failed)",
+      "Bash(xargs -I{} bash -c 'gh run view {} --log-failed 2>&1 | grep -E \"error|Error|exit code|ERROR|failed|denied|not found\" | head -10')"
     ]
   }
 }

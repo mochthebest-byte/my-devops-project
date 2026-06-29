@@ -6,7 +6,7 @@ global:
 
 image:
   repository: my-app/result
-  digest: sha256:163a6d602bfc65e604facd5e070c877a56a612582ba0684defed3e901ba90f49
+  digest: sha256:bcf81fe9e08aff60b3d13359916684089bbbc468fa18c366b4938d32f950f098
   tag: ""
   pullPolicy: IfNotPresent
 
@@ -44,9 +44,9 @@ networkPolicy:
   create: true
 
 probes:
-  readinessPath: /
-  livenessPath: /
-  healthzPort: 80
+  readinessPath: /healthz
+  livenessPath: /healthz
+  healthzPort: 8081
   readinessDelay: 5
   livenessDelay: 15
   periodSeconds: 10
