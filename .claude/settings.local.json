@@ -394,7 +394,8 @@
       "Bash(echo \"EXIT:$?\")",
       "Bash(grep -n \"^# ═\\\\|^resource\\\\|^data\\\\|^}$\" infra-aws/addons.tf)",
       "Bash(infra-aws/addons.tf wc *)",
-      "Bash(infra-aws/addons.tf tail *)"
+      "Bash(infra-aws/addons.tf tail *)",
+      "Bash(xargs -I{} gh run view {} --log-failed)"
     ]
   }
 }

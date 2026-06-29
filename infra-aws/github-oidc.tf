@@ -3,7 +3,7 @@
 #  Безпарольна автентифікація GitHub Actions → AWS
 #
 #  ⚠️  Увімкнути через змінну create_github_oidc = true
-#      Якщо ресурси вже створені вручну — використати
+#      Якщо ресурси вже створені вручну - використати
 #      terraform import (див. коментарі нижче).
 # ══════════════════════════════════════════════════════════
 
@@ -66,7 +66,7 @@ resource "aws_iam_role" "github_ci" {
 
   name                 = var.github_ci_role_name
   assume_role_policy   = data.aws_iam_policy_document.github_ci_assume_role[0].json
-  description          = "IAM role for GitHub Actions CI — OIDC (Workload Identity Federation)"
+  description          = "IAM role for GitHub Actions CI - OIDC (Workload Identity Federation)"
   max_session_duration = 3600
 
   tags = merge(var.tags, {
