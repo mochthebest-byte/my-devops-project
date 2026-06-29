@@ -401,7 +401,9 @@
       "Bash(sed -i 's/--set image.tag=latest \\\\\\\\/--set image.tag=latest --set image.digest= \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
       "Bash(sed -i 's/--set postgresql.host=postgresql$/--set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
       "Bash(sed -i 's/--set image.tag=latest --set image.pullPolicy=IfNotPresent/--set image.tag=latest --set image.digest= --set image.pullPolicy=IfNotPresent/g' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
-      "Bash(sed -i 's/--set image.tag=latest --set image.pullPolicy/--set image.tag=latest --set image.digest= --set image.pullPolicy/g' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)"
+      "Bash(sed -i 's/--set image.tag=latest --set image.pullPolicy/--set image.tag=latest --set image.digest= --set image.pullPolicy/g' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(sed -i 's/--set image.pullPolicy=IfNotPresent \\\\\\\\/--set image.pullPolicy=IfNotPresent \\\\ *)",
+      "Bash(sed -i 's/--set image.pullPolicy=IfNotPresent$/--set image.pullPolicy=IfNotPresent \\\\ *)"
     ]
   }
 }

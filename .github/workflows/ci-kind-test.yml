@@ -92,14 +92,22 @@ jobs:
       # Step 8: Build Docker images locally (in Kind's registry)
       - name: Build Docker images
         run: |
+          ECR_PREFIX="000000000000.dkr.ecr.eu-central-1.amazonaws.com"
           # Build vote image
           docker build -t vote:latest voting-app-vote/
+          docker tag vote:latest ${ECR_PREFIX}/my-app/vote:latest
           # Build result image
           docker build -t result:latest voting-app-result/
+          docker tag result:latest ${ECR_PREFIX}/my-app/result:latest
           # Build worker image
           docker build -t worker:latest voting-app-worker/
+          docker tag worker:latest ${ECR_PREFIX}/my-app/worker:latest
           # Load images into Kind
-          kind load docker-image vote:latest result:latest worker:latest \
+          kind load docker-image \
+            vote:latest result:latest worker:latest \
+            ${ECR_PREFIX}/my-app/vote:latest \
+            ${ECR_PREFIX}/my-app/result:latest \
+            ${ECR_PREFIX}/my-app/worker:latest \
             --name voting-app-local
 
       # Step 8b: Trivy vulnerability scan on built images
@@ -139,6 +147,7 @@ jobs:
             --set image.repository=vote \
             --set image.tag=latest --set image.digest= \
             --set image.pullPolicy=IfNotPresent \
+            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
             --set postgresql.host=postgresql \
@@ -151,6 +160,7 @@ jobs:
             --set image.repository=result \
             --set image.tag=latest --set image.digest= \
             --set image.pullPolicy=IfNotPresent \
+            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
             --set postgresql.host=postgresql
@@ -161,6 +171,7 @@ jobs:
             --set image.repository=worker \
             --set image.tag=latest --set image.digest= \
             --set image.pullPolicy=IfNotPresent \
+            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
             --set scaledObject.create=false --set pdb.create=false \
             --set postgresql.host=postgresql \
             --set redis.host=redis-master
