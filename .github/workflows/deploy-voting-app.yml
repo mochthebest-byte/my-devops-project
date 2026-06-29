@@ -128,10 +128,10 @@ jobs:
             exit 1
           }
 
+          # Single-platform build for local CI checks (Trivy + SBOM)
           docker buildx build \
-            --platform linux/amd64,linux/arm64 \
+            --platform linux/amd64 \
             -t "${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}" \
-            -t "${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
             --load \
             --cache-from "type=registry,ref=${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
             --cache-to "type=inline" \
