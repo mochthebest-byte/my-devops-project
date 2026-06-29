@@ -55,8 +55,8 @@ postgresql:
   secretPasswordKey: password
 
 probes:
-  readinessPath: /healthz
-  livenessPath: /healthz
+  readinessPath: /
+  livenessPath: /
   healthzPort: 80
   readinessDelay: 5
   livenessDelay: 15
