@@ -186,8 +186,9 @@ jobs:
             --cache-to "type=inline" \
             "src/voting-app/${{ matrix.service }}"
 
-      # Update GitOps repo with new image tag
+      # Update GitOps repo with new image tag (optional — ArgoCD is primary)
       - name: Checkout GitOps repo
+        continue-on-error: true
         uses: actions/checkout@v4
         with:
           repository: ${{ env.GITOPS_REPO }}
@@ -197,9 +198,11 @@ jobs:
 
       # Install yq for structured YAML patching
       - name: Install yq
+        continue-on-error: true
         uses: mikefarah/yq@v4.44.3
 
       - name: Update image tag in GitOps
+        continue-on-error: true
         id: update-manifest
         env:
           IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
@@ -229,6 +232,7 @@ jobs:
           yq eval '.image' "${MANIFEST_PATH}" 2>/dev/null || yq eval '.spec.template.spec.containers[0].image' "${MANIFEST_PATH}"
 
       - name: Commit and push changes
+        continue-on-error: true
         env:
           SERVICE_NAME: ${{ matrix.service }}
         run: |
