@@ -72,6 +72,12 @@ jobs:
         service: ${{ fromJSON(needs.resolve-matrix.outputs.services) }}
 
     steps:
+      # Clone this repo (enhanced Dockerfiles + healthz.js/wsgi.py)
+      - name: Checkout dockerfiles
+        uses: actions/checkout@v4
+        with:
+          path: dockerfiles
+
       # Clone voting-app source (contains all 3 services)
       - name: Checkout voting-app source code
         uses: actions/checkout@v4
@@ -108,9 +114,9 @@ jobs:
           DOCKER_CTX="src/voting-app/${{ matrix.service }}"
 
           # Copy enhanced Dockerfile + healthz support from this repo
-          cp "voting-app-${{ matrix.service }}/Dockerfile" "${DOCKER_CTX}/"
-          cp "voting-app-${{ matrix.service }}/wsgi.py" "${DOCKER_CTX}/" 2>/dev/null || true
-          cp "voting-app-${{ matrix.service }}/healthz.js" "${DOCKER_CTX}/" 2>/dev/null || true
+          cp "dockerfiles/voting-app-${{ matrix.service }}/Dockerfile" "${DOCKER_CTX}/"
+          cp "dockerfiles/voting-app-${{ matrix.service }}/wsgi.py" "${DOCKER_CTX}/" 2>/dev/null || true
+          cp "dockerfiles/voting-app-${{ matrix.service }}/healthz.js" "${DOCKER_CTX}/" 2>/dev/null || true
 
           echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
           echo "  Context: ${DOCKER_CTX}"
