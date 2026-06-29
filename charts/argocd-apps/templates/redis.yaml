@@ -8,21 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: 21.x
-    chart: redis
-    helm:
-      values: |
-        image:
-          tag: ""
-          digest: sha256:f7c13b6242eca1256dc5b5ee9f5a2b6279636293b2955d9f4336def3238e85ee
-        architecture: standalone
-        auth:
-          enabled: false
-        master:
-          persistence:
-            storageClass: gp3
-            size: 4Gi
+    repoURL: https://github.com/mochthebest-byte/my-devops-project.git
+    targetRevision: HEAD
+    path: charts/redis-official
   destination:
     server: https://kubernetes.default.svc
     namespace: voting-app

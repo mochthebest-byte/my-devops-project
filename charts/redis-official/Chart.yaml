@@ -1,0 +1,6 @@
+apiVersion: v2
+name: redis-official
+description: Official Redis — single-node (standalone), pinned by SHA256
+type: application
+version: 0.1.0
+appVersion: "8.8.0"
