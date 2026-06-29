@@ -8,8 +8,9 @@ global:
   awsRegion: "eu-central-1"
 
 image:
-  repository: my-app/vote             # Тільки ім'я репо (full URL збирається в шаблоні)
-  tag: stable                         # Overridden by CI via GitOps
+  repository: my-app/vote
+  digest: sha256:65d09d0d98097aba758e48100a98383aae58d6bbfef5ae753ef6d193fa1b6c4e
+  tag: ""
   pullPolicy: IfNotPresent
 
 service:

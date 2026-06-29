@@ -6,7 +6,8 @@ global:
 
 image:
   repository: my-app/result
-  tag: stable
+  digest: sha256:163a6d602bfc65e604facd5e070c877a56a612582ba0684defed3e901ba90f49
+  tag: ""
   pullPolicy: IfNotPresent
 
 service:

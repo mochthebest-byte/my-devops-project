@@ -6,7 +6,8 @@ global:
 
 image:
   repository: my-app/worker
-  tag: stable
+  digest: sha256:0898ee718c5d264f82a43acad7a2103308a1b16360b74364fbb64f6019482aa1
+  tag: ""
   pullPolicy: IfNotPresent
 
 serviceAccount:
