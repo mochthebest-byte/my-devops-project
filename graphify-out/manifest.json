@@ -235,8 +235,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/.github/workflows/deploy-voting-app.yml": {
-    "mtime": 1782751862.4601986,
-    "ast_hash": "8d0ab7a7924606aada9d08fe7965dae0",
+    "mtime": 1782753460.2000613,
+    "ast_hash": "aa7202ff5105ae2560119e39d6f406d2",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/.github/workflows/ci-local.yml": {
@@ -535,8 +535,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/values.yaml": {
-    "mtime": 1782753218.0094905,
-    "ast_hash": "4f1ff7eed395a17dd4e9a46c5a33da7e",
+    "mtime": 1782753422.4667873,
+    "ast_hash": "dc4b757b232dfb981667b6bec55380f6",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/velero.yaml": {
@@ -672,6 +672,36 @@
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/argocd-image-updater.yaml": {
     "mtime": 1782753198.2385018,
     "ast_hash": "62b73b724252540595035ee9daf40c58",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/argocd-apps/templates/karpenter.yaml": {
+    "mtime": 1782753502.032234,
+    "ast_hash": "246fd452142af00c64b8414a0dfb70b8",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/argocd-apps/templates/karpenter-resources.yaml": {
+    "mtime": 1782753503.533272,
+    "ast_hash": "19bbb5661cef06b8fba947308a5cfeb5",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/karpenter-resources/values.yaml": {
+    "mtime": 1782753506.9803593,
+    "ast_hash": "1a8533b32a38e88c8ba552e234a37d6f",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/karpenter-resources/Chart.yaml": {
+    "mtime": 1782753504.1052866,
+    "ast_hash": "21570cb243ef4f2e023683dcae7876d5",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/karpenter-resources/templates/nodepool.yaml": {
+    "mtime": 1782753505.2053146,
+    "ast_hash": "bcb5036b5513ddb942227709b3d013c9",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/karpenter-resources/templates/ec2nodeclass.yaml": {
+    "mtime": 1782753506.4463458,
+    "ast_hash": "4a6f3e44cb9ba40452afc514f57e4866",
     "semantic_hash": ""
   }
 }

@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: karpenter-resources
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"     # After Karpenter controller
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mochthebest-byte/my-devops-project.git
+    targetRevision: main
+    path: charts/karpenter-resources
+    helm:
+      values: |
+        global:
+          awsAccountId: "{{ .Values.global.awsAccountId }}"
+          awsRegion: "{{ .Values.global.awsRegion }}"
+          projectName: "{{ .Values.global.projectName }}"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: karpenter
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true
+      - Replace=true

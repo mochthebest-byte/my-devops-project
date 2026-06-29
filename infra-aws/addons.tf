@@ -329,3 +329,154 @@ resource "aws_iam_role_policy_attachment" "argocd_image_updater_ecr" {
   policy_arn = aws_iam_policy.argocd_image_updater_ecr.arn
   role       = aws_iam_role.argocd_image_updater.name
 }
+
+# ══════════════════════════════════════════════════════════
+#  Karpenter — автоматичне масштабування нод (EC2 Spot/On-Demand)
+# ══════════════════════════════════════════════════════════
+
+# ─── Karpenter Node IAM Role ──────────────────────────
+resource "aws_iam_role" "karpenter_node" {
+  name = "${var.project_name}-karpenter-node"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Principal = {
+        Service = "ec2.amazonaws.com"
+      }
+      Action = "sts:AssumeRole"
+    }]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy_attachment" "karpenter_node_worker" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+  role       = aws_iam_role.karpenter_node.name
+}
+
+resource "aws_iam_role_policy_attachment" "karpenter_node_cni" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+  role       = aws_iam_role.karpenter_node.name
+}
+
+resource "aws_iam_role_policy_attachment" "karpenter_node_ecr" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  role       = aws_iam_role.karpenter_node.name
+}
+
+resource "aws_iam_role_policy_attachment" "karpenter_node_ssm" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  role       = aws_iam_role.karpenter_node.name
+}
+
+# ─── Karpenter Node Instance Profile ──────────────────
+resource "aws_iam_instance_profile" "karpenter_node" {
+  name = "${var.project_name}-karpenter-node"
+  role = aws_iam_role.karpenter_node.name
+}
+
+# ─── Karpenter Controller IAM Role (IRSA) ─────────────
+data "aws_iam_policy_document" "karpenter_controller_assume" {
+  statement {
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect  = "Allow"
+    principals {
+      type        = "Federated"
+      identifiers = [module.eks.oidc_provider_arn]
+    }
+    condition {
+      test     = "StringEquals"
+      variable = "${module.eks.oidc_provider}:sub"
+      values   = ["system:serviceaccount:karpenter:karpenter"]
+    }
+  }
+}
+
+resource "aws_iam_role" "karpenter_controller" {
+  name               = "${var.project_name}-karpenter-controller"
+  assume_role_policy = data.aws_iam_policy_document.karpenter_controller_assume.json
+  tags               = var.tags
+}
+
+# ─── Karpenter Controller IAM Policy ──────────────────
+data "aws_iam_policy_document" "karpenter_controller" {
+  statement {
+    actions = [
+      "ec2:CreateLaunchTemplate",
+      "ec2:CreateFleet",
+      "ec2:RunInstances",
+      "ec2:CreateTags",
+      "ec2:TerminateInstances",
+      "ec2:DescribeLaunchTemplates",
+      "ec2:DeleteLaunchTemplate",
+      "ec2:DescribeInstances",
+      "ec2:DescribeSecurityGroups",
+      "ec2:DescribeImages",
+      "ec2:DescribeInstanceTypes",
+      "ec2:DescribeInstanceTypeOfferings",
+      "ec2:DescribeAvailabilityZones",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSpotPriceHistory",
+      "ec2:DescribeVpcPeeringConnections",
+      "ec2:DescribeVpcs",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DeleteNetworkInterface",
+      "ec2:DetachNetworkInterface",
+      "ec2:DescribeNetworkInterfaceAttribute",
+      "ec2:ModifyNetworkInterfaceAttribute",
+      "ec2:DescribeKeyPairs",
+      "ec2:DescribeSecurityGroupRules",
+      "ec2:DescribePrefixLists",
+      "ec2:DescribeRegions",
+      "iam:PassRole",
+      "pricing:GetProducts",
+      "ssm:GetParameter",
+    ]
+    resources = ["*"]
+  }
+  statement {
+    actions = [
+      "eks:DescribeCluster",
+    ]
+    resources = ["arn:aws:eks:*:*:cluster/${var.project_name}-eks"]
+  }
+  statement {
+    actions = [
+      "iam:CreateInstanceProfile",
+      "iam:TagInstanceProfile",
+      "iam:GetInstanceProfile",
+      "iam:DeleteInstanceProfile",
+      "iam:AddRoleToInstanceProfile",
+      "iam:RemoveRoleFromInstanceProfile",
+    ]
+    resources = ["arn:aws:iam::*:instance-profile/${var.project_name}-karpenter-*"]
+  }
+  statement {
+    actions = [
+      "iam:GetRole",
+      "iam:PassRole",
+    ]
+    resources = ["arn:aws:iam::*:role/${var.project_name}-karpenter-*"]
+  }
+}
+
+resource "aws_iam_policy" "karpenter_controller" {
+  name   = "${var.project_name}-karpenter-controller"
+  policy = data.aws_iam_policy_document.karpenter_controller.json
+}
+
+resource "aws_iam_role_policy_attachment" "karpenter_controller" {
+  policy_arn = aws_iam_policy.karpenter_controller.arn
+  role       = aws_iam_role.karpenter_controller.name
+}
+
+# ─── Tag private subnets для Karpenter discovery ──────
+resource "aws_ec2_tag" "karpenter_subnet" {
+  for_each    = toset(module.vpc.private_subnets)
+  resource_id = each.value
+  key         = "karpenter.sh/discovery"
+  value       = module.eks.cluster_name
+}

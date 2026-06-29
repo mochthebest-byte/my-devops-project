@@ -1,0 +1,4 @@
+global:
+  awsAccountId: "657954628960"
+  awsRegion: "eu-central-1"
+  projectName: "voting-app"

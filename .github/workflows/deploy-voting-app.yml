@@ -142,6 +142,23 @@ jobs:
           severity: CRITICAL,HIGH
           ignore-unfixed: true
 
+      # 📦 Generate CycloneDX SBOM
+      - name: Generate CycloneDX SBOM
+        uses: aquasecurity/trivy-action@0.29.0
+        with:
+          image-ref: ${{ steps.build-image.outputs.registry }}/my-app/${{ matrix.service }}:${{ steps.build-image.outputs.tag }}
+          format: cyclonedx
+          output: sbom-${{ matrix.service }}.json
+          ignore-unfixed: true
+          exit-code: 0    # Don't fail on vulnerabilities — this is for SBOM, not scanning
+
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-${{ matrix.service }}-${{ inputs.image_tag || github.sha }}
+          path: sbom-${{ matrix.service }}.json
+          retention-days: 30
+
       - name: Push multi-arch image to ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}

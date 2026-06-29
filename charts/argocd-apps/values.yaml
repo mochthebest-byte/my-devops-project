@@ -11,3 +11,6 @@ global:
   awsAccountId: "657954628960"
   awsRegion: "eu-central-1"
   projectName: "voting-app"
+  # EKS cluster endpoint — змінюється при recreate кластера.
+  # Отримати: terraform output -state=infra-aws/terraform.tfstate cluster_endpoint
+  clusterEndpoint: "https://CLUSTER_ENDPOINT.gr7.eu-central-1.eks.amazonaws.com"

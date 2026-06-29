@@ -1,0 +1,19 @@
+apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
+metadata:
+  name: default
+spec:
+  amiFamily: AL2023
+  role: "{{ .Values.global.projectName }}-karpenter-node"
+  subnetSelectorTerms:
+    - tags:
+        karpenter.sh/discovery: "{{ .Values.global.projectName }}-eks"
+  securityGroupSelectorTerms:
+    - tags:
+        Name: "{{ .Values.global.projectName }}-nodes"
+  tags:
+    Name: "{{ .Values.global.projectName }}/karpenter-node"
+    karpenter.sh/discovery: "{{ .Values.global.projectName }}-eks"
+  metadataOptions:
+    httpTokens: required
+    httpPutResponseHopLimit: 2
