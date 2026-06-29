@@ -55,7 +55,7 @@ jobs:
             --namespace ${{ env.NAMESPACE }} \
             --version 16.x \
             --set image.tag=latest \
-            --set image.digest=
+            --set image.digest= \
             --set auth.database=db \
             --set auth.username=vote_user \
             --set auth.postgresPassword=testpass --set auth.replicationPassword=testpass
@@ -67,7 +67,7 @@ jobs:
             --namespace ${{ env.NAMESPACE }} \
             --version 21.x \
             --set image.tag=latest \
-            --set image.digest=
+            --set image.digest= \
             --set auth.enabled=false
 
       # Step 7: Wait for PostgreSQL and Redis
