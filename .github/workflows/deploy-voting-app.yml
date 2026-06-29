@@ -140,7 +140,7 @@ jobs:
 
       # 🔒 Trivy scan BEFORE push (C5 fix)
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.29.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ steps.build-image.outputs.registry }}/my-app/${{ matrix.service }}:${{ steps.build-image.outputs.tag }}
           format: table
@@ -150,7 +150,7 @@ jobs:
 
       # 📦 Generate CycloneDX SBOM
       - name: Generate CycloneDX SBOM
-        uses: aquasecurity/trivy-action@0.29.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ steps.build-image.outputs.registry }}/my-app/${{ matrix.service }}:${{ steps.build-image.outputs.tag }}
           format: cyclonedx
