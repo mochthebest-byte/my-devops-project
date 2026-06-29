@@ -13,7 +13,9 @@ spec:
     chart: redis
     helm:
       values: |
-        # tag: latest removed — let chart version default match 21.x
+        image:
+          tag: ""
+          digest: sha256:f7c13b6242eca1256dc5b5ee9f5a2b6279636293b2955d9f4336def3238e85ee
         architecture: standalone
         auth:
           enabled: false
