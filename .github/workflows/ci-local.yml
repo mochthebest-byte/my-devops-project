@@ -51,7 +51,7 @@ jobs:
       - name: Create PostgreSQL secret
         run: |
           kubectl delete secret postgresql --namespace voting-app --ignore-not-found
-          kubectl create secret generic postgresql \
+          kubectl create secret generic postgresql
             --namespace voting-app \
             --from-literal=password=testpass \
             --from-literal=postgres-password=testpass
@@ -59,7 +59,7 @@ jobs:
       # Install PostgreSQL (uses existingSecret — same pattern as prod ESO)
       - name: Install PostgreSQL
         run: |
-          helm upgrade --install postgresql bitnami/postgresql \
+          helm upgrade --install postgresql bitnami/postgresql
             --namespace voting-app --version 16.x --set image.tag=latest --set image.digest= \
             --set auth.database=db --set auth.username=vote_user \
             --set auth.existingSecret=postgresql
@@ -88,9 +88,6 @@ jobs:
           docker build -t vote:latest voting-app-vote/
           docker build -t result:latest voting-app-result/
           docker build -t worker:latest voting-app-worker/
-          docker tag vote:latest ${ECR_PREFIX}/my-app/vote:latest
-          docker tag result:latest ${ECR_PREFIX}/my-app/result:latest
-          docker tag worker:latest ${ECR_PREFIX}/my-app/worker:latest
 
       # Load images into Kind
       - name: Load images into Kind
@@ -98,28 +95,26 @@ jobs:
           export KIND_CLUSTER_NAME=voting-app-local
           ECR_PREFIX="000000000000.dkr.ecr.eu-central-1.amazonaws.com"
           kind load docker-image vote:latest result:latest worker:latest \
-            ${ECR_PREFIX}/my-app/vote:latest \
-            ${ECR_PREFIX}/my-app/result:latest \
-            ${ECR_PREFIX}/my-app/worker:latest \
+            vote:latest \
             --name voting-app-local
 
       # Deploy Helm charts
       - name: Deploy Helm charts
         run: |
           helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
-            --set image.repository=vote --set image.tag=latest --set image.digest= \
+            --set image.full=vote:latest \
             --set image.pullPolicy=IfNotPresent \
-            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1
+            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
             --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql --set redis.host=redis-master
           helm upgrade --install result voting-app-result/charts/result \
             --namespace voting-app --set image.repository=result \
             --set image.tag=latest --set image.digest= --set image.pullPolicy=IfNotPresent \
-            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1
+            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
             --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql
           helm upgrade --install worker voting-app-worker/charts/worker \
             --namespace voting-app --set image.repository=worker \
             --set image.tag=latest --set image.digest= --set image.pullPolicy=IfNotPresent \
-            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1
+            --set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \
             --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql --set redis.host=redis-master
 
       # Wait for deployments

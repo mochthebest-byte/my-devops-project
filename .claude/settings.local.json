@@ -406,7 +406,19 @@
       "Bash(sed -i 's/--set image.pullPolicy=IfNotPresent$/--set image.pullPolicy=IfNotPresent \\\\ *)",
       "Bash(ghead -c 500 /dev/random)",
       "Bash(sed -i '/Create PostgreSQL secret/,/kubectl create secret/d' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
-      "Bash(sed -i 's|ECR_PREFIX=\"000000000000.dkr.ecr.eu-central-1.amazonaws.com\"|export KIND_CLUSTER_NAME=voting-app-local\\\\n          ECR_PREFIX=\"000000000000.dkr.ecr.eu-central-1.amazonaws.com\"|' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)"
+      "Bash(sed -i 's|ECR_PREFIX=\"000000000000.dkr.ecr.eu-central-1.amazonaws.com\"|export KIND_CLUSTER_NAME=voting-app-local\\\\n          ECR_PREFIX=\"000000000000.dkr.ecr.eu-central-1.amazonaws.com\"|' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/--set global.awsRegion=eu-central-1$/--set global.awsRegion=eu-central-1 \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/redis-master \\\\\\\\$/redis-master/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/postgresql \\\\\\\\$/postgresql/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/--set global.awsAccountId=000000000000 --set global.awsRegion=eu-central-1 \\\\\\\\/--set global.awsAccountId= --set global.awsRegion= \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(sed -i '/docker tag.*ECR_PREFIX/d' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(sed -i 's/--set global.awsAccountId= --set global.awsRegion=/--set image.full=vote:latest --set image.digest=/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(sed -i 's/--set image.repository=vote \\\\\\\\/--set image.repository=vote --set image.digest= \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(sed -i 's/--set image.repository=result \\\\\\\\/--set image.repository=result --set image.digest= \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(sed -i 's/--set image.repository=worker \\\\\\\\/--set image.repository=worker --set image.digest= \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(sed -i 's/--set image.repository=vote --set image.tag=latest --set image.digest=/--set image.full=vote:latest/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(awk '/helm upgrade --install vote/,/--set replicaCount=2/' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(awk '/helm upgrade --install vote/,/redis-master/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)"
     ]
   }
 }
