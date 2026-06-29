@@ -70,6 +70,8 @@ spec:
           # Worker is a .NET background consumer — has no TCP listener
           # ports: []
           env:
+            - name: DOTNET_ROLL_FORWARD
+              value: LatestMajor
             - name: POSTGRES_HOST
               value: {{ .Values.postgresql.host }}
             - name: POSTGRES_PORT
