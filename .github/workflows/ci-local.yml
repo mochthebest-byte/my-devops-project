@@ -24,7 +24,7 @@ jobs:
 
       # Create Kind cluster with 3 nodes
       - name: Create Kind cluster
-        uses: helm/kind-action@v2
+        uses: helm/kind-action@v1.14.0
         with:
           config: kind-config.yaml
           cluster_name: voting-app-local
