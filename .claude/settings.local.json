@@ -396,7 +396,12 @@
       "Bash(infra-aws/addons.tf wc *)",
       "Bash(infra-aws/addons.tf tail *)",
       "Bash(xargs -I{} gh run view {} --log-failed)",
-      "Bash(xargs -I{} bash -c 'gh run view {} --log-failed 2>&1 | grep -E \"error|Error|exit code|ERROR|failed|denied|not found\" | head -10')"
+      "Bash(xargs -I{} bash -c 'gh run view {} --log-failed 2>&1 | grep -E \"error|Error|exit code|ERROR|failed|denied|not found\" | head -10')",
+      "Bash(sed -i 's/--set postgresql.host=postgresql --set redis.host=redis-master$/--set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql --set redis.host=redis-master/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/--set image.tag=latest \\\\\\\\/--set image.tag=latest --set image.digest= \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/--set postgresql.host=postgresql$/--set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/--set image.tag=latest --set image.pullPolicy=IfNotPresent/--set image.tag=latest --set image.digest= --set image.pullPolicy=IfNotPresent/g' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(sed -i 's/--set image.tag=latest --set image.pullPolicy/--set image.tag=latest --set image.digest= --set image.pullPolicy/g' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)"
     ]
   }
 }

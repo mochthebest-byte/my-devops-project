@@ -62,6 +62,7 @@ jobs:
             --namespace ${{ env.NAMESPACE }} \
             --version 16.x \
             --set image.tag=latest \
+            --set image.digest=
             --set auth.database=db \
             --set auth.username=vote_user \
             --set auth.existingSecret=postgresql
@@ -73,6 +74,7 @@ jobs:
             --namespace ${{ env.NAMESPACE }} \
             --version 21.x \
             --set image.tag=latest \
+            --set image.digest=
             --set auth.enabled=false
 
       # Step 7: Wait for PostgreSQL and Redis
@@ -131,12 +133,14 @@ jobs:
       # Step 9: Deploy Helm charts
       - name: Deploy Helm charts
         run: |
-          # Vote
+          # Vote (disable CRD-dependent resources in CI — no KEDA)
           helm upgrade --install vote voting-app-vote/charts/vote \
             --namespace ${{ env.NAMESPACE }} \
             --set image.repository=vote \
-            --set image.tag=latest \
+            --set image.tag=latest --set image.digest= \
             --set image.pullPolicy=IfNotPresent \
+            --set scaledObject.create=false --set pdb.create=false \
+            --set networkPolicy.create=false \
             --set postgresql.host=postgresql \
             --set redis.host=redis-master \
             --set replicaCount=2
@@ -145,16 +149,19 @@ jobs:
           helm upgrade --install result voting-app-result/charts/result \
             --namespace ${{ env.NAMESPACE }} \
             --set image.repository=result \
-            --set image.tag=latest \
+            --set image.tag=latest --set image.digest= \
             --set image.pullPolicy=IfNotPresent \
+            --set scaledObject.create=false --set pdb.create=false \
+            --set networkPolicy.create=false \
             --set postgresql.host=postgresql
 
           # Worker
           helm upgrade --install worker voting-app-worker/charts/worker \
             --namespace ${{ env.NAMESPACE }} \
             --set image.repository=worker \
-            --set image.tag=latest \
+            --set image.tag=latest --set image.digest= \
             --set image.pullPolicy=IfNotPresent \
+            --set scaledObject.create=false --set pdb.create=false \
             --set postgresql.host=postgresql \
             --set redis.host=redis-master
 

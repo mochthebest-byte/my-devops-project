@@ -59,7 +59,7 @@ jobs:
       - name: Install PostgreSQL
         run: |
           helm upgrade --install postgresql bitnami/postgresql \
-            --namespace voting-app --version 16.x --set image.tag=latest \
+            --namespace voting-app --version 16.x --set image.tag=latest --set image.digest= \
             --set auth.database=db --set auth.username=vote_user \
             --set auth.existingSecret=postgresql
 
@@ -67,7 +67,7 @@ jobs:
       - name: Install Redis
         run: |
           helm upgrade --install redis bitnami/redis \
-            --namespace voting-app --version 21.x --set image.tag=latest \
+            --namespace voting-app --version 21.x --set image.tag=latest --set image.digest= \
             --set auth.enabled=false
 
       # Wait for databases
@@ -95,17 +95,17 @@ jobs:
       - name: Deploy Helm charts
         run: |
           helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
-            --set image.repository=vote --set image.tag=latest \
+            --set image.repository=vote --set image.tag=latest --set image.digest= \
             --set image.pullPolicy=IfNotPresent \
-            --set postgresql.host=postgresql --set redis.host=redis-master
+            --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql --set redis.host=redis-master
           helm upgrade --install result voting-app-result/charts/result \
             --namespace voting-app --set image.repository=result \
-            --set image.tag=latest --set image.pullPolicy=IfNotPresent \
-            --set postgresql.host=postgresql
+            --set image.tag=latest --set image.digest= --set image.pullPolicy=IfNotPresent \
+            --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql
           helm upgrade --install worker voting-app-worker/charts/worker \
             --namespace voting-app --set image.repository=worker \
-            --set image.tag=latest --set image.pullPolicy=IfNotPresent \
-            --set postgresql.host=postgresql --set redis.host=redis-master
+            --set image.tag=latest --set image.digest= --set image.pullPolicy=IfNotPresent \
+            --set scaledObject.create=false --set pdb.create=false --set networkPolicy.create=false --set postgresql.host=postgresql --set redis.host=redis-master
 
       # Wait for deployments
       - name: Wait for deployments
