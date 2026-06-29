@@ -97,9 +97,9 @@ jobs:
         run: |
           export KIND_CLUSTER_NAME=voting-app-local
           ECR_PREFIX="000000000000.dkr.ecr.eu-central-1.amazonaws.com"
-          kind load docker-image vote:latest result:latest worker:latest 
-            ${ECR_PREFIX}/my-app/vote:latest 
-            ${ECR_PREFIX}/my-app/result:latest 
+          kind load docker-image vote:latest result:latest worker:latest \
+            ${ECR_PREFIX}/my-app/vote:latest \
+            ${ECR_PREFIX}/my-app/result:latest \
             ${ECR_PREFIX}/my-app/worker:latest \
             --name voting-app-local
 
