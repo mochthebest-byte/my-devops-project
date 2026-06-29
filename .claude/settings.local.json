@@ -404,7 +404,9 @@
       "Bash(sed -i 's/--set image.tag=latest --set image.pullPolicy/--set image.tag=latest --set image.digest= --set image.pullPolicy/g' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
       "Bash(sed -i 's/--set image.pullPolicy=IfNotPresent \\\\\\\\/--set image.pullPolicy=IfNotPresent \\\\ *)",
       "Bash(sed -i 's/--set image.pullPolicy=IfNotPresent$/--set image.pullPolicy=IfNotPresent \\\\ *)",
-      "Bash(ghead -c 500 /dev/random)"
+      "Bash(ghead -c 500 /dev/random)",
+      "Bash(sed -i '/Create PostgreSQL secret/,/kubectl create secret/d' /home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml)",
+      "Bash(sed -i 's|ECR_PREFIX=\"000000000000.dkr.ecr.eu-central-1.amazonaws.com\"|export KIND_CLUSTER_NAME=voting-app-local\\\\n          ECR_PREFIX=\"000000000000.dkr.ecr.eu-central-1.amazonaws.com\"|' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)"
     ]
   }
 }

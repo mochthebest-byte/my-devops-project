@@ -45,14 +45,6 @@ jobs:
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo update
 
-      # Step 5: Create PostgreSQL secret + Install PostgreSQL
-      # ⚠️  CI-специфічний пароль в K8s Secret (без ESO, Kind кластер).
-      #      В production пароль постачається через ESO з AWS Secrets Manager.
-      - name: Create PostgreSQL secret
-        run: |
-          kubectl create namespace ${{ env.NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -
-          kubectl delete secret postgresql --namespace ${{ env.NAMESPACE }} --ignore-not-found
-          kubectl create secret generic postgresql \
             --namespace ${{ env.NAMESPACE }} \
             --from-literal=password=testpass \
             --from-literal=postgres-password=testpass
@@ -66,7 +58,7 @@ jobs:
             --set image.digest=
             --set auth.database=db \
             --set auth.username=vote_user \
-            --set auth.existingSecret=postgresql
+            --set auth.postgresPassword=testpass --set auth.replicationPassword=testpass
 
       # Step 6: Install Redis
       - name: Install Redis
