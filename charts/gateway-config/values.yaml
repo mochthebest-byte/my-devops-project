@@ -5,6 +5,13 @@
 # ─── Master switch ──────────────────────────────────────
 enabled: true
 
+# ─── Global AWS ────────────────────────────────────────
+# Account ID та регіон — перевизначаються per-environment
+# через ArgoCD helm.values (з charts/argocd-apps/values.yaml)
+global:
+  awsAccountId: "AWS_ACCOUNT_ID"
+  awsRegion: "eu-central-1"
+
 # ─── Domain ──────────────────────────────────────────────
 domain: mochthebest.pp.ua
 
@@ -14,8 +21,8 @@ domain: mochthebest.pp.ua
 # LoadBalancerConfiguration.listenerConfigurations (C2 fix).
 tls:
   enabled: true
-  # ACM ARN — використовується в LoadBalancerConfiguration
-  acmCertificateArn: "arn:aws:acm:eu-central-1:657954628960:certificate/22036369-7242-4539-8cf7-dadec0e93164"
+  # Тільки ID сертифіката (повний ARN збирається в шаблоні)
+  acmCertificateId: "22036369-7242-4539-8cf7-dadec0e93164"
 
 # ─── Gateway ─────────────────────────────────────────────
 gateway:

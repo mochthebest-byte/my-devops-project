@@ -82,7 +82,7 @@ resource "aws_secretsmanager_secret_version" "keycloak_admin" {
 #  Зберігає паролі для realm-користувачів (admin, user).
 #  The keycloak-realm-users ExternalSecret (charts/infra-bootstrap/)
 #  читає цей шлях і створює K8s Secret, який монтується в
-#  Keycloak StatefulSet для postStart синхронізації.
+#  Keycloak StatefulSet для PostSync Job (заміна postStart).
 
 resource "random_password" "keycloak_realm_users" {
   length  = 24

@@ -1,7 +1,10 @@
 replicaCount: 4
+global:
+  awsAccountId: "AWS_ACCOUNT_ID"
+  awsRegion: "eu-central-1"
 image:
-  repository: 657954628960.dkr.ecr.eu-central-1.amazonaws.com/my-app/vote
-  tag: latest
+  repository: my-app/vote
+  tag: stable
   pullPolicy: IfNotPresent
 
 postgresql:

@@ -17,10 +17,10 @@ metadata:
   namespace: {{ .Values.gateway.namespace }}
 spec:
   scheme: {{ .Values.gateway.scheme }}
-  {{- if and .Values.tls.enabled .Values.tls.acmCertificateArn }}
+  {{- if and .Values.tls.enabled .Values.tls.acmCertificateId (and .Values.global.awsAccountId .Values.global.awsRegion) }}
   listenerConfigurations:
     - protocolPort: "HTTPS:443"
       certificates:
-        - {{ .Values.tls.acmCertificateArn }}
+        - "arn:aws:acm:{{ .Values.global.awsRegion }}:{{ .Values.global.awsAccountId }}:certificate/{{ .Values.tls.acmCertificateId }}"
   {{- end }}
 {{- end }}

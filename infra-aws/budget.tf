@@ -20,7 +20,7 @@ resource "aws_budgets_budget" "monthly" {
     threshold                  = 80 # 80% = $40
     threshold_type             = "PERCENTAGE"
     notification_type          = "FORECASTED"
-    subscriber_email_addresses = ["admin@example.com"] # ⚠️ Замінити на реальний email
+    subscriber_email_addresses = ["admin@mochthebest.pp.ua"] # ⚠️ Замінити на реальний email адміна
   }
 
   notification {
@@ -28,7 +28,7 @@ resource "aws_budgets_budget" "monthly" {
     threshold                  = 100 # 100% = $50
     threshold_type             = "PERCENTAGE"
     notification_type          = "ACTUAL"
-    subscriber_email_addresses = ["admin@example.com"] # ⚠️ Замінити на реальний email
+    subscriber_email_addresses = ["admin@mochthebest.pp.ua"] # ⚠️ Замінити на реальний email адміна
   }
 
   tags = var.tags

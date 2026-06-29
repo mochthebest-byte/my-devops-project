@@ -1,16 +1,16 @@
-# Graph Report - my-devops-project  (2026-06-19)
+# Graph Report - my-devops-project  (2026-06-29)
 
 ## Corpus Check
-- 31 files · ~18,388 words
+- 33 files · ~69,388 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 381 nodes · 845 edges · 39 communities (28 shown, 11 thin omitted)
-- Extraction: 82% EXTRACTED · 18% INFERRED · 0% AMBIGUOUS · INFERRED: 148 edges (avg confidence: 0.8)
+- 387 nodes · 849 edges · 42 communities (31 shown, 11 thin omitted)
+- Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 148 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `49eb3ac2`
+- Built from commit: `698fb0a3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -48,9 +48,11 @@
 - [[_COMMUNITY_Community 32|Community 32]]
 - [[_COMMUNITY_Community 33|Community 33]]
 - [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
 - [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 40|Community 40]]
 
 ## God Nodes (most connected - your core abstractions)
@@ -80,23 +82,23 @@
 ## Import Cycles
 - None detected.
 
-## Communities (39 total, 11 thin omitted)
+## Communities (42 total, 11 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.14
-Nodes (39): B(), bg(), $c(), $d(), Da(), db(), df(), e() (+31 more)
+Cohesion: 0.15
+Nodes (27): Af(), B(), bg(), $c(), $d(), Da(), db(), eb() (+19 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.05
-Nodes (72): $a(), Aa(), Ad(), ae(), Af(), ba(), bb(), Bd() (+64 more)
+Cohesion: 0.06
+Nodes (53): $a(), Aa(), Ad(), ae(), ba(), bb(), Bd(), ca() (+45 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.13
-Nodes (27): Sf(), yf(), a(), at(), Ct(), e(), Et(), f() (+19 more)
+Nodes (29): ie(), Sf(), Uf(), a(), at(), c(), Ct(), e() (+21 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.13
-Nodes (28): ab(), Bc(), Cc(), cf(), dc(), Ga(), gd(), ha() (+20 more)
+Nodes (27): ab(), Bc(), Cc(), cf(), dc(), df(), e(), ec() (+19 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.14
@@ -186,19 +188,27 @@ Nodes (3): Features, Result Helm Chart, Values
 Cohesion: 0.50
 Nodes (3): Features, Values, Worker Helm Chart
 
+### Community 35 - "Community 35"
+Cohesion: 0.12
+Nodes (30): cb(), Ef(), fa(), hb(), hc(), he(), Ja(), je() (+22 more)
+
+### Community 39 - "Community 39"
+Cohesion: 0.40
+Nodes (4): Deploy Kafka via ArgoCD, Нотатки, Спосіб 1: Через ArgoCD (рекомендовано), Спосіб 2: Через Helm CLI напряму
+
 ## Knowledge Gaps
-- **101 isolated node(s):** `name`, `version`, `description`, `main`, `test` (+96 more)
+- **104 isolated node(s):** `name`, `version`, `description`, `main`, `test` (+99 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `a()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `d()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`?**
+- **Why does `a()` connect `Community 2` to `Community 0`, `Community 35`, `Community 3`, `Community 1`?**
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `d()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 35`?**
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `t()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`?**
+- **Why does `t()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`, `Community 35`?**
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `Cc()` (e.g. with `B()` and `Bc()`) actually correct?**
   _`Cc()` has 9 INFERRED edges - model-reasoned connections that need verification._
@@ -207,4 +217,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 22 inferred relationships involving `d()` (e.g. with `bg()` and `$c()`) actually correct?**
   _`d()` has 22 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `version`, `description` to the rest of the system?**
-  _101 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _104 weakly-connected nodes found - possible documentation gaps or missing edges._

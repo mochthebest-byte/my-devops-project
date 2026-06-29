@@ -1,9 +1,15 @@
 replicaCount: 2
 
+global:
+  # ══════════════════════════════════════════════════════════
+  #  AWS — перевизначається per-environment (ArgoCD helm.values)
+  # ══════════════════════════════════════════════════════════
+  awsAccountId: "AWS_ACCOUNT_ID"   # ⚠️ Замінити на ID вашого AWS акаунта
+  awsRegion: "eu-central-1"
+
 image:
-  # ⚠️ Хардкод Account ID — замінити при зміні AWS акаунта
-  repository: 657954628960.dkr.ecr.eu-central-1.amazonaws.com/my-app/vote
-  tag: latest
+  repository: my-app/vote             # Тільки ім'я репо (full URL збирається в шаблоні)
+  tag: stable                         # Overridden by CI via GitOps
   pullPolicy: IfNotPresent
 
 service:

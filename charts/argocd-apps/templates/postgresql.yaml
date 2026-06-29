@@ -13,8 +13,7 @@ spec:
     chart: postgresql
     helm:
       values: |
-        image:
-          tag: latest
+        # tag: latest removed — let chart version default match 18.7.x
         auth:
           database: db
           username: vote_user

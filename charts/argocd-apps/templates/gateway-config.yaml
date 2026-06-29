@@ -14,6 +14,9 @@ spec:
     helm:
       values: |
         enabled: true
+        global:
+          awsAccountId: {{ .Values.global.awsAccountId | quote }}
+          awsRegion: {{ .Values.global.awsRegion | quote }}
         tls:
           enabled: true
   destination:

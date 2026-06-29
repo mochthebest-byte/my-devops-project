@@ -35,8 +35,8 @@ on:
 env:
   AWS_REGION: eu-central-1
   CI_ROLE_ARN: arn:aws:iam::657954628960:role/my-app-eks-github-ci
-  # ⚠️  Account ID захардкоджено — при зміні акаунта оновити вручну
-  #     Або зробити OIDC-резолвінг через AWS, якщо CI запускається в тій же AWS.
+  # ⚠️  Account ID захардкоджено — GitHub Actions не має data.aws_caller_identity.
+  #     При зміні AWS акаунта — оновити CI_ROLE_ARN тут і в усіх IAM політиках.
   GITOPS_REPO: mochthebest-byte/gitops
   GITOPS_BRANCH: main
 

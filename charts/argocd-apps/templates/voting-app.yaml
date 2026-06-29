@@ -11,6 +11,11 @@ spec:
     repoURL: https://github.com/mochthebest-byte/my-devops-project.git
     targetRevision: HEAD
     path: voting-app-vote/charts/vote
+    helm:
+      values: |
+        global:
+          awsAccountId: {{ .Values.global.awsAccountId | quote }}
+          awsRegion: {{ .Values.global.awsRegion | quote }}
   destination:
     server: https://kubernetes.default.svc
     namespace: voting-app
