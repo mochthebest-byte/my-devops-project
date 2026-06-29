@@ -24,7 +24,7 @@ jobs:
 
       # Create Kind cluster with 3 nodes
       - name: Create Kind cluster
-        uses: helm/kind-action@v1
+        uses: helm/kind-action@v2
         with:
           config: kind-config.yaml
           cluster_name: voting-app-local
@@ -50,6 +50,7 @@ jobs:
       # Create PostgreSQL secret (CI without ESO)
       - name: Create PostgreSQL secret
         run: |
+          kubectl delete secret postgresql --namespace voting-app --ignore-not-found
           kubectl create secret generic postgresql \
             --namespace voting-app \
             --from-literal=password=testpass \
