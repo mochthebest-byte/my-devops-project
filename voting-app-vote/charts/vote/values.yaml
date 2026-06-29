@@ -34,11 +34,13 @@ scaledObject:
   maxReplicas: 5
   triggers:
     - type: cpu
-      metricType: Utilization
-      targetValue: 70
+      metadata:
+        type: Utilization
+        value: "70"
     - type: memory
-      metricType: Utilization
-      targetValue: 80
+      metadata:
+        type: Utilization
+        value: "80"
 
 networkPolicy:
   create: true
