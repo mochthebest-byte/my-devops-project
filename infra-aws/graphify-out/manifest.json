@@ -1,0 +1,22 @@
+{
+  "/home/psihson/my-devops-project/infra-aws/iam_policy.json": {
+    "mtime": 1780653190.6274924,
+    "ast_hash": "7f1322156fcd2c5e224a698e5989373b",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/infra-aws/scripts/setup-eks-post.sh": {
+    "mtime": 1780838190.8443792,
+    "ast_hash": "2edd420a69b040dbb752fb63ce8aa8db",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/infra-aws/aws-auth.yaml": {
+    "mtime": 1780422667.8678665,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/infra-aws/README.md": {
+    "mtime": 1782518756.5947258,
+    "ast_hash": "f17b8f98c578001a410d6763f04deecf",
+    "semantic_hash": ""
+  }
+}

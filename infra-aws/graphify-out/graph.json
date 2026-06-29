@@ -1,0 +1,255 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "iam_policy.json",
+      "file_type": "code",
+      "source_file": "iam_policy.json",
+      "source_location": "L1",
+      "id": "iam_policy_json",
+      "community": 1,
+      "norm_label": "iam_policy.json"
+    },
+    {
+      "label": "Version",
+      "file_type": "code",
+      "source_file": "iam_policy.json",
+      "source_location": "L2",
+      "id": "infra_aws_iam_policy_version",
+      "community": 1,
+      "norm_label": "version"
+    },
+    {
+      "label": "Statement",
+      "file_type": "code",
+      "source_file": "iam_policy.json",
+      "source_location": "L3",
+      "id": "infra_aws_iam_policy_statement",
+      "community": 1,
+      "norm_label": "statement"
+    },
+    {
+      "label": "setup-eks-post.sh",
+      "file_type": "code",
+      "source_file": "scripts/setup-eks-post.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "scripts_setup_eks_post_sh",
+      "community": 2,
+      "norm_label": "setup-eks-post.sh"
+    },
+    {
+      "label": "setup-eks-post.sh script",
+      "file_type": "code",
+      "source_file": "scripts/setup-eks-post.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "home_psihson_my_devops_project_infra_aws_scripts_setup_eks_post_sh__entry",
+      "community": 2,
+      "norm_label": "setup-eks-post.sh script"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 0,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Infrastructure as Code \u2014 Terraform",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "infra_aws_readme_infrastructure_as_code_terraform",
+      "community": 0,
+      "norm_label": "infrastructure as code \u2014 terraform"
+    },
+    {
+      "label": "Resources",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "id": "infra_aws_readme_resources",
+      "community": 0,
+      "norm_label": "resources"
+    },
+    {
+      "label": "Other Resources",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L13",
+      "id": "infra_aws_readme_other_resources",
+      "community": 0,
+      "norm_label": "other resources"
+    },
+    {
+      "label": "IAM / OIDC",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L22",
+      "id": "infra_aws_readme_iam_oidc",
+      "community": 0,
+      "norm_label": "iam / oidc"
+    },
+    {
+      "label": "Helm Releases (deployed via Terraform)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "id": "infra_aws_readme_helm_releases_deployed_via_terraform",
+      "community": 0,
+      "norm_label": "helm releases (deployed via terraform)"
+    },
+    {
+      "label": "Secrets",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "id": "infra_aws_readme_secrets",
+      "community": 0,
+      "norm_label": "secrets"
+    },
+    {
+      "label": "State",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L50",
+      "id": "infra_aws_readme_state",
+      "community": 0,
+      "norm_label": "state"
+    },
+    {
+      "label": "Usage",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L55",
+      "id": "infra_aws_readme_usage",
+      "community": 0,
+      "norm_label": "usage"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "iam_policy.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "iam_policy_json",
+      "target": "infra_aws_iam_policy_statement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "iam_policy.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "iam_policy_json",
+      "target": "infra_aws_iam_policy_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/setup-eks-post.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_setup_eks_post_sh",
+      "target": "home_psihson_my_devops_project_infra_aws_scripts_setup_eks_post_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "infra_aws_readme_infrastructure_as_code_terraform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_helm_releases_deployed_via_terraform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_iam_oidc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_other_resources",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_resources",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_secrets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "infra_aws_readme_infrastructure_as_code_terraform",
+      "target": "infra_aws_readme_usage",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "eb61e7198bc23d7f5172533241543544b9d858e6"
+}

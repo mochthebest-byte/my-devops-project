@@ -490,8 +490,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/loki-tempo/templates/otel-collector.yaml": {
-    "mtime": 1782602513.5003405,
-    "ast_hash": "08c140e47b43c55065c25232ef226190",
+    "mtime": 1782754677.3174121,
+    "ast_hash": "da48f93ad2f420145bd8d104c2782d3f",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/loki-tempo/templates/tempo.yaml": {
@@ -712,6 +712,31 @@
   "/home/psihson/my-devops-project/voting-app-vote/wsgi.py": {
     "mtime": 1782754035.1344707,
     "ast_hash": "4229a5365e5bc858cd424393fa3ddc86",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/vso-config/values.yaml": {
+    "mtime": 1782754676.5944033,
+    "ast_hash": "b50f849670aa3c384825933f672181c6",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/vso-config/Chart.yaml": {
+    "mtime": 1782754676.0173962,
+    "ast_hash": "58498981eecf4ea6a7c269a38e348dcc",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/vso-config/templates/vault-connection.yaml": {
+    "mtime": 1782754677.3174121,
+    "ast_hash": "136ef15bb56168febd740099a0dc14fa",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/vso-config/templates/vault-auth.yaml": {
+    "mtime": 1782754678.0894217,
+    "ast_hash": "8f7a6fcce1d64d152660b729ce9c99a7",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/argocd-apps/templates/vso-config.yaml": {
+    "mtime": 1782754682.1864722,
+    "ast_hash": "887db5c3a67892e96094507ec152214e",
     "semantic_hash": ""
   }
 }

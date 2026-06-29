@@ -27,12 +27,18 @@ data:
         endpoint: tempo.tempo:4317
         tls:
           insecure: true
+      otlphttp/loki:
+        endpoint: http://loki.loki:3100/otlp
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: [batch]
           exporters: [otlp]
+        logs:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [otlphttp/loki]
 
 ---
 apiVersion: apps/v1
