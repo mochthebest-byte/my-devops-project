@@ -28,6 +28,7 @@ spec:
       {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ include "vote.fullname" . }}-sa
       {{- end }}
+      automountServiceAccountToken: false
       # InitContainers: wait for PostgreSQL and Redis before starting
       initContainers:
         - name: wait-for-postgresql

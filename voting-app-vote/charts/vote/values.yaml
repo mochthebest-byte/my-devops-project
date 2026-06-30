@@ -21,7 +21,7 @@ service:
   name: http
 
 serviceAccount:
-  create: false
+  create: true
   name: ""
   annotations: {}
 

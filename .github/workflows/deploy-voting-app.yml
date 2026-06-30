@@ -148,14 +148,14 @@ jobs:
             echo "tag=${IMAGE_TAG}"
           } >> "$GITHUB_OUTPUT"
 
-      # 🔒 Trivy scan — warn-only until CVE fix pass
+      # 🔒 Trivy scan — fail on CRITICAL+HIGH before ECR push (C5 fix)
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ steps.build-image.outputs.registry }}/my-app/${{ matrix.service }}:${{ steps.build-image.outputs.tag }}
           format: table
-          exit-code: 0
-          severity: CRITICAL
+          exit-code: 1
+          severity: CRITICAL,HIGH
           ignore-unfixed: true
 
       # 📦 Generate CycloneDX SBOM
@@ -189,6 +189,37 @@ jobs:
             --cache-from "type=registry,ref=${ECR_REGISTRY}/${ECR_REPOSITORY}:latest" \
             --cache-to "type=inline" \
             "src/voting-app/${{ matrix.service }}"
+
+      # 🔏 Cosign: sign image + attest SBOM (keyless via GitHub OIDC)
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3.8.1
+
+      - name: Sign container image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: my-app/${{ matrix.service }}
+          IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
+          COSIGN_EXPERIMENTAL: "1"
+        run: |
+          IMAGE_REF="${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+          echo "Signing ${IMAGE_REF}"
+          cosign sign --yes "${IMAGE_REF}"
+
+      - name: Attach SBOM as attestation
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: my-app/${{ matrix.service }}
+          IMAGE_TAG: ${{ inputs.image_tag || github.sha }}
+          COSIGN_EXPERIMENTAL: "1"
+        run: |
+          IMAGE_REF="${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+          SBOM_FILE="sbom-${{ matrix.service }}.json"
+          if [ -f "${SBOM_FILE}" ]; then
+            echo "Attesting SBOM for ${IMAGE_REF}"
+            cosign attest --yes --predicate "${SBOM_FILE}" --type cyclonedx "${IMAGE_REF}"
+          else
+            echo "SBOM file ${SBOM_FILE} not found — skipping attestation"
+          fi
 
       # Update GitOps repo with new image tag (optional — ArgoCD is primary)
       - name: Checkout GitOps repo

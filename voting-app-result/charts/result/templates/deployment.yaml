@@ -27,6 +27,7 @@ spec:
       {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ include "result.fullname" . }}-sa
       {{- end }}
+      automountServiceAccountToken: false
       # InitContainer: wait for PostgreSQL before starting
       initContainers:
         - name: wait-for-postgresql
