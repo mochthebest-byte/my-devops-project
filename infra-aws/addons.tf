@@ -473,10 +473,4 @@ resource "aws_iam_role_policy_attachment" "karpenter_controller" {
   role       = aws_iam_role.karpenter_controller.name
 }
 
-# ─── Tag private subnets для Karpenter discovery ──────
-resource "aws_ec2_tag" "karpenter_subnet" {
-  for_each    = toset(module.vpc.private_subnets)
-  resource_id = each.value
-  key         = "karpenter.sh/discovery"
-  value       = module.eks.cluster_name
-}
+
