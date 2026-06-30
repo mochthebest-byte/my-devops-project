@@ -16,6 +16,7 @@ spec:
         global:
           awsAccountId: {{ .Values.global.awsAccountId | quote }}
           awsRegion: {{ .Values.global.awsRegion | quote }}
+          releaseNameOverride: "voting-app"
   destination:
     server: https://kubernetes.default.svc
     namespace: voting-app
