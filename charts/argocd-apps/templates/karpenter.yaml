@@ -8,8 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: public.ecr.aws/karpenter/karpenter
-    targetRevision: ~> 1.4
+    repoURL: https://github.com/mochthebest-byte/my-devops-project.git
+    targetRevision: HEAD
+    path: charts/karpenter-chart
     helm:
       values: |
         serviceAccount:
