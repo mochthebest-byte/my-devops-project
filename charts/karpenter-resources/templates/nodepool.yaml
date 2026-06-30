@@ -19,9 +19,9 @@ spec:
         group: karpenter.k8s.aws
         kind: EC2NodeClass
         name: default
+      expireAfter: 720h
   limits:
     cpu: 20
   disruption:
     consolidationPolicy: WhenEmptyOrUnderutilized
     consolidateAfter: 10m
-    expireAfter: 720h
