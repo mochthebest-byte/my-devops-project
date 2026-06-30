@@ -69,7 +69,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: tempo
-          image: docker.io/grafana/tempo@sha256:1ce31d6d7ffab62189685e8c47881d4a561c5d38bd0dbd66e40ca83cef07923d
+          image: docker.io/grafana/tempo:2.10.7
           args:
             - -config.file=/etc/tempo/config/config.yaml
           ports:
@@ -85,16 +85,19 @@ spec:
             - name: data
               mountPath: /var/tempo
           readinessProbe:
-            httpGet:
-              path: /ready
-              port: http
+            exec:
+              command:
+                - sh
+                - -c
+                - wget -qO- http://localhost:3200/ready 2>/dev/null | grep -q "ready"
             initialDelaySeconds: 15
             periodSeconds: 10
           livenessProbe:
-            httpGet:
-              path: /status/buildinfo
-              port: http
-            initialDelaySeconds: 30
+            exec:
+              command:
+                - pgrep
+                - tempo
+            initialDelaySeconds: 15
             periodSeconds: 30
           resources:
             requests:
