@@ -11,6 +11,9 @@ spec:
     repoURL: https://cloudnative-pg.github.io/charts
     targetRevision: 0.29.x
     chart: cloudnative-pg
+  ignoreDifferences:
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
   destination:
     server: https://kubernetes.default.svc
     namespace: cnpg-system
@@ -20,5 +23,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true
-      - RespectIgnoreDifferences=true
+      - Replace=true
