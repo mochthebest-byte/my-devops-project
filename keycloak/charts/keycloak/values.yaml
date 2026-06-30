@@ -21,16 +21,14 @@ service:
   targetPort: 8080
   name: http
 
-# ─── TLS / HTTPS (cert-manager + ClusterIssuer) ────────────────
-# Enabled: Keycloak serves HTTPS on :8443 with a cert signed by
-# ClusterIssuer "keycloak-selfsigned" via cert-manager.
-# The cert SANs include {{ .Values.hostname }} (for ingress/ALB),
-# keycloak.keycloak.svc.cluster.local (in-cluster service access),
-# and localhost (for post-sync Job).
+# ─── TLS / HTTPS (Helm self-signed fallback until cert-manager syncs) ─
+# certManager: true → cert-manager.io Certificate (ClusterIssuer)
+# certManager: false → Helm sprig genSignedCert (self-signed, fallback)
 # HTTP remains available on :8080 for in-pod health checks.
 tls:
   enabled: true
   httpsPort: 8443
+  certManager: false
 
 postgresql:
   host: keycloak-postgresql.keycloak.svc.cluster.local

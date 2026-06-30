@@ -1,4 +1,6 @@
 {{- if .Values.tls.enabled }}
+{{- if .Values.tls.certManager }}
+# cert-manager.io Certificate — used when cert-manager CRDs are installed
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -21,4 +23,21 @@ spec:
   # 1 year
   duration: 8760h
   renewBefore: 720h
+{{- else }}
+# Helm self-signed cert (fallback until cert-manager syncs)
+{{- $ca := genCA "keycloak-ca" 365 }}
+{{- $cert := genSignedCert "keycloak.keycloak.svc.cluster.local" (list) (list "keycloak.keycloak.svc.cluster.local" "localhost") 365 $ca }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: keycloak-tls
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: keycloak
+type: kubernetes.io/tls
+data:
+  ca.crt: {{ $ca.Cert | b64enc }}
+  tls.crt: {{ $cert.Cert | b64enc }}
+  tls.key: {{ $cert.Key | b64enc }}
+{{- end }}
 {{- end }}
