@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: voting-app-vote
+  name: {{ include "vote.fullname" . }}
   namespace: voting-app
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -9,21 +9,15 @@ spec:
     canary:
       steps:
 {{ toYaml .Values.canary.steps | indent 8 }}
-      analysis:
-        templates:
-          - templateName: vote-success-rate
-        startingStep: 1
-        args:
-          - name: canary-hash
-            valueFrom:
-              podTemplateHashValue: Latest
   selector:
     matchLabels:
-      app: voting-app-vote
+      app.kubernetes.io/name: {{ include "vote.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: voting-app-vote
+        app.kubernetes.io/name: {{ include "vote.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ .Values.serviceAccount.name | default (printf "%s-sa" .Release.Name) }}

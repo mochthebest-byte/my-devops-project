@@ -1,4 +1,4 @@
-replicaCount: 4
+replicaCount: 2
 global:
   awsAccountId: "AWS_ACCOUNT_ID"
   awsRegion: "eu-central-1"
