@@ -22,7 +22,7 @@ pdb:
 scaledObject:
   create: true
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 10
   triggers:
     - type: cpu
       metricType: Utilization
@@ -32,6 +32,11 @@ scaledObject:
       metricType: Utilization
       metadata:
         value: "80"
+    - type: redis
+      metadata:
+        address: redis-master:6379
+        listName: votes
+        listLength: "10"
 
 networkPolicy:
   create: true
