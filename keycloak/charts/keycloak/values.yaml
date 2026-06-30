@@ -28,7 +28,7 @@ service:
 tls:
   enabled: true
   httpsPort: 8443
-  certManager: false
+  certManager: true
 
 postgresql:
   host: keycloak-postgresql.keycloak.svc.cluster.local
