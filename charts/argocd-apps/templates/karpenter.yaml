@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: public.ecr.aws/karpenter/karpenter
-    targetRevision: ~> 1.3
+    targetRevision: ~> 1.4
     helm:
       values: |
         serviceAccount:

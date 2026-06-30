@@ -69,7 +69,7 @@ spec:
       serviceAccountName: promtail
       containers:
         - name: promtail
-          image: docker.io/grafana/promtail:3.3.2
+          image: docker.io/grafana/promtail@sha256:cb4990801ec58975c5e231057c2bcf204c85fac428eec65ad66e0016c64b9608
           args:
             - -config.file=/etc/promtail/config/config.yaml
           volumeMounts:

@@ -12,6 +12,7 @@ mode: production
 image:
   repository: quay.io/keycloak/keycloak
   tag: "26.0.0"
+  digest: "sha256:db0d0f2c2eee8618a37a50e04affb69823e56687b4d1b676a847a4b85de62178"
   pullPolicy: IfNotPresent
 
 service:
