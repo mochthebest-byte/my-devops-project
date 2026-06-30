@@ -1,16 +1,16 @@
-# Graph Report - my-devops-project  (2026-06-29)
+# Graph Report - my-devops-project  (2026-06-30)
 
 ## Corpus Check
-- 35 files · ~71,029 words
+- 36 files · ~84,657 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 394 nodes · 854 edges · 43 communities (31 shown, 12 thin omitted)
+- 400 nodes · 859 edges · 44 communities (32 shown, 12 thin omitted)
 - Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 148 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `15ac4abf`
+- Built from commit: `274d0dcb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -55,6 +55,7 @@
 - [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 40|Community 40]]
 - [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `p()` - 36 edges
@@ -83,7 +84,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (43 total, 12 thin omitted)
+## Communities (44 total, 12 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.50
@@ -91,15 +92,15 @@ Nodes (3): healthz(), Gunicorn WSGI entrypoint with /healthz endpoint.  Imports 
 
 ### Community 1 - "Community 1"
 Cohesion: 0.06
-Nodes (53): $a(), Aa(), Ad(), ae(), Af(), B(), ba(), Bd() (+45 more)
+Nodes (54): $a(), Aa(), Ad(), ae(), ba(), bb(), Bd(), ca() (+46 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.12
-Nodes (29): he(), ie(), je(), Ob(), yf(), a(), at(), c() (+21 more)
+Cohesion: 0.13
+Nodes (26): Sf(), yf(), a(), at(), Ct(), e(), Et(), f() (+18 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.13
-Nodes (31): Bc(), cb(), Cc(), cf(), dc(), ec(), ed(), G() (+23 more)
+Cohesion: 0.10
+Nodes (44): ab(), B(), Bc(), $c(), cb(), Cc(), cf(), dc() (+36 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.14
@@ -190,22 +191,26 @@ Cohesion: 0.50
 Nodes (3): Features, Values, Worker Helm Chart
 
 ### Community 35 - "Community 35"
-Cohesion: 0.10
-Nodes (53): ab(), bb(), bg(), $d(), Da(), db(), df(), e() (+45 more)
+Cohesion: 0.11
+Nodes (42): Af(), bg(), $d(), Da(), db(), e(), ea(), Ef() (+34 more)
 
 ### Community 39 - "Community 39"
 Cohesion: 0.40
 Nodes (4): Deploy Kafka via ArgoCD, Нотатки, Спосіб 1: Через ArgoCD (рекомендовано), Спосіб 2: Через Helm CLI напряму
 
+### Community 43 - "Community 43"
+Cohesion: 0.33
+Nodes (5): Documentation, Installing the Chart, karpenter, Values, Verification
+
 ## Knowledge Gaps
-- **106 isolated node(s):** `http`, `server`, `name`, `version`, `description` (+101 more)
+- **109 isolated node(s):** `http`, `server`, `name`, `version`, `description` (+104 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `a()` connect `Community 2` to `Community 3`, `Community 1`, `Community 35`?**
+- **Why does `a()` connect `Community 2` to `Community 35`, `Community 3`, `Community 1`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **Why does `d()` connect `Community 35` to `Community 1`, `Community 2`, `Community 3`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
@@ -218,4 +223,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 22 inferred relationships involving `d()` (e.g. with `bg()` and `$c()`) actually correct?**
   _`d()` has 22 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `http`, `server`, `name` to the rest of the system?**
-  _108 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _111 weakly-connected nodes found - possible documentation gaps or missing edges._

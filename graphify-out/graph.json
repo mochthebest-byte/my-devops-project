@@ -306,7 +306,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_c",
-      "community": 2,
+      "community": 3,
       "norm_label": "c()"
     },
     {
@@ -378,7 +378,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_j",
-      "community": 35,
+      "community": 2,
       "norm_label": "j()"
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L6",
       "id": "views_angular_min_b",
-      "community": 1,
+      "community": 3,
       "norm_label": "b()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L8",
       "id": "views_angular_min_mb",
-      "community": 1,
+      "community": 3,
       "norm_label": "mb()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_n",
-      "community": 35,
+      "community": 1,
       "norm_label": "n()"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_yd",
-      "community": 1,
+      "community": 3,
       "norm_label": "yd()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_ob",
-      "community": 2,
+      "community": 1,
       "norm_label": "ob()"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_qc",
-      "community": 3,
+      "community": 1,
       "norm_label": "qc()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_k",
-      "community": 35,
+      "community": 1,
       "norm_label": "k()"
     },
     {
@@ -702,7 +702,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_ea",
-      "community": 1,
+      "community": 35,
       "norm_label": "ea()"
     },
     {
@@ -747,7 +747,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_sc",
-      "community": 35,
+      "community": 1,
       "norm_label": "sc()"
     },
     {
@@ -783,7 +783,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_ab",
-      "community": 35,
+      "community": 3,
       "norm_label": "ab()"
     },
     {
@@ -792,7 +792,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_na",
-      "community": 35,
+      "community": 1,
       "norm_label": "na()"
     },
     {
@@ -801,7 +801,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L13",
       "id": "views_angular_min_fa",
-      "community": 35,
+      "community": 1,
       "norm_label": "fa()"
     },
     {
@@ -810,7 +810,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L14",
       "id": "views_angular_min_bb",
-      "community": 35,
+      "community": 1,
       "norm_label": "bb()"
     },
     {
@@ -846,7 +846,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L15",
       "id": "views_angular_min_uc",
-      "community": 1,
+      "community": 3,
       "norm_label": "uc()"
     },
     {
@@ -882,7 +882,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_wc",
-      "community": 1,
+      "community": 35,
       "norm_label": "wc()"
     },
     {
@@ -972,7 +972,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L21",
       "id": "views_angular_min_he",
-      "community": 2,
+      "community": 1,
       "norm_label": "he()"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L22",
       "id": "views_angular_min_sa",
-      "community": 35,
+      "community": 3,
       "norm_label": "sa()"
     },
     {
@@ -1017,7 +1017,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L23",
       "id": "views_angular_min_ie",
-      "community": 2,
+      "community": 1,
       "norm_label": "ie()"
     },
     {
@@ -1026,7 +1026,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L25",
       "id": "views_angular_min_je",
-      "community": 2,
+      "community": 1,
       "norm_label": "je()"
     },
     {
@@ -1044,7 +1044,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L29",
       "id": "views_angular_min_kc",
-      "community": 35,
+      "community": 1,
       "norm_label": "kc()"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L30",
       "id": "views_angular_min_vb",
-      "community": 35,
+      "community": 1,
       "norm_label": "vb()"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L30",
       "id": "views_angular_min_tb",
-      "community": 35,
+      "community": 1,
       "norm_label": "tb()"
     },
     {
@@ -1098,7 +1098,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L31",
       "id": "views_angular_min_ub",
-      "community": 35,
+      "community": 1,
       "norm_label": "ub()"
     },
     {
@@ -1107,7 +1107,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_wb",
-      "community": 35,
+      "community": 1,
       "norm_label": "wb()"
     },
     {
@@ -1116,7 +1116,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_xb",
-      "community": 35,
+      "community": 1,
       "norm_label": "xb()"
     },
     {
@@ -1143,7 +1143,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L34",
       "id": "views_angular_min_nf",
-      "community": 1,
+      "community": 35,
       "norm_label": "nf()"
     },
     {
@@ -1161,7 +1161,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L34",
       "id": "views_angular_min_of",
-      "community": 35,
+      "community": 1,
       "norm_label": "of()"
     },
     {
@@ -1206,7 +1206,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L36",
       "id": "views_angular_min_ta",
-      "community": 1,
+      "community": 35,
       "norm_label": "ta()"
     },
     {
@@ -1215,7 +1215,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L37",
       "id": "views_angular_min_sf",
-      "community": 35,
+      "community": 2,
       "norm_label": "sf()"
     },
     {
@@ -1233,7 +1233,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L41",
       "id": "views_angular_min_ve",
-      "community": 1,
+      "community": 35,
       "norm_label": "ve()"
     },
     {
@@ -1314,7 +1314,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L79",
       "id": "views_angular_min_c",
-      "community": 1,
+      "community": 3,
       "norm_label": "$c()"
     },
     {
@@ -1323,7 +1323,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L80",
       "id": "views_angular_min_df",
-      "community": 35,
+      "community": 3,
       "norm_label": "df()"
     },
     {
@@ -1350,7 +1350,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L82",
       "id": "views_angular_min_mf",
-      "community": 1,
+      "community": 3,
       "norm_label": "mf()"
     },
     {
@@ -1386,7 +1386,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L84",
       "id": "views_angular_min_kf",
-      "community": 35,
+      "community": 1,
       "norm_label": "kf()"
     },
     {
@@ -1431,7 +1431,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L99",
       "id": "views_angular_min_id",
-      "community": 35,
+      "community": 3,
       "norm_label": "id()"
     },
     {
@@ -1503,7 +1503,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L109",
       "id": "views_angular_min_md",
-      "community": 1,
+      "community": 35,
       "norm_label": "md()"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L146",
       "id": "views_angular_min_af",
-      "community": 1,
+      "community": 35,
       "norm_label": "af()"
     },
     {
@@ -1728,7 +1728,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L150",
       "id": "views_angular_min_jc",
-      "community": 1,
+      "community": 3,
       "norm_label": "jc()"
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L151",
       "id": "views_angular_min_jg",
-      "community": 1,
+      "community": 3,
       "norm_label": "jg()"
     },
     {
@@ -1764,7 +1764,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L153",
       "id": "views_angular_min_hc",
-      "community": 1,
+      "community": 3,
       "norm_label": "hc()"
     },
     {
@@ -1863,7 +1863,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L167",
       "id": "views_angular_min_kb",
-      "community": 1,
+      "community": 35,
       "norm_label": "kb()"
     },
     {
@@ -1872,7 +1872,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L168",
       "id": "views_angular_min_jb",
-      "community": 1,
+      "community": 35,
       "norm_label": "jb()"
     },
     {
@@ -3204,6 +3204,60 @@
     {
       "label": "README.md",
       "file_type": "document",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L1",
+      "id": "charts_karpenter_chart_readme_md",
+      "community": 43,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "karpenter",
+      "file_type": "document",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L1",
+      "id": "karpenter_chart_readme_karpenter",
+      "community": 43,
+      "norm_label": "karpenter"
+    },
+    {
+      "label": "Documentation",
+      "file_type": "document",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L7",
+      "id": "karpenter_chart_readme_documentation",
+      "community": 43,
+      "norm_label": "documentation"
+    },
+    {
+      "label": "Installing the Chart",
+      "file_type": "document",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L11",
+      "id": "karpenter_chart_readme_installing_the_chart",
+      "community": 43,
+      "norm_label": "installing the chart"
+    },
+    {
+      "label": "Verification",
+      "file_type": "document",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L25",
+      "id": "karpenter_chart_readme_verification",
+      "community": 43,
+      "norm_label": "verification"
+    },
+    {
+      "label": "Values",
+      "file_type": "document",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L39",
+      "id": "karpenter_chart_readme_values",
+      "community": 43,
+      "norm_label": "values"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
       "source_file": "charts/infra-bootstrap/README.md",
       "source_location": "L1",
       "id": "charts_infra_bootstrap_readme_md",
@@ -3677,9 +3731,9 @@
       "source_file": "voting-app-result/healthz.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_result_healthz_js",
-      "target": "voting_app_result_healthz_http",
-      "confidence_score": 1.0
+      "target": "voting_app_result_healthz_http"
     },
     {
       "relation": "contains",
@@ -3687,9 +3741,9 @@
       "source_file": "voting-app-result/healthz.js",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_result_healthz_js",
-      "target": "voting_app_result_healthz_server",
-      "confidence_score": 1.0
+      "target": "voting_app_result_healthz_server"
     },
     {
       "relation": "contains",
@@ -11287,9 +11341,9 @@
       "source_file": "voting-app-vote/wsgi.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_vote_wsgi_py",
-      "target": "voting_app_vote_wsgi_healthz",
-      "confidence_score": 1.0
+      "target": "voting_app_vote_wsgi_healthz"
     },
     {
       "relation": "rationale_for",
@@ -11297,9 +11351,9 @@
       "source_file": "voting-app-vote/wsgi.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_vote_wsgi_rationale_1",
-      "target": "voting_app_vote_wsgi_py",
-      "confidence_score": 1.0
+      "target": "voting_app_vote_wsgi_py"
     },
     {
       "relation": "rationale_for",
@@ -11307,9 +11361,9 @@
       "source_file": "voting-app-vote/wsgi.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "voting_app_vote_wsgi_rationale_14",
-      "target": "voting_app_vote_wsgi_healthz",
-      "confidence_score": 1.0
+      "target": "voting_app_vote_wsgi_healthz"
     },
     {
       "relation": "contains",
@@ -12300,6 +12354,56 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "charts_karpenter_chart_readme_md",
+      "target": "karpenter_chart_readme_karpenter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "karpenter_chart_readme_karpenter",
+      "target": "karpenter_chart_readme_documentation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "karpenter_chart_readme_karpenter",
+      "target": "karpenter_chart_readme_installing_the_chart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "karpenter_chart_readme_karpenter",
+      "target": "karpenter_chart_readme_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "charts/karpenter-chart/README.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "karpenter_chart_readme_installing_the_chart",
+      "target": "karpenter_chart_readme_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "charts/infra-bootstrap/README.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -12709,5 +12813,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "15ac4abf91a100108f8e4b0ff10622246ffdf6fd"
+  "built_at_commit": "274d0dcbb5654987161d4245e8e46b4d0c3a6b2c"
 }

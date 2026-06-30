@@ -426,7 +426,8 @@
       "Bash(sed -i '/export KIND_CLUSTER_NAME/d' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
       "Bash(sed -i '/ECR_PREFIX/d' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
       "Bash(sed -i 's/vote:latest result:latest worker:latest \\\\\\\\$/vote:latest result:latest worker:latest \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
-      "Bash(sed -i '/vote:latest result:latest worker:latest \\\\\\\\/,/--name voting-app-local/{/vote:latest/d}' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)"
+      "Bash(sed -i '/vote:latest result:latest worker:latest \\\\\\\\/,/--name voting-app-local/{/vote:latest/d}' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
+      "Bash(xargs -I {} sh -c 'kubectl get {} -n keycloak -o name 2>/dev/null')"
     ]
   }
 }
