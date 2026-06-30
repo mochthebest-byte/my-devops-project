@@ -452,7 +452,10 @@ data "aws_iam_policy_document" "karpenter_controller" {
       "iam:AddRoleToInstanceProfile",
       "iam:RemoveRoleFromInstanceProfile",
     ]
-    resources = ["arn:aws:iam::*:instance-profile/${var.project_name}-karpenter-*"]
+    resources = [
+      "arn:aws:iam::*:instance-profile/${var.project_name}-karpenter-*",
+      "arn:aws:iam::*:instance-profile/${module.eks.cluster_name}_*",
+    ]
   }
   statement {
     actions = [
