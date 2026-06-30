@@ -34,7 +34,7 @@ scaledObject:
         value: "80"
     - type: redis
       metadata:
-        address: redis-master:6379
+        address: redis-master.voting-app:6379
         listName: votes
         listLength: "10"
 

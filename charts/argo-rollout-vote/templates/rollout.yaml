@@ -57,6 +57,8 @@ spec:
               value: "Docker"
           ports:
             - containerPort: 80
+              name: http
+              protocol: TCP
           readinessProbe:
             httpGet:
               path: {{ .Values.probes.readinessPath }}
