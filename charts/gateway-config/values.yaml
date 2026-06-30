@@ -35,7 +35,7 @@ gateway:
 externalDNS:
   enabled: true
   # tpl-сумісний — використовує .Values.domain
-  hostname: "vote.{{ .Values.domain }}, result.{{ .Values.domain }}, grafana.{{ .Values.domain }}, keycloak.{{ .Values.domain }}, argocd.{{ .Values.domain }}"
+  hostname: "vote.{{ .Values.domain }}, result.{{ .Values.domain }}, grafana.{{ .Values.domain }}, keycloak.{{ .Values.domain }}, argocd.{{ .Values.domain }}, rollouts.{{ .Values.domain }}"
 
 # ─── Routes — хто на якому субдомені ────────────────────
 routes:
@@ -83,4 +83,13 @@ routes:
     namespace: argocd
     serviceName: argocd-server
     port: 80
+
+  rollouts:
+    enabled: true
+    sectionName: https
+    hostnames:
+      - "rollouts.mochthebest.pp.ua"
+    namespace: argo-rollouts
+    serviceName: argo-rollouts-dashboard
+    port: 3100
 

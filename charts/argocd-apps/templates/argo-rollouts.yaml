@@ -19,12 +19,7 @@ spec:
         dashboard:
           enabled: true
           ingress:
-            enabled: true
-            ingressClassName: ""
-            hosts:
-              - rollouts.mochthebest.pp.ua
-            annotations:
-              external-dns.alpha.kubernetes.io/hostname: "rollouts.mochthebest.pp.ua"
+            enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: argo-rollouts
