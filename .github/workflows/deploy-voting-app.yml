@@ -121,6 +121,7 @@ jobs:
           cp "dockerfiles/voting-app-${{ matrix.service }}/Dockerfile" "${DOCKER_CTX}/"
           cp "dockerfiles/voting-app-${{ matrix.service }}/wsgi.py" "${DOCKER_CTX}/" 2>/dev/null || true
           cp "dockerfiles/voting-app-${{ matrix.service }}/healthz.js" "${DOCKER_CTX}/" 2>/dev/null || true
+          cp "dockerfiles/voting-app-${{ matrix.service }}/app.py" "${DOCKER_CTX}/" 2>/dev/null || true
 
           echo "Building ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
           echo "  Context: ${DOCKER_CTX}"
