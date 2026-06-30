@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "vote.fullname" . }}
+  name: {{ include "vote.rolloutName" . }}
   namespace: voting-app
 spec:
   replicas: {{ .Values.replicaCount }}

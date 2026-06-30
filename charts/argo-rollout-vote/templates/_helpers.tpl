@@ -25,6 +25,10 @@ Override instance via helm values: global.releaseNameOverride="voting-app"
 {{- default .Release.Name .Values.global.releaseNameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
+{{- define "vote.rolloutName" -}}
+{{- printf "%s-rollout" (include "vote.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
 {{- define "vote.labels" -}}
 app.kubernetes.io/name: {{ include "vote.name" . }}
 app.kubernetes.io/instance: {{ include "vote.instance" . }}
