@@ -5,7 +5,10 @@
 #  Ці значення використовуються в Application templates
 #  для передачі в downstream Helm charts через helm.values.
 #
-#  ⚠️  При зміні AWS акаунта — оновити тільки тут.
+#  ❗ Single source of truth для ArgoCD-деплоїв.
+#     В Terraform аналог доступний як:
+#       terraform output -state=infra-aws/terraform.tfstate aws_account_id
+#     При зміні AWS акаунта — оновити ТУТ і в terraform.tfvars/бекенді.
 # ══════════════════════════════════════════════════════════
 global:
   awsAccountId: "657954628960"

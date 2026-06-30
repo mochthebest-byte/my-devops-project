@@ -18,7 +18,7 @@ Helm chart for the voting-app vote frontend (Python/Flask).
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `image.repository` | `657954628960.dkr.ecr.eu-central-1.amazonaws.com/my-app/vote` | ECR image |
+| `image.repository` | `<AWS_ACCOUNT_ID>.dkr.ecr.eu-central-1.amazonaws.com/my-app/vote` | ECR image (замінити на реальний Account ID) |
 | `image.tag` | `latest` | Image tag (updated by CI) |
 | `replicaCount` | `2` | Number of replicas |
 | `service.port` | `5000` | Service port |

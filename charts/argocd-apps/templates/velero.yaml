@@ -18,7 +18,7 @@ spec:
             create: true
             name: velero
             annotations:
-              eks.amazonaws.com/role-arn: "arn:aws:iam::657954628960:role/voting-app-velero"
+              eks.amazonaws.com/role-arn: "arn:aws:iam::{{ .Values.global.awsAccountId }}:role/voting-app-velero"
         credentials:
           useSecret: false
           existingSecret: null
@@ -26,7 +26,7 @@ spec:
           backupStorageLocation:
             - name: default
               provider: aws
-              bucket: voting-app-velero-backups-657954628960
+              bucket: voting-app-velero-backups-{{ .Values.global.awsAccountId }}
               config:
                 region: eu-central-1
           volumeSnapshotLocation:

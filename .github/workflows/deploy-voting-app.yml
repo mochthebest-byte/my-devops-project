@@ -34,9 +34,12 @@ on:
 
 env:
   AWS_REGION: eu-central-1
-  CI_ROLE_ARN: arn:aws:iam::657954628960:role/my-app-eks-github-ci
-  # ⚠️  Account ID захардкоджено — GitHub Actions не має data.aws_caller_identity.
-  #     При зміні AWS акаунта — оновити CI_ROLE_ARN тут і в усіх IAM політиках.
+  # 🎯 IAM role for GitHub Actions CI (OIDC).
+  #     Account ID береться з GitHub Actions variable "AWS_ACCOUNT_ID".
+  #     Якщо змінна не встановлена — встановити:
+  #       gh variable set AWS_ACCOUNT_ID --repo mochthebest-byte/my-devops-project
+  #     Значення: terraform output -state=infra-aws/terraform.tfstate aws_account_id
+  CI_ROLE_NAME: my-app-eks-github-ci
   GITOPS_REPO: mochthebest-byte/gitops
   GITOPS_BRANCH: main
 
@@ -87,10 +90,11 @@ jobs:
           path: src/voting-app
 
       # OIDC auth to AWS (no static keys)
+      # Account ID з GitHub variable AWS_ACCOUNT_ID (не хардкод)
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ env.CI_ROLE_ARN }}
+          role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/${{ env.CI_ROLE_NAME }}
           aws-region: ${{ env.AWS_REGION }}
 
       # Login to ECR

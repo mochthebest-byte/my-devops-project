@@ -47,6 +47,12 @@ output "acm_certificate_arn" {
   value       = aws_acm_certificate.wildcard.arn
 }
 
+# ─── AWS Account ID — з data.aws_caller_identity ────────
+output "aws_account_id" {
+  description = "AWS Account ID (from data.aws_caller_identity)"
+  value       = data.aws_caller_identity.current.account_id
+}
+
 # ─── GitHub OIDC (WIF) ──────────────────────────────────
 output "github_ci_role_arn" {
   description = "IAM Role ARN for GitHub Actions CI (OIDC/WIF)"
