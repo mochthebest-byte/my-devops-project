@@ -85,18 +85,13 @@ spec:
             - name: data
               mountPath: /var/tempo
           readinessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - wget -qO- http://localhost:3200/ready 2>/dev/null | grep -q "ready"
-            initialDelaySeconds: 15
+            tcpSocket:
+              port: 3200
+            initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
-            exec:
-              command:
-                - pgrep
-                - tempo
+            tcpSocket:
+              port: 3200
             initialDelaySeconds: 15
             periodSeconds: 30
           resources:
