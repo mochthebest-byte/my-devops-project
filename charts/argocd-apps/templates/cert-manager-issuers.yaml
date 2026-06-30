@@ -1,19 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: cert-manager-issuers
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"    # Before everything else
+    argocd.argoproj.io/sync-wave: "0"       # After cert-manager CRDs are installed (wave -1)
 spec:
   project: default
   source:
-    repoURL: https://charts.jetstack.io
-    targetRevision: ~> 1.17
-    chart: cert-manager
-    helm:
-      values: |
-        installCRDs: true
+    repoURL: https://github.com/mochthebest-byte/my-devops-project.git
+    targetRevision: HEAD
+    path: charts/cert-manager-issuers
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
@@ -23,5 +20,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - RespectIgnoreDifferences=true
-      - Replace=true
