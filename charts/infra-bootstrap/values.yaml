@@ -46,7 +46,7 @@ externalSecrets:
       property: client-secret
 
   postgresql:
-    enabled: true
+    enabled: false
     namespace: voting-app
     refreshInterval: "1h"
     secretStore:
@@ -58,7 +58,7 @@ externalSecrets:
       key: /my-app/postgresql
 
   keycloakPostgresql:
-    enabled: true
+    enabled: false
     namespace: keycloak
     refreshInterval: "1h"
     secretStore:
