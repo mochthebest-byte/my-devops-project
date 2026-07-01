@@ -49,13 +49,7 @@ spec:
     retentionPolicy: "30d"
 
   # Note: ScheduledBackup is managed as a separate CR in templates/scheduled-backups.yaml
-
-  # Post-import: grant ownership to the app user
-  postInitSQL:
-    - GRANT ALL PRIVILEGES ON DATABASE {{ .Values.pgKeycloak.database }} TO {{ .Values.pgKeycloak.appUser }};
-    - GRANT ALL ON SCHEMA public TO {{ .Values.pgKeycloak.appUser }};
-    - ALTER SCHEMA public OWNER TO {{ .Values.pgKeycloak.appUser }};
-    - ALTER DATABASE {{ .Values.pgKeycloak.database }} OWNER TO {{ .Values.pgKeycloak.appUser }};
+  # Note: Post-import ownership (GRANTs/ALTERs) is handled by bootstrap.initdb.owner
 
   # Spread across AZs
   topologySpreadConstraints:
