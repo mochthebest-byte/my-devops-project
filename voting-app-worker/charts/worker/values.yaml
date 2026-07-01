@@ -49,8 +49,9 @@ postgresql:
   host: pg-vote-rw
   port: 5432
   database: app
-  user: app
-  existingSecret: pg-vote-app
+  # ─── Dynamic credentials from VSO (VaultDatabaseSecret) ─────
+  existingSecret: pg-vote-dynamic
+  secretUsernameKey: username
   secretPasswordKey: password
 
 rabbitmq:

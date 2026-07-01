@@ -1,0 +1,203 @@
+{{- if .Values.global.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "vault-init.name" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "vault-init.labels" . | nindent 4 }}
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  backoffLimit: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "vault-init.name" . }}
+    spec:
+      serviceAccountName: {{ include "vault-init.name" . }}
+      restartPolicy: Never
+      containers:
+        - name: vault-init
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: VAULT_ADDR
+              value: {{ .Values.vault.address }}
+            - name: VAULT_SKIP_VERIFY
+              value: "true"
+            - name: VAULT_INIT_KEY_SHARES
+              value: "{{ .Values.vault.initKeyShares }}"
+            - name: VAULT_INIT_KEY_THRESHOLD
+              value: "{{ .Values.vault.initKeyThreshold }}"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              set -e -o pipefail
+
+              # ═════════════════════════════════════════════════════════
+              #  1.  Install helpers
+              # ═════════════════════════════════════════════════════════
+              apk add --no-cache curl jq > /dev/null 2>&1
+
+              echo "--> Installing kubectl..."
+              curl -fsSLO "https://dl.k8s.io/release/v1.32.0/bin/linux/amd64/kubectl" \
+                --connect-timeout 10 --retry 3 --retry-delay 2
+              chmod +x kubectl && mv kubectl /usr/local/bin/kubectl
+
+              # ═════════════════════════════════════════════════════════
+              #  2.  Wait for Vault
+              # ═════════════════════════════════════════════════════════
+              echo "--> Waiting for Vault at $VAULT_ADDR..."
+              for i in $(seq 1 {{ .Values.wait.maxRetries }}); do
+                if vault status -format=json > /dev/null 2>&1; then
+                  echo "    Vault reachable after ${i}s."
+                  break
+                fi
+                if [ "$i" = "{{ .Values.wait.maxRetries }}" ]; then
+                  echo "FATAL: Vault not reachable after {{ .Values.wait.maxRetries }} attempts."
+                  exit 1
+                fi
+                sleep {{ .Values.wait.sleepSeconds }}
+              done
+
+              # ═════════════════════════════════════════════════════════
+              #  3.  Init / Unseal
+              # ═════════════════════════════════════════════════════════
+              INITIALIZED=$(vault status -format=json | jq -r '.initialized')
+              SEALED=$(vault status -format=json | jq -r '.sealed')
+
+              init_vault() {
+                echo "--> Initializing Vault (first time)..."
+                vault operator init \
+                  -key-shares="$VAULT_INIT_KEY_SHARES" \
+                  -key-threshold="$VAULT_INIT_KEY_THRESHOLD" \
+                  -format=json > /tmp/vault-init.json
+
+                ROOT_TOKEN=$(jq -r '.root_token' /tmp/vault-init.json)
+                UNSEAL_KEY=$(jq -r '.unseal_keys_b64[0]' /tmp/vault-init.json)
+
+                kubectl create secret generic vault-keys \
+                  -n vault \
+                  --from-literal=root-token="$ROOT_TOKEN" \
+                  --from-literal=unseal-key="$UNSEAL_KEY" \
+                  --dry-run=client -o yaml | kubectl apply -f -
+
+                echo "    Unsealing..."
+                vault operator unseal "$UNSEAL_KEY"
+                echo "    Vault initialized and unsealed."
+              }
+
+              unseal_vault() {
+                echo "--> Unsealing Vault..."
+                UNSEAL_KEY=$(kubectl get secret vault-keys -n vault \
+                  -o jsonpath='{.data.unseal-key}' 2>/dev/null | base64 -d)
+                if [ -z "$UNSEAL_KEY" ]; then
+                  echo "FATAL: vault-keys secret not found. Cannot unseal."
+                  exit 1
+                fi
+                vault operator unseal "$UNSEAL_KEY"
+                echo "    Vault unsealed."
+              }
+
+              if [ "$INITIALIZED" = "false" ]; then
+                init_vault
+              elif [ "$SEALED" = "true" ]; then
+                unseal_vault
+              else
+                echo "--> Vault already initialized and unsealed."
+              fi
+
+              # ═════════════════════════════════════════════════════════
+              #  4.  Login
+              # ═════════════════════════════════════════════════════════
+              ROOT_TOKEN=$(kubectl get secret vault-keys -n vault \
+                -o jsonpath='{.data.root-token}' | base64 -d)
+              vault login "$ROOT_TOKEN" > /dev/null 2>&1
+
+              # ═════════════════════════════════════════════════════════
+              #  5.  Enable engines (idempotent — skip if already enabled)
+              # ═════════════════════════════════════════════════════════
+              {{- if .Values.kv.enabled }}
+              if vault secrets list -format=json | jq -e '.["{{ .Values.kv.path }}/"]' > /dev/null 2>&1; then
+                echo "--> KV engine already enabled at {{ .Values.kv.path }}/"
+              else
+                echo "--> Enabling KV v2 at {{ .Values.kv.path }}/..."
+                vault secrets enable -path={{ .Values.kv.path }} kv-v2
+              fi
+              {{- end }}
+
+              {{- if .Values.database.enabled }}
+              if vault secrets list -format=json | jq -e '.["database/"]' > /dev/null 2>&1; then
+                echo "--> Database engine already enabled."
+              else
+                echo "--> Enabling database engine..."
+                vault secrets enable database
+              fi
+
+              # ── 6. Wait for CNPG secret ──────────────────────────────────
+              echo "--> Waiting for CNPG secret {{ .Values.database.cnpg.secretName }} in {{ .Values.database.cnpg.namespace }}..."
+              DB_PASSWORD=""
+              for i in $(seq 1 {{ .Values.wait.maxRetries }}); do
+                DB_PASSWORD=$(kubectl get secret {{ .Values.database.cnpg.secretName }} \
+                  -n {{ .Values.database.cnpg.namespace }} \
+                  -o jsonpath='{.data.password}' 2>/dev/null | base64 -d) || true
+                if [ -n "$DB_PASSWORD" ]; then
+                  echo "    CNPG secret found after ${i}s."
+                  break
+                fi
+                if [ "$i" = "{{ .Values.wait.maxRetries }}" ]; then
+                  echo "FATAL: CNPG secret not found after {{ .Values.wait.maxRetries }}s."
+                  exit 1
+                fi
+                sleep {{ .Values.wait.sleepSeconds }}
+              done
+
+              # ── 7. Configure PostgreSQL engine connection ─────────────────
+              # NOTE: {{"{{username}}"}} is Helm escaping for Vault template var
+              #       {{username}}. After Helm rendering → {{username}} (literal).
+              echo "--> Configuring database connection pg-vote..."
+              vault write database/config/pg-vote \
+                plugin_name=postgresql-database-plugin \
+                allowed_roles="{{ .Values.database.role.name }}" \
+                connection_url="postgresql://{{"{{username}}"}}:{{"{{password}}"}}@{{ .Values.database.cnpg.host }}:{{ .Values.database.cnpg.port }}/{{ .Values.database.cnpg.dbName }}?sslmode=disable" \
+                username="app" \
+                password="$DB_PASSWORD"
+
+              # ── 8. Create database role ───────────────────────────────────
+              # Vault CLI passes repeated flags as arrays to the HTTP API.
+              echo "--> Creating database role {{ .Values.database.role.name }}..."
+              vault write database/roles/{{ .Values.database.role.name }} \
+                db_name=pg-vote \
+                creation_statements="CREATE USER \"{{"{{name}}"}}\" WITH PASSWORD '{{"{{password}}"}}' VALID UNTIL '{{"{{expiration}}"}}'" \
+                creation_statements="GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO \"{{"{{name}}"}}\"" \
+                default_ttl="{{ .Values.database.role.defaultTTL }}" \
+                max_ttl="{{ .Values.database.role.maxTTL }}"
+              {{- end }}
+
+              # ═════════════════════════════════════════════════════════
+              #  9.  VSO policy & kubernetes auth role
+              # ═════════════════════════════════════════════════════════
+              echo "--> Writing policy {{ .Values.vso.policyName }}..."
+              vault policy write {{ .Values.vso.policyName }} <<< '{{ .Values.vso.policyRules }}'
+
+              echo "--> Updating kubernetes auth role {{ .Values.vso.authRoleName }}..."
+              vault write auth/kubernetes/role/{{ .Values.vso.authRoleName }} \
+                bound_service_account_names=vault-secrets-operator-controller \
+                bound_service_account_namespaces=vault-secrets-operator \
+                policies={{ .Values.vso.policyName }} \
+                ttl=1h
+
+              echo ""
+              echo "════════════════════════════════════════════════════════"
+              echo "  ✓ Vault + VSO initialization complete"
+              echo "  ├─ Engines: kv-v2 at {{ .Values.kv.path }}/, database/"
+              echo "  ├─ DB role: {{ .Values.database.role.name }} (TTL {{ .Values.database.role.defaultTTL }})"
+              echo "  ├─ Policy:  {{ .Values.vso.policyName }}"
+              echo "  └─ K8s auth role: {{ .Values.vso.authRoleName }}"
+              echo "════════════════════════════════════════════════════════"
+{{- end }}

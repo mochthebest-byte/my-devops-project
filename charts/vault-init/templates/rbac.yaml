@@ -1,0 +1,41 @@
+{{- if .Values.global.enabled }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "vault-init.name" . }}
+  labels:
+    {{- include "vault-init.labels" . | nindent 4 }}
+rules:
+  # Read CNPG-generated database secret (to get root DB password)
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get"]
+    resourceNames:
+      - {{ .Values.database.cnpg.secretName }}
+  # Read/create vault-keys secret (stores root token + unseal key)
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "create", "update"]
+    resourceNames:
+      - vault-keys
+  # Need generic 'create' for secrets (create vault-kins when it doesn't exist)
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "vault-init.name" . }}
+  labels:
+    {{- include "vault-init.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "vault-init.name" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "vault-init.name" . }}
+    namespace: {{ .Release.Namespace }}
+{{- end }}

@@ -2,4 +2,4 @@ apiVersion: v2
 name: vso-config
 description: Vault Secrets Operator resources — VaultConnection, VaultAuth, and secret sync
 type: application
-version: 0.1.0
+version: 0.2.0

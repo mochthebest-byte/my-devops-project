@@ -1,0 +1,5 @@
+apiVersion: v2
+name: vault-init
+description: One-shot Job to initialize Vault, unseal, enable engines, and configure database dynamic secrets
+type: application
+version: 0.1.0

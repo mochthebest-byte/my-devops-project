@@ -1,3 +1,39 @@
+# ═══════════════════════════════════════════════════════════════
+#  Vault Secrets Operator — configuration values
+# ═══════════════════════════════════════════════════════════════
+
 global:
   vaultAddress: http://vault.vault.svc.cluster.local:8200
-  vaultNamespace: admin
+
+# ─── VaultConnection CRD ─────────────────────────────────────
+vaultConnection:
+  enabled: true
+
+# ─── VaultAuth CRD (kubernetes auth) ─────────────────────────
+vaultAuth:
+  enabled: true
+  role: vault-secrets-operator
+  serviceAccount: vault-secrets-operator-controller
+
+# ─── VaultDynamicSecret — PostgreSQL dynamic credentials ─────
+vaultDynamicSecret:
+  enabled: true
+  # Database engine mount path in Vault
+  engineMount: database
+  # Vault database role name
+  role: voting-app-dynamic
+  # Target Kubernetes secret
+  destination:
+    name: pg-vote-dynamic
+    create: true
+    labels:
+      app.kubernetes.io/managed-by: vault-secrets-operator
+      app.kubernetes.io/component: dynamic-secret
+  # How often to refresh (renew the lease)
+  refreshPeriod: 30s
+  # If the lease cannot be renewed, how long before Vault revokes it
+  revocationDuration: 60s
+
+# ─── VaultPKI — TLS certificates ─────────────────────────────
+vaultPKI:
+  enabled: false

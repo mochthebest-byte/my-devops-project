@@ -13,22 +13,41 @@ spec:
     chart: vault
     helm:
       values: |
+        global:
+          enabled: true
         server:
-          dev:
+          # ─── HA Raft (Integrated Storage) ────────────────────────────
+          ha:
             enabled: true
-          standalone:
+            replicas: 1
+            raft:
+              enabled: true
+              setNodeSealedLabel: false
+              # ─── Chart auto-generates raft config (retry_join, storage, node_id)
+              #     based on replicas — no custom config needed
+          # ─── Persistent storage for Raft ──────────────────────────────
+          dataStorage:
             enabled: true
+            size: 10Gi
+            accessMode: ReadWriteOnce
+            storageClass: ~
+          # ─── Service ───────────────────────────────────────────────────
+          service:
+            enabled: true
+            type: ClusterIP
+            port: 8200
+            clusterPort: 8201
         injector:
           enabled: false
         ui:
           enabled: true
         resources:
           requests:
-            memory: 128Mi
-            cpu: 50m
+            memory: 256Mi
+            cpu: 100m
           limits:
-            memory: 512Mi
-            cpu: 300m
+            memory: 1Gi
+            cpu: 500m
   destination:
     server: https://kubernetes.default.svc
     namespace: vault

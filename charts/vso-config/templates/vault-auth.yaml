@@ -1,3 +1,5 @@
+{{- if .Values.vaultAuth.enabled }}
+---
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultAuth
 metadata:
@@ -7,5 +9,6 @@ spec:
   method: kubernetes
   mount: kubernetes
   kubernetes:
-    role: vault-secrets-operator
-    serviceAccount: vault-secrets-operator-controller
+    role: {{ .Values.vaultAuth.role }}
+    serviceAccount: {{ .Values.vaultAuth.serviceAccount }}
+{{- end }}

@@ -1,3 +1,5 @@
+{{- if .Values.vaultConnection.enabled }}
+---
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultConnection
 metadata:
@@ -5,3 +7,4 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   address: {{ .Values.global.vaultAddress }}
+{{- end }}
