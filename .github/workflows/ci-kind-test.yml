@@ -54,7 +54,7 @@ jobs:
       # Step 5: Install CloudNativePG operator
       - name: Install CloudNativePG operator
         run: |
-          helm upgrade --install cnpg cloudnative-pg/cloudnative-pg \
+          helm upgrade --install cnpg cnpg/cloudnative-pg \
             --namespace cnpg-system --wait
 
       - name: Create CNPG cluster
