@@ -96,7 +96,7 @@ jobs:
       - name: Wait for databases
         run: |
           kubectl wait --namespace voting-app --for=condition=ready pod \
-            -l cluster=pg-ci --timeout=180s
+            -l cnpg.io/cluster=pg-ci --timeout=180s
           kubectl wait --namespace voting-app --for=condition=ready pod \
             -l app.kubernetes.io/name=rabbitmq --timeout=180s
 

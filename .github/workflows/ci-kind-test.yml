@@ -98,7 +98,7 @@ jobs:
         run: |
           kubectl wait --namespace ${{ env.NAMESPACE }} \
             --for=condition=ready pod \
-            -l cluster=pg-ci --timeout=120s
+            -l cnpg.io/cluster=pg-ci --timeout=120s
           kubectl wait --namespace ${{ env.NAMESPACE }} \
             --for=condition=ready pod \
             -l app.kubernetes.io/name=rabbitmq --timeout=120s
