@@ -35,7 +35,7 @@ scaledObject:
     - type: rabbitmq
       metadata:
         queueName: votes
-        host: rabbitmq.voting-app:5672
+        host: amqp://rabbitmq.voting-app:5672
         password: CHANGEME_rabbitmq
         # KEDA 2.20+ RabbitMQ trigger uses protocol field
         protocol: amqp
