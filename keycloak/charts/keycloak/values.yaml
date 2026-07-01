@@ -31,11 +31,11 @@ tls:
   certManager: true
 
 postgresql:
-  host: keycloak-postgresql.keycloak.svc.cluster.local
+  host: pg-keycloak-rw.keycloak.svc.cluster.local
   port: 5432
   database: keycloak
-  user: keycloak
-  existingSecret: keycloak-db
+  user: app
+  existingSecret: pg-keycloak-app
   secretKey: password
 
 # ─── Grafana OIDC client ──────────────────────────────

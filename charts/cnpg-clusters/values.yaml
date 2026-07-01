@@ -1,0 +1,47 @@
+# ══════════════════════════════════════════════════════════
+#  CloudNativePG Clusters — Helm values
+# ══════════════════════════════════════════════════════════
+
+global:
+  awsAccountId: "AWS_ACCOUNT_ID"
+  awsRegion: "eu-central-1"
+  projectName: "my-app"
+
+# ─── Voting-app PostgreSQL cluster ─────────────────────
+pgVote:
+  enabled: true
+  clusterName: pg-vote
+  namespace: voting-app
+  instances: 2
+  storageSize: 8Gi
+  storageClass: gp3
+  database: db
+  appUser: app
+  importSource:
+    host: postgresql.voting-app.svc.cluster.local
+    port: 5432
+    user: postgres
+    existingSecret: postgresql
+    secretKey: postgres-password
+
+# ─── Keycloak PostgreSQL cluster ───────────────────────
+pgKeycloak:
+  enabled: true
+  clusterName: pg-keycloak
+  namespace: keycloak
+  instances: 2
+  storageSize: 5Gi
+  storageClass: gp3
+  database: keycloak
+  appUser: app
+  importSource:
+    host: keycloak-postgresql.keycloak.svc.cluster.local
+    port: 5432
+    user: postgres
+    existingSecret: keycloak-db
+    secretKey: postgres-password
+
+# ─── S3 backup (shared Velero bucket) ──────────────────
+backup:
+  bucketPrefix: "my-app-velero-backups"
+  iamRoleName: "my-app-cnpg-backup"

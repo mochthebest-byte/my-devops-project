@@ -42,11 +42,11 @@ networkPolicy:
   create: true
 
 postgresql:
-  host: postgresql
+  host: pg-vote-rw
   port: 5432
   database: db
-  user: vote_user
-  existingSecret: postgresql
+  user: app
+  existingSecret: pg-vote-app
   secretPasswordKey: password
 
 probes:

@@ -32,39 +32,28 @@ spec:
                 echo "$(date) - Waiting for PostgreSQL..."; sleep 2
               done
               echo "$(date) - PostgreSQL is ready!"
-        - name: sync-db-password
+        - name: verify-db-connection
           image: postgres@sha256:e013e867e712fec275706a6c51c966f0bb0c93cfa8f51000f85a15f9865a28cb
           command:
             - sh
             - -eu
             - -c
             - |
-              echo "$(date) - Syncing PostgreSQL password..."
+              echo "$(date) - Verifying database connection..."
               DB_PASSWORD=$(cat /etc/db-secrets/password)
               DB_HOST={{ .Values.postgresql.host }}
               DB_NAME={{ .Values.postgresql.database }}
               DB_USER={{ .Values.postgresql.user }}
 
-              # Step 1 — test if current secret password already works
               if PGPASSWORD="$DB_PASSWORD" psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" \
                 -c "SELECT 1" > /dev/null 2>&1; then
-                echo "$(date) - Password already in sync — nothing to do"
+                echo "$(date) - Database connection successful"
                 exit 0
-              fi
-              echo "$(date) - Password mismatch detected — attempting fix..."
-
-              # Step 2 — try as postgres superuser
-              POSTGRES_PASSWORD=$(cat /etc/db-secrets/postgres-password)
-              export PGPASSWORD="$POSTGRES_PASSWORD"
-              if psql -h "$DB_HOST" -U postgres -d "$DB_NAME" \
-                -c "ALTER USER ${DB_USER} WITH PASSWORD '${DB_PASSWORD}'" > /dev/null 2>&1; then
-                echo "$(date) - Password synced successfully"
               else
-                echo "$(date) - WARNING: could not sync password (postgres superuser auth failed)"
-                echo "$(date) - Keycloak may fail to connect if DB password is out of sync"
-                echo "$(date) - Fix manually: kubectl exec keycloak-postgresql-0 -n keycloak -- psql -U postgres -c \"ALTER USER ${DB_USER} WITH PASSWORD '...'\""
+                echo "$(date) - ERROR: Cannot connect to database with provided credentials"
+                echo "Host: $DB_HOST, User: $DB_USER, Database: $DB_NAME"
+                exit 1
               fi
-              echo "$(date) - Password sync complete"
           env:
             - name: PGSSLMODE
               value: disable

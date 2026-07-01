@@ -427,7 +427,23 @@
       "Bash(sed -i '/ECR_PREFIX/d' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
       "Bash(sed -i 's/vote:latest result:latest worker:latest \\\\\\\\$/vote:latest result:latest worker:latest \\\\\\\\/' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
       "Bash(sed -i '/vote:latest result:latest worker:latest \\\\\\\\/,/--name voting-app-local/{/vote:latest/d}' /home/psihson/my-devops-project/.github/workflows/ci-local.yml)",
-      "Bash(xargs -I {} sh -c 'kubectl get {} -n keycloak -o name 2>/dev/null')"
+      "Bash(xargs -I {} sh -c 'kubectl get {} -n keycloak -o name 2>/dev/null')",
+      "Bash(graphify query *)",
+      "Bash(xargs -I{} kubectl exec -n argocd argocd-application-controller-0 -- argocd login localhost:8080 --username admin --password {} --insecure)",
+      "Bash(nslookup rollouts.mochthebest.pp.ua)",
+      "Bash(xargs -I{} kubectl exec -n voting-app {} -- python3 -c \"from redis import Redis; r = Redis\\(host='redis', db=0, socket_timeout=5\\); r.ping\\(\\); print\\('Redis OK'\\); r.rpush\\('votes', 'test-vote'\\); print\\('Vote OK'\\)\")",
+      "Bash(yq '.status.conditions[]')",
+      "Bash(k describe *)",
+      "Bash(gzip)",
+      "Bash(zcat /tmp/dump-vote.sql.gz)",
+      "Bash(zcat /tmp/dump-keycloak.sql.gz)",
+      "Bash(rg -rn \"CloudNativePG\\\\|RDS\\\\|managed vs in-cluster\\\\|винести Postgres\" /home/psihson/my-devops-project/ --type md)",
+      "Bash(rg -rn \"velero\\\\|Velero\\\\|backup\\\\|restore\" /home/psihson/my-devops-project/ --type yaml --type tf)",
+      "Bash(rg -rn -i \"backup\\\\|restore\\\\|velero\" /home/psihson/my-devops-project/charts/)",
+      "Bash(rg -rn -i \"postgres\\\\|postgre\\\\|database\\\\|psql\\\\|db\\\\.\" /home/psihson/my-devops-project/charts/ /home/psihson/my-devops-project/voting-app-*/charts/)",
+      "Bash(rg -rn -i \"postgres\\\\|database\" /home/psihson/my-devops-project/voting-app-vote/)",
+      "Bash(rg -rn -i \"postgres\\\\|redis\\\\|database\\\\|db_\" /home/psihson/my-devops-project/ --type yaml)",
+      "Bash(rh *)"
     ]
   }
 }

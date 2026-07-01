@@ -1,0 +1,65 @@
+{{- if .Values.pgKeycloak.enabled }}
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ .Values.pgKeycloak.clusterName }}
+  namespace: {{ .Values.pgKeycloak.namespace }}
+spec:
+  instances: {{ .Values.pgKeycloak.instances }}
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.6
+
+  # Import existing data from Bitnami PostgreSQL
+  bootstrap:
+    initdb:
+      database: {{ .Values.pgKeycloak.database }}
+      owner: {{ .Values.pgKeycloak.appUser }}
+      import:
+        type: microservice
+        databases:
+          - {{ .Values.pgKeycloak.database }}
+        source:
+          host: {{ .Values.pgKeycloak.importSource.host }}
+          port: {{ .Values.pgKeycloak.importSource.port }}
+          user: {{ .Values.pgKeycloak.importSource.user }}
+          password:
+            name: {{ .Values.pgKeycloak.importSource.existingSecret }}
+            key: {{ .Values.pgKeycloak.importSource.secretKey }}
+
+  storage:
+    size: {{ .Values.pgKeycloak.storageSize }}
+    storageClass: {{ .Values.pgKeycloak.storageClass }}
+
+  # S3 backup via barman-cloud
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://{{ include "cnpg-clusters.backup-bucket" . }}/cnpg/{{ .Values.pgKeycloak.clusterName }}"
+      s3Credentials:
+        inheritFromIAMRole: true
+      wal:
+        compression: gzip
+        maxParallel: 8
+    retentionPolicy: "30d"
+
+  scheduledBackup:
+    - name: six-hourly-backup
+      schedule: "0 */6 * * *"
+      backupOwnerReference: self
+
+  # Post-import: grant ownership to the app user
+  postInitSQL:
+    - GRANT ALL PRIVILEGES ON DATABASE {{ .Values.pgKeycloak.database }} TO {{ .Values.pgKeycloak.appUser }};
+    - GRANT ALL ON SCHEMA public TO {{ .Values.pgKeycloak.appUser }};
+    - ALTER SCHEMA public OWNER TO {{ .Values.pgKeycloak.appUser }};
+    - ALTER DATABASE {{ .Values.pgKeycloak.database }} OWNER TO {{ .Values.pgKeycloak.appUser }};
+
+  # Spread across AZs
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+
+  # Monitoring
+  monitoring:
+    enablePodMonitor: true
+{{- end }}

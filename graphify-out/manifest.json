@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/.claude/settings.local.json": {
-    "mtime": 1782765595.1619973,
-    "ast_hash": "89d99dafbeff571156218aa528a02aad",
+    "mtime": 1782861670.146801,
+    "ast_hash": "917cfdf613ffbf519725f096238dbccd",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/infra-aws/iam_policy.json": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/values.yaml": {
-    "mtime": 1782833471.5865855,
-    "ast_hash": "d3e8ce571ec3dd054feaaca103ced216",
+    "mtime": 1782889812.426001,
+    "ast_hash": "7faceb79579213e2be4c28445f8e838e",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/Chart.yaml": {
@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/deployment.yaml": {
-    "mtime": 1782836031.9928353,
-    "ast_hash": "0201933c45f9f5b2315206bb75b1c7f9",
+    "mtime": 1782853552.2055,
+    "ast_hash": "9dba98ef76e5c4e6cf2eb5bd9ffc9da2",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/service.yaml": {
@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-worker/charts/worker/values.yaml": {
-    "mtime": 1782833472.5455818,
-    "ast_hash": "1155b04b0b0697980bd733e5567005b2",
+    "mtime": 1782889813.277991,
+    "ast_hash": "49a95609405f9e6d4950b321cd65b546",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-worker/charts/worker/Chart.yaml": {
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-worker/charts/worker/templates/deployment.yaml": {
-    "mtime": 1782836032.862826,
-    "ast_hash": "1d5d28bfea027704238941cded3fdf97",
+    "mtime": 1782853553.233485,
+    "ast_hash": "cd29b0e37284771639fd6d3446856c38",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/requirements.txt": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/values.yaml": {
-    "mtime": 1782833470.7285886,
-    "ast_hash": "1107458577514912239deeb6f810ba21",
+    "mtime": 1782889811.5970104,
+    "ast_hash": "5b1015f02e423e475ad0b1ee4a635fcb",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/Chart.yaml": {
@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/deployment.yaml": {
-    "mtime": 1782836026.3168948,
-    "ast_hash": "a77e9d2a0892cac5d52c9d2f6ef6e77f",
+    "mtime": 1782860447.1158576,
+    "ast_hash": "d5c5c3c799b60af3f499f846582bc72f",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/service.yaml": {
@@ -170,8 +170,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/values.yaml": {
-    "mtime": 1782843439.823727,
-    "ast_hash": "77bd0ae0e7d0c319ba9ec47b521c7ea3",
+    "mtime": 1782889814.1819808,
+    "ast_hash": "73e476f9b0a9ca7de9cf942c150381e1",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/Chart.yaml": {
@@ -185,8 +185,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/templates/statefulset.yaml": {
-    "mtime": 1782834312.4846027,
-    "ast_hash": "5f1d4603621604527e7156f47ec5b66d",
+    "mtime": 1782889821.1899002,
+    "ast_hash": "68722cb55917cc485542c7f125cbe1cf",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/templates/service.yaml": {
@@ -230,23 +230,23 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/charts/result/README.md": {
-    "mtime": 1782467659.5683193,
-    "ast_hash": "594b5001d202c44448e4df360de63e03",
+    "mtime": 1782852443.4834785,
+    "ast_hash": "e986ff04df5c3d3444623bffc9bc999d",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/.github/workflows/deploy-voting-app.yml": {
-    "mtime": 1782760613.6589139,
-    "ast_hash": "572f4e2cfe44df2aa826a12ce87c5754",
+    "mtime": 1782859761.714816,
+    "ast_hash": "564e40795063c9b447c17fc39ad2bb89",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/.github/workflows/ci-local.yml": {
-    "mtime": 1782766157.8806577,
-    "ast_hash": "61324f3ca76b02f113903671c925ef6d",
+    "mtime": 1782889855.2695076,
+    "ast_hash": "d3c473c9742a14ee35e9548edf88c642",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/.github/workflows/ci-kind-test.yml": {
-    "mtime": 1782766174.574747,
-    "ast_hash": "33b91eaeaad3186a7016c66e50e14e79",
+    "mtime": 1782889874.1982894,
+    "ast_hash": "482687e85b170302d77746fcc952550f",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-worker/README.md": {
@@ -255,8 +255,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-worker/charts/worker/README.md": {
-    "mtime": 1782467660.322327,
-    "ast_hash": "d66faebb13305ea954be304dba272c26",
+    "mtime": 1782852444.22447,
+    "ast_hash": "43f576e801b8b21da60481d4bc9ae1f2",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/README.md": {
@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-vote/charts/vote/README.md": {
-    "mtime": 1782467658.6953106,
-    "ast_hash": "0ee495fafeb35f03b83aec764c030db2",
+    "mtime": 1782852442.7224877,
+    "ast_hash": "404868f7c8a5ba21655402db75e357e7",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/README.md": {
@@ -300,8 +300,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/gateway-config/values.yaml": {
-    "mtime": 1782751858.12022,
-    "ast_hash": "8e76ffec2508f3fe5baf0a04c1828a9c",
+    "mtime": 1782858546.8573012,
+    "ast_hash": "0c41ca0c9f47ecebc75e2504b2435036",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/gateway-config/Chart.yaml": {
@@ -410,8 +410,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/keycloak/charts/keycloak/templates/post-sync-job.yaml": {
-    "mtime": 1782843439.6957283,
-    "ast_hash": "d7cb3e817ec25030c463211498c9a619",
+    "mtime": 1782844144.8554285,
+    "ast_hash": "d2304ae147c02a5c2bd4b334de80eded",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/gp3-storageclass/Chart.yaml": {
@@ -515,8 +515,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argo-rollout-vote/values.yaml": {
-    "mtime": 1782760202.0701177,
-    "ast_hash": "23084ee61d29fd1017b487db838ff56d",
+    "mtime": 1782858380.9151826,
+    "ast_hash": "2d21242ecdaf5ab6353e57d61cec48c6",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argo-rollout-vote/Chart.yaml": {
@@ -530,18 +530,18 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argo-rollout-vote/templates/rollout.yaml": {
-    "mtime": 1782834310.854619,
-    "ast_hash": "cffeb2ee1feb2c64f47ac50a615f407f",
+    "mtime": 1782860627.0205765,
+    "ast_hash": "c8ac5cb47e18bd763f153a19848875bc",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/values.yaml": {
-    "mtime": 1782840049.2287517,
-    "ast_hash": "d5559b877255024b8ff6ca8771703ab8",
+    "mtime": 1782852431.425621,
+    "ast_hash": "e28e7f977117e3594e04d8c50979e38e",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/velero.yaml": {
-    "mtime": 1782602051.7352846,
-    "ast_hash": "535ac800aa650f594caddd897f915699",
+    "mtime": 1782852424.5227015,
+    "ast_hash": "71f1d85e3524969a5f2c61ab883e6278",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/cloudnative-pg.yaml": {
@@ -560,8 +560,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/argo-rollouts.yaml": {
-    "mtime": 1782600996.1585693,
-    "ast_hash": "ec2aabf646243f73738374c0eee4ea48",
+    "mtime": 1782858554.7802105,
+    "ast_hash": "8158e6ba4068d965a050a2ecce897aea",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/kyverno.yaml": {
@@ -685,8 +685,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/karpenter-resources/values.yaml": {
-    "mtime": 1782753506.9803593,
-    "ast_hash": "1a8533b32a38e88c8ba552e234a37d6f",
+    "mtime": 1782852435.3705747,
+    "ast_hash": "e26992edf2bb0d946bb2ac7a2062c21b",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/karpenter-resources/Chart.yaml": {
@@ -695,13 +695,13 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/karpenter-resources/templates/nodepool.yaml": {
-    "mtime": 1782753505.2053146,
-    "ast_hash": "bcb5036b5513ddb942227709b3d013c9",
+    "mtime": 1782853596.3108516,
+    "ast_hash": "53e735eecfd4cd9b9b66732b51baa485",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/karpenter-resources/templates/ec2nodeclass.yaml": {
-    "mtime": 1782753506.4463458,
-    "ast_hash": "4a6f3e44cb9ba40452afc514f57e4866",
+    "mtime": 1782849516.1688333,
+    "ast_hash": "3b9799e7cb8fa82fa4bfd6c7b9693ea6",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/voting-app-result/healthz.js": {
@@ -730,8 +730,8 @@
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/vso-config/templates/vault-auth.yaml": {
-    "mtime": 1782754678.0894217,
-    "ast_hash": "8f7a6fcce1d64d152660b729ce9c99a7",
+    "mtime": 1782850685.0401165,
+    "ast_hash": "bf1516bd0944fb3b017694023cfc1d7d",
     "semantic_hash": ""
   },
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/vso-config.yaml": {
@@ -852,6 +852,56 @@
   "/home/psihson/my-devops-project/charts/argocd-apps/templates/cert-manager-issuers.yaml": {
     "mtime": 1782840356.6630654,
     "ast_hash": "02fdfc167eb420498610db182fc2a1d3",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/docs/disaster-recovery-aws-migration.md": {
+    "mtime": 1782852823.0622227,
+    "ast_hash": "7572a22da52184e9614b6741bdbd1bdf",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-result/charts/result/templates/serviceaccount.yaml": {
+    "mtime": 1782853532.0667949,
+    "ast_hash": "18e9beb4a949990c4b16a6a6a8ee5060",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-worker/charts/worker/templates/serviceaccount.yaml": {
+    "mtime": 1782853532.2247925,
+    "ast_hash": "7ef0186ed8ab22364519451c456acf51",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/voting-app-vote/charts/vote/templates/serviceaccount.yaml": {
+    "mtime": 1782853524.1509104,
+    "ast_hash": "11833e9933cbac6ebd71b80608cc5355",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/cnpg-clusters/values.yaml": {
+    "mtime": 1782889796.7891808,
+    "ast_hash": "f790ef81dbd0939a243f58e2631f4ee1",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/cnpg-clusters/Chart.yaml": {
+    "mtime": 1782889765.4905398,
+    "ast_hash": "e13de0fdb711d6a827c7d2b7799e155c",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/cnpg-clusters/templates/pg-keycloak-cluster.yaml": {
+    "mtime": 1782889779.6443775,
+    "ast_hash": "661bd4a98fbb40e6a8cddea087fddb1b",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/cnpg-clusters/templates/pg-vote-cluster.yaml": {
+    "mtime": 1782889776.200417,
+    "ast_hash": "7dae64b27b5d9db1ecbd9ab43207802b",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/argocd-apps/templates/cnpg-clusters.yaml": {
+    "mtime": 1782889805.0460858,
+    "ast_hash": "8ed0d54563a5dc9e9c5dbbb2b727e5ea",
+    "semantic_hash": ""
+  },
+  "/home/psihson/my-devops-project/charts/argocd-apps/templates/argo-rollout-vote.yaml": {
+    "mtime": 1782859301.4144144,
+    "ast_hash": "d80eaf0bb2bd3276d8ce58dba045d377",
     "semantic_hash": ""
   }
 }

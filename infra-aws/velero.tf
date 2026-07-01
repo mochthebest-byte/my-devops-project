@@ -100,3 +100,58 @@ resource "aws_iam_role_policy_attachment" "velero_s3" {
   policy_arn = aws_iam_policy.velero_s3.arn
   role       = aws_iam_role.velero.name
 }
+
+# ══════════════════════════════════════════════════════════
+#  CloudNativePG — barman-cloud backup (S3)
+# ══════════════════════════════════════════════════════════
+
+data "aws_iam_policy_document" "cnpg_backup_assume" {
+  statement {
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect  = "Allow"
+    principals {
+      type        = "Federated"
+      identifiers = [module.eks.oidc_provider_arn]
+    }
+    condition {
+      test     = "StringEquals"
+      variable = "${module.eks.oidc_provider}:sub"
+      values   = [
+        "system:serviceaccount:voting-app:pg-vote",
+        "system:serviceaccount:keycloak:pg-keycloak",
+      ]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "cnpg_backup_s3" {
+  statement {
+    actions = [
+      "s3:GetObject",
+      "s3:ListBucket",
+      "s3:PutObject",
+      "s3:DeleteObject",
+      "s3:AbortMultipartUpload",
+    ]
+    resources = [
+      aws_s3_bucket.velero.arn,
+      "${aws_s3_bucket.velero.arn}/*",
+    ]
+  }
+}
+
+resource "aws_iam_role" "cnpg_backup" {
+  name               = "${var.project_name}-cnpg-backup"
+  assume_role_policy = data.aws_iam_policy_document.cnpg_backup_assume.json
+  tags               = var.tags
+}
+
+resource "aws_iam_policy" "cnpg_backup_s3" {
+  name   = "${var.project_name}-cnpg-backup-s3"
+  policy = data.aws_iam_policy_document.cnpg_backup_s3.json
+}
+
+resource "aws_iam_role_policy_attachment" "cnpg_backup_s3" {
+  policy_arn = aws_iam_policy.cnpg_backup_s3.arn
+  role       = aws_iam_role.cnpg_backup.name
+}

@@ -39,31 +39,42 @@ jobs:
       # Add Helm repos
       - name: Add Helm repos
         run: |
+          helm repo add cnpg https://cloudnative-pg.github.io/charts
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo update
 
-      # Create namespace
-      - name: Create namespace
+      # Create namespaces
+      - name: Create namespaces
         run: |
           kubectl create namespace voting-app --dry-run=client -o yaml | kubectl apply -f -
+          kubectl create namespace cnpg-system --dry-run=client -o yaml | kubectl apply -f -
 
-      # Create PostgreSQL secret (CI without ESO)
-      - name: Create PostgreSQL secret
+      # Install CloudNativePG operator
+      - name: Install CloudNativePG operator
         run: |
-          kubectl delete secret postgresql --namespace voting-app --ignore-not-found
-          kubectl create secret generic postgresql \
-            --namespace voting-app \
-            --from-literal=password=testpass \
-            --from-literal=postgres-password=testpass
+          helm upgrade --install cnpg cloudnative-pg/cloudnative-pg \
+            --namespace cnpg-system --wait
 
-      # Install PostgreSQL (uses existingSecret — same pattern as prod ESO)
-      - name: Install PostgreSQL
+      # Create CNPG Cluster for CI
+      - name: Create CNPG cluster
         run: |
-          helm upgrade --install postgresql bitnami/postgresql \
-            --namespace voting-app --version 16.x \
-            --set image.tag=latest --set image.digest= \
-            --set auth.database=db --set auth.username=vote_user \
-            --set auth.existingSecret=postgresql
+          kubectl apply -f - << 'EOF'
+          apiVersion: postgresql.cnpg.io/v1
+          kind: Cluster
+          metadata:
+            name: pg-ci
+            namespace: voting-app
+          spec:
+            instances: 1
+            imageName: ghcr.io/cloudnative-pg/postgresql:16.6
+            bootstrap:
+              initdb:
+                database: db
+                owner: app
+            storage:
+              size: 1Gi
+          EOF
+          kubectl wait --for=condition=ready cluster/pg-ci -n voting-app --timeout=120s
 
       # Install Redis
       - name: Install Redis
@@ -77,7 +88,7 @@ jobs:
       - name: Wait for databases
         run: |
           kubectl wait --namespace voting-app --for=condition=ready pod \
-            -l app.kubernetes.io/instance=postgresql --timeout=180s
+            -l cluster=pg-ci --timeout=180s
           kubectl wait --namespace voting-app --for=condition=ready pod \
             -l app.kubernetes.io/instance=redis --timeout=180s
 
@@ -104,7 +115,7 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
-            --set postgresql.host=postgresql --set redis.host=redis-master
+            --set postgresql.host=pg-ci-rw --set redis.host=redis-master
 
           # Result
           helm upgrade --install result voting-app-result/charts/result \
@@ -113,7 +124,7 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
-            --set postgresql.host=postgresql
+            --set postgresql.host=pg-ci-rw
 
           # Worker
           helm upgrade --install worker voting-app-worker/charts/worker \
@@ -121,7 +132,7 @@ jobs:
             --set image.full=worker:latest \
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
-            --set postgresql.host=postgresql --set redis.host=redis-master
+            --set postgresql.host=pg-ci-rw --set redis.host=redis-master
 
       # Wait for deployments
       - name: Wait for deployments
@@ -200,10 +211,10 @@ jobs:
           echo "PASS: vote cast"
 
           echo "=== PHASE 3: Check PostgreSQL for vote ==="
-          DB_PASS=$(kubectl get secret -n "$NAMESPACE" postgresql -o jsonpath='{.data.password}' | base64 -d)
+          DB_PASS=$(kubectl get secret -n "$NAMESPACE" pg-ci-app -o jsonpath='{.data.password}' | base64 -d)
           for i in $(seq 1 15); do
-            VOTE_COUNT=$(kubectl exec -n "$NAMESPACE" postgresql-0 -- bash -c \
-              "PGPASSWORD='$DB_PASS' psql -U vote_user -d db -t -c \"SELECT COUNT(*) FROM votes WHERE vote='b';\"" 2>/dev/null || echo "0")
+            VOTE_COUNT=$(kubectl exec -n "$NAMESPACE" pg-ci-1 -- bash -c \
+              "PGPASSWORD='$DB_PASS' psql -U app -d db -t -c \"SELECT COUNT(*) FROM votes WHERE vote='b';\"" 2>/dev/null || echo "0")
             VOTE_COUNT=$(echo "$VOTE_COUNT" | tr -d ' ')
             if [ "${VOTE_COUNT:-0}" -ge 1 ]; then
               echo "PASS: worker processed vote (found $VOTE_COUNT vote(s) in DB)"

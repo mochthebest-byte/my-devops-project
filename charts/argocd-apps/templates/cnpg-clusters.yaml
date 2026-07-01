@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-clusters
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mochthebest-byte/my-devops-project.git
+    targetRevision: HEAD
+    path: charts/cnpg-clusters
+    helm:
+      values: |
+        global:
+          awsAccountId: {{ .Values.global.awsAccountId | quote }}
+          awsRegion: {{ .Values.global.awsRegion | quote }}
+          projectName: {{ .Values.global.projectName | quote }}
+        pgVote:
+          enabled: true
+        pgKeycloak:
+          enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

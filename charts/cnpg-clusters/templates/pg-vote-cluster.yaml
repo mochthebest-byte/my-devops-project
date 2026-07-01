@@ -1,0 +1,65 @@
+{{- if .Values.pgVote.enabled }}
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ .Values.pgVote.clusterName }}
+  namespace: {{ .Values.pgVote.namespace }}
+spec:
+  instances: {{ .Values.pgVote.instances }}
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.6
+
+  # Import existing data from Bitnami PostgreSQL
+  bootstrap:
+    initdb:
+      database: {{ .Values.pgVote.database }}
+      owner: {{ .Values.pgVote.appUser }}
+      import:
+        type: microservice
+        databases:
+          - {{ .Values.pgVote.database }}
+        source:
+          host: {{ .Values.pgVote.importSource.host }}
+          port: {{ .Values.pgVote.importSource.port }}
+          user: {{ .Values.pgVote.importSource.user }}
+          password:
+            name: {{ .Values.pgVote.importSource.existingSecret }}
+            key: {{ .Values.pgVote.importSource.secretKey }}
+
+  storage:
+    size: {{ .Values.pgVote.storageSize }}
+    storageClass: {{ .Values.pgVote.storageClass }}
+
+  # S3 backup via barman-cloud (same bucket as Velero, cnpg/ prefix)
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://{{ include "cnpg-clusters.backup-bucket" . }}/cnpg/{{ .Values.pgVote.clusterName }}"
+      s3Credentials:
+        inheritFromIAMRole: true
+      wal:
+        compression: gzip
+        maxParallel: 8
+    retentionPolicy: "30d"
+
+  scheduledBackup:
+    - name: six-hourly-backup
+      schedule: "0 */6 * * *"
+      backupOwnerReference: self
+
+  # Post-import: grant ownership to the app user
+  postInitSQL:
+    - GRANT ALL PRIVILEGES ON DATABASE {{ .Values.pgVote.database }} TO {{ .Values.pgVote.appUser }};
+    - GRANT ALL ON SCHEMA public TO {{ .Values.pgVote.appUser }};
+    - ALTER SCHEMA public OWNER TO {{ .Values.pgVote.appUser }};
+    - ALTER DATABASE {{ .Values.pgVote.database }} OWNER TO {{ .Values.pgVote.appUser }};
+
+  # Spread across AZs for HA
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+
+  # Monitoring
+  monitoring:
+    enablePodMonitor: true
+{{- end }}
