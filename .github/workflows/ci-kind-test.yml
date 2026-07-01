@@ -149,6 +149,7 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
+            --set canary.enabled=false \
             --set postgresql.host=pg-ci-rw \
             --set rabbitmq.host=rabbitmq \
             --set replicaCount=2

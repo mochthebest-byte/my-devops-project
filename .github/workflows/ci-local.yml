@@ -116,13 +116,14 @@ jobs:
       # Deploy Helm charts
       - name: Deploy Helm charts
         run: |
-          # Vote (disable CRD-dependent resources — no KEDA in Kind)
+          # Vote (disable CRD-dependent resources — no KEDA, no Argo Rollout in Kind)
           helm upgrade --install vote voting-app-vote/charts/vote \
             --namespace voting-app \
             --set image.full=vote:latest \
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
+            --set canary.enabled=false \
             --set postgresql.host=pg-ci-rw --set rabbitmq.host=rabbitmq
 
           # Result
