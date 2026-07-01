@@ -64,7 +64,7 @@ resources:
 postgresql:
   host: pg-vote-rw
   port: 5432
-  database: app
+  database: db
   # ─── Dynamic credentials from VSO (VaultDatabaseSecret) ─────
   existingSecret: pg-vote-dynamic
   secretUsernameKey: username

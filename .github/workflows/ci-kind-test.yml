@@ -151,6 +151,7 @@ jobs:
             --set networkPolicy.create=false \
             --set canary.enabled=false \
             --set postgresql.host=pg-ci-rw \
+            --set postgresql.database=db \
             --set postgresql.existingSecret=pg-ci-app \
             --set rabbitmq.host=rabbitmq \
             --set replicaCount=2
@@ -162,6 +163,7 @@ jobs:
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
             --set postgresql.host=pg-ci-rw \
+            --set postgresql.database=db \
             --set postgresql.existingSecret=pg-ci-app
 
           helm upgrade --install worker voting-app-worker/charts/worker \
@@ -170,6 +172,7 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set postgresql.host=pg-ci-rw \
+            --set postgresql.database=db \
             --set postgresql.existingSecret=pg-ci-app \
             --set rabbitmq.host=rabbitmq
 
