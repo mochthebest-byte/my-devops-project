@@ -16,7 +16,7 @@ image:
 service:
   type: NodePort
   port: 5000
-  targetPort: 80
+  targetPort: 8080
   protocol: TCP
   name: http
 
@@ -49,7 +49,7 @@ networkPolicy:
 postgresql:
   host: pg-vote-rw
   port: 5432
-  database: db
+  database: app
   user: app
   existingSecret: pg-vote-app
   secretPasswordKey: password
@@ -65,7 +65,7 @@ rabbitmq:
 probes:
   readinessPath: /healthz
   livenessPath: /healthz
-  healthzPort: 80
+  healthzPort: 8080
   readinessDelay: 5
   livenessDelay: 15
   periodSeconds: 10

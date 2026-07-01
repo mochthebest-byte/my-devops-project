@@ -18,7 +18,8 @@ vote:
     host: vote.local
     className: nginx
   postgresql:
-    host: postgresql
+    host: pg-local-cluster-rw
+
   rabbitmq:
     host: rabbitmq
   service:
@@ -33,7 +34,8 @@ result:
     host: result.local
     className: nginx
   postgresql:
-    host: postgresql
+    host: pg-local-cluster-rw
+
   service:
     type: NodePort
     port: 81
@@ -42,7 +44,8 @@ result:
 # --- worker ---
 worker:
   postgresql:
-    host: postgresql
+    host: pg-local-cluster-rw
+
   rabbitmq:
     host: rabbitmq
 

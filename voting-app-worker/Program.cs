@@ -148,7 +148,7 @@ namespace Worker
                 };
 
                 // Keep DB alive while waiting for messages
-                while (!exitEvent.IsSet(0))
+                while (!exitEvent.IsSet)
                 {
                     if (pgsql.State.Equals(System.Data.ConnectionState.Open))
                     {

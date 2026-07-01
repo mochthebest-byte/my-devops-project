@@ -22,10 +22,7 @@ spec:
       - rabbitmq_management
       - rabbitmq_prometheus
     additionalConfig: |
-      stream.default_retention_policy.max_age = {{ .Values.stream.maxAge }}
-      stream.default_retention_policy.max_size_bytes = {{ .Values.stream.maxSizeBytes }}
-      default_user = voting-app
-      default_pass = CHANGEME_rabbitmq
+      {{- .Values.additionalConfig | nindent 6 }}
   persistence:
     storage: {{ .Values.persistence.storage }}
     {{- if .Values.persistence.storageClassName }}
@@ -37,3 +34,29 @@ spec:
   tls:
     secretName: rabbitmq-tls
   {{- end }}
+  override:
+    statefulSet:
+      spec:
+        template:
+          spec:
+            containers:
+              - name: rabbitmq
+                startupProbe:
+                  exec:
+                    command:
+                      - /bin/bash
+                      - -c
+                      - rabbitmq-diagnostics check_running 2>/dev/null && echo "running"
+                  initialDelaySeconds: 5
+                  periodSeconds: 5
+                  timeoutSeconds: 10
+                  failureThreshold: 60
+                  successThreshold: 1
+                readinessProbe:
+                  tcpSocket:
+                    port: 5672
+                  initialDelaySeconds: 5
+                  periodSeconds: 5
+                  timeoutSeconds: 5
+                  failureThreshold: 3
+                  successThreshold: 1

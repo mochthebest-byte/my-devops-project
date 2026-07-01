@@ -16,7 +16,7 @@ persistence:
   storage: 10Gi
   storageClassName: ""
 
-# RabbitMQ Stream retention
+# RabbitMQ Stream retention — set per-queue in app code (x-max-age, x-max-length-bytes)
 stream:
   maxAge: 24h
   maxSizeBytes: 10_000_000_000
@@ -26,6 +26,7 @@ tls:
   enabled: false
 
 # Erlang VM tuning
-erlang:
-  schedulerBusyWaitThreshold: 100
-  vmMemoryHighWatermark: 0.7
+# RabbitMQ config overrides for the cluster
+additionalConfig: |
+  default_user = voting-app
+  default_pass = CHANGEME_rabbitmq

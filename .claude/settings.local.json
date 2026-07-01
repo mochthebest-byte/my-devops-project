@@ -446,7 +446,9 @@
       "Bash(rh *)",
       "Bash(skopeo list-tags *)",
       "Bash(crictl images *)",
-      "Bash(make -n all)"
+      "Bash(make -n all)",
+      "Bash(make all *)",
+      "Bash(docker run *)"
     ]
   }
 }

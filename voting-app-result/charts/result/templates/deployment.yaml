@@ -57,6 +57,8 @@ spec:
               name: {{ .Values.service.name }}
               protocol: {{ .Values.service.protocol }}
           env:
+            - name: PORT
+              value: {{ .Values.service.targetPort | quote }}
             - name: POSTGRES_HOST
               value: {{ .Values.postgresql.host }}
             - name: POSTGRES_PORT

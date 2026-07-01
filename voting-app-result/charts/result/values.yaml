@@ -13,7 +13,7 @@ image:
 service:
   type: NodePort
   port: 81
-  targetPort: 80
+  targetPort: 8080
   protocol: TCP
   name: http
 
@@ -64,7 +64,7 @@ resources:
 postgresql:
   host: pg-vote-rw
   port: 5432
-  database: db
+  database: app
   user: app
   existingSecret: pg-vote-app
   secretPasswordKey: password

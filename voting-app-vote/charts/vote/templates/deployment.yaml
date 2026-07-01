@@ -100,6 +100,7 @@ spec:
             - containerPort: {{ .Values.service.targetPort }}
               name: {{ .Values.service.name }}
               protocol: {{ .Values.service.protocol }}
+          command: ["gunicorn", "wsgi:application", "-b", "0.0.0.0:{{ .Values.service.targetPort }}", "--log-file", "-", "--access-logfile", "-", "--workers", "4", "--keep-alive", "0"]
           env:
             - name: POSTGRES_HOST
               value: {{ .Values.postgresql.host }}

@@ -37,8 +37,6 @@ ingress-status:
 
 dbs:
 	helm repo add cnpg https://cloudnative-pg.github.io/charts 2>/dev/null || true
-	helm repo add bitnami https://charts.bitnami.com/bitnami 2>/dev/null || true
-	helm repo add rabbitmq https://rabbitmq.github.io/cluster-operator/ 2>/dev/null || true
 	helm repo update
 	kubectl create namespace voting-app --dry-run=client -o yaml | kubectl apply -f -
 	kubectl create namespace cnpg-system --dry-run=client -o yaml | kubectl apply -f -
@@ -46,15 +44,15 @@ dbs:
 	helm upgrade --install pg-local cnpg/cluster --namespace voting-app --wait \
 		--set cluster.instances=1 \
 		--set 'cluster.imageName=ghcr.io/cloudnative-pg/postgresql:18' \
-		--set bootstrap.initdb.database=db \
-		--set bootstrap.initdb.owner=app \
 		--set cluster.storage.size=1Gi
-	kubectl wait --for=condition=ready cluster/pg-local -n voting-app --timeout=120s
-	helm upgrade --install rabbitmq-cluster-operator rabbitmq/cluster-operator --namespace rabbitmq-system --create-namespace --wait
+	kubectl wait --for=condition=ready cluster/pg-local-cluster -n voting-app --timeout=120s
+	kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
+	kubectl wait --for=condition=available deployment/rabbitmq-cluster-operator -n rabbitmq-system --timeout=120s
 	helm upgrade --install rabbitmq charts/rabbitmq --namespace voting-app --wait
+	kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=rabbitmq -n voting-app --timeout=300s
 
 dbs-wait:
-	kubectl wait --namespace voting-app --for=condition=ready pod -l cluster=pg-local --timeout=120s
+	kubectl wait --namespace voting-app --for=condition=ready pod -l cluster=pg-local-cluster --timeout=120s
 	kubectl wait --namespace voting-app --for=condition=ready pod -l app.kubernetes.io/name=rabbitmq --timeout=120s
 
 # ─── Build & Deploy ────────────────────────────────

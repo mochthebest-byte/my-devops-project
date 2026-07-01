@@ -80,12 +80,11 @@ jobs:
       # Step 6: Install RabbitMQ Cluster Operator + Cluster
       - name: Install RabbitMQ Cluster Operator
         run: |
-          helm repo add rabbitmq https://rabbitmq.github.io/cluster-operator/
-          helm repo update
-          helm upgrade --install rabbitmq-cluster-operator rabbitmq/cluster-operator \
-            --namespace rabbitmq-system --create-namespace --wait
+          kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
+          kubectl wait --for=condition=available deployment/rabbitmq-cluster-operator -n rabbitmq-system --timeout=120s
           helm upgrade --install rabbitmq charts/rabbitmq \
             --namespace ${{ env.NAMESPACE }} --wait
+          kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=rabbitmq -n ${{ env.NAMESPACE }} --timeout=300s
 
       # Step 7: Wait for PostgreSQL and RabbitMQ
       - name: Wait for DBs
