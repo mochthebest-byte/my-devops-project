@@ -159,7 +159,7 @@ spec:
 
               # ── 7. Configure PostgreSQL engine connection ─────────────────
               # NOTE: {{"{{username}}"}} is Helm escaping for Vault template var
-              #       {{username}}. After Helm rendering → {{username}} (literal).
+              #       {{"{{username}}"}}. After Helm rendering → {{"{{username}}"}} (literal).
               echo "--> Configuring database connection pg-vote..."
               vault write database/config/pg-vote \
                 plugin_name=postgresql-database-plugin \

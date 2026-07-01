@@ -449,7 +449,8 @@
       "Bash(make -n all)",
       "Bash(make all *)",
       "Bash(docker run *)",
-      "Bash(kgp -n vault-secrets-operator --show-labels -l app.kubernetes.io/instance=vault-secrets-operator)"
+      "Bash(kgp -n vault-secrets-operator --show-labels -l app.kubernetes.io/instance=vault-secrets-operator)",
+      "Bash(charts/vault-init/templates/job.yaml:162)"
     ]
   }
 }
