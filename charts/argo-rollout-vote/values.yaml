@@ -21,9 +21,13 @@ postgresql:
   existingSecret: postgresql
   secretPasswordKey: password
 
-redis:
-  host: redis-master
-  port: 6379
+rabbitmq:
+  host: rabbitmq
+  port: 5672
+  user: voting-app
+  existingSecret: rabbitmq-default-user
+  secretUsernameKey: username
+  secretPasswordKey: password
 
 service:
   targetPort: 80

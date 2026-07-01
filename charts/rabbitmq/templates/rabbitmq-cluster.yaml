@@ -1,0 +1,39 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/component: message-broker
+spec:
+  replicas: {{ .Values.replicaCount }}
+  image: docker.io/rabbitmq@sha256:93ade3d3fcd3290243fcad5ee45bd07b77c13844c2137f08608410f08f3575d6
+  resources:
+    requests:
+      cpu: {{ .Values.resources.requests.cpu }}
+      memory: {{ .Values.resources.requests.memory }}
+    limits:
+      cpu: {{ .Values.resources.limits.cpu }}
+      memory: {{ .Values.resources.limits.memory }}
+  rabbitmq:
+    additionalPlugins:
+      - rabbitmq_stream
+      - rabbitmq_management
+      - rabbitmq_prometheus
+    additionalConfig: |
+      stream.default_retention_policy.max_age = {{ .Values.stream.maxAge }}
+      stream.default_retention_policy.max_size_bytes = {{ .Values.stream.maxSizeBytes }}
+      default_user = voting-app
+      default_pass = CHANGEME_rabbitmq
+  persistence:
+    storage: {{ .Values.persistence.storage }}
+    {{- if .Values.persistence.storageClassName }}
+    storageClassName: {{ .Values.persistence.storageClassName }}
+    {{- end }}
+  service:
+    type: ClusterIP
+  {{- if .Values.tls.enabled }}
+  tls:
+    secretName: rabbitmq-tls
+  {{- end }}

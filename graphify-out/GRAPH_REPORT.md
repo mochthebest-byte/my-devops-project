@@ -1,16 +1,16 @@
-# Graph Report - my-devops-project  (2026-06-30)
+# Graph Report - my-devops-project  (2026-07-01)
 
 ## Corpus Check
-- 37 files · ~85,820 words
+- 37 files · ~87,369 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 441 nodes · 899 edges · 51 communities (39 shown, 12 thin omitted)
+- 443 nodes · 902 edges · 45 communities (34 shown, 11 thin omitted)
 - Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 148 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9ef733a8`
+- Built from commit: `4e86b715`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -57,12 +57,6 @@
 - [[_COMMUNITY_Community 42|Community 42]]
 - [[_COMMUNITY_Community 43|Community 43]]
 - [[_COMMUNITY_Community 44|Community 44]]
-- [[_COMMUNITY_Community 45|Community 45]]
-- [[_COMMUNITY_Community 46|Community 46]]
-- [[_COMMUNITY_Community 47|Community 47]]
-- [[_COMMUNITY_Community 48|Community 48]]
-- [[_COMMUNITY_Community 49|Community 49]]
-- [[_COMMUNITY_Community 50|Community 50]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `p()` - 36 edges
@@ -91,23 +85,23 @@
 ## Import Cycles
 - None detected.
 
-## Communities (51 total, 12 thin omitted)
+## Communities (45 total, 11 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.50
 Nodes (3): healthz(), Gunicorn WSGI entrypoint with /healthz endpoint.  Imports the Flask app from the, Simple health check — returns OK if the app is running.
 
 ### Community 1 - "Community 1"
-Cohesion: 0.07
-Nodes (16): Af(), Bd(), ce(), dd(), de(), ec(), Nf(), pd() (+8 more)
+Cohesion: 0.05
+Nodes (82): $a(), Aa(), ab(), Ad(), ae(), Af(), ba(), bb() (+74 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.13
-Nodes (26): Sf(), yf(), a(), at(), Ct(), e(), Et(), f() (+18 more)
+Nodes (27): Sf(), Uf(), a(), at(), Ct(), e(), Et(), f() (+19 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.16
-Nodes (25): ab(), Bc(), cb(), Cc(), cf(), dc(), Ga(), ha() (+17 more)
+Cohesion: 0.17
+Nodes (23): Bc(), cb(), Cc(), cf(), dc(), Ga(), ha(), hb() (+15 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.14
@@ -138,8 +132,8 @@ Cohesion: 0.25
 Nodes (7): Architecture, Available Make Commands, CI (GitHub Actions — No AWS), Disable AWS Terraform, Local Voting-App Development — Zero AWS Dependencies, Port Conflict? (Port 80 in use), Quickstart
 
 ### Community 11 - "Community 11"
-Cohesion: 0.29
-Nodes (6): net7.0, net8.0, Newtonsoft.Json (13.0.1), Npgsql (4.1.9), StackExchange.Redis (2.2.4), Microsoft.NET.Sdk
+Cohesion: 0.25
+Nodes (7): net7.0, net8.0, Newtonsoft.Json (13.0.1), Npgsql (4.1.9), RabbitMQ.Client (6.8.1), StackExchange.Redis (2.2.4), Microsoft.NET.Sdk
 
 ### Community 12 - "Community 12"
 Cohesion: 0.29
@@ -152,6 +146,10 @@ Nodes (5): tunnel-pinggy.sh script, cleanup(), log(), update_ingress(), verify()
 ### Community 14 - "Community 14"
 Cohesion: 0.29
 Nodes (6): Architecture Overview, CI/CD Flow, Components, My DevOps Project, Prerequisites, Quick Start
+
+### Community 18 - "Community 18"
+Cohesion: 0.83
+Nodes (3): get_rabbitmq(), get_redis(), hello()
 
 ### Community 22 - "Community 22"
 Cohesion: 0.33
@@ -198,8 +196,8 @@ Cohesion: 0.50
 Nodes (3): Features, Values, Worker Helm Chart
 
 ### Community 35 - "Community 35"
-Cohesion: 0.12
-Nodes (42): B(), bg(), $c(), $d(), Da(), db(), df(), e() (+34 more)
+Cohesion: 0.13
+Nodes (34): B(), bg(), $c(), $d(), Da(), db(), df(), ec() (+26 more)
 
 ### Community 39 - "Community 39"
 Cohesion: 0.40
@@ -213,44 +211,20 @@ Nodes (5): Documentation, Installing the Chart, karpenter, Values, Verification
 Cohesion: 0.05
 Nodes (40): 0.1 Отримати новий Account ID, 0.2 Встановити GitHub variable, 0.3 Налаштувати AWS CLI для нового акаунта, 1.1 Account ID — 2 файли, 1.2 Terraform state backend, 1.3 ACM certificate (новий в новому акаунті), 1.4 EKS cluster endpoint, 1.5 GitHub org (якщо змінюється) (+32 more)
 
-### Community 45 - "Community 45"
-Cohesion: 0.23
-Nodes (13): Ad(), ba(), ca(), fe(), gb(), gd(), H(), hd() (+5 more)
-
-### Community 46 - "Community 46"
-Cohesion: 0.20
-Nodes (12): $a(), Aa(), ae(), cd(), eb(), La(), ld(), rf() (+4 more)
-
-### Community 47 - "Community 47"
-Cohesion: 0.33
-Nodes (9): fa(), he(), K(), kf(), Mb(), N(), Ob(), Of() (+1 more)
-
-### Community 48 - "Community 48"
-Cohesion: 0.25
-Nodes (9): Kc(), le(), md(), oc(), Qf(), u(), ub(), Vb() (+1 more)
-
-### Community 49 - "Community 49"
-Cohesion: 0.43
-Nodes (7): bb(), ib(), l(), Lc(), m(), S(), tc()
-
-### Community 50 - "Community 50"
-Cohesion: 0.33
-Nodes (7): hc(), Ja(), jg(), og(), qc(), tb(), xb()
-
 ## Knowledge Gaps
-- **140 isolated node(s):** `http`, `server`, `name`, `version`, `description` (+135 more)
+- **141 isolated node(s):** `http`, `server`, `name`, `version`, `description` (+136 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `a()` connect `Community 2` to `Community 3`, `Community 48`, `Community 35`, `Community 47`?**
+- **Why does `a()` connect `Community 2` to `Community 3`, `Community 1`, `Community 35`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **Why does `d()` connect `Community 35` to `Community 1`, `Community 2`, `Community 3`, `Community 46`, `Community 50`?**
+- **Why does `d()` connect `Community 35` to `Community 1`, `Community 2`, `Community 3`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `t()` connect `Community 2` to `Community 35`, `Community 3`, `Community 46`, `Community 49`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **Why does `t()` connect `Community 2` to `Community 1`, `Community 3`, `Community 35`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `Cc()` (e.g. with `B()` and `Bc()`) actually correct?**
   _`Cc()` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 18 inferred relationships involving `B()` (e.g. with `Ad()` and `a()`) actually correct?**
@@ -258,4 +232,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 22 inferred relationships involving `d()` (e.g. with `bg()` and `$c()`) actually correct?**
   _`d()` has 22 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `http`, `server`, `name` to the rest of the system?**
-  _142 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _143 weakly-connected nodes found - possible documentation gaps or missing edges._

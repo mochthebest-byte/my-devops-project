@@ -1,0 +1,5 @@
+apiVersion: v2
+name: rabbitmq-operator
+description: RabbitMQ Cluster Operator — installs CRDs and operator for RabbitmqCluster resources
+type: application
+version: 0.1.0

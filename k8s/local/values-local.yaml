@@ -8,6 +8,8 @@
 #   - Prod:   TLS via ACM (AWS Certificate Manager)
 #   - Local: no External Secrets (plain secrets OK)
 #   - Prod:   External Secrets Operator (AWS Secrets Manager)
+#   - Local: RabbitMQ default user/pass (no ESO)
+#   - Prod:   RabbitMQ credentials via ESO + RabbitmqCluster operator secret
 
 # --- vote ---
 vote:
@@ -17,8 +19,8 @@ vote:
     className: nginx
   postgresql:
     host: postgresql
-  redis:
-    host: redis-master
+  rabbitmq:
+    host: rabbitmq
   service:
     type: NodePort
     port: 5000
@@ -41,8 +43,8 @@ result:
 worker:
   postgresql:
     host: postgresql
-  redis:
-    host: redis-master
+  rabbitmq:
+    host: rabbitmq
 
 # --- postgresql ---
 # ⚠️  Паролі в plaintext — тільки для локального Kind-кластера.
@@ -52,8 +54,3 @@ postgresql:
     postgresPassword: CHANGEME
     existingSecret: ""          # без ESO — використовуємо inline password
     password: CHANGEME
-
-# --- redis ---
-redis:
-  auth:
-    enabled: false

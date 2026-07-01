@@ -1,9 +1,31 @@
-image: docker.io/rabbitmq@sha256:93ade3d3fcd3290243fcad5ee45bd07b77c13844c2137f08608410f08f3575d6
+# RabbitMQ Cluster (RabbitmqCluster CR)
+# The operator auto-generates credentials in secret: <cluster-name>-default-user
+# Keys: username, password
+
 replicaCount: 1
+
 resources:
   requests:
-    memory: 256Mi
-    cpu: 100m
-  limits:
     memory: 512Mi
-    cpu: 300m
+    cpu: 200m
+  limits:
+    memory: 1Gi
+    cpu: 500m
+
+persistence:
+  storage: 10Gi
+  storageClassName: ""
+
+# RabbitMQ Stream retention
+stream:
+  maxAge: 24h
+  maxSizeBytes: 10_000_000_000
+
+# For local dev — set false for kind
+tls:
+  enabled: false
+
+# Erlang VM tuning
+erlang:
+  schedulerBusyWaitThreshold: 100
+  vmMemoryHighWatermark: 0.7

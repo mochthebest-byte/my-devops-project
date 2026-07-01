@@ -41,6 +41,7 @@ dbs:
 	helm repo update; \
 	kubectl create namespace voting-app --dry-run=client -o yaml | kubectl apply -f -; \
 	kubectl create namespace cnpg-system --dry-run=client -o yaml | kubectl apply -f -; \
+	helm repo add rabbitmq https://rabbitmq.github.io/cluster-operator/ 2>/dev/null; \
 	helm upgrade --install cnpg cloudnative-pg/cloudnative-pg \
 		--namespace cnpg-system --wait; \
 	kubectl apply -f - << 'EOF'
@@ -60,15 +61,16 @@ spec:
     size: 1Gi
 EOF
 	kubectl wait --for=condition=ready cluster/pg-local -n voting-app --timeout=120s; \
-	helm upgrade --install redis bitnami/redis \
-		--namespace voting-app --version 21.x --set image.tag=7.4.2 \
-		--set auth.enabled=false
+	helm upgrade --install rabbitmq-cluster-operator rabbitmq/cluster-operator \
+		--namespace rabbitmq-system --create-namespace --wait; \
+	helm upgrade --install rabbitmq charts/rabbitmq \
+		--namespace voting-app --wait
 
 dbs-wait:
 	kubectl wait --namespace voting-app --for=condition=ready pod \
 		-l cluster=pg-local --timeout=120s
 	kubectl wait --namespace voting-app --for=condition=ready pod \
-		-l app.kubernetes.io/instance=redis --timeout=120s
+		-l app.kubernetes.io/name=rabbitmq --timeout=120s
 
 # ─── Build & Deploy ────────────────────────────────
 .PHONY: build deploy deploy-ingress
@@ -82,13 +84,13 @@ build:
 deploy:
 	helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
 		--set image.repository=vote --set image.tag=latest --set image.pullPolicy=IfNotPresent \
-		--set postgresql.host=pg-local-rw --set redis.host=redis-master
+		--set postgresql.host=pg-local-rw --set rabbitmq.host=rabbitmq
 	helm upgrade --install result voting-app-result/charts/result --namespace voting-app \
 		--set image.repository=result --set image.tag=latest --set image.pullPolicy=IfNotPresent \
 		--set postgresql.host=pg-local-rw
 	helm upgrade --install worker voting-app-worker/charts/worker --namespace voting-app \
 		--set image.repository=worker --set image.tag=latest --set image.pullPolicy=IfNotPresent \
-		--set postgresql.host=pg-local-rw --set redis.host=redis-master
+		--set postgresql.host=pg-local-rw --set rabbitmq.host=rabbitmq
 
 deploy-ingress:
 	kubectl apply -f - << 'EOF'

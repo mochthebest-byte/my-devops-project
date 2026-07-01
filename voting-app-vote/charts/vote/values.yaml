@@ -54,6 +54,14 @@ postgresql:
   existingSecret: pg-vote-app
   secretPasswordKey: password
 
+rabbitmq:
+  host: rabbitmq
+  port: 5672
+  user: voting-app
+  existingSecret: rabbitmq-default-user
+  secretUsernameKey: username
+  secretPasswordKey: password
+
 probes:
   readinessPath: /healthz
   livenessPath: /healthz
@@ -71,10 +79,6 @@ resources:
   limits:
     memory: 256Mi
     cpu: 500m
-
-redis:
-  host: redis-master
-  port: 6379
 
 # ─── Canary deployment (Argo Rollouts) ─────────────
 canary:

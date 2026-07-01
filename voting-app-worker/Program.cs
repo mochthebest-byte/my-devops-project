@@ -1,12 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Npgsql;
-using StackExchange.Redis;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using RabbitMQ.Client.Exceptions;
 
 namespace Worker
 {
@@ -20,50 +24,144 @@ namespace Worker
                 var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER") ?? "postgres";
                 var dbPass = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD") ?? "postgres";
                 var dbName = Environment.GetEnvironmentVariable("POSTGRES_DB") ?? "postgres";
-                var redisHost = Environment.GetEnvironmentVariable("REDIS_HOST") ?? "redis";
                 var connStr = $"Server={dbHost};Username={dbUser};Password={dbPass};Database={dbName};";
-                var pgsql = OpenDbConnection(connStr);
-                var redisConn = OpenRedisConnection(redisHost);
-                var redis = redisConn.GetDatabase();
 
-                // Keep alive is not implemented in Npgsql yet. This workaround was recommended:
-                // https://github.com/npgsql/npgsql/issues/1214#issuecomment-235828359
+                var rabbitHost = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "rabbitmq";
+                var rabbitPort = int.Parse(Environment.GetEnvironmentVariable("RABBITMQ_PORT") ?? "5672");
+                var rabbitUser = Environment.GetEnvironmentVariable("RABBITMQ_USER") ?? "voting-app";
+                var rabbitPass = Environment.GetEnvironmentVariable("RABBITMQ_PASS") ?? "CHANGEME_rabbitmq";
+
+                // Open DB connection
+                var pgsql = OpenDbConnection(connStr);
                 var keepAliveCommand = pgsql.CreateCommand();
                 keepAliveCommand.CommandText = "SELECT 1";
 
                 var definition = new { vote = "", voter_id = "" };
-                while (true)
-                {
-                    // Slow down to prevent CPU spike, only query each 100ms
-                    Thread.Sleep(100);
 
-                    // Reconnect redis if down
-                    if (redisConn == null || !redisConn.IsConnected) {
-                        Console.WriteLine("Reconnecting Redis");
-                        redisConn = OpenRedisConnection(redisHost);
-                        redis = redisConn.GetDatabase();
-                    }
-                    string json = redis.ListLeftPopAsync("votes").Result;
-                    if (json != null)
+                // ─── RabbitMQ Connection ──────────────────────────────────
+                var factory = new ConnectionFactory
+                {
+                    HostName = rabbitHost,
+                    Port = rabbitPort,
+                    UserName = rabbitUser,
+                    Password = rabbitPass,
+                    VirtualHost = "/",
+                    DispatchConsumersAsync = true,
+                    AutomaticRecoveryEnabled = true,
+                    NetworkRecoveryInterval = TimeSpan.FromSeconds(10),
+                    TopologyRecoveryEnabled = true,
+                    RequestedHeartbeat = TimeSpan.FromSeconds(30),
+                };
+
+                Console.WriteLine($"Connecting to RabbitMQ at {rabbitHost}:{rabbitPort}...");
+                var connection = factory.CreateConnection();
+                var channel = connection.CreateModel();
+
+                // Declare the same stream queue that vote-app publishes to
+                channel.QueueDeclare(
+                    queue: "votes",
+                    durable: true,
+                    exclusive: false,
+                    autoDelete: false,
+                    arguments: new Dictionary<string, object>
                     {
+                        { "x-queue-type", "stream" },
+                        { "x-max-length-bytes", 10_000_000_000 },
+                        { "x-max-age", "24h" },
+                    }
+                );
+
+                // Only 1 unacked message at a time — back-pressure
+                channel.BasicQos(0, 1, false);
+
+                Console.WriteLine("RabbitMQ connected. Starting consumer...");
+
+                var consumer = new AsyncEventingBasicConsumer(channel);
+                consumer.Received += async (model, ea) =>
+                {
+                    try
+                    {
+                        var body = ea.Body.ToArray();
+                        var json = Encoding.UTF8.GetString(body);
                         var vote = JsonConvert.DeserializeAnonymousType(json, definition);
+
+                        if (vote == null)
+                        {
+                            Console.Error.WriteLine("Skipping null vote message");
+                            channel.BasicAck(ea.DeliveryTag, false);
+                            return;
+                        }
+
                         Console.WriteLine($"Processing vote for '{vote.vote}' by '{vote.voter_id}'");
+
                         // Reconnect DB if down
                         if (!pgsql.State.Equals(System.Data.ConnectionState.Open))
                         {
                             Console.WriteLine("Reconnecting DB");
                             pgsql = OpenDbConnection(connStr);
                         }
-                        else
-                        { // Normal +1 vote requested
-                            UpdateVote(pgsql, vote.voter_id, vote.vote);
+
+                        UpdateVote(pgsql, vote.voter_id, vote.vote);
+                        channel.BasicAck(ea.DeliveryTag, false);
+                        Console.WriteLine($"Vote ack'd: {vote.vote}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Error.WriteLine($"Error processing message: {ex.Message}");
+                        // Nack without requeue to avoid poison-message loop
+                        // Stream queues retain the message anyway
+                        try
+                        {
+                            channel.BasicNack(ea.DeliveryTag, false, false);
+                        }
+                        catch
+                        {
+                            // Channel may be closed during recovery
                         }
                     }
-                    else
+                };
+
+                // For stream queues: "last" means start consuming new messages only
+                channel.BasicConsume(
+                    queue: "votes",
+                    autoAck: false,
+                    consumerTag: "worker",
+                    noLocal: false,
+                    exclusive: false,
+                    arguments: new Dictionary<string, object>
+                    {
+                        { "x-stream-offset", "last" },
+                    },
+                    consumer: consumer
+                );
+
+                Console.WriteLine("Worker started, waiting for messages from RabbitMQ...");
+                Console.WriteLine("Press Ctrl+C to stop.");
+
+                // Block main thread forever (event-driven)
+                var exitEvent = new ManualResetEventSlim(false);
+                Console.CancelKeyPress += (sender, e) =>
+                {
+                    e.Cancel = true;
+                    Console.WriteLine("Shutting down...");
+                    exitEvent.Set();
+                };
+
+                // Keep DB alive while waiting for messages
+                while (!exitEvent.IsSet(0))
+                {
+                    if (pgsql.State.Equals(System.Data.ConnectionState.Open))
                     {
                         keepAliveCommand.ExecuteNonQuery();
                     }
+                    exitEvent.Wait(TimeSpan.FromSeconds(30));
                 }
+
+                Console.WriteLine("Cleaning up...");
+                channel.Close();
+                connection.Close();
+                pgsql.Close();
+                return 0;
             }
             catch (Exception ex)
             {
@@ -107,34 +205,6 @@ namespace Worker
 
             return connection;
         }
-
-        private static ConnectionMultiplexer OpenRedisConnection(string hostname)
-        {
-            // Use IP address to workaround https://github.com/StackExchange/StackExchange.Redis/issues/410
-            var ipAddress = GetIp(hostname);
-            Console.WriteLine($"Found redis at {ipAddress}");
-
-            while (true)
-            {
-                try
-                {
-                    Console.Error.WriteLine("Connecting to redis");
-                    return ConnectionMultiplexer.Connect(ipAddress);
-                }
-                catch (RedisConnectionException)
-                {
-                    Console.Error.WriteLine("Waiting for redis");
-                    Thread.Sleep(1000);
-                }
-            }
-        }
-
-        private static string GetIp(string hostname)
-            => Dns.GetHostEntryAsync(hostname)
-                .Result
-                .AddressList
-                .First(a => a.AddressFamily == AddressFamily.InterNetwork)
-                .ToString();
 
         private static void UpdateVote(NpgsqlConnection connection, string voterId, string vote)
         {

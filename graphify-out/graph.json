@@ -360,7 +360,7 @@
       "source_file": "voting-app-result/views/socket.io.js",
       "source_location": "L6",
       "id": "views_socket_io_y",
-      "community": 35,
+      "community": 2,
       "norm_label": "y()"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L6",
       "id": "views_angular_min_aa",
-      "community": 46,
+      "community": 1,
       "norm_label": "aa()"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L7",
       "id": "views_angular_min_p",
-      "community": 35,
+      "community": 1,
       "norm_label": "p()"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L8",
       "id": "views_angular_min_oc",
-      "community": 48,
+      "community": 1,
       "norm_label": "oc()"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L8",
       "id": "views_angular_min_pc",
-      "community": 3,
+      "community": 1,
       "norm_label": "pc()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L8",
       "id": "views_angular_min_mb",
-      "community": 47,
+      "community": 1,
       "norm_label": "mb()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_n",
-      "community": 47,
+      "community": 1,
       "norm_label": "n()"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_yd",
-      "community": 47,
+      "community": 1,
       "norm_label": "yd()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_ca",
-      "community": 45,
+      "community": 1,
       "norm_label": "ca()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_ob",
-      "community": 47,
+      "community": 1,
       "norm_label": "ob()"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_za",
-      "community": 35,
+      "community": 1,
       "norm_label": "za()"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_qc",
-      "community": 50,
+      "community": 1,
       "norm_label": "qc()"
     },
     {
@@ -666,7 +666,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L9",
       "id": "views_angular_min_u",
-      "community": 48,
+      "community": 1,
       "norm_label": "u()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_k",
-      "community": 47,
+      "community": 1,
       "norm_label": "k()"
     },
     {
@@ -693,7 +693,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_h",
-      "community": 45,
+      "community": 1,
       "norm_label": "h()"
     },
     {
@@ -702,7 +702,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_ea",
-      "community": 35,
+      "community": 1,
       "norm_label": "ea()"
     },
     {
@@ -720,7 +720,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_la",
-      "community": 46,
+      "community": 1,
       "norm_label": "la()"
     },
     {
@@ -729,7 +729,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_ya",
-      "community": 46,
+      "community": 1,
       "norm_label": "ya()"
     },
     {
@@ -738,7 +738,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L10",
       "id": "views_angular_min_a",
-      "community": 46,
+      "community": 1,
       "norm_label": "$a()"
     },
     {
@@ -783,7 +783,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_ab",
-      "community": 3,
+      "community": 1,
       "norm_label": "ab()"
     },
     {
@@ -792,7 +792,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L11",
       "id": "views_angular_min_na",
-      "community": 35,
+      "community": 1,
       "norm_label": "na()"
     },
     {
@@ -801,7 +801,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L13",
       "id": "views_angular_min_fa",
-      "community": 47,
+      "community": 1,
       "norm_label": "fa()"
     },
     {
@@ -810,7 +810,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L14",
       "id": "views_angular_min_bb",
-      "community": 49,
+      "community": 1,
       "norm_label": "bb()"
     },
     {
@@ -819,7 +819,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L15",
       "id": "views_angular_min_tc",
-      "community": 49,
+      "community": 1,
       "norm_label": "tc()"
     },
     {
@@ -828,7 +828,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L15",
       "id": "views_angular_min_ae",
-      "community": 46,
+      "community": 1,
       "norm_label": "ae()"
     },
     {
@@ -846,7 +846,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L15",
       "id": "views_angular_min_uc",
-      "community": 35,
+      "community": 1,
       "norm_label": "uc()"
     },
     {
@@ -855,7 +855,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_vc",
-      "community": 45,
+      "community": 1,
       "norm_label": "vc()"
     },
     {
@@ -864,7 +864,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L16",
       "id": "views_angular_min_pb",
-      "community": 45,
+      "community": 1,
       "norm_label": "pb()"
     },
     {
@@ -891,7 +891,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L17",
       "id": "views_angular_min_xc",
-      "community": 35,
+      "community": 1,
       "norm_label": "xc()"
     },
     {
@@ -954,7 +954,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L21",
       "id": "views_angular_min_fe",
-      "community": 45,
+      "community": 1,
       "norm_label": "fe()"
     },
     {
@@ -972,7 +972,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L21",
       "id": "views_angular_min_he",
-      "community": 47,
+      "community": 1,
       "norm_label": "he()"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L22",
       "id": "views_angular_min_sa",
-      "community": 35,
+      "community": 1,
       "norm_label": "sa()"
     },
     {
@@ -1008,7 +1008,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L23",
       "id": "views_angular_min_z",
-      "community": 46,
+      "community": 1,
       "norm_label": "z()"
     },
     {
@@ -1035,7 +1035,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L28",
       "id": "views_angular_min_eb",
-      "community": 46,
+      "community": 1,
       "norm_label": "eb()"
     },
     {
@@ -1044,7 +1044,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L29",
       "id": "views_angular_min_kc",
-      "community": 48,
+      "community": 1,
       "norm_label": "kc()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L29",
       "id": "views_angular_min_lc",
-      "community": 49,
+      "community": 35,
       "norm_label": "lc()"
     },
     {
@@ -1071,7 +1071,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L30",
       "id": "views_angular_min_s",
-      "community": 49,
+      "community": 35,
       "norm_label": "s()"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L30",
       "id": "views_angular_min_vb",
-      "community": 48,
+      "community": 1,
       "norm_label": "vb()"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L30",
       "id": "views_angular_min_tb",
-      "community": 50,
+      "community": 1,
       "norm_label": "tb()"
     },
     {
@@ -1098,7 +1098,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L31",
       "id": "views_angular_min_ub",
-      "community": 48,
+      "community": 1,
       "norm_label": "ub()"
     },
     {
@@ -1107,7 +1107,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_wb",
-      "community": 48,
+      "community": 1,
       "norm_label": "wb()"
     },
     {
@@ -1116,7 +1116,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_xb",
-      "community": 50,
+      "community": 1,
       "norm_label": "xb()"
     },
     {
@@ -1125,7 +1125,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_yb",
-      "community": 35,
+      "community": 1,
       "norm_label": "yb()"
     },
     {
@@ -1134,7 +1134,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L32",
       "id": "views_angular_min_zb",
-      "community": 35,
+      "community": 1,
       "norm_label": "zb()"
     },
     {
@@ -1143,7 +1143,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L34",
       "id": "views_angular_min_nf",
-      "community": 1,
+      "community": 35,
       "norm_label": "nf()"
     },
     {
@@ -1161,7 +1161,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L34",
       "id": "views_angular_min_of",
-      "community": 47,
+      "community": 1,
       "norm_label": "of()"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L35",
       "id": "views_angular_min_qf",
-      "community": 48,
+      "community": 1,
       "norm_label": "qf()"
     },
     {
@@ -1188,7 +1188,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L36",
       "id": "views_angular_min_ef",
-      "community": 35,
+      "community": 1,
       "norm_label": "ef()"
     },
     {
@@ -1233,7 +1233,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L41",
       "id": "views_angular_min_ve",
-      "community": 1,
+      "community": 35,
       "norm_label": "ve()"
     },
     {
@@ -1242,7 +1242,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L43",
       "id": "views_angular_min_gb",
-      "community": 45,
+      "community": 1,
       "norm_label": "gb()"
     },
     {
@@ -1251,7 +1251,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L43",
       "id": "views_angular_min_tf",
-      "community": 35,
+      "community": 1,
       "norm_label": "tf()"
     },
     {
@@ -1260,7 +1260,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L43",
       "id": "views_angular_min_uf",
-      "community": 35,
+      "community": 2,
       "norm_label": "uf()"
     },
     {
@@ -1287,7 +1287,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L48",
       "id": "views_angular_min_yf",
-      "community": 2,
+      "community": 35,
       "norm_label": "yf()"
     },
     {
@@ -1305,7 +1305,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L79",
       "id": "views_angular_min_va",
-      "community": 46,
+      "community": 1,
       "norm_label": "va()"
     },
     {
@@ -1341,7 +1341,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L82",
       "id": "views_angular_min_lf",
-      "community": 3,
+      "community": 1,
       "norm_label": "lf()"
     },
     {
@@ -1359,7 +1359,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L83",
       "id": "views_angular_min_cd",
-      "community": 46,
+      "community": 1,
       "norm_label": "cd()"
     },
     {
@@ -1386,7 +1386,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L84",
       "id": "views_angular_min_kf",
-      "community": 47,
+      "community": 1,
       "norm_label": "kf()"
     },
     {
@@ -1422,7 +1422,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L98",
       "id": "views_angular_min_hd",
-      "community": 45,
+      "community": 1,
       "norm_label": "hd()"
     },
     {
@@ -1431,7 +1431,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L99",
       "id": "views_angular_min_id",
-      "community": 35,
+      "community": 1,
       "norm_label": "id()"
     },
     {
@@ -1476,7 +1476,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L103",
       "id": "views_angular_min_kd",
-      "community": 35,
+      "community": 3,
       "norm_label": "kd()"
     },
     {
@@ -1485,7 +1485,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L108",
       "id": "views_angular_min_wa",
-      "community": 46,
+      "community": 1,
       "norm_label": "wa()"
     },
     {
@@ -1494,7 +1494,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L109",
       "id": "views_angular_min_ld",
-      "community": 46,
+      "community": 1,
       "norm_label": "ld()"
     },
     {
@@ -1503,7 +1503,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L109",
       "id": "views_angular_min_md",
-      "community": 48,
+      "community": 1,
       "norm_label": "md()"
     },
     {
@@ -1602,7 +1602,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L115",
       "id": "views_angular_min_ec",
-      "community": 1,
+      "community": 35,
       "norm_label": "ec()"
     },
     {
@@ -1611,7 +1611,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L115",
       "id": "views_angular_min_rf",
-      "community": 46,
+      "community": 1,
       "norm_label": "rf()"
     },
     {
@@ -1629,7 +1629,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L138",
       "id": "views_angular_min_le",
-      "community": 48,
+      "community": 1,
       "norm_label": "le()"
     },
     {
@@ -1638,7 +1638,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L139",
       "id": "views_angular_min_ig",
-      "community": 35,
+      "community": 1,
       "norm_label": "ig()"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L139",
       "id": "views_angular_min_wd",
-      "community": 35,
+      "community": 1,
       "norm_label": "wd()"
     },
     {
@@ -1656,7 +1656,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L140",
       "id": "views_angular_min_wf",
-      "community": 35,
+      "community": 1,
       "norm_label": "wf()"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L144",
       "id": "views_angular_min_xf",
-      "community": 45,
+      "community": 1,
       "norm_label": "xf()"
     },
     {
@@ -1701,7 +1701,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L149",
       "id": "views_angular_min_xa",
-      "community": 45,
+      "community": 1,
       "norm_label": "xa()"
     },
     {
@@ -1710,7 +1710,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L149",
       "id": "views_angular_min_gd",
-      "community": 45,
+      "community": 1,
       "norm_label": "gd()"
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L151",
       "id": "views_angular_min_jg",
-      "community": 50,
+      "community": 35,
       "norm_label": "jg()"
     },
     {
@@ -1746,7 +1746,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L151",
       "id": "views_angular_min_og",
-      "community": 50,
+      "community": 35,
       "norm_label": "og()"
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L152",
       "id": "views_angular_min_ja",
-      "community": 50,
+      "community": 35,
       "norm_label": "ja()"
     },
     {
@@ -1764,7 +1764,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L153",
       "id": "views_angular_min_hc",
-      "community": 50,
+      "community": 35,
       "norm_label": "hc()"
     },
     {
@@ -1809,7 +1809,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L156",
       "id": "views_angular_min_ba",
-      "community": 45,
+      "community": 1,
       "norm_label": "ba()"
     },
     {
@@ -1818,7 +1818,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L157",
       "id": "views_angular_min_ad",
-      "community": 45,
+      "community": 1,
       "norm_label": "ad()"
     },
     {
@@ -1836,7 +1836,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L159",
       "id": "views_angular_min_lg",
-      "community": 45,
+      "community": 1,
       "norm_label": "lg()"
     },
     {
@@ -1854,7 +1854,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L165",
       "id": "views_angular_min_ib",
-      "community": 49,
+      "community": 35,
       "norm_label": "ib()"
     },
     {
@@ -1863,7 +1863,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L167",
       "id": "views_angular_min_kb",
-      "community": 35,
+      "community": 1,
       "norm_label": "kb()"
     },
     {
@@ -1872,7 +1872,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L168",
       "id": "views_angular_min_jb",
-      "community": 35,
+      "community": 1,
       "norm_label": "jb()"
     },
     {
@@ -1881,7 +1881,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L188",
       "id": "views_angular_min_e",
-      "community": 35,
+      "community": 1,
       "norm_label": "e()"
     },
     {
@@ -1899,7 +1899,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L276",
       "id": "views_angular_min_m",
-      "community": 49,
+      "community": 35,
       "norm_label": "m()"
     },
     {
@@ -1908,7 +1908,7 @@
       "source_file": "voting-app-result/views/angular.min.js",
       "source_location": "L277",
       "id": "views_angular_min_l",
-      "community": 49,
+      "community": 35,
       "norm_label": "l()"
     },
     {
@@ -2042,7 +2042,7 @@
       "label": "Worker",
       "file_type": "code",
       "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L11",
+      "source_location": "L15",
       "id": "voting_app_worker_program_worker",
       "community": 7,
       "norm_label": "worker"
@@ -2051,7 +2051,7 @@
       "label": "Program",
       "file_type": "code",
       "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L13",
+      "source_location": "L17",
       "id": "voting_app_worker_program_program",
       "community": 7,
       "norm_label": "program"
@@ -2060,7 +2060,7 @@
       "label": ".Main()",
       "file_type": "code",
       "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L15",
+      "source_location": "L19",
       "id": "voting_app_worker_program_program_main",
       "community": 7,
       "norm_label": ".main()"
@@ -2069,7 +2069,7 @@
       "label": ".OpenDbConnection()",
       "file_type": "code",
       "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L75",
+      "source_location": "L173",
       "id": "voting_app_worker_program_program_opendbconnection",
       "community": 7,
       "norm_label": ".opendbconnection()"
@@ -2078,43 +2078,16 @@
       "label": "NpgsqlConnection",
       "file_type": "code",
       "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L75",
+      "source_location": "L173",
       "id": "npgsqlconnection",
       "community": 7,
       "norm_label": "npgsqlconnection"
     },
     {
-      "label": ".OpenRedisConnection()",
-      "file_type": "code",
-      "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L111",
-      "id": "voting_app_worker_program_program_openredisconnection",
-      "community": 7,
-      "norm_label": ".openredisconnection()"
-    },
-    {
-      "label": "ConnectionMultiplexer",
-      "file_type": "code",
-      "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L111",
-      "id": "connectionmultiplexer",
-      "community": 7,
-      "norm_label": "connectionmultiplexer"
-    },
-    {
-      "label": ".GetIp()",
-      "file_type": "code",
-      "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L132",
-      "id": "voting_app_worker_program_program_getip",
-      "community": 7,
-      "norm_label": ".getip()"
-    },
-    {
       "label": ".UpdateVote()",
       "file_type": "code",
       "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L139",
+      "source_location": "L209",
       "id": "voting_app_worker_program_program_updatevote",
       "community": 7,
       "norm_label": ".updatevote()"
@@ -2138,13 +2111,13 @@
       "norm_label": "net8.0"
     },
     {
-      "label": "StackExchange.Redis (2.2.4)",
+      "label": "RabbitMQ.Client (6.8.1)",
       "file_type": "code",
       "source_file": "voting-app-worker/Worker.csproj",
       "source_location": null,
-      "id": "nuget_stackexchange_redis",
+      "id": "nuget_rabbitmq_client",
       "community": 11,
-      "norm_label": "stackexchange.redis (2.2.4)"
+      "norm_label": "rabbitmq.client (6.8.1)"
     },
     {
       "label": "Npgsql (4.1.9)",
@@ -2219,19 +2192,19 @@
       "norm_label": "app.py"
     },
     {
-      "label": "get_redis()",
+      "label": "get_rabbitmq()",
       "file_type": "code",
       "source_file": "voting-app-vote/app.py",
-      "source_location": "L19",
-      "id": "voting_app_vote_app_get_redis",
+      "source_location": "L26",
+      "id": "voting_app_vote_app_get_rabbitmq",
       "community": 18,
-      "norm_label": "get_redis()"
+      "norm_label": "get_rabbitmq()"
     },
     {
       "label": "hello()",
       "file_type": "code",
       "source_file": "voting-app-vote/app.py",
-      "source_location": "L25",
+      "source_location": "L58",
       "id": "voting_app_vote_app_hello",
       "community": 18,
       "norm_label": "hello()"
@@ -3758,6 +3731,51 @@
       "id": "docs_disaster_recovery_aws_migration_\u0447\u0435\u043a\u043b\u0438\u0441\u0442_\u043e\u0434\u043d\u0438\u043c_\u0440\u044f\u0434\u043a\u043e\u043c",
       "community": 44,
       "norm_label": "\u0447\u0435\u043a\u043b\u0438\u0441\u0442 (\u043e\u0434\u043d\u0438\u043c \u0440\u044f\u0434\u043a\u043e\u043c)"
+    },
+    {
+      "label": ".OpenRedisConnection()",
+      "file_type": "code",
+      "source_file": "voting-app-worker/Program.cs",
+      "source_location": "L111",
+      "community": 7,
+      "norm_label": ".openredisconnection()",
+      "id": "voting_app_worker_program_program_openredisconnection"
+    },
+    {
+      "label": "ConnectionMultiplexer",
+      "file_type": "code",
+      "source_file": "voting-app-worker/Program.cs",
+      "source_location": "L111",
+      "community": 7,
+      "norm_label": "connectionmultiplexer",
+      "id": "connectionmultiplexer"
+    },
+    {
+      "label": ".GetIp()",
+      "file_type": "code",
+      "source_file": "voting-app-worker/Program.cs",
+      "source_location": "L132",
+      "community": 7,
+      "norm_label": ".getip()",
+      "id": "voting_app_worker_program_program_getip"
+    },
+    {
+      "label": "StackExchange.Redis (2.2.4)",
+      "file_type": "code",
+      "source_file": "voting-app-worker/Worker.csproj",
+      "source_location": null,
+      "community": 11,
+      "norm_label": "stackexchange.redis (2.2.4)",
+      "id": "nuget_stackexchange_redis"
+    },
+    {
+      "label": "get_redis()",
+      "file_type": "code",
+      "source_file": "voting-app-vote/app.py",
+      "source_location": "L19",
+      "community": 18,
+      "norm_label": "get_redis()",
+      "id": "voting_app_vote_app_get_redis"
     },
     {
       "label": "net7.0",
@@ -11631,28 +11649,6 @@
     {
       "relation": "references",
       "confidence": "EXTRACTED",
-      "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L111",
-      "weight": 1.0,
-      "context": "return_type",
-      "confidence_score": 1.0,
-      "source": "voting_app_worker_program_program_openredisconnection",
-      "target": "connectionmultiplexer"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "voting-app-worker/Program.cs",
-      "source_location": "L114",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "voting_app_worker_program_program_openredisconnection",
-      "target": "voting_app_worker_program_program_getip"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
       "source_file": "voting-app-worker/Worker.csproj",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -11685,6 +11681,15 @@
       "confidence_score": 1.0,
       "source": "voting_app_worker_worker_csproj",
       "target": "nuget_npgsql"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/Worker.csproj",
+      "weight": 1.0,
+      "source": "voting_app_worker_worker_csproj",
+      "target": "nuget_rabbitmq_client",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -11738,6 +11743,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "voting-app-vote/app.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "voting_app_vote_app_py",
+      "target": "voting_app_vote_app_get_rabbitmq",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/app.py",
       "source_location": "L19",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -11753,6 +11768,17 @@
       "confidence_score": 1.0,
       "source": "voting_app_vote_app_py",
       "target": "voting_app_vote_app_hello"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-vote/app.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "voting_app_vote_app_hello",
+      "target": "voting_app_vote_app_get_rabbitmq",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -12896,9 +12922,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_md",
-      "target": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account"
     },
     {
       "relation": "contains",
@@ -12906,9 +12932,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_phase_0_\u043f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430_\u043d\u043e\u0432\u043e\u0433\u043e_\u0430\u043a\u0430\u0443\u043d\u0442\u0430",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_phase_0_\u043f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430_\u043d\u043e\u0432\u043e\u0433\u043e_\u0430\u043a\u0430\u0443\u043d\u0442\u0430"
     },
     {
       "relation": "contains",
@@ -12916,9 +12942,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git"
     },
     {
       "relation": "contains",
@@ -12926,9 +12952,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_phase_2_bootstrap_terraform_state",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_phase_2_bootstrap_terraform_state"
     },
     {
       "relation": "contains",
@@ -12936,9 +12962,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L135",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_phase_3_terraform_apply_\u0432\u0441\u044f_\u0456\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_phase_3_terraform_apply_\u0432\u0441\u044f_\u0456\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430"
     },
     {
       "relation": "contains",
@@ -12946,9 +12972,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L171",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_phase_4_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f_\u043f\u0456\u0441\u043b\u044f_apply",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_phase_4_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f_\u043f\u0456\u0441\u043b\u044f_apply"
     },
     {
       "relation": "contains",
@@ -12956,9 +12982,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L201",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_phase_5_github_oidc_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_phase_5_github_oidc_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430"
     },
     {
       "relation": "contains",
@@ -12966,9 +12992,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L219",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_phase_6_argocd_bootstrap",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_phase_6_argocd_bootstrap"
     },
     {
       "relation": "contains",
@@ -12976,9 +13002,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L251",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_phase_7_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0438\u0439_\u0442\u0435\u0441\u0442",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_phase_7_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0438\u0439_\u0442\u0435\u0441\u0442"
     },
     {
       "relation": "contains",
@@ -12986,9 +13012,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_\u0444\u0430\u0439\u043b\u0438_\u044f\u043a\u0456_\u043d\u0435_\u043f\u043e\u0442\u0440\u0435\u0431\u0443\u044e\u0442\u044c_\u0437\u043c\u0456\u043d_\u0432\u0436\u0435_\u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0456",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_\u0444\u0430\u0439\u043b\u0438_\u044f\u043a\u0456_\u043d\u0435_\u043f\u043e\u0442\u0440\u0435\u0431\u0443\u044e\u0442\u044c_\u0437\u043c\u0456\u043d_\u0432\u0436\u0435_\u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0456"
     },
     {
       "relation": "contains",
@@ -12996,9 +13022,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L311",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_disaster_recovery_migrate_to_a_new_aws_account",
-      "target": "docs_disaster_recovery_aws_migration_\u0447\u0435\u043a\u043b\u0438\u0441\u0442_\u043e\u0434\u043d\u0438\u043c_\u0440\u044f\u0434\u043a\u043e\u043c",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_\u0447\u0435\u043a\u043b\u0438\u0441\u0442_\u043e\u0434\u043d\u0438\u043c_\u0440\u044f\u0434\u043a\u043e\u043c"
     },
     {
       "relation": "contains",
@@ -13006,9 +13032,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_0_\u043f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430_\u043d\u043e\u0432\u043e\u0433\u043e_\u0430\u043a\u0430\u0443\u043d\u0442\u0430",
-      "target": "docs_disaster_recovery_aws_migration_0_1_\u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438_\u043d\u043e\u0432\u0438\u0439_account_id",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_0_1_\u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438_\u043d\u043e\u0432\u0438\u0439_account_id"
     },
     {
       "relation": "contains",
@@ -13016,9 +13042,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_0_\u043f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430_\u043d\u043e\u0432\u043e\u0433\u043e_\u0430\u043a\u0430\u0443\u043d\u0442\u0430",
-      "target": "docs_disaster_recovery_aws_migration_0_2_\u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438_github_variable",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_0_2_\u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438_github_variable"
     },
     {
       "relation": "contains",
@@ -13026,9 +13052,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_0_\u043f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430_\u043d\u043e\u0432\u043e\u0433\u043e_\u0430\u043a\u0430\u0443\u043d\u0442\u0430",
-      "target": "docs_disaster_recovery_aws_migration_0_3_\u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u0442\u0438_aws_cli_\u0434\u043b\u044f_\u043d\u043e\u0432\u043e\u0433\u043e_\u0430\u043a\u0430\u0443\u043d\u0442\u0430",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_0_3_\u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u0442\u0438_aws_cli_\u0434\u043b\u044f_\u043d\u043e\u0432\u043e\u0433\u043e_\u0430\u043a\u0430\u0443\u043d\u0442\u0430"
     },
     {
       "relation": "contains",
@@ -13036,9 +13062,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git",
-      "target": "docs_disaster_recovery_aws_migration_1_1_account_id_2_\u0444\u0430\u0439\u043b\u0438",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_1_1_account_id_2_\u0444\u0430\u0439\u043b\u0438"
     },
     {
       "relation": "contains",
@@ -13046,9 +13072,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git",
-      "target": "docs_disaster_recovery_aws_migration_1_2_terraform_state_backend",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_1_2_terraform_state_backend"
     },
     {
       "relation": "contains",
@@ -13056,9 +13082,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git",
-      "target": "docs_disaster_recovery_aws_migration_1_3_acm_certificate_\u043d\u043e\u0432\u0438\u0439_\u0432_\u043d\u043e\u0432\u043e\u043c\u0443_\u0430\u043a\u0430\u0443\u043d\u0442\u0456",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_1_3_acm_certificate_\u043d\u043e\u0432\u0438\u0439_\u0432_\u043d\u043e\u0432\u043e\u043c\u0443_\u0430\u043a\u0430\u0443\u043d\u0442\u0456"
     },
     {
       "relation": "contains",
@@ -13066,9 +13092,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git",
-      "target": "docs_disaster_recovery_aws_migration_1_4_eks_cluster_endpoint",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_1_4_eks_cluster_endpoint"
     },
     {
       "relation": "contains",
@@ -13076,9 +13102,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git",
-      "target": "docs_disaster_recovery_aws_migration_1_5_github_org_\u044f\u043a\u0449\u043e_\u0437\u043c\u0456\u043d\u044e\u0454\u0442\u044c\u0441\u044f",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_1_5_github_org_\u044f\u043a\u0449\u043e_\u0437\u043c\u0456\u043d\u044e\u0454\u0442\u044c\u0441\u044f"
     },
     {
       "relation": "contains",
@@ -13086,9 +13112,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git",
-      "target": "docs_disaster_recovery_aws_migration_1_6_domain_\u044f\u043a\u0449\u043e_\u0437\u043c\u0456\u043d\u044e\u0454\u0442\u044c\u0441\u044f",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_1_6_domain_\u044f\u043a\u0449\u043e_\u0437\u043c\u0456\u043d\u044e\u0454\u0442\u044c\u0441\u044f"
     },
     {
       "relation": "contains",
@@ -13096,9 +13122,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_1_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u043a\u043e\u0434_commit_\u0432_git",
-      "target": "docs_disaster_recovery_aws_migration_1_7_commit",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_1_7_commit"
     },
     {
       "relation": "contains",
@@ -13106,9 +13132,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_2_bootstrap_terraform_state",
-      "target": "docs_disaster_recovery_aws_migration_2_1_\u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438_s3_bucket_dynamodb_\u0434\u043b\u044f_state",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_2_1_\u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438_s3_bucket_dynamodb_\u0434\u043b\u044f_state"
     },
     {
       "relation": "contains",
@@ -13116,9 +13142,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_2_bootstrap_terraform_state",
-      "target": "docs_disaster_recovery_aws_migration_2_2_\u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438_terraform_\u0437_\u043d\u043e\u0432\u0438\u043c_\u0431\u0435\u043a\u0435\u043d\u0434\u043e\u043c",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_2_2_\u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438_terraform_\u0437_\u043d\u043e\u0432\u0438\u043c_\u0431\u0435\u043a\u0435\u043d\u0434\u043e\u043c"
     },
     {
       "relation": "contains",
@@ -13126,9 +13152,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_3_terraform_apply_\u0432\u0441\u044f_\u0456\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430",
-      "target": "docs_disaster_recovery_aws_migration_3_1_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438_\u043f\u043b\u0430\u043d",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_3_1_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438_\u043f\u043b\u0430\u043d"
     },
     {
       "relation": "contains",
@@ -13136,9 +13162,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_3_terraform_apply_\u0432\u0441\u044f_\u0456\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430",
-      "target": "docs_disaster_recovery_aws_migration_3_2_\u0437\u0430\u0441\u0442\u043e\u0441\u0443\u0432\u0430\u0442\u0438",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_3_2_\u0437\u0430\u0441\u0442\u043e\u0441\u0443\u0432\u0430\u0442\u0438"
     },
     {
       "relation": "contains",
@@ -13146,9 +13172,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_3_terraform_apply_\u0432\u0441\u044f_\u0456\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430",
-      "target": "docs_disaster_recovery_aws_migration_3_3_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_dns_\u0443_\u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_3_3_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_dns_\u0443_\u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430"
     },
     {
       "relation": "contains",
@@ -13156,9 +13182,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L173",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_4_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f_\u043f\u0456\u0441\u043b\u044f_apply",
-      "target": "docs_disaster_recovery_aws_migration_4_1_acm_certificate_id",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_4_1_acm_certificate_id"
     },
     {
       "relation": "contains",
@@ -13166,9 +13192,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L183",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_4_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f_\u043f\u0456\u0441\u043b\u044f_apply",
-      "target": "docs_disaster_recovery_aws_migration_4_2_eks_cluster_endpoint",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_4_2_eks_cluster_endpoint"
     },
     {
       "relation": "contains",
@@ -13176,9 +13202,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L191",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_4_\u043e\u043d\u043e\u0432\u0438\u0442\u0438_\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f_\u043f\u0456\u0441\u043b\u044f_apply",
-      "target": "docs_disaster_recovery_aws_migration_4_3_commit_\u043e\u043d\u043e\u0432\u043b\u0435\u043d\u044c",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_4_3_commit_\u043e\u043d\u043e\u0432\u043b\u0435\u043d\u044c"
     },
     {
       "relation": "contains",
@@ -13186,9 +13212,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L203",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_5_github_oidc_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430",
-      "target": "docs_disaster_recovery_aws_migration_5_1_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438_\u0449\u043e_iam_role_\u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0430",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_5_1_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438_\u0449\u043e_iam_role_\u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0430"
     },
     {
       "relation": "contains",
@@ -13196,9 +13222,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L209",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_5_github_oidc_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430",
-      "target": "docs_disaster_recovery_aws_migration_5_2_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438_\u0440\u0443\u0447\u043d\u0438\u043c_workflow",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_5_2_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438_\u0440\u0443\u0447\u043d\u0438\u043c_workflow"
     },
     {
       "relation": "contains",
@@ -13206,9 +13232,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L221",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_6_argocd_bootstrap",
-      "target": "docs_disaster_recovery_aws_migration_6_1_\u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438_argocd_\u0432_\u043a\u043b\u0430\u0441\u0442\u0435\u0440",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_6_1_\u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438_argocd_\u0432_\u043a\u043b\u0430\u0441\u0442\u0435\u0440"
     },
     {
       "relation": "contains",
@@ -13216,9 +13242,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L228",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_6_argocd_bootstrap",
-      "target": "docs_disaster_recovery_aws_migration_6_2_\u0434\u043e\u0434\u0430\u0442\u0438_root_\u0434\u043e\u0434\u0430\u0442\u043e\u043a",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_6_2_\u0434\u043e\u0434\u0430\u0442\u0438_root_\u0434\u043e\u0434\u0430\u0442\u043e\u043a"
     },
     {
       "relation": "contains",
@@ -13226,9 +13252,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L234",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_6_argocd_bootstrap",
-      "target": "docs_disaster_recovery_aws_migration_6_3_\u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438_\u043f\u0430\u0440\u043e\u043b\u044c_admin",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_6_3_\u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438_\u043f\u0430\u0440\u043e\u043b\u044c_admin"
     },
     {
       "relation": "contains",
@@ -13236,9 +13262,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L241",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_6_argocd_bootstrap",
-      "target": "docs_disaster_recovery_aws_migration_6_4_\u0434\u043e\u0447\u0435\u043a\u0430\u0442\u0438\u0441\u044c_sync_\u0432\u0441\u0456\u0445_\u0434\u043e\u0434\u0430\u0442\u043a\u0456\u0432",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_6_4_\u0434\u043e\u0447\u0435\u043a\u0430\u0442\u0438\u0441\u044c_sync_\u0432\u0441\u0456\u0445_\u0434\u043e\u0434\u0430\u0442\u043a\u0456\u0432"
     },
     {
       "relation": "contains",
@@ -13246,9 +13272,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L253",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_7_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0438\u0439_\u0442\u0435\u0441\u0442",
-      "target": "docs_disaster_recovery_aws_migration_7_1_\u0435\u043d\u0434\u043f\u043e\u0456\u043d\u0442\u0438",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_7_1_\u0435\u043d\u0434\u043f\u043e\u0456\u043d\u0442\u0438"
     },
     {
       "relation": "contains",
@@ -13256,9 +13282,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L263",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_7_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0438\u0439_\u0442\u0435\u0441\u0442",
-      "target": "docs_disaster_recovery_aws_migration_7_2_argocd_\u0432\u0441\u0456_healthy",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_7_2_argocd_\u0432\u0441\u0456_healthy"
     },
     {
       "relation": "contains",
@@ -13266,9 +13292,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L270",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_7_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0438\u0439_\u0442\u0435\u0441\u0442",
-      "target": "docs_disaster_recovery_aws_migration_7_3_\u043f\u0440\u0430\u0446\u044e\u044e\u0447\u0456_\u043f\u043e\u0434\u0438",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_7_3_\u043f\u0440\u0430\u0446\u044e\u044e\u0447\u0456_\u043f\u043e\u0434\u0438"
     },
     {
       "relation": "contains",
@@ -13276,9 +13302,9 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L277",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_7_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0438\u0439_\u0442\u0435\u0441\u0442",
-      "target": "docs_disaster_recovery_aws_migration_7_4_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u0433\u043e\u043b\u043e\u0441\u0443\u0432\u0430\u043d\u043d\u044f",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_7_4_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u0433\u043e\u043b\u043e\u0441\u0443\u0432\u0430\u043d\u043d\u044f"
     },
     {
       "relation": "contains",
@@ -13286,9 +13312,31 @@
       "source_file": "docs/disaster-recovery-aws-migration.md",
       "source_location": "L287",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_disaster_recovery_aws_migration_phase_7_\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430_\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0438\u0439_\u0442\u0435\u0441\u0442",
-      "target": "docs_disaster_recovery_aws_migration_7_5_ci_cd",
-      "confidence_score": 1.0
+      "target": "docs_disaster_recovery_aws_migration_7_5_ci_cd"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/Program.cs",
+      "source_location": "L111",
+      "weight": 1.0,
+      "context": "return_type",
+      "confidence_score": 1.0,
+      "source": "voting_app_worker_program_program_openredisconnection",
+      "target": "connectionmultiplexer"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "voting-app-worker/Program.cs",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "voting_app_worker_program_program_openredisconnection",
+      "target": "voting_app_worker_program_program_getip"
     },
     {
       "relation": "contains",
@@ -13582,5 +13630,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9ef733a804f5357cd0d490f0adaaec678bf70e37"
+  "built_at_commit": "4e86b71513778f47bd0e37da221d7be82d633a2f"
 }

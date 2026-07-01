@@ -1,5 +1,5 @@
 apiVersion: v2
 name: rabbitmq
-description: RabbitMQ message broker (official image)
+description: RabbitMQ Cluster managed by the RabbitMQ Cluster Operator — Stream plugin enabled
 type: application
-version: 0.2.0
+version: 1.0.0

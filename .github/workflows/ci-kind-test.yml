@@ -77,16 +77,17 @@ jobs:
           EOF
           kubectl wait --for=condition=ready cluster/pg-ci -n ${{ env.NAMESPACE }} --timeout=120s
 
-      # Step 6: Install Redis
-      - name: Install Redis
+      # Step 6: Install RabbitMQ Cluster Operator + Cluster
+      - name: Install RabbitMQ Cluster Operator
         run: |
-          helm upgrade --install redis bitnami/redis \
-            --namespace ${{ env.NAMESPACE }} \
-            --version 21.x \
-            --set image.tag=latest --set image.digest= \
-            --set auth.enabled=false
+          helm repo add rabbitmq https://rabbitmq.github.io/cluster-operator/
+          helm repo update
+          helm upgrade --install rabbitmq-cluster-operator rabbitmq/cluster-operator \
+            --namespace rabbitmq-system --create-namespace --wait
+          helm upgrade --install rabbitmq charts/rabbitmq \
+            --namespace ${{ env.NAMESPACE }} --wait
 
-      # Step 7: Wait for PostgreSQL and Redis
+      # Step 7: Wait for PostgreSQL and RabbitMQ
       - name: Wait for DBs
         run: |
           kubectl wait --namespace ${{ env.NAMESPACE }} \
@@ -94,7 +95,7 @@ jobs:
             -l cluster=pg-ci --timeout=120s
           kubectl wait --namespace ${{ env.NAMESPACE }} \
             --for=condition=ready pod \
-            -l app.kubernetes.io/instance=redis --timeout=120s
+            -l app.kubernetes.io/name=rabbitmq --timeout=120s
 
       # Step 8: Build Docker images locally (in Kind's registry)
       - name: Build Docker images
@@ -143,7 +144,7 @@ jobs:
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
             --set postgresql.host=pg-ci-rw \
-            --set redis.host=redis-master \
+            --set rabbitmq.host=rabbitmq \
             --set replicaCount=2
 
           helm upgrade --install result voting-app-result/charts/result \
@@ -160,7 +161,7 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set postgresql.host=pg-ci-rw \
-            --set redis.host=redis-master
+            --set rabbitmq.host=rabbitmq
 
       # Step 10: Wait for deployments
       - name: Wait for deployments

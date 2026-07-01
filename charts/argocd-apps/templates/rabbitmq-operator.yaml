@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: redis
+  name: rabbitmq-operator
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
   source:
     repoURL: https://github.com/mochthebest-byte/my-devops-project.git
     targetRevision: HEAD
-    path: charts/redis-official
+    path: charts/rabbitmq-operator
   destination:
     server: https://kubernetes.default.svc
-    namespace: voting-app
+    namespace: rabbitmq-system
   syncPolicy:
     automated:
       prune: true

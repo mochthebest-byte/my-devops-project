@@ -76,13 +76,15 @@ jobs:
           EOF
           kubectl wait --for=condition=ready cluster/pg-ci -n voting-app --timeout=120s
 
-      # Install Redis
-      - name: Install Redis
+      # Install RabbitMQ Operator + Cluster
+      - name: Install RabbitMQ Cluster Operator
         run: |
-          helm upgrade --install redis bitnami/redis \
-            --namespace voting-app --version 21.x \
-            --set image.tag=latest --set image.digest= \
-            --set auth.enabled=false
+          helm repo add rabbitmq https://rabbitmq.github.io/cluster-operator/
+          helm repo update
+          helm upgrade --install rabbitmq-cluster-operator rabbitmq/cluster-operator \
+            --namespace rabbitmq-system --create-namespace --wait
+          helm upgrade --install rabbitmq charts/rabbitmq \
+            --namespace voting-app --wait
 
       # Wait for databases
       - name: Wait for databases
@@ -90,7 +92,7 @@ jobs:
           kubectl wait --namespace voting-app --for=condition=ready pod \
             -l cluster=pg-ci --timeout=180s
           kubectl wait --namespace voting-app --for=condition=ready pod \
-            -l app.kubernetes.io/instance=redis --timeout=180s
+            -l app.kubernetes.io/name=rabbitmq --timeout=180s
 
       # Build Docker images
       - name: Build Docker images
@@ -115,7 +117,7 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
-            --set postgresql.host=pg-ci-rw --set redis.host=redis-master
+            --set postgresql.host=pg-ci-rw --set rabbitmq.host=rabbitmq
 
           # Result
           helm upgrade --install result voting-app-result/charts/result \
@@ -132,7 +134,7 @@ jobs:
             --set image.full=worker:latest \
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
-            --set postgresql.host=pg-ci-rw --set redis.host=redis-master
+            --set postgresql.host=pg-ci-rw --set rabbitmq.host=rabbitmq
 
       # Wait for deployments
       - name: Wait for deployments

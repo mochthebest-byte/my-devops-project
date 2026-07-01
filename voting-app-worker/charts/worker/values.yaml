@@ -32,11 +32,15 @@ scaledObject:
       metricType: Utilization
       metadata:
         value: "80"
-    - type: redis
+    - type: rabbitmq
       metadata:
-        address: redis-master.voting-app:6379
-        listName: votes
-        listLength: "10"
+        queueName: votes
+        host: rabbitmq.voting-app:5672
+        password: CHANGEME_rabbitmq
+        # KEDA 2.20+ RabbitMQ trigger uses protocol field
+        protocol: amqp
+        mode: QueueLength
+        value: "10"
 
 networkPolicy:
   create: true
@@ -47,6 +51,14 @@ postgresql:
   database: db
   user: app
   existingSecret: pg-vote-app
+  secretPasswordKey: password
+
+rabbitmq:
+  host: rabbitmq
+  port: 5672
+  user: voting-app
+  existingSecret: rabbitmq-default-user
+  secretUsernameKey: username
   secretPasswordKey: password
 
 probes:
@@ -65,7 +77,3 @@ resources:
   limits:
     memory: 512Mi
     cpu: 1000m
-
-redis:
-  host: redis-master
-  port: 6379
