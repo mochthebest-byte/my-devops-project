@@ -175,6 +175,7 @@ spec:
                 db_name=pg-vote \
                 creation_statements="CREATE USER \"{{"{{name}}"}}\" WITH PASSWORD '{{"{{password}}"}}' VALID UNTIL '{{"{{expiration}}"}}'" \
                 creation_statements="GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO \"{{"{{name}}"}}\"" \
+                creation_statements="GRANT USAGE, CREATE ON SCHEMA public TO \"{{"{{name}}"}}\"" \
                 default_ttl="{{ .Values.database.role.defaultTTL }}" \
                 max_ttl="{{ .Values.database.role.maxTTL }}"
               {{- end }}
