@@ -31,10 +31,7 @@ vaultDynamicSecret:
     labels:
       app.kubernetes.io/managed-by: vault-secrets-operator
       app.kubernetes.io/component: dynamic-secret
-  # How often to refresh (renew the lease)
-  refreshPeriod: 30s
-  # If the lease cannot be renewed, how long before Vault revokes it
-  revocationDuration: 60s
+  # VSO uses internal defaults for refreshPeriod and revocationDuration
 
 # ─── VaultPKI — TLS certificates ─────────────────────────────
 vaultPKI:
