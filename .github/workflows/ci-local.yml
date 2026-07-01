@@ -231,7 +231,7 @@ jobs:
           DB_PASS=$(kubectl get secret -n "$NAMESPACE" pg-ci-app -o jsonpath='{.data.password}' | base64 -d)
           for i in $(seq 1 15); do
             VOTE_COUNT=$(kubectl exec -n "$NAMESPACE" pg-ci-1 -- bash -c \
-              "PGPASSWORD='$DB_PASS' psql -U app -d db -t -c \"SELECT COUNT(*) FROM votes WHERE vote='b';\"" 2>/dev/null || echo "0")
+              "PGPASSWORD='$DB_PASS' psql -h localhost -U app -d db -t -c \"SELECT COUNT(*) FROM votes WHERE vote='b';\"" 2>/dev/null || echo "0")
             VOTE_COUNT=$(echo "$VOTE_COUNT" | tr -d ' ')
             if [ "${VOTE_COUNT:-0}" -ge 1 ]; then
               echo "PASS: worker processed vote (found $VOTE_COUNT vote(s) in DB)"
