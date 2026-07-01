@@ -24,7 +24,7 @@ namespace Worker
                 var dbUser = Environment.GetEnvironmentVariable("POSTGRES_USER") ?? "postgres";
                 var dbPass = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD") ?? "postgres";
                 var dbName = Environment.GetEnvironmentVariable("POSTGRES_DB") ?? "postgres";
-                var connStr = $"Server={dbHost};Username={dbUser};Password={dbPass};Database={dbName};";
+                var connStr = $"Server={dbHost};Username={dbUser};Password={dbPass};Database={dbName};Trust Server Certificate=true;";
 
                 var rabbitHost = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "rabbitmq";
                 var rabbitPort = int.Parse(Environment.GetEnvironmentVariable("RABBITMQ_PORT") ?? "5672");
