@@ -183,12 +183,12 @@ spec:
               #  9.  VSO policy & kubernetes auth role
               # ═════════════════════════════════════════════════════════
               echo "--> Writing policy {{ .Values.vso.policyName }}..."
-              vault policy write {{ .Values.vso.policyName }} <<< '{{ .Values.vso.policyRules | indent 14 }}'
+              echo '{{ .Values.vso.policyRules | indent 14 }}' | vault policy write {{ .Values.vso.policyName }} -
 
               echo "--> Updating kubernetes auth role {{ .Values.vso.authRoleName }}..."
               vault write auth/kubernetes/role/{{ .Values.vso.authRoleName }} \
                 bound_service_account_names=vault-secrets-operator-controller \
-                bound_service_account_namespaces=vault-secrets-operator \
+                bound_service_account_namespaces=voting-app \
                 policies={{ .Values.vso.policyName }} \
                 ttl=1h
 
