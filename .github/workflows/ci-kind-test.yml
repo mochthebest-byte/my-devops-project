@@ -67,7 +67,7 @@ jobs:
             namespace: ${{ env.NAMESPACE }}
           spec:
             instances: 1
-            imageName: ghcr.io/cloudnative-pg/postgresql:16.6
+            imageName: ghcr.io/cloudnative-pg/postgresql:18
             bootstrap:
               initdb:
                 database: db

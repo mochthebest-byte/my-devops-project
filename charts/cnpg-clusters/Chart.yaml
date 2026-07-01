@@ -3,4 +3,4 @@ name: cnpg-clusters
 description: CloudNativePG Cluster resources for voting-app and keycloak
 type: application
 version: 1.0.0
-appVersion: "16.6"
+appVersion: "18"

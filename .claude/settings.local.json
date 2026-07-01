@@ -443,7 +443,9 @@
       "Bash(rg -rn -i \"postgres\\\\|postgre\\\\|database\\\\|psql\\\\|db\\\\.\" /home/psihson/my-devops-project/charts/ /home/psihson/my-devops-project/voting-app-*/charts/)",
       "Bash(rg -rn -i \"postgres\\\\|database\" /home/psihson/my-devops-project/voting-app-vote/)",
       "Bash(rg -rn -i \"postgres\\\\|redis\\\\|database\\\\|db_\" /home/psihson/my-devops-project/ --type yaml)",
-      "Bash(rh *)"
+      "Bash(rh *)",
+      "Bash(skopeo list-tags *)",
+      "Bash(crictl images *)"
     ]
   }
 }
