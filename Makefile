@@ -46,8 +46,8 @@ dbs:
 		--set 'cluster.imageName=ghcr.io/cloudnative-pg/postgresql:18' \
 		--set cluster.storage.size=1Gi
 	kubectl wait --for=condition=ready cluster/pg-local-cluster -n voting-app --timeout=120s
-	kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
-	kubectl wait --for=condition=available deployment/rabbitmq-cluster-operator -n rabbitmq-system --timeout=120s
+	kubectl apply -f charts/rabbitmq-operator/templates/upstream.yaml
+	kubectl wait --for=condition=available deployment/rabbitmq-cluster-operator -n rabbitmq-system --timeout=180s
 	helm upgrade --install rabbitmq charts/rabbitmq --namespace voting-app --wait
 	kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=rabbitmq -n voting-app --timeout=300s
 

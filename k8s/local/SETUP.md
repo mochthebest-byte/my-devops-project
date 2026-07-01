@@ -14,7 +14,7 @@ make cluster-create
 # 3. Install ingress-nginx
 make ingress
 
-# 4. Deploy PostgreSQL + Redis
+# 4. Deploy PostgreSQL + RabbitMQ
 make dbs
 make dbs-wait
 
@@ -46,7 +46,7 @@ make all
 | `make cluster-status` | Show nodes and ingress |
 | `make ingress` | Install ingress-nginx |
 | `make ingress-status` | Check ingress pods |
-| `make dbs` | Install PostgreSQL + Redis via Helm |
+| `make dbs` | Install PostgreSQL + RabbitMQ via Helm |
 | `make dbs-wait` | Wait for DBs to be ready |
 | `make build` | Build Docker images + load into Kind |
 | `make deploy` | Helm install vote, result, worker |
@@ -95,16 +95,16 @@ Browser
   ▼
 ingress-nginx (port 80 on host, mapped to port 80 in Kind)
   │
-  ├── vote.local  ──▶ vote:5000 ──▶ Python/Flask ──▶ Redis + PostgreSQL
+  ├── vote.local  ──▶ vote:5000 ──▶ Python/Flask ──▶ RabbitMQ + PostgreSQL
   └── result.local ──▶ result:81  ──▶ Node.js     ──▶ PostgreSQL
-                         worker    ──▶ .NET        ──▶ Redis + PostgreSQL
+                         worker    ──▶ .NET        ──▶ RabbitMQ + PostgreSQL
 ```
 
 ## CI (GitHub Actions — No AWS)
 
 The workflow `.github/workflows/ci-local.yml` runs on every push:
 1. Creates ephemeral Kind cluster
-2. Installs ingress-nginx + PostgreSQL + Redis
+2. Installs ingress-nginx + PostgreSQL + RabbitMQ
 3. Builds Docker images
 4. Deploys via Helm
 5. Runs integration tests (tests.sh)
