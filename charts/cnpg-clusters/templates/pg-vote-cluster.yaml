@@ -48,10 +48,7 @@ spec:
         maxParallel: 8
     retentionPolicy: "30d"
 
-  scheduledBackup:
-    - name: six-hourly-backup
-      schedule: "0 */6 * * *"
-      backupOwnerReference: self
+  # Note: ScheduledBackup is managed as a separate CR in templates/scheduled-backups.yaml
 
   # Post-import: grant ownership to the app user
   postInitSQL:

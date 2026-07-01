@@ -1,0 +1,26 @@
+{{- if .Values.pgVote.enabled }}
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: {{ .Values.pgVote.clusterName }}-backup
+  namespace: {{ .Values.pgVote.namespace }}
+spec:
+  schedule: "0 */6 * * *"
+  backupOwnerReference: self
+  cluster:
+    name: {{ .Values.pgVote.clusterName }}
+{{- end }}
+{{- if .Values.pgKeycloak.enabled }}
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: {{ .Values.pgKeycloak.clusterName }}-backup
+  namespace: {{ .Values.pgKeycloak.namespace }}
+spec:
+  schedule: "0 */6 * * *"
+  backupOwnerReference: self
+  cluster:
+    name: {{ .Values.pgKeycloak.clusterName }}
+{{- end }}
