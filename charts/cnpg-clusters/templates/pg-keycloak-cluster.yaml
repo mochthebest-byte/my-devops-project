@@ -9,6 +9,18 @@ spec:
   instances: {{ .Values.pgKeycloak.instances }}
   imageName: ghcr.io/cloudnative-pg/postgresql:16.6
 
+  # External source: existing Bitnami PostgreSQL
+  externalClusters:
+    - name: bitnami
+      connectionParameters:
+        host: {{ .Values.pgKeycloak.importSource.host }}
+        port: "{{ .Values.pgKeycloak.importSource.port }}"
+        user: {{ .Values.pgKeycloak.importSource.user }}
+        dbname: {{ .Values.pgKeycloak.database }}
+      password:
+        name: {{ .Values.pgKeycloak.importSource.existingSecret }}
+        key: {{ .Values.pgKeycloak.importSource.secretKey }}
+
   # Import existing data from Bitnami PostgreSQL
   bootstrap:
     initdb:
@@ -19,12 +31,7 @@ spec:
         databases:
           - {{ .Values.pgKeycloak.database }}
         source:
-          host: {{ .Values.pgKeycloak.importSource.host }}
-          port: {{ .Values.pgKeycloak.importSource.port }}
-          user: {{ .Values.pgKeycloak.importSource.user }}
-          password:
-            name: {{ .Values.pgKeycloak.importSource.existingSecret }}
-            key: {{ .Values.pgKeycloak.importSource.secretKey }}
+          externalCluster: bitnami
 
   storage:
     size: {{ .Values.pgKeycloak.storageSize }}

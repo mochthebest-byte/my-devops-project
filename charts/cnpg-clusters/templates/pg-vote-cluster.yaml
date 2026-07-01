@@ -9,6 +9,18 @@ spec:
   instances: {{ .Values.pgVote.instances }}
   imageName: ghcr.io/cloudnative-pg/postgresql:16.6
 
+  # External source: existing Bitnami PostgreSQL
+  externalClusters:
+    - name: bitnami
+      connectionParameters:
+        host: {{ .Values.pgVote.importSource.host }}
+        port: "{{ .Values.pgVote.importSource.port }}"
+        user: {{ .Values.pgVote.importSource.user }}
+        dbname: {{ .Values.pgVote.database }}
+      password:
+        name: {{ .Values.pgVote.importSource.existingSecret }}
+        key: {{ .Values.pgVote.importSource.secretKey }}
+
   # Import existing data from Bitnami PostgreSQL
   bootstrap:
     initdb:
@@ -19,12 +31,7 @@ spec:
         databases:
           - {{ .Values.pgVote.database }}
         source:
-          host: {{ .Values.pgVote.importSource.host }}
-          port: {{ .Values.pgVote.importSource.port }}
-          user: {{ .Values.pgVote.importSource.user }}
-          password:
-            name: {{ .Values.pgVote.importSource.existingSecret }}
-            key: {{ .Values.pgVote.importSource.secretKey }}
+          externalCluster: bitnami
 
   storage:
     size: {{ .Values.pgVote.storageSize }}
