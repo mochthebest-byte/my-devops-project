@@ -22,8 +22,8 @@ vaultDynamicSecret:
   engineMount: database
   # Vault database role name
   role: voting-app-dynamic
-  # Full Vault path (mount/creds/role) — required by VSO CRD
-  path: database/creds/voting-app-dynamic
+  # Path relative to the engine mount — VSO constructs {mount}/{path}
+  path: creds/voting-app-dynamic
   # Target Kubernetes secret
   destination:
     name: pg-vote-dynamic
