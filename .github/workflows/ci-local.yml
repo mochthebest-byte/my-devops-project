@@ -83,7 +83,14 @@ jobs:
           kubectl wait --for=condition=available deployment/rabbitmq-cluster-operator -n rabbitmq-system --timeout=180s
           helm upgrade --install rabbitmq charts/rabbitmq \
             --namespace voting-app --wait
-          kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=rabbitmq -n voting-app --timeout=300s
+          # Wait for rabbitmq pod(s) to exist — operator creates them asynchronously
+          for i in $(seq 1 60); do
+            if kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=rabbitmq -n voting-app --timeout=2s 2>/dev/null; then
+              break
+            fi
+            echo "RabbitMQ pods not ready yet, retry $i/60..."
+            sleep 5
+          done
 
       # Wait for databases
       - name: Wait for databases
