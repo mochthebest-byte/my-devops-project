@@ -124,7 +124,9 @@ jobs:
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
             --set canary.enabled=false \
-            --set postgresql.host=pg-ci-rw --set rabbitmq.host=rabbitmq
+            --set postgresql.host=pg-ci-rw \
+            --set postgresql.existingSecret=pg-ci-app \
+            --set rabbitmq.host=rabbitmq
 
           # Result
           helm upgrade --install result voting-app-result/charts/result \
@@ -133,7 +135,8 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
-            --set postgresql.host=pg-ci-rw
+            --set postgresql.host=pg-ci-rw \
+            --set postgresql.existingSecret=pg-ci-app
 
           # Worker
           helm upgrade --install worker voting-app-worker/charts/worker \
@@ -141,7 +144,9 @@ jobs:
             --set image.full=worker:latest \
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
-            --set postgresql.host=pg-ci-rw --set rabbitmq.host=rabbitmq
+            --set postgresql.host=pg-ci-rw \
+            --set postgresql.existingSecret=pg-ci-app \
+            --set rabbitmq.host=rabbitmq
 
       # Wait for deployments
       - name: Wait for deployments

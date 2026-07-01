@@ -151,6 +151,7 @@ jobs:
             --set networkPolicy.create=false \
             --set canary.enabled=false \
             --set postgresql.host=pg-ci-rw \
+            --set postgresql.existingSecret=pg-ci-app \
             --set rabbitmq.host=rabbitmq \
             --set replicaCount=2
 
@@ -160,7 +161,8 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set networkPolicy.create=false \
-            --set postgresql.host=pg-ci-rw
+            --set postgresql.host=pg-ci-rw \
+            --set postgresql.existingSecret=pg-ci-app
 
           helm upgrade --install worker voting-app-worker/charts/worker \
             --namespace ${{ env.NAMESPACE }} \
@@ -168,6 +170,7 @@ jobs:
             --set image.pullPolicy=IfNotPresent \
             --set scaledObject.create=false --set pdb.create=false \
             --set postgresql.host=pg-ci-rw \
+            --set postgresql.existingSecret=pg-ci-app \
             --set rabbitmq.host=rabbitmq
 
       # Step 10: Wait for deployments
