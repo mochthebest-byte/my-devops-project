@@ -43,5 +43,5 @@ pgKeycloak:
 
 # ─── S3 backup (shared Velero bucket) ──────────────────
 backup:
-  bucketPrefix: "my-app-velero-backups"
-  iamRoleName: "my-app-cnpg-backup"
+  bucketPrefix: "voting-app-velero-backups"
+  iamRoleName: "voting-app-cnpg-backup"
