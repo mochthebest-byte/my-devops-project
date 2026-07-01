@@ -183,7 +183,7 @@ spec:
               #  9.  VSO policy & kubernetes auth role
               # ═════════════════════════════════════════════════════════
               echo "--> Writing policy {{ .Values.vso.policyName }}..."
-              vault policy write {{ .Values.vso.policyName }} <<< '{{ .Values.vso.policyRules }}'
+              vault policy write {{ .Values.vso.policyName }} <<< '{{ .Values.vso.policyRules | indent 14 }}'
 
               echo "--> Updating kubernetes auth role {{ .Values.vso.authRoleName }}..."
               vault write auth/kubernetes/role/{{ .Values.vso.authRoleName }} \
