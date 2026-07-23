@@ -68,7 +68,7 @@ deploy:
 	helm upgrade --install vote voting-app-vote/charts/vote --namespace voting-app \
 		--set image.repository=vote --set image.tag=latest --set image.pullPolicy=IfNotPresent \
 		--set postgresql.host=pg-local-rw --set postgresql.database=db \
-		--set postgresql.existingSecret=pg-local-app \
+		--set postgresql.existingSecret=pg-local-app --set rabbitmq.host=rabbitmq \
 		--set scaledObject.create=false --set pdb.create=false
 	helm upgrade --install result voting-app-result/charts/result --namespace voting-app \
 		--set image.repository=result --set image.tag=latest --set image.pullPolicy=IfNotPresent \
@@ -78,7 +78,7 @@ deploy:
 	helm upgrade --install worker voting-app-worker/charts/worker --namespace voting-app \
 		--set image.repository=worker --set image.tag=latest --set image.pullPolicy=IfNotPresent \
 		--set postgresql.host=pg-local-rw --set postgresql.database=db \
-		--set postgresql.existingSecret=pg-local-app \
+		--set postgresql.existingSecret=pg-local-app --set rabbitmq.host=rabbitmq \
 		--set scaledObject.create=false --set pdb.create=false
 
 deploy-ingress:
